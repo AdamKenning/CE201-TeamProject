@@ -1,17 +1,24 @@
-# Title
+# Child Health And Wellbeing Tracking Software (CHAWTS)
 
-## Table of Contents
-1. Purpose of File
-2. Project Outline
-3. Features
-4. 
+## 0. Table of Contents
+- [0. Table of Contents](#0-table-of-contents)
+- [1. Purpose of File](#1-purpose-of-file)
+- [2. Project Outline](#2-project-outline)
+- [3. Features](#3-features)
 ## 1. Purpose of File
-Create a markdown document in the team's git repository and link to that in Jira. This can include drawings/scans of notes.  If more than one person wants to do this, then subtask it on Jira, and collaboratively write the document on gitlab (use the webserver cseegit to edit this markdown document - much easier than using the command line for simply editing a text document).
+### Provided Purpose
+- Create a Markdown document in the team's git repository and link to that in Jira. This can include drawings/scans 
+of notes.  If more than one person wants to do this, then subtask it on Jira, and collaboratively write the document on gitlab (use the webserver cseegit to edit this Markdown document - much easier than using the command line for simply editing a text document).
+### Useful information regarding file
+- Personal notes should be put in code blocks to differentiate them
+  - e.g. `I think we could implement this with like... etc`
 
 ## 2. Project Outline
 
 ### Idea
 - A Child Health and Well-Being Tracking Software
+- Source
+  - https://moodle.essex.ac.uk/course/section.php?id=188478
 
 ### Provided outline
 - This project focuses on developing a comprehensive **Child Health and Well-Being Tracking Software** designed to 
@@ -27,7 +34,7 @@ quantities, growth percentile comparisons, and medication schedules**, allowing 
   - e.g. sleep patterns, feeding habits, diaper changes, medications, growth metrics
 - Provide actionable data ??? 
   - "Data that has been processed and presented in a way to be used to make informed decisions"
-- Generate visual representaitons of progress
+- Generate visual representations of progress
   - e.g. Graphs, Reports, Statistical analyses
 - Customized insights
   - "You create conditions that detect changes in your data that are important to you"
