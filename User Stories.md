@@ -18,6 +18,7 @@ As Sascha, I want to organize my work, so I can feel more in control.
 As a manager, I want to be able to understand my colleagues progress, so I can better report our sucess and failures.
 This structure is not required, but it is helpful for defining done. When that persona can capture their desired value, then the story is complete. We encourage teams to define their own structure, and then to stick to it.
 ## Adam
+- wasdasd
 ## [Insert your name here]
 ## [Insert your name here]
 ## [Insert your name here]
