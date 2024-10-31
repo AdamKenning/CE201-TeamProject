@@ -13,7 +13,7 @@ public class ChawtsDisplay extends JComponent {
     protected void paintComponent(Graphics graphics) {
         Graphics2D g = (Graphics2D)graphics;
 
-        g.drawOval(0,0,10,10);
+        g.drawOval(0,0,getWidth(),getHeight());
     }
 }
 
