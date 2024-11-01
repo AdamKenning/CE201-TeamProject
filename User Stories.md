@@ -19,7 +19,9 @@ As a manager, I want to be able to understand my colleagues progress, so I can b
 This structure is not required, but it is helpful for defining done. When that persona can capture their desired value, then the story is complete. We encourage teams to define their own structure, and then to stick to it.
 ## Adam
 - wasdasd
-## [Insert your name here]
+## Zaki
+- As Max, a new parent, I want to log my baby’s feeding times and amounts, so that I can keep track of my baby's nutrition and share it with my pediatrician.
+I also want to log my baby's sleep start and end times so that I can monitor how long my baby sleeps, track sleep patterns over time, and ensure that my baby is getting adequate rest.
 ## [Insert your name here]
 ## [Insert your name here]
 ## [Insert your name here]
