@@ -20,7 +20,7 @@ This structure is not required, but it is helpful for defining done. When that p
 ## Adam
 - wasdasd
 ## Zaki
-- As Max, a new parent, I want to log my baby’s feeding times and amounts, so that I can keep track of my baby's nutrition and share it with my pediatrician.
+- As a new parent, I want to log my baby’s feeding times and amounts, so that I can keep track of my baby's nutrition and share it with my pediatrician.
 I also want to log my baby's sleep start and end times so that I can monitor how long my baby sleeps, track sleep patterns over time, and ensure that my baby is getting adequate rest.
 ## [Munashe]
 I want to enter my child’s height, weight, and head size etc. over time so I can see how they are growing and compare it to standard growth charts. 
