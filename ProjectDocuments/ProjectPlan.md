@@ -12,16 +12,18 @@
   - predictions
   - goals
   - etc
-  - 
+- Extra points
+  - Find existing data on existing averages on each
+    - average caloric intake for boys & girls ages 0 - 10 for example
 
-### Sleep
+### Sleep - Evan, Adam
 - Rem Sleep
 - Bed time
 - Morning time
 - Different cultures siesta
 - Age (babies sleep more + wake up more)
 
-### Food intake
+### Food intake - Zaki, Charles
 - calories
 - balanced diet
 - protein
@@ -29,7 +31,7 @@
 - meal sizes against age
 - meal sizes againt size
 
-### Growth
+### Growth - Zubair, Munashe
 - height
 - weight
 - wingspan
