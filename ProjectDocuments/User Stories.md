@@ -15,8 +15,7 @@
 
 - ### Examples:
 ---
-- As a **parent**, I want to **track my child’s feeding and sleep patterns**, so that I can **establish a 
-    healthy routine**.
+- As a **parent**, I want to **track my child’s feeding and sleep patterns**, so that I can **establish a healthy routine**.
    - Feeding and Sleep Logs
      - Daily logs for feeding and sleep times, with simple data entry
    - Daily Patterns & Summaries
