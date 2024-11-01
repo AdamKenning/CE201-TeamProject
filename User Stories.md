@@ -29,3 +29,7 @@ so I can stay engaged and informed, even while I'm at work or traveling.
 ## [Insert your name here]
 ## Evan
 - As a school nurse for a primary school, it would be a great help to have access to allergy information in a concise manner to better prevention methods and create emergency action plans to allow for me to respond quickly and correctly in case of a reaction.
+## Zubair
+- As parent, I want to keep track of child's sleep times so that I can monitor sleep patterns and ensure my child is getting adequate rest.
+- As a caregiver, I want to schedule and track medications according to a doctor’s prescription so that I can ensure correct dosage and timing for my child’s treatment.
+- As a student studying Child Development, I want access to anonymised child health and wellness data so I can analyse sleep, growth, and nutrition patterns for my research or coursework.
