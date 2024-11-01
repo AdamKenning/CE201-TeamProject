@@ -7,7 +7,7 @@
   - What metrics are being used : standard units for each
   - Gather example images/ links to websites
 - HOW DO EXAMPLE WEBSITE TRACK THIS INFORMATION ?
-  - Seperate tabs ? 
+  - Seperate tabs ? .
   - graphs
   - predictions
   - goals
