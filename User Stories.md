@@ -19,8 +19,18 @@ As a manager, I want to be able to understand my colleagues progress, so I can b
 This structure is not required, but it is helpful for defining done. When that persona can capture their desired value, then the story is complete. We encourage teams to define their own structure, and then to stick to it.
 ## Adam
 - wasdasd
-## [Insert your name here]
-## [Insert your name here]
+## Zaki
+- As a new parent, I want to log my baby’s feeding times and amounts, so that I can keep track of my baby's nutrition and share it with my pediatrician.
+I also want to log my baby's sleep start and end times so that I can monitor how long my baby sleeps, track sleep patterns over time, and ensure that my baby is getting adequate rest.
+## [Munashe]
+I want to enter my child’s height, weight, and head size etc. over time so I can see how they are growing and compare it to standard growth charts. 
+A parent I want to view trends and averages in my child’s activities, such as how much sleep they are getting daily, how much they are eating,  
+A parent I want the system to provide growth  comparisons and see my child’s measurements in relation to national health standards, 
+A parent, I want to view interactive graphs and visual summaries that show changes over time for specific metrics like growth measurements, 
+ A parent, I want to be able to enter data on my child’s activities quickly  with simple fields and  options for frequent tasks. 
+A parent,  
+I want to use the software on my smartphone and tablet so I can log and check information anytime, anywhere. 
+ A parent, I want the data that I am using in the software to be safe from any theft, follow the GDPR. 
 ## Charles
 As a busy dad with limited time at home, I want an easy way to stay informed about
 my kids’ daily routines and development so that I can support my wife.
