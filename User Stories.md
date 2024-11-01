@@ -23,7 +23,11 @@ This structure is not required, but it is helpful for defining done. When that p
 - As Max, a new parent, I want to log my baby’s feeding times and amounts, so that I can keep track of my baby's nutrition and share it with my pediatrician.
 I also want to log my baby's sleep start and end times so that I can monitor how long my baby sleeps, track sleep patterns over time, and ensure that my baby is getting adequate rest.
 ## [Insert your name here]
-## [Insert your name here]
+## Charles
+As a busy dad with limited time at home, I want an easy way to stay informed about
+my kids’ daily routines and development so that I can support my wife.
+I want to access quick summaries and get alerts for key health updates,
+so I can stay engaged and informed, even while I'm at work or traveling.
 ## [Insert your name here]
 ## Evan
 - As a school nurse for a primary school, it would be a great help to have access to allergy information in a concise manner to better prevention methods and create emergency action plans to allow for me to respond quickly and correctly in case of a reaction.
