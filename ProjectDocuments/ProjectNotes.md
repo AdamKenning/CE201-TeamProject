@@ -1,10 +1,33 @@
 # Child Health And Wellbeing Tracking Software (CHAWTS)
+### Project Assessment
+- Assessment information
+    - https://moodle.essex.ac.uk/mod/book/view.php?id=869427&chapterid=25236
+- Weighting
+    - Adjusted Weightings for Coursework (total 50%)
+        - MVP and Technical Documentation
+            - Weighting: **_13%_**
+            - Due: Week 9
+            - Purpose: Demonstrates basic functionality and progress.
+        - Final Product and Technical Documentation
+        - Weighting: **_20%_**
+        - Due: Week 23
+        - Purpose: Showcases the completed product and detailed documentation.
+        - Team Presentation and Demonstration
+            - Weighting: **_9%_**
+            - Due: Week 25
+            - Purpose: Assesses communication and presentation skills.
+        - Individual Reflective Statement, CV, and Covering Letter
+            - Weighting: **_8%_**
+            - Due: Week 30
+            - Purpose: Reflects on individual contributions and professional development.
+    - Summer Exam (50%)
 
 ## 0. Table of Contents
 - [0. Table of Contents](#0-table-of-contents)
 - [1. Purpose of File](#1-purpose-of-file)
 - [2. Project Outline](#2-project-outline)
 - [3. Features](#3-features)
+---
 ## 1. Purpose of File
 ### Provided Purpose
 - Create a Markdown document in the team's git repository and link to that in Jira. This can include drawings/scans 
@@ -12,9 +35,8 @@ of notes.  If more than one person wants to do this, then subtask it on Jira, an
 ### Useful information regarding file
 - Personal notes should be put in code blocks to differentiate them
   - e.g. `I think we could implement this with like... etc`
-
+---
 ## 2. Project Outline
-
 ### Idea
 - A Child Health and Well-Being Tracking Software
 - Source
@@ -41,7 +63,7 @@ quantities, growth percentile comparisons, and medication schedules**, allowing 
   - Show user primarily information that they have selected as important
     - e.g. average feeding, growth percentile comparisons, and medication schedules etc
 - Daily reports generated in PDF format
-
+---
 ## 3. Features
 
 1. Adding a child
@@ -58,3 +80,4 @@ quantities, growth percentile comparisons, and medication schedules**, allowing 
      - Generate key statistics to help parents make informed decisions
 
 3. Tracking the feeding/eating pattern of a child
+---
