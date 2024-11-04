@@ -9,9 +9,9 @@
             - Due: Week 9
             - Purpose: Demonstrates basic functionality and progress.
         - Final Product and Technical Documentation
-        - Weighting: **_20%_**
-        - Due: Week 23
-        - Purpose: Showcases the completed product and detailed documentation.
+          - Weighting: **_20%_**
+          - Due: Week 23
+          - Purpose: Showcases the completed product and detailed documentation.
         - Team Presentation and Demonstration
             - Weighting: **_9%_**
             - Due: Week 25
