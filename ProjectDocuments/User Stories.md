@@ -43,8 +43,14 @@
 - Anonymised Data Access:
   - As **a student studying Child Development**, I want **access to anonymised child health and wellness data** so I can **analyse patterns in sleep, growth, and nutrition for research or coursework**.
 ### For School Staff
-- Allergy & Emergency Info:
-  - As **a school nurse**, I want **access to allergy information in a concise format** so that I can **implement prevention methods and respond correctly during a reaction**.
+  - Health and Allergy Management
+    - As **a school nurse**, I want **access to allergy information and vaccination history** to **ensure compliance with health requirements**.
+  - Medication and Health Records
+    - As **a school nurse**, I want to **log and track medications administered to students**, including symptoms and health complaints, to **maintain accurate health records and communicate with parents as needed**
+  - Incident Reporting and Notifications
+    - As **a school nurse**, I want to **quickly notify parents/guardians about health incidents or concerns** to **keep them informed and coordinate necessary follow-up care**.
+  - Emergency Preparedness
+    - As **a school nurse**, I want to **receive notifications for students with high-risk conditions** and have access to emergency action plans to **respond effectively during health incidents**.
 ### Additional (Cross-role) Features
 - Interactive Summaries & Graphs:
   - As **a parent or caregiver**, I want **interactive graphs and visual summaries** that show changes over time so i can **quickly assess development**.
@@ -106,13 +112,17 @@
       - Allow for users to opt in and share data points for data banks etc.
 ### School Staff (Nurse) Requirements
 11. Allergy & Health Information Summaries
-    - Emergency Summary Cards
+    - Emergency Summary Info
       - Include an easily accessible summary of allergies / health notes etc
+    - Log and Track Health Incidents
+      - Provide functionality to log medications administered, health complaints, and other relevant notes to maintain accurate health records and communicate with parents as needed.
     - Customisable Fields for Allergy Data
       - Allow school nurses to access or add notes to a childs health record e.g. feeling sick at school.
+    - Emergency Preparedness
+      - Enable notifications for high-risk conditions and access to emergency action plans to respond effectively during health incidents.
 ---
 ## App overview and Goal
 - Overview
-  - This app is designed to help parents, caregivers, healthcare providers, and other authorised users track and monitor a child’s daily health and development data. It provides an easy way to log, view, and analyse key health metrics, allowing users to establish healthy routines, identify potential health issues, and ensure that caregivers are always informed.
+  - This app is designed to assist parents, caregivers, healthcare providers, and other authorised users in tracking and monitoring a child’s daily health and development data. It offers an intuitive interface for logging, viewing, and analysing essential health metrics, enabling users to establish healthy routines, identify potential health issues, and ensure that all caregivers are kept informed.
 - Goal
-  - The app provides a centralised, secure, and insightful way to track a child’s health and routines, helping users make informed decisions, respond proactively to potential health issues, and support the child’s growth and wellbeing effectively.
+  - The app aims to provide a centralised, secure, and insightful platform for tracking a child’s health and routines. By facilitating informed decision-making and proactive responses to potential health issues, the app supports the child’s growth and wellbeing effectively, while also ensuring seamless communication among caregivers and healthcare providers.
