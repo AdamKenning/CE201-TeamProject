@@ -1,0 +1,1 @@
+Git doesnt track empty folders, thus the delete.txt
