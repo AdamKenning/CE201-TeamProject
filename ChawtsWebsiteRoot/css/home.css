@@ -29,7 +29,24 @@
 
     margin-bottom:10px;
 }
+#stats-quick{
+    position: fixed;
+    bottom: 50%;
+    left:0;
+    height:32px;
+    background-color:red;
+    width:100%;
+    text-align: center;
+}
 
+/* Make buttons scale based on their position */
+#stats-quick:nth-child(1) {
+    transform: scale(0.6);
+}
+
+#stats-quick:nth-child(2) {
+    transform: scale(0.8);
+}
 
 #containerButtonLeft{
     position: fixed;
