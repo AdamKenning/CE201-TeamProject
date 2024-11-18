@@ -10,18 +10,18 @@
     bottom: 32px;
     right: 10px;
     display: flex;
-    flex-direction: column; /* Stack buttons vertically */
+    flex-direction: column;
 }
 
 #profilePic {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none; /* Removes underlines for links */
+    text-decoration: none;
 
-    width: 30px; /* Adjust the size of the button */
+    width: 30px;
     height: 30px;
-    border-radius: 10px; /* Keeps the button circular */
+    border-radius: 10px;
     border: 2px solid;
     color: black;
     background-color: lightgray;
@@ -33,19 +33,20 @@
     position: fixed;
     bottom: 50%;
     left:0;
-    height:32px;
     background-color:red;
     width:100%;
     text-align: center;
 }
 
-/* Make buttons scale based on their position */
-#stats-quick:nth-child(1) {
-    transform: scale(0.6);
-}
+.stat{
+    text-decoration: none;
 
-#stats-quick:nth-child(2) {
-    transform: scale(0.8);
+    border-radius: 50%;
+    border: 2px solid;
+    color: black;
+    background-color: lightgray;
+    border-color: gray;
+
 }
 
 #containerButtonLeft{
@@ -53,19 +54,18 @@
     bottom: 32px;
     left: 10px;
     display: flex;
-    flex-direction: column; /* Stack buttons vertically */
+    flex-direction: column;
 }
 
-/* Style for the buttons */
 #buttonLeft {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none; /* Removes underlines for links */
+    text-decoration: none;
 
-    width: 30px; /* Adjust the size of the button */
+    width: 30px;
     height: 30px;
-    border-radius: 10px; /* Keeps the button circular */
+    border-radius: 10px;
     border: 2px solid;
     color: black;
     background-color: lightgray;
@@ -121,12 +121,11 @@
     padding: 5px 1vw;
     margin: 0px 0.5vw;
 
-    text-decoration: none; /* Removes underlines for links */
+    text-decoration: none;
     border: 2px solid;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 
-    /* transition: color 1s, background-color 1s, padding 3; */
     transition-property: padding, margin;
     transition-duration: 0.2s, 0.2s;
 }
