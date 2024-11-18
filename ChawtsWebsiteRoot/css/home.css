@@ -1,52 +1,78 @@
-#title{
-    color: rgb(100, 100, 100);
+
+body{
+    background-color:var(--color-shade-4);
     font-family: consolas;
+}
+
+#title{
+    color: var(--color-shade-2);
     font-size:40px;
     text-align: center;
 }
 
+#stats{
+    position: fixed;
+    bottom: 50%;
+    left:0;
+    background-color:var(--color-shade-3);
+    width:100%;
+    text-align: center;
+}
+
+#stats .statsActive, #stats .statsOthers{
+    text-decoration: none;
+    border-radius: 50%;
+    border: 2px solid;
+    padding:20px;
+    border-color: var(--color-shade-1);
+}
+#stats .statsOthers{
+    background: conic-gradient(var(--color-shade-3) 0% 70%, var(--color-shade-4) 70% 100%);
+}
+
+#stats .statsActive{
+    color: white;
+}
+
+
+
+
 #containerButtonRight{
     position: fixed;
-    bottom: 32px;
+    bottom: 37px;
     right: 10px;
     display: flex;
     flex-direction: column;
+
+    width: 80px;
+    height: 100px;
+    border-radius: 10px;
+    border: 2px solid;
+    color: var(--color-shade-1);
+    background-color: var(--color-shade-3);
+    border-color: var(--color-shade-2);
+
+    align-items:center;
+
 }
 
 #profilePic {
+    margin:5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid;
+
+    color: var(--color-shade-1);
+    background-color: var(--color-shade-4);
+    border-color: var(--color-shade-1);
+
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
 
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
-    border: 2px solid;
-    color: black;
-    background-color: lightgray;
-    border-color: gray;
-
-    margin-bottom:10px;
-}
-#stats-quick{
-    position: fixed;
-    bottom: 50%;
-    left:0;
-    background-color:red;
-    width:100%;
-    text-align: center;
-}
-
-.stat{
-    text-decoration: none;
-
-    border-radius: 50%;
-    border: 2px solid;
-    color: black;
-    background-color: lightgray;
-    border-color: gray;
-
+    transition-duration: 0.2s;*/
 }
 
 #containerButtonLeft{
@@ -67,83 +93,18 @@
     height: 30px;
     border-radius: 10px;
     border: 2px solid;
-    color: black;
-    background-color: lightgray;
-    border-color: gray;
+    color: var(--color-shade-1);
+    background-color: var(--color-shade-3);
+    border-color: var(--color-shade-2);
 
     margin-bottom:10px;
+    transition-duration: 0.2s;
 }
 
-#nav-food{
-    color:rgb(10, 210, 255);
-    background-color:rgb(10, 210, 255);
-}
-#nav-diaper{
-    color:rgb(41, 98, 255);
-    background-color:rgb(41, 98, 255);
-}
-#nav-medication{
-    color:rgb(149, 0, 255);;
-    background-color:rgb(149, 0, 255);
-}
-#nav-home{
-    color:rgb(255, 0, 89);
-    background-color:rgb(255, 0, 89);
-}
-#nav-growth{
-    color:rgb(255, 140, 0);
-    background-color:rgb(255, 140, 0);
-}
-#nav-sleep{
-    color:rgb(180, 230, 0);
-    background-color:rgb(180, 230, 0);
-}
-#nav-emotion{
-    color:rgb(15, 255, 219);
-    background-color:rgb(15, 255, 219);
+#buttonLeft:hover, #profilePic:hover{
+    scale:110%;
 }
 
-#nav-menu {
-    position: fixed;
-    bottom: 0;
-    left:0;
-    height:32px;
-    background-color:lightgray;
-    width:100%;
-    text-align: center;
-}
-
-
-#nav-menu .inactiveNav,
-#nav-menu .activeNav {
-    display: inline-block;
-    width: 40px;
-    padding: 5px 1vw;
-    margin: 0px 0.5vw;
-
-    text-decoration: none;
-    border: 2px solid;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-
-    transition-property: padding, margin;
-    transition-duration: 0.2s, 0.2s;
-}
-
-#nav-menu .activeNav {
-    color: white;
-    border-color: rgb(50,50,50);
-}
-#nav-menu .inactiveNav{
-    background-color: white;
-    border-color: rgb(150,150,150);
-}
-
-#nav-menu .inactiveNav:hover,
-#nav-menu .activeNav:hover {
-    padding: 5px 2vw;
-    margin: 0px -0.5vw;
-}
 
 
 

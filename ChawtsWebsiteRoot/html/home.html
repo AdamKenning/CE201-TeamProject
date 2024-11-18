@@ -11,40 +11,45 @@ https://fontawesome.com/search?
     <title>Home</title>
     <meta charset = "UTF-8">
     <meta name="viewport" content="width=device-width">
+
     <link href="../css/home.css" rel="stylesheet" type="text/css" />
+    <link href="../css/colors.css" rel="stylesheet" type="text/css" />
+    <link href="../css/nav.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
-<header id="title">Welcome Back <br><b>name</b></header>
+    <header id="title">Welcome Back <br><b>name</b></header>
 
-<nav id="stats-quick">
-    <a id="stats-food"                          class="stat">60</a>
-    <a id="stats-diaper"                        class="stat">60</a>
-    <a id="stats-medication"                    class="stat">75</a>
-    <a id="stats-home" href="dataInput.html"    class="stat">00</a>
-    <a id="stats-growth"                        class="stat">75</a>
-    <a id="stats-sleep"                         class="stat">60</a>
-    <a id="stats-emotion"                       class="stat">60</a>
-</nav>
+    <div id="stats">
+        <a id="food"                          class="statsOthers">60</a>
+        <a id="diaper"                        class="statsOthers">60</a>
+        <a id="medication"                    class="statsOthers">75</a>
+        <a id="home" href="dataInput.html"    class="statsActive"><i class="fa-solid fa-plus"></i></a>
+        <a id="growth"                        class="statsOthers">75</a>
+        <a id="sleep"                         class="statsOthers">60</a>
+        <a id="emotion"                       class="statsOthers">60</a>
+    </div>
 
 
-<div id="containerButtonLeft">
-    <a id="buttonLeft"  href="settings.html" ><i class="fas fa-cog"></i></a>
-    <a id="buttonLeft"  href="logo.html"><i class="fa-regular fa-copyright"></i></a>
-</div>
+    <div id="containerButtonLeft">
+        <a id="buttonLeft"  href="settings.html" ><i class="fas fa-cog"></i></a>
+        <a id="buttonLeft"  href="logo.html"><i class="fa-regular fa-copyright"></i></a>
+    </div>
 
-<div id="containerButtonRight">
-    <a id="profilePic"  href="profile.html" ><i class="fa-regular fa-user"></i></a>
-    <a id="name">Child</a>
-</div>
+    <div id="containerButtonRight">
+        <a id="text">viewing</a>
+        <a id="profilePic"  href="profile.html" ><i class="fa-regular fa-user"></i></a>
+        <a id="name">Child</a>
+    </div>
 
-<nav id="nav-menu">
-    <a id="nav-food"        class="inactiveNav" href="food.html">       <i class="fas fa-utensils"></i></a>
-    <a id="nav-diaper"      class="inactiveNav" href="diaper.html">     <i class="fas fa-baby"></i></a>
-    <a id="nav-medication"  class="inactiveNav" href="medication.html"> <i class="fas fa-pills"></i></a>
-    <a id="nav-home"        class="activeNav">                          <i class="fas fa-home"></i></a>
-    <a id="nav-growth"      class="inactiveNav" href="growth.html">     <i class="fas fa-chart-line"></i></a>
-    <a id="nav-sleep"       class="inactiveNav" href="sleep.html">      <i class="fas fa-bed"></i></a>
-    <a id="nav-emotion"     class="inactiveNav" href="emotion.html">    <i class="fas fa-face-smile"></i></a>
-</nav>
+    <nav id="menu">
+        <a id="food"        class="navOthers" href="food.html">       <i class="fas fa-utensils"></i></a>
+        <a id="diaper"      class="navOthers" href="diaper.html">     <i class="fas fa-baby"></i></a>
+        <a id="medication"  class="navOthers" href="medication.html"> <i class="fas fa-pills"></i></a>
+        <a id="home"        class="navActive">                        <i class="fas fa-home"></i></a>
+        <a id="growth"      class="navOthers" href="growth.html">     <i class="fas fa-chart-line"></i></a>
+        <a id="sleep"       class="navOthers" href="sleep.html">      <i class="fas fa-bed"></i></a>
+        <a id="emotion"     class="navOthers" href="emotion.html">    <i class="fas fa-face-smile"></i></a>
+    </nav>
 </body>

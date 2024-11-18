@@ -1,0 +1,41 @@
+#menu {
+    position: fixed;
+    bottom: 0;
+    left:0;
+    height:32px;
+    background-color:var(--color-shade-3);
+    width:100%;
+    text-align: center;
+}
+
+
+#menu .navOthers,
+#menu .navActive {
+    display: inline-block;
+    width: 40px;
+    padding: 5px 1vw;
+    margin: 0px 0.5vw;
+
+    text-decoration: none;
+    border: 2px solid;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    transition-property: padding, margin;
+    transition-duration: 0.2s;
+}
+
+#menu .navActive {
+    color: var(--color-shade-4);
+    border-color: var(--color-shade-1);
+}
+#menu .navOthers{
+    background-color: var(--color-shade-4);
+    border-color: rgb(150,150,150);
+}
+
+#menu .navOthers:hover,
+#menu .navActive:hover {
+    padding: 5px 2vw;
+    margin: 0px -0.5vw;
+}
