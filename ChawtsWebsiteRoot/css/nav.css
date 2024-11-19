@@ -1,3 +1,54 @@
+:root {
+    --color-food: rgb(10, 210, 255);
+    --color-diaper: rgb(41, 98, 255);
+    --color-medication: rgb(149, 0, 255);;
+    --color-home: rgb(255, 0, 89);
+    --color-growth: rgb(255, 140, 0);
+    --color-sleep: rgb(180, 230, 0);
+    --color-emotion: rgb(15, 255, 219);
+
+    --color-shade-1: rgb(50,50,50);
+    --color-shade-2: rgb(100,100,100);
+    --color-shade-3: rgb(200,200,200);
+    --color-shade-4: rgb(256,256,256);
+
+
+    --color-shade-1: rgb(50,50,50);
+    --color-shade-2: rgb(100,100,100);
+    --color-shade-3: rgb(200,200,200);
+    --color-shade-4: rgb(256,256,256);
+}
+
+#food{
+    color:var(--color-food);
+    background-color:var(--color-food);
+
+}
+#diaper{
+    color:var(--color-diaper);
+    background-color:var(--color-diaper);
+}
+#medication{
+    color:var(--color-medication);
+    background-color:var(--color-medication);
+}
+#home{
+    color:var(--color-home);
+    background-color:var(--color-home);
+}
+#growth{
+    color:var(--color-growth);
+    background-color:var(--color-growth);
+}
+#sleep{
+    color:var(--color-sleep);
+    background-color:var(--color-sleep);
+}
+#emotion{
+    color:var(--color-emotion);
+    background-color:var(--color-emotion);
+}
+
 #menu {
     position: fixed;
     bottom: 0;
