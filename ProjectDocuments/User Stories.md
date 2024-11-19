@@ -1,3 +1,18 @@
+add users stories for accesibility etc
+- colours
+  - no red blue green etc
+  - sepia
+  - greyscale ?
+  - dark mode ?
+- reading
+  - dislexia
+    - large clear text
+  - parkinsons
+    - large buttons
+
+
+
+
 # User Stories MD
 
 ---
