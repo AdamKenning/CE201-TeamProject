@@ -10,6 +10,17 @@ body{
     text-align: center;
 }
 
+#login{
+    text-decoration: none;
+    font-size:20px;
+    color:var(--color-shade-1);
+    padding:5px;
+    border-radius: 6px;
+    border: 2px solid;
+    border-color: var(--color-shade-1);
+    background-color: var(--color-shade-3);
+}
+
 #stats {
     position: fixed;
     bottom: 50%;
