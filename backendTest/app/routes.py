@@ -4,7 +4,7 @@ from app import app
 @app.route('/')
 @app.route('/index')
 def index():
-    user = {'username': 'Adam'}
+    user = {'username': 'adamasdasd'}
     posts = [
         {
             'author': {'username': 'John'},
@@ -15,5 +15,7 @@ def index():
             'body': 'The Avengers movie was so cool!'
         }
     ]
+    
     return render_template('index.html', title='Home', user=user, posts=posts)
 
+print("~~~~ Changes made, Flask correctly Reloaded ~~~~")
