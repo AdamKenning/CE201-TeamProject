@@ -19,37 +19,37 @@
     --color-shade-4: rgb(256,256,256);
 }
 
-#food{
+#navbar-food{
     color:var(--color-food);
     background-color:var(--color-food);
 
 }
-#diaper{
+#navbar-diaper{
     color:var(--color-diaper);
     background-color:var(--color-diaper);
 }
-#medication{
+#navbar-medication{
     color:var(--color-medication);
     background-color:var(--color-medication);
 }
-#home{
+#navbar-home{
     color:var(--color-home);
     background-color:var(--color-home);
 }
-#growth{
+#navbar-growth{
     color:var(--color-growth);
     background-color:var(--color-growth);
 }
-#sleep{
+#navbar-sleep{
     color:var(--color-sleep);
     background-color:var(--color-sleep);
 }
-#emotion{
+#navbar-emotion{
     color:var(--color-emotion);
     background-color:var(--color-emotion);
 }
 
-#menu {
+#navbar {
     position: fixed;
     bottom: 0;
     left:0;
@@ -60,8 +60,8 @@
 }
 
 
-#menu .navOthers,
-#menu .navActive {
+#navbar .navbar-others,
+#navbar .navbar-active {
     display: inline-block;
     width: 40px;
     padding: 5px 1vw;
@@ -76,17 +76,17 @@
     transition-duration: 0.2s;
 }
 
-#menu .navActive {
+#navbar .navbar-active {
     color: var(--color-shade-4);
     border-color: var(--color-shade-1);
 }
-#menu .navOthers{
+#navbar .navbar-others{
     background-color: var(--color-shade-4);
     border-color: rgb(150,150,150);
 }
 
-#menu .navOthers:hover,
-#menu .navActive:hover {
+#navbar .navbar-others:hover,
+#navbar .navbar-active:hover {
     padding: 5px 2vw;
     margin: 0px -0.5vw;
 }

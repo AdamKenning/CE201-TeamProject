@@ -21,55 +21,6 @@ body{
     background-color: var(--color-shade-3);
 }
 
-#stats {
-    position: fixed;
-    bottom: 50%;
-    left: 0;
-    width: 100%;
-    text-align: center;
-}
-
-#stats .statsActive,
-#stats .statsOthers {
-    position: relative;
-    display: inline-block;
-    text-decoration: none;
-    border-radius: 50%;
-    border: 2px solid;
-    padding: 20px;
-    text-align: center;
-    border-color: var(--color-shade-1);
-
-    width: 10px; /* Add fixed width */
-    height: 10px; /* Add fixed height */
-}
-
-#stats .statsOthers {
-    background: conic-gradient(var(--color-shade-3) 0% 70%,var(--color-shade-4) 70% 100%);
-}
-
-#stats .statsOthers::before {
-    content: "";
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    width: 80%;
-    height: 80%;
-    border-radius: 50%;
-    background-color: var(--color-shade-4); /* Matches background colour */
-    z-index: 1;
-}
-
-#stats .statsOthers span {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-}
-
-#stats .statsActive {
-    color: white;
-}
-
 #containerButtonRight{
     position: fixed;
     bottom: 37px;
