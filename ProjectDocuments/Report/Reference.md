@@ -1,21 +1,16 @@
----
-subtitle: |
-  []{#_1fob9te .anchor}Student IDs: 2203484, 2313658, 2316783, 2312997,
-  2316662
+# Team Report Assignment
 
-  []{#_3znysh7 .anchor}The University Of Essex CSEE
+Student IDs: 2203484, 2313658, 2316783, 2312997, 2316662
 
-  []{#_2et92p0 .anchor}CE101: Team Project Challenge
+The University Of Essex CSEE
+CE101: Team Project Challenge
 
-  []{#_qx3jwoadjmt8
-  .anchor}[[https://cseejira.essex.ac.uk/projects/D101019]{.underline}](https://cseejira.essex.ac.uk/projects/D101019)
+https://cseejira.essex.ac.uk/projects/D101019
+https://github.com/RossJamesUK/Heart-Disease
 
-  []{#_vvfqn09e6v51
-  .anchor}[[https://github.com/RossJamesUK/Heart-Disease]{.underline}](https://github.com/RossJamesUK/Heart-Disease)\
+24/03/2024
+Team Report Assignment
 
-  []{#_3dy6vkm .anchor}24/03/2024\
-title: "[]{#_gjdgxs .anchor}Team Report Assignment"
----
 
 # Chapter 1: Executive Summary
 
