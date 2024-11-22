@@ -9,14 +9,14 @@
 
     --color-shade-1: rgb(50,50,50);
     --color-shade-2: rgb(100,100,100);
-    --color-shade-3: rgb(200,200,200);
-    --color-shade-4: rgb(256,256,256);
+    --color-shade-3: rgb(150,150,150);
+    --color-shade-4: rgb(200,200,200);
+    --color-shade-5: rgb(255,255,255);
+}
 
-
-    --color-shade-1: rgb(50,50,50);
-    --color-shade-2: rgb(100,100,100);
-    --color-shade-3: rgb(200,200,200);
-    --color-shade-4: rgb(256,256,256);
+body{
+    background-color:var(--color-shade-5);
+    font-family: consolas;
 }
 
 #navbar-food{
@@ -53,8 +53,8 @@
     position: fixed;
     bottom: 0;
     left:0;
-    height:32px;
-    background-color:var(--color-shade-3);
+    height:30px;
+    background-color:var(--color-shade-4);
     width:100%;
     text-align: center;
 }
@@ -77,16 +77,17 @@
 }
 
 #navbar .navbar-active {
-    color: var(--color-shade-4);
+    color: var(--color-shade-5);
     border-color: var(--color-shade-1);
 }
 #navbar .navbar-others{
-    background-color: var(--color-shade-4);
-    border-color: rgb(150,150,150);
+    background-color: var(--color-shade-5);
+    border-color: var(--color-shade-3);
 }
 
 #navbar .navbar-others:hover,
 #navbar .navbar-active:hover {
+    
     padding: 5px 2vw;
     margin: 0px -0.5vw;
 }
