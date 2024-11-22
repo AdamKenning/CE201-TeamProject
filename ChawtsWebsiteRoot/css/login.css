@@ -1,0 +1,98 @@
+
+/* General styling for the webpage */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f563; /* Light background color */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Center the container */
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height viewport */
+}
+
+    /* Main container styling */
+.container {
+    width: 400px; /* Fixed width for the form */
+    background: #ffffff; /* White background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+    border-radius: 12px; /* Rounded corners */
+    overflow: hidden; /* Ensures content stays within the box */
+}
+
+    /* Styling for the tabs (Login/Register) */
+.tabs {
+    display: flex; /* Align tabs horizontally */
+    justify-content: space-around; /* Evenly space the tabs */
+    background: #f46f02; /* Primary orange color  f46f02*/ 
+    padding: 10px 0;
+}
+
+    /* Individual tab buttons */
+.tabs button {
+    flex: 1; /* Each button takes equal space */
+    background: none; /* Transparent background */
+    border: none; /* No border */
+    outline: none; /* Removes focus outline */
+    color: #fff; /* White text color */
+    padding: 10px; /* Padding for better click area */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+    /* Highlight the active tab */
+.tabs button.active {
+    background: #c65f1a; /* Darker orange for the active tab c65f1a */ 
+}
+
+    /* Form container styling */
+.form-container {
+    padding: 20px; /* Space around the forms */
+}
+
+    /* Forms are hidden by default */
+.form-container form {
+    display: none; /* Hidden initially */
+}
+
+    /* Show the active form */
+.form-container form.active {
+    display: block; /* Display the active form */
+}
+
+    /* Styling for form fields */
+.form-group {
+    margin-bottom: 15px; /* Space between fields */
+}
+
+    /* Styling for form labels */
+.form-group label {
+    display: block; /* Block-level element */
+    font-weight: bold; /* Bold text for labels */
+    margin-bottom: 5px; /* Space below label */
+}
+
+    /* Styling for form inputs */
+.form-group input {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding inside input */
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+}
+
+    /* Styling for buttons (Login/Register) */
+.form-group button {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding inside button */
+    background: #f46f02; /* Primary blue color */
+    color: #fff; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Larger text */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+    /* Hover effect for buttons */
+.form-group button:hover {
+    background: #c65f1a; /* Darker blue on hover */
+}

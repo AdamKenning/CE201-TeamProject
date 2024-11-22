@@ -25,21 +25,21 @@
 }
 
 #login:hover::before {
-    animation: sequence-forwards 0.5s forwards;
+    animation: fade-sequence-forwards 0.5s forwards;
 }
 
 #login:not(:hover)::before{
-    animation: sequence-backwards 0.5s forwards;
+    animation: fade-sequence-backwards 0.5s forwards;
 }
 
 
-@keyframes sequence-forwards {
+@keyframes fade-sequence-forwards {
     30%{opacity:0;}
     50%{content: "Login";}
     80%{opacity: 1;}
     100%{content: "Login";}
 }
-@keyframes sequence-backwards {
+@keyframes fade-sequence-backwards {
     0%{opacity:0;}
     50%{content: "Not you?";}
     80%{opacity: 1;}
@@ -47,14 +47,10 @@
 }
 
 
-
-
 #containerButtons {
     position:absolute;
     bottom:40px;
     right: 10px;
-
-
 
     display: flex;
     flex-direction: column;
@@ -71,13 +67,27 @@
     gap:5px;
     
 }
+#childName{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-#profilePic {
-    width: 65px;
-    height: 65px;
+    width: 70px;
+    height: 30px;
+    
     border-radius: 10px;
     border: 2px solid;
 
+    color: var(--color-shade-1);
+    background-color: var(--color-shade-5);
+    border-color: var(--color-shade-3);
+}
+
+#profilePic {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    border: 2px solid;
     
     color: var(--color-shade-1);
     background-color: var(--color-shade-5);
@@ -93,7 +103,7 @@
 
 #bottomButtons {
     display: flex;
-    gap: 5px; 
+    gap: 10px; 
 }
 
 #bottomButton {
