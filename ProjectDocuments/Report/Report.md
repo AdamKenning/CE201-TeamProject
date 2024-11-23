@@ -7,7 +7,7 @@ Total words = 5k
 1.1 : 0.5k
 1.2 : 0.5k
 1.3 : 0.5k
-1 : 20% - 1k
+2 : 20% - 1k
 2.1 : 0.5k
 2.2 : 0.5k
 3 : 10% - 0.5k
@@ -15,6 +15,10 @@ Total words = 5k
 4 : 20% - 1k
 4.1 : 0.5k
 4.2 : 0.5k
+
+0.8 k - pt3
+1.0 k - pt4
+
 
 4 people : 0.5k
 2 people : 1k
@@ -35,13 +39,13 @@ Total words = 5k
 - what did they ask for that was shown
 - what did they ask for that isnt there yet
 # pt 2 - Requirements Log 
-## 1.2 : client stuff
+## 2.1 : client stuff
 - context - who is our client - why are we making this for them
 - user stories gathering
 - how it facilitates the user stories
 - how well it achieves the user stories
 - Are any other modelling techniques used accurately <-- ?
-## 1.4 : forward
+## 2.2 : forward
 - changes that need to be made to fufil requirements
 - changes that will be made before the finale product
 - backend development
