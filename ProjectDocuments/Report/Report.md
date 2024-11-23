@@ -21,19 +21,19 @@ x 1.1 : 1k
 x 1.2 : 0.5k
 x 2.1 : 0.5k
 x 2.2 : 0.5k
-3.0 : 1k
-4.1 : 1k
-4.2 : 1k
+x 3.0 : 1k
+x 4.1 : 1k
+x 4.2 : 1k
 
 4 - 1k
 2 - 0.5k
 
-Adam    -
-Evan    -
+Adam    - 4.1
+Evan    - 4.2
 Zaki    - 1.2
 Charles - 1.1
 Zubair  - 2.1/2.2
-Munashe - 
+Munashe - 3
 
 
 
