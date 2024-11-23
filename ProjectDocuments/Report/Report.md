@@ -18,10 +18,10 @@ Total words = 5k
 4 : 20% - 2k
 
 x 1.1 : 1k
-1.2 : 0.5k
-2.1 : 0.5k
-2.2 : 0.5k
-3.0 : 0.5k
+x 1.2 : 0.5k
+x 2.1 : 0.5k
+x 2.2 : 0.5k
+3.0 : 1k
 4.1 : 1k
 4.2 : 1k
 
@@ -30,9 +30,9 @@ x 1.1 : 1k
 
 Adam    -
 Evan    -
-Zaki    -
+Zaki    - 1.2
 Charles - 1.1
-Zubair  -
+Zubair  - 2.1/2.2
 Munashe - 
 
 
