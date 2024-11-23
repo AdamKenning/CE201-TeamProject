@@ -1,40 +1,51 @@
+# reference client (DO NOT COPY (chatGPT))
+Background:
+GrowingSteps Care Ltd. is a family-oriented company specialising in resources and tools for child development. Founded by paediatricians and educators, they focus on integrating technology into childcare solutions.
+
+Why They Came to Us:
+They sought our expertise in building a user-friendly, data-driven software to help parents track key aspects of their child’s health and routines. Recognising our experience with intuitive designs and visual analytics, they trusted us to create a reliable, scalable platform that simplifies care giving and supports proactive health decisions.
+
+# info splitting up
+
 Total words = 5k
 10% = 500 words
 
 1 (project itself) : 20% 
 
 1 (report part) : 30% - 1.5k
-1.1 : 0.5k
-1.2 : 0.5k
-1.3 : 0.5k
 2 : 20% - 1k
+3 : 10% - 0.5k
+4 : 20% - 2k
+
+x 1.1 : 1k
+1.2 : 0.5k
 2.1 : 0.5k
 2.2 : 0.5k
-3 : 10% - 0.5k
 3.0 : 0.5k
-4 : 20% - 1k
-4.1 : 0.5k
-4.2 : 0.5k
+4.1 : 1k
+4.2 : 1k
 
-0.8 k - pt3
-1.0 k - pt4
+4 - 1k
+2 - 0.5k
 
-
-4 people : 0.5k
-2 people : 1k
+Adam    -
+Evan    -
+Zaki    -
+Charles - 1.1
+Zubair  -
+Munashe - 
 
 
 
 # pt 1 - Demonstration & quality 
-## 1.1 : Pre Project
+## 1.1 : Project
 - research - existing websites
 - choice of specifics (why) e.g. intellij 
-## 1.2 : during project
 - graphical design
 - the physical code of it
 - considerations / trade offs
 - how it works
-## 1.3 : Client satisfaction
+## 1.2 : Client satisfaction
 - how well does the MVP satisfy the client
 - what did they ask for that was shown
 - what did they ask for that isnt there yet
