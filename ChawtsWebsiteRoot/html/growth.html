@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>growth</title>
-    <link href="growth.css" rel="stylesheet" type="text/css" />
+    <link href="../css/nav.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -23,17 +23,17 @@
 
     <div class="input-container"> 
 
-        <h2>Children<span id="childName"></span></h2> <!--header--> 
+        <h2>Child growth<span id="childName"></span></h2> <!--header--> 
 
-        <input type="text" id="ChildNameInput" placeholder="Enter child's name"> <!--name--> 
+        <input type="text" id="ChildNameInput" placeholder="enter child's name"> <!--name--> 
 
-        <input type="number" id="ChildAgeInput" placeholder="Age (yr,month)"> <!--age-->
+        <input type="number" id="ChildAgeInput" placeholder="age (yr,month)"> <!--age-->
 
-        <input type="number" id="ChildHeightInput" placeholder="Height in (cm)">  <!--height--> 
+        <input type="number" id="ChildHeightInput" placeholder="height in (cm)">  <!--height--> 
 
-        <input type="number" id="ChildWeightInput" placeholder="Weight in (kg)">  <!--weigght--> 
+        <input type="number" id="ChildWeightInput" placeholder="weight in (kg)">  <!--weigght--> 
 
-        <input type="number" id="ChildHeadInput" placeholder="Head Circumference in (cm)"> <!--head size--> 
+        <input type="number" id="ChildHeadInput" placeholder="head circumference in (cm)"> <!--head size--> 
 
 
         <button onclick="saveTheChildInformation()">Save Child Information</button> 
@@ -62,7 +62,7 @@
 
                     <th>Head Circumference (cm)</th> <!--the head sizee--> 
 
-                    <th>Date & Time Saved</th> <!-- the data and time --> 
+                    <th>Date Saved</th> <!-- the data and time --> 
 
                 </tr> 
 
@@ -98,11 +98,11 @@
 
   
 
-            // to get current date and time 
+            // to get current date 
 
             const now = new Date();  
-             // to get the correct format of the date and time
-            const formattedDateTime = now.toLocaleString(); //  this is for the live date and time when the user has clicked the save button
+             // to get the correct format of the date
+            const formattedDate = now.toLocaleDateString(); //  this is for the live date when the user has clicked the save button
 
   
 
@@ -120,7 +120,7 @@
 
                 head: head, //save the head size
 
-                dateTime: formattedDateTime //save the date and time
+                date: formattedDate //save the date
 
             }; 
 
@@ -129,7 +129,7 @@
 
   
 
-            // Add child information to the table 
+            // put the childs information to the table 
 
             const tableBody = document.getElementById("childInformationTble").getElementsByTagName("tbody")[0]; 
 
@@ -145,7 +145,7 @@
 
             newRow.insertCell(4).textContent = childInformation.head; //to mkae a new row for headsize
 
-            newRow.insertCell(5).textContent = childInformation.dateTime; // to add date and time to the table 
+            newRow.insertCell(5).textContent = childInformation.date; // to add date and time to the table 
 
         } 
 
