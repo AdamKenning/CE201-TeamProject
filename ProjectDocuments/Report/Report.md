@@ -1,11 +1,11 @@
-# reference client (DO NOT COPY (chatGPT))
+# Reference client (DO NOT COPY (chatGPT))
 Background:
 GrowingSteps Care Ltd. is a family-oriented company specialising in resources and tools for child development. Founded by paediatricians and educators, they focus on integrating technology into childcare solutions.
 
 Why They Came to Us:
 They sought our expertise in building a user-friendly, data-driven software to help parents track key aspects of their child’s health and routines. Recognising our experience with intuitive designs and visual analytics, they trusted us to create a reliable, scalable platform that simplifies care giving and supports proactive health decisions.
 
-# info splitting up
+# Info splitting up
 
 Total words = 5k
 10% = 500 words
@@ -34,8 +34,6 @@ Zaki    - 1.2
 Charles - 1.1
 Zubair  - 2.1/2.2
 Munashe - 3
-
-
 
 # pt 1 - Demonstration & quality 
 ## 1.1 : Project
