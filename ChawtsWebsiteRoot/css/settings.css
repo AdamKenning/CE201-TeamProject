@@ -82,22 +82,6 @@ body {
   height: 24px;
 }
 
-.gear {
-  background: url('https://via.placeholder.com/24?text=⚙') no-repeat center/contain;
-}
-
-.smiley {
-  background: url('https://via.placeholder.com/24?text=☺') no-repeat center/contain;
-}
-
-.crescent {
-  background: url('https://via.placeholder.com/24?text=☾') no-repeat center/contain;
-}
-
-.key {
-  background: url('https://via.placeholder.com/24?text=🔑') no-repeat center/contain;
-}
-
 .footer {
   display: flex;
   justify-content: space-around;
