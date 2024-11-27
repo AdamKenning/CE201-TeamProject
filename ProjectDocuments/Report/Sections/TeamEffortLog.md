@@ -20,3 +20,182 @@
 ## Team member name 2
 
 *Repeat for each team member, i.e. with more subheadings "Sprint1, Sprint2, ... Sprint N"*
+
+
+---
+
+### Team Effort Log
+---
+#### Team Member : Adam
+##### Sprint 1 (University Week 3) : Meeting Team
+- Introduce and get to know team members : https://ce201-team02.atlassian.net/browse/SCRUM-1
+  - Met everyone, introduced each other , talked about the project
+##### Sprint 2 (University Week 4) : Setting up Git
+- Familiarise with command-line CSEEGIT : https://ce201-team02.atlassian.net/browse/SCRUM-4
+  - Setup the repository on my personal local device (via intellij)
+- Setup the repository for Zubair, Zaki (Charles & Munashe had already left, Evan did'nt have a personal laptop to setup on yet)
+##### Sprint 3 (University Week 5) : Writing User Stories
+- Hello World : https://ce201-team02.atlassian.net/browse/SCRUM-12
+  - Setup Hello World file
+  - Added line containing my name
+- True Photos : https://ce201-team02.atlassian.net/browse/SCRUM-18
+  - Added profile photo to GitLab & Jira
+- User Stories : https://ce201-team02.atlassian.net/browse/SCRUM-26
+  - Created User Stories.md
+  - Added User stories template
+  - Created reference exemplary User stories (including ideas for implementation)
+- Java Jframe : https://ce201-team02.atlassian.net/browse/SCRUM-32
+  - Created Java application for JFrame (redundant?) including : 
+    - ChawtsApp.java : Main Setup, Links data with display
+    - ChawtsData.java : Handles the logic and information management in the software
+    - ChawtsDisplay.java : Handles presenting software graphically to the user, inputs etc
+  - Note : It was agreed on that this was necessary initially but it was later decided we did'nt need it. 
+- Setup the repository for Charles
+  - Fixed  Zaki & Zubair repository that broke (?)
+- Organized a meeting outside of Lab
+  - (finally) Setup the repository for Evan and Munashe 
+  - Clean up loose ends uncompleted during prior labs
+- Organized plan for structure of four weeks leading up to MVP deadline
+  - Research, Mock Up, Coding, Report.
+##### Sprint 4 (University Week 6) : Researching Existing Software
+- Research, Sleep : https://ce201-team02.atlassian.net/browse/SCRUM-38
+  - Created Research.MD (For the project files)
+  - Created and Shared Page Research File on Google Drive for live editing
+    - https://docs.google.com/document/d/1nSDSxrtAWSemUQSc9NKEZ9SeelkroUnpmQviVPMAPfo/edit?usp=sharing
+  - Organized how to collaboratively research topics needed together
+    - Split the group into three subgroups of two people each
+    - Each group of two would research one of Sleep, Growth, Food intake
+    - Note : I allowed everyone to pick their research topics and i accepted the last one.
+  - Researched General information on sleep & sleep tracking software
+  - Researched 3 existing specific exemplary websites
+- Refactor user stories : https://ce201-team02.atlassian.net/browse/SCRUM-33
+  - Everyone had written their user stories slightly differently
+  - Reformatted them into a homogenous collection
+  - Removed duplicates
+  - Merged similar ones
+  - Extract implied required software features
+
+##### Sprint 5 (University Week 7) : Creating Graphical Mock up
+- Page design, Home : https://ce201-team02.atlassian.net/browse/SCRUM-49
+  - Organized how to split up the workload
+    - Split website into 6 fundamental pages
+    - Each person designs 1 page (Mobile & Desktop)
+  - Created and Shared Page Design File on Google Drive for live editing
+    - https://docs.google.com/drawings/d/1UGq0MjYq5Gtoi0dJ2RKN296XIFP19lSZOgtvojr--wU/edit?usp=sharing
+  - Designed my page
+  - Note : I allowed everyone to pick their pages and i accepted the last one.
+- Refactor Research : https://ce201-team02.atlassian.net/browse/SCRUM-44
+  - Everyone had written their user stories slightly differently
+  - Reformatted them into a homogenous collection
+- Additional User stories : https://ce201-team02.atlassian.net/browse/SCRUM-47
+  - To answer accessibility concerns e.g. Colour blind users, Dyslexia etc
+  - To answer security concerns e.g. Data integrity, Anonymity etc
+- Refactor User stories (again) : https://ce201-team02.atlassian.net/browse/SCRUM-64
+  - There were a lot of user stories 15 + 
+  - Merged similar ish ones
+  - Deleted redundant ones
+  - Now 10 Broad ones
+##### Sprint 6 (University Week 8) : Website Coding (Html,CSS,etc)
+- Code pages, Home : https://ce201-team02.atlassian.net/browse/SCRUM-59
+  - Created directory structure (html, css etc folders)
+  - Created index.html
+  - created shared navigation bar html & css
+  - created template html and css files for all other pages ready for everyone else
+  - Created home.html and home.css (my allocated page)
+  - Note : I allowed everyone to pick their pages and i accepted the last one.
+  - 
+- Unable to attend lab
+  - No jira stories were made in my absence
+  - No Plans were put into place
+  - Created jira stories retrospectively to accommodate
+##### Sprint 7 (University Week 9) : Report Writing
+- Report Setup : https://ce201-team02.atlassian.net/browse/SCRUM-65
+  - Created Report folder & subfolders/files
+  - Organized how to split up the workload of report writing
+  - For each persons section, created exemplary notes as to what needs to be covered and talked about
+- Report writing : https://ce201-team02.atlassian.net/browse/SCRUM-70 
+  - Wrote my section of the report
+  - Note : I allowed everyone to pick their sections and i accepted the last one.
+
+---
+#### Team Member : Charles
+##### Sprint 1 (University Week 3) : Meeting Team
+- Introduce and get to know team members : https://ce201-team02.atlassian.net/browse/SCRUM-1
+##### Sprint 2 (University Week 4) : Setting up Git
+- Familiarise with command-line CSEEGIT : https://ce201-team02.atlassian.net/browse/SCRUM-9
+##### Sprint 3 (University Week 5) : Writing User Stories
+- Hello World : https://ce201-team02.atlassian.net/browse/SCRUM-16
+- True Photos : https://ce201-team02.atlassian.net/browse/SCRUM-23
+- User Stories : https://ce201-team02.atlassian.net/browse/SCRUM-30
+##### Sprint 4 (University Week 6) : Research
+- Research, Food : https://ce201-team02.atlassian.net/browse/SCRUM-40
+##### Sprint 5 (University Week 7) : Creating Graphical Mock up
+- Page design, Food : https://ce201-team02.atlassian.net/browse/SCRUM-54
+##### Sprint 6 (University Week 8) : Website Coding (Html,CSS,etc)
+- Code pages, Food : https://ce201-team02.atlassian.net/browse/SCRUM-62
+##### Sprint 7 (University Week 9) : Report Writing
+- Report writing : https://ce201-team02.atlassian.net/browse/SCRUM-66
+---
+
+Continue here
+---
+#### Team Member : Evan
+##### Sprint 1 (University Week 3) : Meeting Team
+- https://ce201-team02.atlassian.net/browse/SCRUM-1
+##### Sprint 2 (University Week 4) : Setting up Git
+- https://ce201-team02.atlassian.net/browse/SCRUM-6
+##### Sprint 3 (University Week 5) : Writing User Stories
+##### Sprint 4 (University Week 6) : Researching Existing Software
+- https://ce201-team02.atlassian.net/browse/SCRUM-37
+##### Sprint 5 (University Week 7) : Creating Graphical Mock up
+- https://ce201-team02.atlassian.net/browse/SCRUM-52
+##### Sprint 6 (University Week 8) : Website Coding (Html,CSS,etc)
+- https://ce201-team02.atlassian.net/browse/SCRUM-61
+##### Sprint 7 (University Week 9) : Report Writing
+- https://ce201-team02.atlassian.net/browse/SCRUM-71
+---
+#### Team Member : Munashe
+##### Sprint 1 (University Week 3) : Meeting Team
+- https://ce201-team02.atlassian.net/browse/SCRUM-1
+##### Sprint 2 (University Week 4) : Setting up Git
+- https://ce201-team02.atlassian.net/browse/SCRUM-7
+##### Sprint 3 (University Week 5) : Writing User Stories
+##### Sprint 4 (University Week 6) : Researching Existing Software
+- https://ce201-team02.atlassian.net/browse/SCRUM-42
+##### Sprint 5 (University Week 7) : Creating Graphical Mock up
+- https://ce201-team02.atlassian.net/browse/SCRUM-53
+- https://ce201-team02.atlassian.net/browse/SCRUM-55
+##### Sprint 6 (University Week 8) : Website Coding (Html,CSS,etc)
+- https://ce201-team02.atlassian.net/browse/SCRUM-62
+##### Sprint 7 (University Week 9) : Report Writing
+- https://ce201-team02.atlassian.net/browse/SCRUM-69
+---
+#### Team Member : Zaki
+##### Sprint 1 (University Week 3) : Meeting Team
+- https://ce201-team02.atlassian.net/browse/SCRUM-1
+##### Sprint 2 (University Week 4) : Setting up Git
+- https://ce201-team02.atlassian.net/browse/SCRUM-8
+##### Sprint 3 (University Week 5) : Writing User Stories
+##### Sprint 4 (University Week 6) : Researching Existing Software
+- https://ce201-team02.atlassian.net/browse/SCRUM-39
+##### Sprint 5 (University Week 7) : Creating Graphical Mock up
+- https://ce201-team02.atlassian.net/browse/SCRUM-51
+##### Sprint 6 (University Week 8) : Website Coding (Html,CSS,etc)
+- https://ce201-team02.atlassian.net/browse/SCRUM-60
+##### Sprint 7 (University Week 9) : Report Writing
+- https://ce201-team02.atlassian.net/browse/SCRUM-67
+---
+#### Team Member : Zubair
+##### Sprint 1 (University Week 3) : Meeting Team
+- https://ce201-team02.atlassian.net/browse/SCRUM-1
+##### Sprint 2 (University Week 4) : Setting up Git
+- https://ce201-team02.atlassian.net/browse/SCRUM-5
+##### Sprint 3 (University Week 5) : Writing User Stories
+##### Sprint 4 (University Week 6) : Researching Existing Software
+- https://ce201-team02.atlassian.net/browse/SCRUM-41
+##### Sprint 5 (University Week 7) : Creating Graphical Mock up
+- https://ce201-team02.atlassian.net/browse/SCRUM-50
+##### Sprint 6 (University Week 8) : Website Coding (Html,CSS,etc)
+- https://ce201-team02.atlassian.net/browse/SCRUM-73
+##### Sprint 7 (University Week 9) : Report Writing
+- https://ce201-team02.atlassian.net/browse/SCRUM-68
