@@ -6,12 +6,6 @@
     <link href="../css/nav.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
-    <nav id="navbar">
-        <a id="navbar-home"class="navbar-others" href="home.html"><i class="fas fa-home"></i></a>
-    </nav>
-</body>
-
 
 
 <!DOCTYPE html>
@@ -20,7 +14,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Settings Screen</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="settings.css">
 </head>
 <body>
   <div class="settings-container">
@@ -39,35 +33,37 @@
 
     <main class="settings-main">
       <h1>Settings</h1>
-      <p>Your Daily Health Statistics</p>
       
       <section class="settings-section">
         <div class="setting-item">
           <span>General</span>
-          <span class="icon gear"></span>
+          <i class="fa-solid fa-gear"></i>
         </div>
         <div class="setting-item">
           <span>Children</span>
-          <span class="icon smiley"></span>
+          <i class="fa-solid fa-face-smile"></i>
         </div>
         <div class="setting-item">
           <span>Appearance</span>
-          <span class="icon crescent"></span>
+          <i class="fa-solid fa-moon"></i>
         </div>
         <div class="setting-item">
           <span>Password & Security</span>
-          <span class="icon key"></span>
+          <i class="fa-solid fa-lock"></i>
         </div>
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="footer-icon home" href="home.html"></div>
-      <div class="footer-icon search"></div>
-      <div class="footer-icon add"></div>
-      <div class="footer-icon profile"></div>
-      <div class="footer-icon settings"></div>
-    </footer>
+
+    <nav id="navbar">
+        <a id="navbar-food"        class="navbar-others" href="food.html">       <i class="fas fa-utensils"></i></a>
+        <a id="navbar-diaper"      class="navbar-others" href="diaper.html">     <i class="fas fa-baby"></i></a>
+        <a id="navbar-medication"  class="navbar-others" href="medication.html"> <i class="fas fa-pills"></i></a>
+        <a id="navbar-home"        class="navbar-active" href="home.html">       <i class="fas fa-home"></i></a>
+        <a id="navbar-growth"      class="navbar-others" href="growth.html">     <i class="fas fa-chart-line"></i></a>
+        <a id="navbar-sleep"       class="navbar-others" href="sleep.html">      <i class="fas fa-bed"></i></a>
+        <a id="navbar-emotion"     class="navbar-others" href="emotion.html">    <i class="fas fa-face-smile"></i></a>
+    </nav>
   </div>
 </body>
 </html>
