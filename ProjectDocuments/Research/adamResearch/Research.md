@@ -87,8 +87,8 @@
   - "Editors choice" in Apple store
 #### App 2 : Snore Lab
 ##### 1. Images
-- ![alt text](image.png)
 - ![alt text](image-2.png)
+- ![alt text](image-3.png)
 ##### 2. Features
 - Snore recording
   - Listen to playbacks of snoring samples throughout the night
@@ -156,8 +156,8 @@
 - "No.1 IOS and Android app"
 #### App 3 : Sleep Wave
 ##### 1. Images
-- ![alt text](image-3.png)
 - ![alt text](image-4.png)
+- ![alt text](image-5.png)
 ##### 2. Features
 - Smart alarm
   - Uses the body motion sensing feature
