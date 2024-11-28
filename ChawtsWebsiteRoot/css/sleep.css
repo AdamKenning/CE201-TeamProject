@@ -1,0 +1,166 @@
+/* Style for the main content area */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Style for the circle */
+.graph-space {
+    width: 500px; /* Increased size */
+    height: 500px; /* Increased size */
+    background-color: black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: orange;
+    font-size: 1.5rem;
+    text-align: center;
+    position: relative;
+    top: -150px; /* Adjusted to raise height */
+}
+
+/* Style for arrows */
+.arrow {
+    font-size: 7rem;
+    color: black;
+    cursor: pointer;
+    position: absolute;
+    top: calc(50% - 225px); /* Vertically aligned with circle */
+}
+
+.arrow-left {
+    left: calc(50% - 350px); /* Increased horizontal distance */
+}
+
+.arrow-right {
+    right: calc(50% - 350px); /* Increased horizontal distance */
+}
+
+/* Left Sidebar */
+.settings {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: orange;
+    color: white;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.info-box-1,
+.info-box-2 {
+    position: absolute;
+    left: 125px; /* Increased distance from the left */
+    width: 400px; /* Increased width */
+    height: 250px; /* Increased height */
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #555;
+    border: 2px solid black; /* Added black border */
+}
+
+.info-box-1 {
+    top: 150px; /* Further apart vertically */
+}
+
+.info-box-2 {
+    top: 550px; /* Further apart vertically */
+}
+
+/* Right Sidebar */
+.upload,
+.info-box-3 {
+    position: absolute;
+    right: 125px; /* Increased distance from the right */
+    width: 400px; /* Increased width */
+    height: 250px; /* Increased height */
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #555;
+    border: 2px solid black; /* Added black border */
+    top: 550px; /* Further apart vertically */
+}
+
+.upload {
+    position: absolute;
+    right: 125px; /* Matches other sidebar elements */
+    width: 400px;
+    height: 250px;
+    background-color: #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align content to start for input field */
+    font-size: 1rem;
+    color: #555;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.info-box-3 {
+    top: 550px; /* Further apart vertically */
+}
+
+.upload {
+    position: absolute;
+    right: 125px; /* Matches other sidebar elements */
+    width: 400px;
+    height: 250px;
+    background-color: #add8e6; /* Light blue background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align content to start for input field */
+    font-size: 1rem;
+    color: black; /* Black text color */
+    padding: 20px;
+    box-sizing: border-box;
+    top: 150px; /* Further apart vertically */
+    border: 2px solid black; /* Added black border */
+}
+
+.upload label {
+    font-size: 0.9rem; /* Smaller font size */
+    text-align: center;
+    margin-bottom: 10px; /* Original gap between label and input */
+}
+
+.upload input {
+    width: 90%;
+    height: 45px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    padding: 0 10px;
+    text-align: left;
+    font-size: 1rem;
+    outline: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    color: black;
+    font-family: Arial, sans-serif;
+    background-color: rgb(255, 255, 255);
+}
+
+.info-box-3 {
+    top: 550px; /* Further apart vertically */
+}
