@@ -3,23 +3,23 @@
 - Total contribution as a group
   - 155 Commits
   - ![alt text](image-0.png)
-- Adam
+- ak23287 - Adam
   - 100 Commits
   - ![alt text](image-1.png)
-- Munashe
+- mk23231 - Munashe
   - 11 Commits
   - ![alt text](image-2.png)
-- Zubair
+- aw23718 - Zubair
   - 11 Commits
   - ![alt text](image-3.png)
-- Charles (Ruoyu Sun)
+- rs24419 - Charles (Ruoyu Sun)
   - 7 Commits
   - ![alt text](image-4.png)
-- Zaki (Measured by two email addresses)
+- zz23299 - Zaki (Committed under two email addresses)
   - 6 Commits
   - ![alt text](image-5.png)
   - ![alt text](image-6.png)
-- Even
+- ed23308 - Even
   - 4 Commits
   - ![alt text](image-7.png)
 ## Jira
