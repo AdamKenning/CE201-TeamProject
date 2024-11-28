@@ -40,3 +40,8 @@
       - Deuteranopia - Green blind
       - Tritanopia - Blue blind
       - Achromatopsia - Complete colour blindness
+## App overview and Goal (From of user stories)
+- Overview
+  - This app is designed to assist parents, caregivers, healthcare providers, and other authorised users in tracking and monitoring a child’s daily health and development data. It offers an intuitive interface for logging, viewing, and analysing essential health metrics, enabling users to establish healthy routines, identify potential health issues, and ensure that all caregivers are kept informed.
+- Goal
+  - The app aims to provide a centralised, secure, and insightful platform for tracking a child’s health and routines. By facilitating informed decision-making and proactive responses to potential health issues, the app supports the child’s growth and well being effectively, while also ensuring seamless communication among caregivers and healthcare providers.
