@@ -1,5 +1,40 @@
-# Team Effort Log
+# Contributions
+## Git (As of 28/11/24 - 13:00)
+- Total contribution as a group
+  - 155 Commits
+  - ![alt text](image-0.png)
+- Adam
+  - 100 Commits
+  - ![alt text](image-1.png)
+- Munashe
+  - 11 Commits
+  - ![alt text](image-2.png)
+- Zubair
+  - 11 Commits
+  - ![alt text](image-3.png)
+- Charles (Ruoyu Sun)
+  - 7 Commits
+  - ![alt text](image-4.png)
+- Zaki (Measured by two email addresses)
+  - 6 Commits
+  - ![alt text](image-5.png)
+  - ![alt text](image-6.png)
+- Even
+  - 4 Commits
+  - ![alt text](image-7.png)
+## Jira
+- Note to self, add info about the tasks assigned to everyone, the story points / estimated time, and the date marked completed + other info? 
+- Adam
+- Munashe
+- Zubair
+- Charles
+- Zaki
+- Even
+
+## Misc
+- Add info about contributions outside of git / jira e.g. the google docs
 ---
+# Team Effort Log
 ## Team Member : Adam
 ### Sprint 1 (University Week 3) : Meeting Team
 - Introduce and get to know team members : https://ce201-team02.atlassian.net/browse/SCRUM-1

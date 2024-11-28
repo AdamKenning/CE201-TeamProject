@@ -171,7 +171,7 @@
   - Can determine the sleep depth (how deep of a sleep the sleep was ?)
   - Can determine the "wakefulness" of the sleep the user just had (For how long during the sleep the user was actually awake for not asleep)
   - Can determine the "breathing rate" of the user ? if the users was breathing heavily or shallowly and the frequency etc
-- Provides the user with "relaxing wave-scapes"
+- Provides the user with a few "relaxing wave-visuals"
   - Funky visualisations that respond to the users movements  
 - Allows for the user to keep a personal journal of their dreams
   - Determine what dreams are associated with what patterns during sleep
