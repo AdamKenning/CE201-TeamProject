@@ -172,12 +172,12 @@ Continue here
 After meeting the team i decided to make some sketches based on what the software we were doing would look like, at the time i did not know if we would be doing it through application or doing it web based. i had a couple of ideas based on the cleint summary and requirements for the project. i had a homepage a growth tracker page and a slepp tracking page.
 ### Sprint 2 (University Week 4) : Setting up Git
 - Familiarise with command-line CSEEGIT : https://ce201-team02.atlassian.net/browse/SCRUM-7
-For this sprint we had to setup GitLab and visual studio code so that we can work together collaboratively. we used visual studio code ide so that we could work together and make changes and commit them so that it is updated everywhere.
+For this sprint we had to setup GitLab and visual studio code so that we can work together collaboratively. we used visual studio code ide so that we could work together and make changes and commit them so that it is updated everywhere. there was a video that we had to watch but following some of the instructions didnt work becasue our software was different.
 ### Sprint 3 (University Week 5) : Writing User Stories
 - Hello World : https://ce201-team02.atlassian.net/browse/SCRUM-15
 - True Photos : https://ce201-team02.atlassian.net/browse/SCRUM-22
 - User Stories : https://ce201-team02.atlassian.net/browse/SCRUM-29
-here i made user stories for what users would expect from this website. i did not know that we were menat to do 2 i did 8,
+here i made user stories for what users would expect from this website. i quite of few. we also were meant to upload our photos to our profiles to help other team members know who we are.
 ### Sprint 4 (University Week 6) : Researching Existing Software
 - Research : https://ce201-team02.atlassian.net/browse/SCRUM-42
 for this one i looked at 3 web papges that were based on the page type that i was given, i had the growth page so i looked at multiplpe different websites to get an idea of the things that other websites had like features layouts etc, and i wrote about what i liked about them and what i didnt like etc.
