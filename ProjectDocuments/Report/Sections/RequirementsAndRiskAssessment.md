@@ -30,14 +30,14 @@
 
 
 
-
+# Munashe K
 Team Project Challenge user stories & risk assessment: 
 Link to the story: 
 https://ce201-team02.atlassian.net/browse/SCRUM-69?atlOrigin=eyJpIjoiMzZhMzAzNjkzNTgyNGM5YjljNTg3OTM1ZjcyOWI4NTQiLCJwIjoiaiJ9 
 
  
 User Stories from group: 
- 
+ # user stories that everyone in the group did.
 
 1. Tracking and logging routines 
 
@@ -124,8 +124,6 @@ User Stories from group:
 1. Introduction 
 
 1.1 Project Overview 
-
-The Child Health and Well-Being Tracking Software aims to provide parents and caregivers with tools to monitor various aspects of a child’s development, including sleep, feeding habits, diaper changes, medications, and growth metrics. By offering data-driven insights and intuitive visualizations, the software empowers caregivers to make informed decisions about their child’s health. The project is developed using Agile methodology and emphasizes teamwork, regular updates, and feature-rich implementation. 
 
 Overview of the project: 
 
