@@ -41,8 +41,8 @@
   - Met everyone, introduced each other , talked about the project
 ### Sprint 2 (University Week 4) : Setting up Git
 - Familiarise with command-line CSEEGIT : https://ce201-team02.atlassian.net/browse/SCRUM-4
-  - Setup the repository on my personal local device (via intellij)
-- Setup the repository for Zubair, Zaki (Charles & Munashe had already left, Evan did'nt have a personal laptop to setup on yet)
+  - Setup an Intellij repository on my personal local device (via intellij)
+- Setup an Intellij repository for Zubair, Zaki (Charles & Munashe had already left, Evan did'nt have a personal laptop to setup on yet)
 ### Sprint 3 (University Week 5) : Writing User Stories
 - Hello World : https://ce201-team02.atlassian.net/browse/SCRUM-12
   - Setup Hello World file
@@ -62,10 +62,11 @@
 - Setup the repository for Charles
   - Fixed  Zaki & Zubair repository that broke (?)
 - Organized a meeting outside of Lab
-  - (finally) Setup the repository for Evan and Munashe 
+  - Setup the repository for Evan and Munashe, Who still did'nt have it setup
   - Clean up loose ends uncompleted during prior labs
 - Organized plan for structure of four weeks leading up to MVP deadline
   - Research, Mock Up, Coding, Report.
+- Reorganized whole project directory into organized folders e.g. ProjectDocuments, ChawtsPackage, SetupTesting etc
 ### Sprint 4 (University Week 6) : Researching Existing Software
 - Research : https://ce201-team02.atlassian.net/browse/SCRUM-38
   - Created Research.MD (For the project files)
@@ -88,7 +89,7 @@
   - Organized how to split up the workload
     - Split website into 6 fundamental pages
     - Each person designs 1 page (Mobile & Desktop)
-  - Created and Shared Page Design File on Google Drive for live editing
+  - Created laid out and Shared Page Design File on Google Drive for live editing
     - https://docs.google.com/drawings/d/1UGq0MjYq5Gtoi0dJ2RKN296XIFP19lSZOgtvojr--wU/edit?usp=sharing
   - Designed my page
   - Note : I allowed everyone to pick their pages and i accepted the last one.
@@ -111,7 +112,6 @@
   - created template html and css files for all other pages ready for everyone else
   - Created home.html and home.css (my allocated page)
   - Note : I allowed everyone to pick their pages and i accepted the last one.
-  - 
 - Unable to attend lab
   - No jira stories were made in my absence
   - No Plans were put into place
@@ -143,9 +143,6 @@
 ### Sprint 7 (University Week 9) : Report Writing
 - Report writing : https://ce201-team02.atlassian.net/browse/SCRUM-66
 ---
-
-Continue here
----
 ## Team Member : Evan
 ### Sprint 1 (University Week 3) : Meeting Team
 - Introduce and get to know team members : https://ce201-team02.atlassian.net/browse/SCRUM-1
@@ -163,8 +160,6 @@ Continue here
 - Code pages : https://ce201-team02.atlassian.net/browse/SCRUM-61
 ### Sprint 7 (University Week 9) : Report Writing
 - Report writing : https://ce201-team02.atlassian.net/browse/SCRUM-71
-
-
 ---
 ## Team Member : Munashe
 ### Sprint 1 (University Week 3) : Meeting Team

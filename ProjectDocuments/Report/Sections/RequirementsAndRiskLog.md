@@ -53,6 +53,11 @@ This Jira story assigned to our team member, Adam Kenning, was focusing on broad
 
 The user stories outlined in the "Add additional user stories" specifically target the risks posed against our software, and as mentioned already will be the subject of this risks assessment log.
 ### Software Risks
+For each risk, the format will remain the same for the purposes of homogenous reading. This format is as follows : 
+- **Risk** : The explicit thing that poses a threat
+  - **Description** : A brief description of the risk
+  - **Mitigation** : Method(s) by which the risk can be averted
+
 Broadly speaking, The risks posed to our software can be categorized as into two sections:
 >1. **Security and data integrity** : Risks that have the potential to negatively impact the security and data integrity of our software.
 
@@ -60,23 +65,34 @@ Broadly speaking, The risks posed to our software can be categorized as into two
 
 Although the latter, 'Usability and accessibility', may not initially be thought of as something that would constitute a 'risk', it is, and it is an important collection of requirements that need to be considered to eliminate any and all risks. Any aspect (or lack thereof), of our software which dissuades or disallows a user to use our service is inherently a risk. It is thereby of no less important to consider these aspects than aspects relating to the former, 'Security and data integrity', risks section.
 
-#### **Security and data integrity**
+#### 1. **Security and data integrity**
 This category of risks, broadly covers aspects of our software wherein exist the possibility of a negative impact, on account of actions relating to the electronic handling of our users personal information. By extension, this includes the way in which our software manages the relevant meta information associated with each part.
 
 Subcategories of this section that have been noted and will be accounted for are as follows.
->The meta information, such as the implied relation between users must remain hidden 
 
->Personal data relating to a user is only accessible to the authorized user(s)
+- Personal data relating to a user is only accessible to the authorized user(s)
+  - This relates to the raw information associated to each user account (and Child profile). Due to the server hosted nature of our software, it is crucial to the planned operations, that users be able to have their accounts hosted with us, being able to sign in / out for instance. In doing this, we would require some login system, and profiling of our users, such as name, email, etc. This personal information relating to each user must remain visible only to that user. In the case of a child's information, this applies to who has access to this information e.g. a Parent account.
+  - This can be mitigated with a simple login terminal which authenticates that the user is who they say they are via a password and known account identifier e.g. email / username. This risk will be broadened with the next two risks.
 
->Data of any kind must only be managed; edited and (or) deleted, by the relevant user(s)
+- User accounts must be held secure using strong password enforcement
+  - A password such as "abc123" is likely a password that would be guessed very quickly, and would risk unwanted people gaining access to sensitive personal information. For this reason it is important to disallow the users from creating their accounts with passwords that may be guessed easily/ brute forced, albeit at the cost of easy memorization.
+  - This can be easily implemented using enforced password characters such as having at least one uppercase letter, lowercase letter, special symbol (#!%"£$& etc.), number. Additional rules may be forced such as disallowing sequential patterns e.g. ABC, MNO, 123, 7890, qwerty. Since patterns like these are also easy to guess. This rule could be implemented as "any series of sequential numbers 3 or more is not allowed, in any part of the password". Finally, although not enforced, the user may be warned if a series of numbers matches a date like sequence e.g. DDMMYYYY or YYMMDD etc.
 
->Information must be able to be shared only with authorized users (When authorized)
+- User account login credentials, such as passwords, must not be stored as plaintext
+  - In a worst case scenario e.g. a data breach, wherein our stores of user data are accessed without proper authorization and/or made public. It is important that the party perpetrating the attack does not gain access to all the users passwords. If such an event were to occur, and login information including plaintext passwords became public, this would allow any unauthorized user to access any other users information, both of the parent account type, and the child. Additionally, it is not uncommon for the public as a general populace to reuse their respective login credentials. Should our store of login credentials become compromised, it may risks malicious action to more vital information such as banks or work accounts, unrelated to the application itself.
+  - 
+  
+- The meta information, such as the implied relation between users must remain hidden 
+  - Since our software relies on an entity relationship model of sorts, e.g. Parent user account, which can view multiple child profiles. It is also important that the non explicit information about users is also hidden. For instance, without knowing the name of an account, it is possible to determine who is who by how the accounts link together. This where possible should be minimised. This is an exemplary issue that by its nature, cannot be fully eliminated. The links, inherent to the program must always be there. None the less, they can be minimised to some degree.
+  - Use of indirect identifiers can cloud the relationships e.g. hashed references. This paired with a separate "mapping" layer of sorts, handling relationships, accessible only with strict authenticated and access would minimise this risk substantially. Additionally, compartmentalization can be taken advantage of to ensure nothing can see anything its not supposed to see.
 
->Users, who opt in to share their data for academic study, must remain anonymised
+- Information must be able to be shared only with authorized users (When authorized)
+  - Our software will be setup such that one child's information can be accessible to multiple accounts (e.g. a parent or caretaker). The respective parent / main child guardian, must be able to share their child's  with relevant parties, whilst maintaining that no others gain access to it.
+  - A simple way to avoid this is via access tokens. Simplified for the end user, the parent may be able to generate an access token to the child, which allows another specified user to view (and/or edit) the child's information. When no longer needed, the parent may revoke the access token, in turn removing that person accessing the child's information. It is important, for this to work, that only the parent of the child has access to the creation / deletion of these access tokens.
 
->User accounts must be held secure using strong password enforcement
-
->User account login credentials, such as passwords, must be stored with strong encryption
+- Users, who opt in to share their data for academic study, must remain anonymised
+  - One feature our software aims to provide is a means by which parents can opt in to allow their child's (non identifying) information to be shared for the purposes of non profit academic endeavours. e.g. Student research. Once a parent has opted in, it is important that the child's information is presented anonymised and without any form of identifiers that may reveal the child in anyway.
+  - This can be mitigated using two key ideas. Firstly, the public set of data, the anonymised information must be published naturally, with no way of identifying which entry belongs to which child e.g. Using an ID that is unrelated to the child's personal ID. The child profile would know which public entry is its, but the public entry will store no information as to which child it belongs to. The second, to mitigate tracking, is to stage updates of this public data set e.g. update all entries at the end of the calendar month at once. This would disallow the public from knowing which child is associated which which update. Additionally, specific information that may cause issues e.g. specific food eaten / medication taken may be omitted and/or remove exact timestamps of events to further anonymise information.
 
 Others : 
 >2FA authentication
