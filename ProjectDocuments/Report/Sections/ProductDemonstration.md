@@ -1,10 +1,27 @@
 # Product Demonstration Report
 
-*This section should contain a brief description and demo of product you have built.*
 
-* *Include screenshots (actual screenshots, not mock ups) of all of the facets of the product working.*
-* *Link consecutive screenshots together with a brief narrative explaining how the product works, e.g. a sentence "Click on OK and it takes you to the next window", "On starting the app, the following window is shown".  This document should not take you a long time to create - it's just pasting photos and adding explanatory sentences between them, so that your MVP is adequately described.*
-* *Make sure an image of each window of your software is included - so that a person who has not seen the actual demo of the product has a good idea of what your product currently does.*
-* *If your product is a physical device (a hardware product) then you may replace all of the above screenshots by actual photos/vidoes where you feel it is appropriate.*
-* *Make sure this section includes any functionality/features you are particularly proud of.*
-* *Indicate clearly which parts of the functionality shown in the screenshots are currently incomplete, and what is likely to change in the final version.  For example if a graph displayed is currently based on static hard-coded data for the MVP, but in the future version the graph will dynamically change depending on fresh data, then point this out explicitly.*
+This project aims to support parents in managing and monitoring their children’s health and daily routines through a user-friendly software solution. For this minimum viable product (MVP) we developed demonstrates our vision for this tool by focusing on core functionality and usability.To ensure our product addresses real needs, we conducted extensive research on existing websites and applications that offer health and lifestyle tracking. After analyzing existing platforms, our group chose HTML to present our product.
+
+We chose HTML to present our software’s MVP for several reasons. HTML, being lightweight and widely supported, allowed us to quickly develop a prototype that is accessible on any device with a web browser. This approach eliminated the need for complex infrastructure, enabling us to concentrate on the software’s functionality and user interface. Additionally, presenting the MVP as a small website provided a demonstration of the product’s potential without requiring extensive development resources. While HTML alone lacks advanced interactivity, this trade-off was acceptable for this initial stage, where the focus is on showcasing core concepts rather than delivering a fully functional system.
+
+The design of our MVP involved creating graphical layouts for several key pages: Home, Login, Settings, Growth, Sleep, and Food. Each page was designed with user experience in mind, ensuring parents could easily navigate and interact with the software.For instance, the home page introduces the tool’s purpose and guides users to the main features, while the login page ensures secure access to personalized data. 
+
+The Home page: 
+The Welcome Screen provides a personalized experience by greeting users with their name after they log in. It also includes a simple logout option via the "Not you?" button, allowing users to switch accounts if needed. After logging in, users can navigate to other pages using the navigation bar at the bottom of the screen. The current design focuses on user recognition. Future iterations could enhance the experience with features like a summary of recent activities, notifications, or health insights to improve engagement and usability.
+
+The login page:
+
+
+The settings page:
+
+
+The growth page:
+Considering on Children's Growth Tracking section, which allows parents to record and manage essential growth metrics for their children, including height, weight, and head circumference. Users input these details along with the child’s name and age, and the data is saved and displayed in a table below. A placeholder Growth Summary Graph is also included to provide a visual representation of the child’s progress over time. While the graph is static at the moment, future development will make it dynamic, allowing it to display real-time trends based on the stored data. Also, users can navigate to other pages through the navigation bar by selecting the corresponding icons.
+
+The sleep page:
+
+
+The food page:
+The Food Tracker allows users to log calorie intake for breakfast, lunch, and dinner. Each meal has a dedicated text field where parents can manually input the number of calories consumed and submit the data using the corresponding button. While the submit button is not functional at the moment, it supports manual input for now. In the future, the system could be enhanced with features like automatic calorie calculations based on pre-stored food data and meal suggestions. Additionally, users can navigate to other pages through the navigation bar by clicking on the respective icons. 
+
