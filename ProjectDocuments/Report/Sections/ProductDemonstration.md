@@ -9,6 +9,7 @@ The design of our MVP involved creating graphical layouts for several key pages:
 
 The Home page: 
 The Welcome Screen provides a personalized experience by greeting users with their name after they log in. It also includes a simple logout option via the "Not you?" button, allowing users to switch accounts if needed. After logging in, users can navigate to other pages using the navigation bar at the bottom of the screen. The current design focuses on user recognition. Future iterations could enhance the experience with features like a summary of recent activities, notifications, or health insights to improve engagement and usability.
+![alt text](image-8.png)
 
 The login page:
 
@@ -19,9 +20,13 @@ The settings page:
 The growth page:
 Considering on Children's Growth Tracking section, which allows parents to record and manage essential growth metrics for their children, including height, weight, and head circumference. Users input these details along with the child’s name and age, and the data is saved and displayed in a table below. A placeholder Growth Summary Graph is also included to provide a visual representation of the child’s progress over time. While the graph is static at the moment, future development will make it dynamic, allowing it to display real-time trends based on the stored data. Also, users can navigate to other pages through the navigation bar by selecting the corresponding icons.
 
+![alt text](image-9.png)
+
 The sleep page:
 
 
 The food page:
 The Food Tracker allows users to log calorie intake for breakfast, lunch, and dinner. Each meal has a dedicated text field where parents can manually input the number of calories consumed and submit the data using the corresponding button. While the submit button is not functional at the moment, it supports manual input for now. In the future, the system could be enhanced with features like automatic calorie calculations based on pre-stored food data and meal suggestions. Additionally, users can navigate to other pages through the navigation bar by clicking on the respective icons. 
+
+![alt text](image-10.png)
 
