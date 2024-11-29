@@ -117,20 +117,33 @@ Git (As of 28/11/24 - 13:00)
 ## Team Member : Charles
 ### Sprint 1 (University Week 3) : Meeting Team
 - Introduce and get to know team members : https://ce201-team02.atlassian.net/browse/SCRUM-1
+Met with teammates and created a WahtsApp group to keep in touch
 ### Sprint 2 (University Week 4) : Setting up Git
 - Familiarise with command-line CSEEGIT : https://ce201-team02.atlassian.net/browse/SCRUM-9
+Follow the introductions on moodle, we signned into our gitlabs.
 ### Sprint 3 (University Week 5) : Writing User Stories
 - Hello World : https://ce201-team02.atlassian.net/browse/SCRUM-16
 - True Photos : https://ce201-team02.atlassian.net/browse/SCRUM-23
 - User Stories : https://ce201-team02.atlassian.net/browse/SCRUM-30
+At first, to become familiar with using Jira, we created a new task called "Hello World."
+Then, we uploaded our profile information, including our actual photos.
+After that, we created a few user stories for the website as part of our homework.
 ### Sprint 4 (University Week 6) : Research
 - Research : https://ce201-team02.atlassian.net/browse/SCRUM-40
+In order to complete the rest of the MVP, we need to do some research to gather ideas.
+I was assigned to research the food section with a teammate.
+I found some websites related to children's daily calorie needs.
 ### Sprint 5 (University Week 7) : Creating Graphical Mock up
 - Page design : https://ce201-team02.atlassian.net/browse/SCRUM-54
+After gathering ideas, we started designing our website online using drawings or other tools in a shared document.The aim is to create a sketch of the upcoming HTML website and prepare for coding.
+My task is to design the food tracker page.
 ### Sprint 6 (University Week 8) : Website Coding (Html,CSS,etc)
 - Code pages : https://ce201-team02.atlassian.net/browse/SCRUM-62
+Obviously, my task for this section is to create the actual HTML coding for the food page, which is linked to other pages like the homepage, sleeping page, etc.
 ### Sprint 7 (University Week 9) : Report Writing
 - Report writing : https://ce201-team02.atlassian.net/browse/SCRUM-66
+After finishing the coding, we immediately started the report.
+I was assigned to work on the demonstration part, which covers the introduction,the homepage, growth page, and food page.
 ---
 ## Team Member : Evan
 ### Sprint 1 (University Week 3) : Meeting Team
