@@ -12,10 +12,15 @@ The Welcome Screen provides a personalized experience by greeting users with the
 ![alt text](image-8.png)
 
 The login page:
+Clicking on the Login button will lead the user to a login page where they are prompted to input the email and password to the account. If the user does not have an account, they can click on the “Register here” hyperlink where they can set up an account for themselves. Later additions will include storing the user's information so that the user can always have access to their account.
 
+![Alt text](image-11.png)
+![Alt text](image-12.png)
 
 The settings page:
+The settings page is where the user can change their password, app appearance, children’s information and general queries that a user may need. Future additions will include making the "Appearance" button change the appearance of the product and adding a change or reset password functionality.
 
+![Alt text](image-13.png)
 
 The growth page:
 Considering on Children's Growth Tracking section, which allows parents to record and manage essential growth metrics for their children, including height, weight, and head circumference. Users input these details along with the child’s name and age, and the data is saved and displayed in a table below. A placeholder Growth Summary Graph is also included to provide a visual representation of the child’s progress over time. While the graph is static at the moment, future development will make it dynamic, allowing it to display real-time trends based on the stored data. Also, users can navigate to other pages through the navigation bar by selecting the corresponding icons.

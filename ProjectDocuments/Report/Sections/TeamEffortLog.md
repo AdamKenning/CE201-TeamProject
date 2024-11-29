@@ -183,6 +183,7 @@ for the report writing i was given the requirements and risk assessment, i used 
 ## Team Member : Zaki
 ### Sprint 1 (University Week 3) : Meeting Team
 - Introduce and get to know team members : https://ce201-team02.atlassian.net/browse/SCRUM-1
+
 ### Sprint 2 (University Week 4) : Setting up Git
 - Familiarise with command-line CSEEGIT : https://ce201-team02.atlassian.net/browse/SCRUM-8
 ### Sprint 3 (University Week 5) : Writing User Stories
@@ -201,17 +202,31 @@ for the report writing i was given the requirements and risk assessment, i used 
 ## Team Member : Zubair
 ### Sprint 1 (University Week 3) : Meeting Team
 - Introduce and get to know team members : https://ce201-team02.atlassian.net/browse/SCRUM-1
+- Met the team and got introduced to each other and the project.  
 ### Sprint 2 (University Week 4) : Setting up Git
 - Familiarise with command-line CSEEGIT : https://ce201-team02.atlassian.net/browse/SCRUM-5
+- In this sprint, following a tutorial video, we worked on setting up GitLab and Visual Studio Code to make collaboration easier. Visual Studio Code IDE allowed us to work together, make edits, and commit changes so everyone’s work stayed up-to-date. 
 ### Sprint 3 (University Week 5) : Writing User Stories
 - Hello World : https://ce201-team02.atlassian.net/browse/SCRUM-13
+  - Added line containing my name. 
 - True Photos : https://ce201-team02.atlassian.net/browse/SCRUM-20
+  - Added profile photo on Jira and GitLab.
 - User Stories : https://ce201-team02.atlassian.net/browse/SCRUM-27
+  - Worked on creating user stories to reflect what user might want from the website, and manged to come up with several. 
+  - Uploaded photos to our profiles so the team could get to know each other better.
 ### Sprint 4 (University Week 6) : Researching Existing Software
 - Research : https://ce201-team02.atlassian.net/browse/SCRUM-41
+- For this task, I looked into a few websites/apps related to the growth page I was assigned. However, since my teammate, Munashe had already covered most of them, I decided to focus on just one. I took a closer look at its features, layout, and design, and shared my thoughts.
 ### Sprint 5 (University Week 7) : Creating Graphical Mock up
 - Page design : https://ce201-team02.atlassian.net/browse/SCRUM-50
+- I was responsible for designing the login page. Considering that login pages are most effective when simple and user-friendly, I opted for a clean and straightforward design. I also made sure the style was consistent and aligned with the designs of my teammates' pages to maintain a cohesive look across the app.
+- Note : I had to leave the team meeting halfway through due to a prior commitment so the other selected their pages and I took the one assigned to me.
 ### Sprint 6 (University Week 8) : Website Coding (Html,CSS,etc)
 - Code pages : https://ce201-team02.atlassian.net/browse/SCRUM-73
+- Created login.html and login.css files as part of my assigned page. 
+- In this stage, I made use of colours in the background to make the login and register tabs more visible and appealing. 
+- To bring consistency, I incorporated the shared navigation bar to suit the page, retaining only the home button. 
+- Note : I had to leave the team meeting halfway through due to a prior commitment so the other selected their pages and I took the one assigned to me.
 ### Sprint 7 (University Week 9) : Report Writing
 - Report writing : https://ce201-team02.atlassian.net/browse/SCRUM-68
+- For the report, I worked on the requirements log, using the team’s user stories. I also completed my team effort log as required for all members in this sprint.

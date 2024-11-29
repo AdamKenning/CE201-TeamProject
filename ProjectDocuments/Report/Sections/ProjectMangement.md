@@ -12,7 +12,7 @@ Sprint Burndown Charts
 
 Sprint 1 Burndown Chart
 
-![alt text](image-11.png)
+![alt text](image-21.png)
 
 · Standup Meetings: Standup meetings were taken place in person during the assigned labs and their sprint on Jira.
 
@@ -23,9 +23,9 @@ Sprint 1 Burndown Chart
 
 Sprint 3 Burndown Chart
 
-![alt text](image-12.png)
+![alt text](image-22.png)
 
-![alt text](image-13.png)
+![alt text](image-23.png)
 
 · Standup Meetings Standup meetings were taken place in person during the assigned labs and their sprint on Jira.
 
@@ -50,7 +50,7 @@ burndown progress and a higher likelihood of meeting sprint objectives within th
 
 Product Backlog
 
-![alt text](image-14.png)
+![alt text](image-24.png)
 
 The product backlog has been maintained in Jira and includes prioritized user stories, epics, and technical tasks. Regular grooming sessions have ensured that the backlog remains up-to-date and aligned with project goals. Dependencies and critical-path items have been flagged to ensure smooth workflow transitions between sprints. Only a few tasks are still remaining to be completed and as of typing, are near completion.
 
