@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!--font style that was chosen by other team members -->
+    <title>growth page</title>
+    <link href="../css/nav.css" rel="stylesheet" type="text/css" />
     <link href="../css/growth.css" rel="stylesheet" type="text/css" />
-    <title>Growth</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!--this is the format of the graph that i got in order to make the graph show.-->
 </head>
 
@@ -152,7 +154,26 @@
         
         // to get the line chart, this is just a front end basic to show how it would look like
         // to get a place to put the line graph
-
+        const ctx = document.getElementById("growthSummary").getContext("2d");
+        const growthSummary = new Chart(ctx, { // to make the chart
+            
+            options: { // telling what it should look like
+                scales: {
+                    x: {
+                        title: {
+                            display: true, // to show the name
+                            text: "child age" //show on the x axis
+                        }
+                    },
+                    y: {
+                        title: { 
+                            display: true,
+                            text: "height (cm)" //show on the y axis
+                        }
+                    }
+                }
+            }
+        });
     </script> 
 
 

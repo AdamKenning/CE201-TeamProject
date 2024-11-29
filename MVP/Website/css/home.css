@@ -1,5 +1,5 @@
 body{
-    background-image: url('../media/background-home.webp'); 
+    background-image: url('../media/background-home.webp');
 
     background-position: 50%;
 
@@ -55,6 +55,7 @@ body{
     padding:10px;
 
     overflow:hidden;
+    
     color: var(--color-shade-1);
     background-color: var(--color-shade-5);
 }
