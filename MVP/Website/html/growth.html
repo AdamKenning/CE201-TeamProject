@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!--font style that was chosen by other team members -->
+    <title>growth page</title>
+    <link href="../css/nav.css" rel="stylesheet" type="text/css" />
+    <link href="../css/growth.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!--this is the format of the graph that i got in order to make the graph show.-->
+</head>
+
+<body>
+    <nav id="navbar">  <!--this is the navbar that everyone in my team is using--> 
+        <a id="navbar-food"        class="navbar-others" href="food.html">       <i class="fas fa-utensils"></i></a>
+        <a id="navbar-diaper"      class="navbar-others" href="diaper.html">     <i class="fas fa-baby"></i></a>
+        <a id="navbar-medication"  class="navbar-others" href="medication.html"> <i class="fas fa-pills"></i></a>
+        <a id="navbar-home"        class="navbar-others" href="home.html">       <i class="fas fa-home"></i></a>
+        <a id="navbar-growth"      class="navbar-active" href="growth.html">     <i class="fas fa-chart-line"></i></a>
+        <a id="navbar-sleep"       class="navbar-others" href="sleep.html">      <i class="fas fa-bed"></i></a>
+        <a id="navbar-emotion"     class="navbar-others" href="emotion.html">    <i class="fas fa-face-smile"></i></a>
+    </nav>
+    
+
+    <!-- Int hese are the places where the user can enter information about the child--> 
+
+    <div class="childmeasurement-box"> 
+
+        <h2>Child growth<span id="childName"></span></h2> <!--theheader--> 
+
+        <input type="text" id="ChildNameInput" placeholder="enter child's name"> <!--name--> 
+
+        <input type="number" id="ChildAgeInput" placeholder="age (yr,month)"> <!--for the age-->
+
+        <input type="number" id="ChildHeightInput" placeholder="height in (cm)">  <!--height--> 
+
+        <input type="number" id="ChildWeightInput" placeholder="weight in (kg)">  <!--weigght--> 
+
+        <input type="number" id="ChildHeadInput" placeholder="head circumference in (cm)"> <!--for the head size--> 
+
+
+        <button onclick="saveTheChildInformation()">Save Child Information</button> <!-- is the button to save the child informations--> 
+
+    </div> 
+
+    <!--  is where the table will go--> 
+
+    <div class="detail-table">  
+
+        <h2>Child Information</h2>  
+
+        <table id="childInformationTble" border="1">  <!-- the tablle and to get a border around it--> 
+
+            <thead> 
+
+                <tr> 
+
+                    <th>Name</th> <!--the name--> 
+
+                    <th>Age</th>  <!--the age--> 
+
+                    <th>Height (cm)</th> <!--the height--> 
+
+                    <th>Weight (kg)</th> <!--the weiight--> 
+
+                    <th>Head Circumference (cm)</th> <!--the head sizee--> 
+
+                    <th>Date Saved</th> <!-- will show when it wassaved--> 
+
+                </tr> 
+
+            </thead> 
+
+            <tbody> 
+
+                <!--  where the data will be put.--> 
+
+            </tbody> 
+
+        </table> 
+
+    </div> 
+    <!-- the box  for the chart to be put inn -->
+    <div class="childline-chart">
+        <h2>child growth summary height (placeholder/frontnend)</h2>
+        <canvas id="growthSummary"></canvas>
+    </div>
+
+  
+
+    <script> 
+
+        // this is to save the childs information.
+
+        function saveTheChildInformation() { // get the data from the input boxes
+
+            const Childsname = document.getElementById("ChildNameInput").value; //getting the name
+
+            const Childsage = document.getElementById("ChildAgeInput").value; //getting the age
+
+            const Childsheight = document.getElementById("ChildHeightInput").value; //getting the height
+
+            const Childsweight = document.getElementById("ChildWeightInput").value;  //  the weight
+
+            const Childshead = document.getElementById("ChildHeadInput").value; // a headsize
+
+
+            const now = new Date();  
+             // to get the correct format of the date
+            const formattedDate = now.toLocaleDateString(); //  to get the live date when save button is clicked
+
+  
+
+            // this is to save the information the the user has entered in.
+
+            const childInformation = { 
+
+                name: Childsname, //save the childname
+
+                age: Childsage, // save the age
+
+                height: Childsheight, //save the height
+
+                weight: Childsweight, 
+
+                head: Childshead, //headsize
+
+                date: formattedDate, //tosave the date
+
+            }; 
+
+            console.log(childInformation); // this will then save the childs inforamtion
+
+
+  
+
+            // put the childs information to the table 
+
+            const tableBody = document.getElementById("childInformationTble").getElementsByTagName("tbody")[0]; 
+
+            const newRow = tableBody.insertRow(); // this will make a new row for the information
+
+            newRow.insertCell(0).textContent = childInformation.name; // to makee a new row for name
+
+            newRow.insertCell(1).textContent = childInformation.age; // to makee a new row for age
+
+            newRow.insertCell(2).textContent = childInformation.height; //to make a new row for height
+
+            newRow.insertCell(3).textContent = childInformation.weight; //to makke a new row for weightt
+
+            newRow.insertCell(4).textContent = childInformation.head;  // mke nfor headsize
+
+            newRow.insertCell(5).textContent = childInformation.date;  // row for date
+
+        } 
+        
+        // to get the line chart, this is just a front end basic to show how it would look like
+        // to get a place to put the line graph
+        const ctx = document.getElementById("growthSummary").getContext("2d");
+        const growthSummary = new Chart(ctx, { // to make the chart
+            
+            options: { // telling what it should look like
+                scales: {
+                    x: {
+                        title: {
+                            display: true, // to show the name
+                            text: "child age" //show on the x axis
+                        }
+                    },
+                    y: {
+                        title: { 
+                            display: true,
+                            text: "height (cm)" //show on the y axis
+                        }
+                    }
+                }
+            }
+        });
+    </script> 
+
+
+</html> 
+
+</body>
+
+
+
+<!-- references:
+To help with the graph - W3Schools.com https://www.w3schools.com/js/tryit.asp?filename=trychartjs_lines (2020)
+was used to add a table for the child.
+from there i used the script page to get the styling/image of the graph just to use as a front end
+can be found in line 8 and line 160-161
+the webpage where the graph code comes from so that it will show on my page is :  Jsdelivr.net. (2023). Available at:https://cdn.jsdelivr.net/npm/chart.js 
+and it is used in line 8.
+ for the table layout i got confsued because my table did not look like how it was supposed to do, the layout or the table that i had was wrong so i looked at 
+ w3schools for layout: www.w3schools.com. (2022). W3Schools online HTML editor. [online] Available at: https://www.w3schools.com/html/tryit.asp?filename=tryhtml_table4.
+"tbody" used in line 72 and 75. 
+‌
+--> 

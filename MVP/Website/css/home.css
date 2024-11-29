@@ -1,0 +1,191 @@
+body{
+    background-image: url('../media/background-home.webp'); 
+    
+
+    background-position: 50%;
+
+    background-size: cover;
+    background-attachment: fixed;
+}
+#backgroundImageBlur{
+    position: absolute;
+    backdrop-filter: blur(3px) saturate(90%);
+
+    bottom:0px;
+    left:0px;
+    height:100%;
+    width: 100%;
+    z-index: -2;
+}
+#backgroundImageColour{
+    position: absolute;
+    background-color: var(--color-shade-5);
+    opacity: 60%;
+
+    bottom:0px;
+    left:0px;
+    height:205px;
+    width: 100%;
+    z-index: -1;
+}
+
+#title{
+    position: absolute;
+    left:50%;
+    translate: -50%;
+    z-index: 1;
+    color: var(--color-shade-2);
+    background-color: white;
+    font-size:30px;
+    text-align: center;
+    align-items: center;
+    padding:5px;
+    width:60%;
+    border-radius: 10px;
+}
+
+#text{
+    position: absolute;
+    bottom: 25px;
+    left: 0px;
+    right: 110px;
+    height: 150px;
+
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding:10px;
+
+    overflow:hidden;
+    
+    color: var(--color-shade-1);
+    background-color: var(--color-shade-5);
+}
+
+#login {
+    text-decoration: none;
+    font-size: 20px;
+    color: var(--color-shade-1);
+    padding:5px;
+
+    border-radius: 6px;
+    background-color: var(--color-shade-4);
+    opacity: 70%;
+
+    display: inline-flex;
+    justify-content: center;
+
+    min-width: 100px;
+}
+
+#login::before {
+    content: "Not you?";
+}
+
+#login:hover::before {
+    animation: fade-sequence-forwards 0.5s forwards;
+}
+
+#login:not(:hover)::before{
+    animation: fade-sequence-backwards 0.5s forwards;
+}
+
+
+@keyframes fade-sequence-forwards {
+    30%{opacity:0;}
+    50%{content: "Login";}
+    80%{opacity: 1;}
+    100%{content: "Login";}
+}
+@keyframes fade-sequence-backwards {
+    0%{opacity:0;}
+    50%{content: "Not you?";}
+    80%{opacity: 1;}
+    100%{content: "Not you?";}
+}
+
+#containerButtons {
+    position:absolute;
+    bottom:40px;
+    right: 0px;
+
+    display: flex;
+    flex-direction: column;
+    width: min-content;
+    
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding:10px;
+    
+    color: var(--color-shade-1);
+    background-color: var(--color-shade-5);
+
+    align-items: center;
+    justify-content: space-between;
+    gap:5px;
+    
+}
+#childName{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 70px;
+    height: 30px;
+    
+    border-radius: 10px;
+    border: 2px solid;
+
+    color: var(--color-shade-1);
+    background-color: var(--color-shade-5);
+    border-color: var(--color-shade-3);
+}
+
+#profilePic {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    border: 2px solid;
+    
+    color: var(--color-shade-1);
+    background-color: var(--color-shade-5);
+    border-color: var(--color-shade-3);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+    transition-duration: 0.2s;
+}
+
+#bottomButtons {
+    display: flex;
+    gap: 10px; 
+}
+
+#bottomButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid;
+    
+    color: var(--color-shade-1);
+    background-color: var(--color-shade-5);
+    border-color: var(--color-shade-3);
+
+    transition-duration: 0.2s;
+}
+
+#bottomButton:hover,#profilePic:hover{
+    scale: 110%;
+}
+
+
+
+
+

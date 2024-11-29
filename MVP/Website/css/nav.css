@@ -1,0 +1,93 @@
+:root {
+    --color-food: rgb(10, 210, 255);
+    --color-diaper: rgb(41, 98, 255);
+    --color-medication: rgb(149, 0, 255);;
+    --color-home: rgb(255, 0, 89);
+    --color-growth: rgb(255, 140, 0);
+    --color-sleep: rgb(180, 230, 0);
+    --color-emotion: rgb(15, 255, 219);
+
+    --color-shade-1: rgb(50,50,50);
+    --color-shade-2: rgb(100,100,100);
+    --color-shade-3: rgb(150,150,150);
+    --color-shade-4: rgb(200,200,200);
+    --color-shade-5: rgb(255,255,255);
+}
+
+body{
+    background-color:var(--color-shade-5);
+    font-family: consolas;
+}
+
+#navbar-food{
+    color:var(--color-food);
+    background-color:var(--color-food);
+
+}
+#navbar-diaper{
+    color:var(--color-diaper);
+    background-color:var(--color-diaper);
+}
+#navbar-medication{
+    color:var(--color-medication);
+    background-color:var(--color-medication);
+}
+#navbar-home{
+    color:var(--color-home);
+    background-color:var(--color-home);
+}
+#navbar-growth{
+    color:var(--color-growth);
+    background-color:var(--color-growth);
+}
+#navbar-sleep{
+    color:var(--color-sleep);
+    background-color:var(--color-sleep);
+}
+#navbar-emotion{
+    color:var(--color-emotion);
+    background-color:var(--color-emotion);
+}
+
+#navbar {
+    position: fixed;
+    bottom: 0;
+    left:0;
+    height:30px;
+    background-color:var(--color-shade-4);
+    width:100%;
+    text-align: center;
+}
+
+
+#navbar .navbar-others,
+#navbar .navbar-active {
+    display: inline-block;
+    width: 40px;
+    padding: 5px 1vw;
+    margin: 0px 0.5vw;
+
+    text-decoration: none;
+    border: 2px solid;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    transition-property: padding, margin;
+    transition-duration: 0.2s;
+}
+
+#navbar .navbar-active {
+    color: var(--color-shade-5);
+    border-color: var(--color-shade-1);
+}
+#navbar .navbar-others{
+    background-color: var(--color-shade-5);
+    border-color: var(--color-shade-3);
+}
+
+#navbar .navbar-others:hover,
+#navbar .navbar-active:hover {
+    
+    padding: 5px 2vw;
+    margin: 0px -0.5vw;
+}
