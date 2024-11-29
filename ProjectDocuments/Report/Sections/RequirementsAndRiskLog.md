@@ -107,17 +107,15 @@ Subcategories of this section that have been noted and will be accounted for are
 
 - The app must be accessible for people who colour impaired/ blind
   - This applies effectively exclusively to this subset of people only, as there is no intended use for any other user group to find benefit from seeking the same accommodation as this. Put short, some of our users may have their colour vision effected and come under one of the three colour blind types : protanopia, deuteranopia, tritanopia or complete colour blindness achromatopsia. It is crucial that our software remains functional for these users with no part failing as a result of missing colour.
-  - 
-- The app must have colour profiles for dark environments
+  - To combat this, By default as a general rule one colour(or shade) on top of another should not be the same 'brightness'. In a worst case scenario, a fully colour blind individual would see the whole page in shades of grey, thus anything with similar brightness will end up being indistinguishable. Ensuring that our website as a base, can work for this worst case, it will be guaranteed to work for the lesser cases too; partial colour blindness. Additionally, in the settings, we intend to add specific 'colour profiles' for each specific colour deficit. These colour profiles would change the colours used across the website enough to make them even more visible, while keeping the feel of the website true to its original nature. These colour profiles would be accessible from the settings. We have planned ahead with this issue, having implemented the colours for our website as a set of variables shared throughout all the pages; Changing these root colour variables would uniformly update the whole website allowing for easy colour profile editing.
+- The app should have colour profiles for different environments
+  - This is targeted towards people who may not be affected by colour visibility impairments, but still prefer specific widely adopted colour profiles. This may be for any number of reasons, but typically it is as a result of the need to reduce eye strain when operating in low light level environments; A bright screen against a dark room will strain the eyes and cause discomfort to the user
+  - This issue is very similar to the prior one but results from a slightly different set of needs, but as such can be resolved with an almost identical method. Should the user wish, they should be able to once again, navigate to the settings and choose another colour profile. This set of colour profiles however would target these different needs. Exemplary colour profiles for this risk may include a for instance, a dark theme or a sepia theme. Both widely adopted styles which both reduce eye strain in low light level environments.
 - Buttons should be easy to press
+  - Given that our software is planned to include the functionality of logging child activity e.g. sleep etc. it is important we accommodate for people who may have difficulty navigating our software, who have difficulty managing software in general. This includes, but is not limited to, people such as those who suffer from parkinson's, and may have a hard time targetting a button which is small, and neighbouring closely with other buttons. This may result with an infuriating user experience which would drive users away from our software.
+  - The mitigation of this is held entirely within the graphical design of our website and as such can be easily aided via simple editing to the CSS of our software. For instance, changing the size of buttons, the spacing between neighbouring buttons and crowding of elements on a screen, the affected user would find it easier to navigate the software and complete the actions they had intended to complete.
 - Text should not be hard to read
-   1.  Accessibility and Usability
-    - As a **user with accessibility needs** i need the app to include:
-      - **Themes** like sepia and dark mode **to reduce eye strain**
-      - **Clear, large fonts** for **easier reading** - dyslexia
-      - **Large buttons** for **easier navigation with motor impairments** - parkinson's
-    - As a **user with colour blindness** I need the app to include **Colour profiles** for **easier viewing**
-      - Protanopia - Red blind
-      - Deuteranopia - Green blind
-      - Tritanopia - Blue blind
-      - Achromatopsia - Complete colour blindness
+  - The last factor to consider is the possibility that some of our users may have reading impairments, whether that be due to needing the aid of reading glasses, or having some form of dyslexia that contributes to their inability to correctly digest texts. A user who has difficulty managing these conditions or similar conditions may find it difficult to navigate the core functionality of our software.
+  - To minimise the poor user experience felt by this group of users, our software can adapt to accommodate, while not taking away from the user experience of unaffected users. Ensuring legibility over the entire website would allow these users to navigate the software and resolve this issue. To enforce an acceptable quality of legibility, it can be formalized a single typeface across the whole website which favours readability. This is in contrast to a typeface which may be harder to read in small texts.
+
+
