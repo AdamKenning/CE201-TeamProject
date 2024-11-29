@@ -31,6 +31,58 @@
 --- 
 
 ## Requirements Log - Zubair
+ # user stories (collective team effort)
+
+
+Functional Requirements
+1.	Tracking and Logging Routines
+- Story Summary:
+  - As a parent and caregiver, I want to log feeding, sleep, diaper changes, and medication schedules so that I can track patterns to track my child’s health.
+- Story Description:
+  - This story focuses on the app functionality that allows caregivers to log essential routines, including the time and type of activity (e.g., feeding, sleep, diaper change). It should support visual summaries and allow users to compare daily patterns for better health management.
+2.	Growth and Development Monitoring
+- Story Summary:
+  - As a parent, I want to track my child's height, weight, etc., over time so that I can monitor their growth and compare it to standard benchmarks.
+- Story Description:
+  - This story focuses on recording growth data such as height and weight, presenting these metrics visually (e.g., graphs), and comparing them to percentile standards for health insights.
+3.	Insights and Alerts
+- Story Summary:
+  - As a parent and caregiver, I want to be notified about changes in routines or health so that I can identify potential issues early.
+- Story Description:
+  - Notifications should be triggered based on deviations in logged data, such as irregular sleep patterns or skipped medications, and provide actionable insights for the caregiver.
+4.	Interactive Visual Summaries
+- Story Summary:
+  - As a parent, I want simple interactive graphs and visual summaries to quickly understand development trends.
+- Story Description:
+  - This story focuses on creating interactive dashboards that present patterns and trends in feeding, sleep, and growth data, helping parents make informed decisions.
+
+
+Non-Functional Requirements
+5.	Multi-Device Support
+-Story Summary:
+  - As a parent or caregiver, I want to use the app on multiple devices so that I can manage my child on the go.
+- Story Description:
+  - Ensure the app is compatible across platforms (iOS, Android, web) with data synchronisation in real-time.
+6.	Secure Data Handling
+- Story Summary:
+  - As a parent, I want assurance that my child data is securely stored and anonymised so I can protect their privacy.
+- Story Description:
+  - Implement encryption for stored data, secure login methods, and anonymisation protocols for data shared with researchers.
+
+## requirements modelling technique (Use Cases)
+- A use case diagram can illustrate how different users such as parents, caregivers, healthcare providers, and researchers interact with the system.
+- Actors: Parent, Caregiver, Healthcare Provider, Researcher
+- Use Cases:
+  - Log feeding/sleep/diaper/medication
+  - Track growth metrics
+  - View interactive graphs
+  - Generate and share reports
+  - Receive alerts
+  - Access anonymised data
+
+
+
+
 ## Risk Log - Adam
 
 ### Section Summary
