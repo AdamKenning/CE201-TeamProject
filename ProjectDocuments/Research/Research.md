@@ -339,7 +339,26 @@
   - Out of all the sights i looked at here i think this one is my most favourite and i would like to uses some of the stuff used here and incorporate them into my own designs, such as the use of images and icons. And making the navigation of the app simple and easy. 
 ---
 ### Zubair
-#### App 1
+#### Grow Up - Child Growth Tracker (App)
+- Link:https://tinyurl.com/mr33j8nr
+- Purpose
+  - App is designed to assist parents/caregivers in monitoring their children's physical development by recording metrics such as height, weight and head circumference. 
+  - Provides visual representations of growth trends through easy-to-read charts and graphs.
+  - Provides Child Growth Standard guidelines such as WHO and CDC (Center for Disease Control and Prevention) assess child's health metric against them. 
+  - Faciliates adding multiple child profiles which makes it suitable for families with more than one child. 
+  - Emphasises data security, ensuring that all health information is securely stored.
+- Advantages:
+  - The app offers an intuitive design, making it accessible for users without technical expertise.
+  - Multiple Child Support
+  - Clear charts and graphs to effectively monitor growth patterns.
+  - Data Security: Prioritises the secure storage of personal health information.
+- Cons:
+  - Focuses primarily on physical growth metrics and may lack comprehensive health tracking functionalities.
+  - Currently available only on iOS devices, limiting access for Android users.
+  - While free to download, plotting graphs and charts are behind a paywall.
+- Design:
+  - The app features a clean and straightforward design, emphasising ease of use. The main dashboard/homepage provides quick access to input data and view growth charts. The visual elements are designed to be clear and informative, aiding parents in understanding their child's development at a glance.
+
 ---
 ## Food
 ### Charles
