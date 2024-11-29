@@ -207,9 +207,10 @@ We set up GitLab and Visual Studio Code so that we could collaborate and efficie
 I made a profile picture so that my teammates could easily identify me, I also made a user story to depict what a user might want from the product
 ### Sprint 4 (University Week 6) : Researching Existing Software
 - Research : https://ce201-team02.atlassian.net/browse/SCRUM-39
-I searched for and found a website that roughly displayed what we needed, I was tasked on finding a website that focused on food, I found a website that counted calories and calculated the calories of many different types of food
+I searched for and found a website that roughly displayed what we needed, I was tasked on finding a website that focused on food, I found a website that counted calories and calculated the calories of many different types of foods
 ### Sprint 5 (University Week 7) : Creating Graphical Mock up
 - Page design : https://ce201-team02.atlassian.net/browse/SCRUM-51
+I was responsible of making the settings page, I looked at a lot of different examples from many different sources until I created a mockup that I was happy with the shape and look of  
 ### Sprint 6 (University Week 8) : Website Coding (Html,CSS,etc)
 - Code pages : https://ce201-team02.atlassian.net/browse/SCRUM-60
 ### Sprint 7 (University Week 9) : Report Writing
