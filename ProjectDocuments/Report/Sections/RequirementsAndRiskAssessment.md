@@ -119,7 +119,7 @@ User Stories from group:
 
  
 
- 
+ Risk assessments and requirements:
  
 1. Introduction 
 
@@ -176,6 +176,11 @@ With the riskss with team communication and miscommunication this could be aviod
 
 Functional Requirements: 
  
+there should be a working page where the user can go into each induvidual page with simple navigation
+
+there should be a page for home, login, settings, sleep, growth, foood
+
+there should be accessibility features that the user can access such as making the font bigger or small, text to speech option. and there should be options to change the colour of the page if they have colour blindness.
 
 With functional requirements it should be that the system should be able to have information like the child's food intake growth summary and how they sleep. 
 
@@ -190,7 +195,9 @@ Nonfunctional Requirements:
 
 The system must be accessible on both mobile devices and web browsers. 
 
-when it comes to nonfunctional requirements, I should be able to go on the website both on mobile and on desktop devices. 
+when it comes to nonfunctional requirements, I should be able to go on the website both on mobile and on desktop devices. and there should be no issues with screensizes, all the pages should still look normal no matter the screensize.
+
+when it comes to the performance of the website everything should be quick and there shouldnt be things buffering on the page.
 
 The website should be responsive and fast when inputting data and getting results back. 
 
