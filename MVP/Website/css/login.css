@@ -1,0 +1,131 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, rgba(200, 200, 200, 0.646), rgba(2200, 200, 200), rgb(200, 200, 200));  /*#e3f2fd, #bbdefb*/
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  /* Main Container  */
+  .container {
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 20px;
+  }
+  
+  /* Each Form Container Styling */
+  .form-container {
+    padding: 20px;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  header h1 {
+    font-size: 24px;
+    color: #1565c0;
+    margin: 0;
+  }
+  
+  header p {
+    font-size: 14px;
+    color: #607d8b;
+    margin-top: 5px;
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #37474f;
+  }
+
+  /* Input Field Styling */
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  input:focus {
+    border-color: #1565c0;
+    outline: none;
+  }
+
+  /* Button Styling */
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #1565c0;
+    color: #ffffff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  /* Button Hover Effect */
+  button:hover {
+    background-color: #0d47a1;
+  }
+  
+  .forgot-password {
+    display: block;
+    margin-top: 40px;
+    font-size: 12px;
+    text-align: center;
+    color: #1565c0;
+    text-decoration: none;
+  }
+  
+  /*Link styling*/
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+  
+  /* Footer Link Styles */
+  footer p {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  footer a {
+    color: #1565c0;
+    text-decoration: none;
+  }
+  
+  /*Link Hover Effect */
+  footer a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Hidden Class for Inactive Sections */
+  .hidden {
+    display: none; /*hide inactive sections*/
+  }
+  
+  /* Responsive Design for smaller screen sizes */
+  @media (max-width: 480px) {
+    .form-container {
+      padding: 15px;
+    }
+  
+    header h1 {
+      font-size: 20px;
+    }
+  }
+  
