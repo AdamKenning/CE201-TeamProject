@@ -17,9 +17,8 @@ body {
 
 /* Style for the circle */
 .graph-space {
-    width: 500px; /* Increased size */
-    height: 500px; /* Increased size */
-    background-color: black;
+    width: 500px; /* Keep the same size */
+    height: 500px; /* Keep the same size */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -29,6 +28,10 @@ body {
     text-align: center;
     position: relative;
     top: -150px; /* Adjusted to raise height */
+    overflow: hidden; /* Ensures image is contained within the circle */
+    background-image: url('/ChawtsWebsiteRoot/media/graph-space.png'); /* Use your circular image */
+    background-size: cover;
+    background-position: center;
 }
 
 /* Style for arrows */
@@ -58,7 +61,7 @@ body {
     background-color: orange;
     color: white;
     font-size: 1.5rem;
-    border: none;
+    border: 2px solid black; /* Added black border */
     border-radius: 50%;
     cursor: pointer;
 }
@@ -76,10 +79,28 @@ body {
     font-size: 1rem;
     color: #555;
     border: 2px solid black; /* Added black border */
+    top: 550px; /* Further apart vertically */
+    background-image: url('/ChawtsWebsiteRoot/media/info-box-2.png');
+    background-size: cover;
+    background-position: center;
 }
 
 .info-box-1 {
+    position: absolute;
+    left: 125px; /* Increased distance from the left */
+    width: 400px; /* Increased width */
+    height: 250px; /* Increased height */
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #555;
+    border: 2px solid black; /* Added black border */
     top: 150px; /* Further apart vertically */
+    background-image: url('/ChawtsWebsiteRoot/media/info-box-1.png');
+    background-size: cover;
+    background-position: center;
 }
 
 .info-box-2 {
@@ -101,25 +122,8 @@ body {
     color: #555;
     border: 2px solid black; /* Added black border */
     top: 550px; /* Further apart vertically */
-}
-
-.upload {
-    position: absolute;
-    right: 125px; /* Matches other sidebar elements */
-    width: 400px;
-    height: 250px;
-    background-color: #ddd;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; /* Align content to start for input field */
-    font-size: 1rem;
-    color: #555;
-    padding: 20px;
-    box-sizing: border-box;
-}
-.info-box-3 {
-    top: 550px; /* Further apart vertically */
+    background-size: cover;
+    background-position: center;
 }
 
 .upload {
@@ -158,9 +162,10 @@ body {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     color: black;
     font-family: Arial, sans-serif;
-    background-color: rgb(255, 255, 255);
+    background-color: blue;
 }
 
 .info-box-3 {
     top: 550px; /* Further apart vertically */
+    background-image: url('/ChawtsWebsiteRoot/media/info-box-3.png');
 }
