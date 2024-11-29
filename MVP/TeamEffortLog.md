@@ -234,8 +234,11 @@ I searched for and found a website that roughly displayed what we needed, I was 
 I was responsible of making the settings page, I looked at a lot of different examples from many different sources until I created a mockup that I was happy with the shape and look of  
 ### Sprint 6 (University Week 8) : Website Coding (Html,CSS,etc)
 - Code pages : https://ce201-team02.atlassian.net/browse/SCRUM-60
+I created a settings html and css as part of my page
+When creating the page, I added a couple options such as "Appearance" and "Password & Security" that the user can later use to change the appearance of the app and reset or change their password
 ### Sprint 7 (University Week 9) : Report Writing
 - Report writing : https://ce201-team02.atlassian.net/browse/SCRUM-67
+In terms of the report, I was working on the product demonstration section, explaining every page what could be improved and added to later on
 ---
 ## Team Member : Zubair
 ### Sprint 1 (University Week 3) : Meeting Team
