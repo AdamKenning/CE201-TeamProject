@@ -54,7 +54,8 @@ body{
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     padding:10px;
-    
+
+    overflow:hidden;
     
     color: var(--color-shade-1);
     background-color: var(--color-shade-5);

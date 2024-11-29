@@ -1,5 +1,5 @@
 # Contributions
-## Git (As of 28/11/24 - 13:00)
+Git (As of 28/11/24 - 13:00)
 - Total contribution as a group
   - 155 Commits
   - ![alt text](image-0.png)
@@ -22,17 +22,6 @@
 - ed23308 - Even
   - 4 Commits
   - ![alt text](image-7.png)
-## Jira
-- Note to self, add info about the tasks assigned to everyone, the story points / estimated time, and the date marked completed + other info? 
-- Adam
-- Munashe
-- Zubair
-- Charles
-- Zaki
-- Even
-
-## Misc
-- Add info about contributions outside of git / jira e.g. the google docs
 ---
 # Team Effort Log
 ## Team Member : Adam
