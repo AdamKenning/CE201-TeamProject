@@ -145,25 +145,47 @@ Obviously, my task for this section is to create the actual HTML coding for the 
 After finishing the coding, we immediately started the report.
 I was assigned to work on the demonstration part, which covers the introduction,the homepage, growth page, and food page.
 ---
-## Team Member : Evan
-### Sprint 1 (University Week 3) : Meeting Team
-- Introduce and get to know team members : https://ce201-team02.atlassian.net/browse/SCRUM-1
-### Sprint 2 (University Week 4) : Setting up Git
-- Familiarise with command-line CSEEGIT : https://ce201-team02.atlassian.net/browse/SCRUM-6
-### Sprint 3 (University Week 5) : Writing User Stories
-- Hello World : https://ce201-team02.atlassian.net/browse/SCRUM-14
-- True Photos : https://ce201-team02.atlassian.net/browse/SCRUM-21
-- User Stories : https://ce201-team02.atlassian.net/browse/SCRUM-28
-### Sprint 4 (University Week 6) : Researching Existing Software
-- Research : https://ce201-team02.atlassian.net/browse/SCRUM-37
-### Sprint 5 (University Week 7) : Creating Graphical Mock up
-- Page design : https://ce201-team02.atlassian.net/browse/SCRUM-52
-### Sprint 6 (University Week 8) : Website Coding (Html,CSS,etc)
-- Code pages : https://ce201-team02.atlassian.net/browse/SCRUM-61
-### Sprint 7 (University Week 9) : Report Writing
-- Report writing : https://ce201-team02.atlassian.net/browse/SCRUM-71
 
----
+## Team Member : Evan
+
+##Sprint 1 (University Week 3) : Meeting Team 
+
+Introduce and get to know team members : https://ce201-team02.atlassian.net/browse/SCRUM-1  
+In this Sprint we met up in the lab and get to know each other. We also established a unified communication software, being WhatsApp. 
+
+##Sprint 2 (University Week 4) : Setting up Git 
+
+Familiarise with command-line CSEEGIT : https://ce201-team02.atlassian.net/browse/SCRUM-6  
+We were able to successfully setup Gitlab and te required connections on IntelliJ. 
+
+##Sprint 3 (University Week 5) : Writing User Stories 
+
+Hello World : https://ce201-team02.atlassian.net/browse/SCRUM-14  
+True Photos : https://ce201-team02.atlassian.net/browse/SCRUM-21  
+User Stories : https://ce201-team02.atlassian.net/browse/SCRUM-28  
+We sent a hello world message to get used to branches and commits. Then we uploaded our photos to Jira and Gitlab before working on our user stories, I worked on ones related to the sleep webpage. 
+
+##Sprint 4 (University Week 6) : Researching Existing Software 
+
+Research : https://ce201-team02.atlassian.net/browse/SCRUM-37  
+We worked on the research by looking up other apps that do a similar purpose to some of our current pages – as for me I looked up sleep tracking apps to do my webpage. 
+
+##Sprint 5 (University Week 7) : Creating Graphical Mock up 
+
+Page design : https://ce201-team02.atlassian.net/browse/SCRUM-52  
+We used design from similar apps to create a mick up, me in particular used Photoshop to create a mockup of how my webpage will layout. 
+
+##Sprint 6 (University Week 8) : Website Coding (Html,CSS,etc) 
+
+Code pages : https://ce201-team02.atlassian.net/browse/SCRUM-61  
+We spent the sprint coding our respective webpages in HTML and CSS, with me completing the sleep tracking webpage. 
+
+##Sprint 7 (University Week 9) : Report Writing 
+
+Report writing : https://ce201-team02.atlassian.net/browse/SCRUM-71 
+We finalized our work with the report. 
+
+ ---
 
 ## Team Member : Munashe
 ### Sprint 1 (University Week 3) : Meeting Team
