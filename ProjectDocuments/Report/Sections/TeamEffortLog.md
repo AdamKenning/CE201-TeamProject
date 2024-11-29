@@ -212,7 +212,7 @@ for the report writing i was given the requirements and risk assessment, i used 
 - True Photos : https://ce201-team02.atlassian.net/browse/SCRUM-20
   - Added profile photo on Jira and GitLab.
 - User Stories : https://ce201-team02.atlassian.net/browse/SCRUM-27
-  - Worked on creating user stories to reflect what user might want from the website, and manged to come up with several. 
+  - Worked on creating user stories to reflect what user might want from the website, and managed to come up with several. 
   - Uploaded photos to our profiles so the team could get to know each other better.
 ### Sprint 4 (University Week 6) : Researching Existing Software
 - Research : https://ce201-team02.atlassian.net/browse/SCRUM-41
