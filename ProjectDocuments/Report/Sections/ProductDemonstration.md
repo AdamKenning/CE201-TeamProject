@@ -28,7 +28,9 @@ Considering on Children's Growth Tracking section, which allows parents to recor
 ![alt text](image-9.png)
 
 The sleep page:
+On the sleep page, the user can input the number of hours their child has slept which will produce a number of graphs which will display multiple types of data such as hours slept and sleep midpoint 
 
+![Alt text](image-25.png)
 
 The food page:
 The Food Tracker allows users to log calorie intake for breakfast, lunch, and dinner. Each meal has a dedicated text field where parents can manually input the number of calories consumed and submit the data using the corresponding button. While the submit button is not functional at the moment, it supports manual input for now. In the future, the system could be enhanced with features like automatic calorie calculations based on pre-stored food data and meal suggestions. Additionally, users can navigate to other pages through the navigation bar by clicking on the respective icons. 

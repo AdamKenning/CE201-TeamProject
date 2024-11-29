@@ -183,15 +183,18 @@ for the report writing i was given the requirements and risk assessment, i used 
 ## Team Member : Zaki
 ### Sprint 1 (University Week 3) : Meeting Team
 - Introduce and get to know team members : https://ce201-team02.atlassian.net/browse/SCRUM-1
-
+We introduced ourselves to each other and we made a groupchat to discuss the project
 ### Sprint 2 (University Week 4) : Setting up Git
 - Familiarise with command-line CSEEGIT : https://ce201-team02.atlassian.net/browse/SCRUM-8
+We set up GitLab and Visual Studio Code so that we could collaborate and efficiently work together
 ### Sprint 3 (University Week 5) : Writing User Stories
 - Hello World : https://ce201-team02.atlassian.net/browse/SCRUM-17
 - True Photos : https://ce201-team02.atlassian.net/browse/SCRUM-24
 - User Stories : https://ce201-team02.atlassian.net/browse/SCRUM-31
+I made a profile picture so that my teammates could easily identify me, I also made a user story to depict what a user might want from the product
 ### Sprint 4 (University Week 6) : Researching Existing Software
 - Research : https://ce201-team02.atlassian.net/browse/SCRUM-39
+I searched for and found a website that roughly displayed what we needed, I was tasked on finding a website that focused on food, I found a website that counted calories and calculated the calories of many different types of food
 ### Sprint 5 (University Week 7) : Creating Graphical Mock up
 - Page design : https://ce201-team02.atlassian.net/browse/SCRUM-51
 ### Sprint 6 (University Week 8) : Website Coding (Html,CSS,etc)
