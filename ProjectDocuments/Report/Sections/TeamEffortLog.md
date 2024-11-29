@@ -162,7 +162,9 @@ I was assigned to work on the demonstration part, which covers the introduction,
 - Code pages : https://ce201-team02.atlassian.net/browse/SCRUM-61
 ### Sprint 7 (University Week 9) : Report Writing
 - Report writing : https://ce201-team02.atlassian.net/browse/SCRUM-71
+
 ---
+
 ## Team Member : Munashe
 ### Sprint 1 (University Week 3) : Meeting Team
 - Introduce and get to know team members : https://ce201-team02.atlassian.net/browse/SCRUM-1
@@ -174,10 +176,10 @@ For this sprint we had to setup GitLab and visual studio code so that we can wor
 - Hello World : https://ce201-team02.atlassian.net/browse/SCRUM-15
 - True Photos : https://ce201-team02.atlassian.net/browse/SCRUM-22
 - User Stories : https://ce201-team02.atlassian.net/browse/SCRUM-29
-here i made user stories for what users would expect from this website. i quite of few. we also were meant to upload our photos to our profiles to help other team members know who we are.
+here i made user stories for what users would expect from this website i looked at what the project client brief was and thoguh of stories that people would use this software would have, what they would expect from the website etc. i made quite of few of them. the next thing we also were meant to upload our photos to our profiles to help other team members know who we are. another things that we had to do was use csee gitlab and make a file where it would say hello world each of us had to update each thing to show that we were capable of making changes to the live file, we had to use the commit and push option.
 ### Sprint 4 (University Week 6) : Researching Existing Software
 - Research : https://ce201-team02.atlassian.net/browse/SCRUM-42
-for this one i looked at 3 web papges that were based on the page type that i was given, i had the growth page so i looked at multiplpe different websites to get an idea of the things that other websites had like features layouts etc, and i wrote about what i liked about them and what i didnt like etc.
+for this one i looked at 3 web papges that were based on the page type that i was given, i had the growth page so i looked at multiplpe different websites to get an idea of the things that other websites had like features layouts etc, and i wrote about what i liked about them and what i didnt like etc. i also stated what i would take inspiration from the pages that i looked at and how i could use the features or the colour scheme choices in my own work.
 ### Sprint 5 (University Week 7) : Creating Graphical Mock up
 - Page design : https://ce201-team02.atlassian.net/browse/SCRUM-53
 for this one it was the first page that i made i used html and css but nothing on the page worked, it was just to see if i could implment the sesigns that i made in mockflow to an actual page and i think that the designs turned out to be ok.
@@ -185,10 +187,10 @@ for this one it was the first page that i made i used html and css but nothing o
 for this one this is where all the designs that i made are, i looked at the research that i did and implemented the things that i like from those pages, such as bright colours imagery and keep things simple. but for my final design it was to keep in cohesion with the other designs that other group members made so i went for something that was less colourful.
 ### Sprint 6 (University Week 8) : Website Coding (Html,CSS,etc) + documenation + future Changes
 - Code pages : https://ce201-team02.atlassian.net/browse/SCRUM-62
-on here i documented the work that i did and showed screenshots of development and changes the i would like to make in the future, such as making the graph work and changing the colour scheme etc.
-### Sprint 7 (University Week 9) : Report Writing + team effort + project management log
+on here i documented the work that i did and showed screenshots of development and changes the i would like to make in the future, such as making the graph work and changing the colour scheme etc. and i incldues screenshots of my page. i also included refernces becuase i needed to know the table and graph format i put them in the jira scrum-62
+### Sprint 7 (University Week 9) : Report Writing + team effort + personal project management log
 - Report writing : https://ce201-team02.atlassian.net/browse/SCRUM-69
-for the report writing i was given the requirements and risk assessment, i used the user stories that everyone made instead of the one i made by myself. in this sprint i also added my team effort log an project management log that was meant for every member to do.
+for the report writing i was given the requirements and risk assessment, i used the user stories that everyone made instead of the one i made by myself. in this sprint i also added my team effort log an project management log that was meant for every member to do. in the project mamagement template i said we need to add a bit about how well we worked as a team, and how well the project is going.
 
 ---
 
