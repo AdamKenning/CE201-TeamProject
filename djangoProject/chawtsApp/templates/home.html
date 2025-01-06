@@ -1,7 +1,23 @@
 {% extends "base.html" %}
+
+
 {% block title %}
-Home Page
+    <h1> Home page </h1>
 {% endblock %}
+
 {% block content %}
-<p>this is the home page</p>
+    <header id="title">Welcome Back <b>name</b> <a id="login" href="login.html"></a></header>
+    <p id="text">Lorem Ipsum text. Insert here some quick information for the user. e.g. most recent logs for a child. e.g. quick summeries of certain aspects of the childs health etc.<br> The profile pic to the right is for the child currently being viewed</p>
+    <p id="backgroundImageColour"></p>
+    <p id="backgroundImageBlur"></p>
+
+    <div id="containerButtons">
+        <a id="profilePic" href="profile.html"><i class="fa-regular fa-user"></i></a>
+        <a id="childName">Child 1</a>
+
+        <div id="bottomButtons">
+            <a id="bottomButton" href="settings.html"><i class="fas fa-cog"></i></a>
+            <a id="bottomButton" href="logo.html"><i class="fa-regular fa-copyright"></i></a>
+        </div>
+    </div>
 {%endblock  %}

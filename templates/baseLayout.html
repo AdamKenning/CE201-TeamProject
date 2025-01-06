@@ -1,0 +1,40 @@
+{% comment %} icons :https://fontawesome.com/search? {% endcomment %}
+
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/nav.css" type= "text/css"/>
+
+    <title>{% block title %}BaseLayout{% endblock title %}</title>
+    {% comment %} <link href="../css/home.css" rel="stylesheet" type="text/css" /> {% endcomment %}
+</head>
+<body>
+    <nav id="navbar">
+        <a href="food.html">       <i class="fas fa-utensils"></i></a>
+        <a href="diaper.html">     <i class="fas fa-baby"></i></a>
+        <a href="medication.html"> <i class="fas fa-pills"></i></a>
+        <a href="home.html">       <i class="fas fa-home"></i></a>
+        <a href="growth.html">     <i class="fas fa-chart-line"></i></a>
+        <a href="sleep.html">      <i class="fas fa-bed"></i></a>
+        <a href="emotion.html">    <i class="fas fa-face-smile"></i></a>
+    </nav>
+
+    {% block conent %}
+
+    {% comment %} <header id="title">Welcome Back <b>name</b> <a id="login" href="login.html"></a></header>
+    <p id="text">Lorem Ipsum text. Insert here some quick information for the user. e.g. most recent logs for a child. e.g. quick summeries of certain aspects of the childs health etc.<br> The profile pic to the right is for the child currently being viewed</p>
+    <p id="backgroundImageColour"></p>
+    <p id="backgroundImageBlur"></p>
+
+    <div id="containerButtons">
+        <a id="profilePic" href="profile.html"><i class="fa-regular fa-user"></i></a>
+        <a id="childName">Child 1</a>
+
+        <div id="bottomButtons">
+            <a id="bottomButton" href="settings.html"><i class="fas fa-cog"></i></a>
+            <a id="bottomButton" href="logo.html"><i class="fa-regular fa-copyright"></i></a>
+        </div>
+    </div> {% endcomment %}
+
+    {% endblock conent %}
+</body>
