@@ -17,9 +17,9 @@ body{
     font-family: consolas;
 }
 
-.navbar .navbar-links{
-    justify-content: center;
-    display: flex;
+.navbar{
+    /* justify-content: center; */
+    /* display: flex; */
     position: fixed;
 
     bottom: 0px;
@@ -39,24 +39,24 @@ body{
     text-decoration: none;
 }
 
-.navbar .navbar-button{
-    display: flex;
-    align-self: center;
-    align-items: center;
-
+.navbar a{
+    float: left;
+    align-content: center;
     height: 100%;
-
     padding: 0px 0px;
     margin : 0px 20px;
-
     transition-property: padding, margin, filter;
     transition-duration: 0.2s;
 
     background-color: var(--col-primary);
 }
 
-.navbar .navbar-button:hover{
+.navbar a:hover{
     padding: 0px 20px;
     margin : 0px 0px;
     filter: brightness(90%);
+}
+
+.navbar .navbar-split{
+    float: right;
 }
