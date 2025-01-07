@@ -1,11 +1,12 @@
-{% comment %} icons :https://fontawesome.com/search? {% endcomment %}
+{% load static %}
 
 <!DOCTYPE html>
-
 <html lang="en">
   <head>
-      <link rel="stylesheet" href="../static/css/nav.css" type= "text/css"/>
-      {% comment %} <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css" /> {% endcomment %}
+      <link rel="stylesheet" href="{% static 'css/nav.css' %}" type= "text/css"/>
+
+      {% block extra_links %}
+      {% endblock %}
 
       <title>
         {% block title %}
@@ -14,13 +15,13 @@
   </head>
   <body>
       <nav class="navbar">
-          <a class="navbar-button" id ="inactive" href="food.html">       food</a>
-          <a class="navbar-button" id ="inactive" href="diaper.html">     diaper</a>
-          <a class="navbar-button" id ="inactive" href="medication.html"> medication</a>
-          <a class="navbar-button" id ="inactive" href="{% url 'home' %}">       home</a>
-          <a class="navbar-button" id ="inactive" href="growth.html">     growth</a>
-          <a class="navbar-button" id ="inactive" href="sleep.html">      sleep</a>
-          <a class="navbar-button" id ="inactive" href="emotion.html">    emotion</a>
+          <a class="navbar-button" {% if request.path == '/food/' %}        id ="active" {% else %} id = inactive {% endif %} href="{% url 'food' %}">       food</a>
+          <a class="navbar-button" {% if request.path == '/diaper/' %}      id ="active" {% else %} id = inactive {% endif %} href="{% url 'diaper' %}">     diaper</a>
+          <a class="navbar-button" {% if request.path == '/medication/' %}  id ="active" {% else %} id = inactive {% endif %} href="{% url 'medication' %}"> medication</a>
+          <a class="navbar-button" {% if request.path == '/home/' %}        id ="active" {% else %} id = inactive {% endif %} href="{% url 'home' %}">       home</a>
+          <a class="navbar-button" {% if request.path == '/growth/' %}      id ="active" {% else %} id = inactive {% endif %} href="{% url 'growth' %}">     growth</a>
+          <a class="navbar-button" {% if request.path == '/sleep/' %}       id ="active" {% else %} id = inactive {% endif %} href="{% url 'sleep' %}">      sleep</a>
+          <a class="navbar-button" {% if request.path == '/emotion/' %}     id ="active" {% else %} id = inactive {% endif %} href="{% url 'emotion' %}">    emotion</a>
       </nav>
 
       {% block content %}
