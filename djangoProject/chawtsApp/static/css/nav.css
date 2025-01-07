@@ -17,7 +17,7 @@ body{
     font-family: consolas;
 }
 
-.navbar {
+.navbar .navbar-links{
     justify-content: center;
     display: flex;
     position: fixed;

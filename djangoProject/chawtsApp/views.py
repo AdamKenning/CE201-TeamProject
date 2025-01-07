@@ -10,6 +10,9 @@ def growth(request):        return render(request, "growth.html")
 def sleep(request):         return render(request, "sleep.html")
 def emotion(request):       return render(request, "emotion.html")
 
+def login(request):         return render(request, "login.html")
+def settings(request):      return render(request, "settings.html")
+
 def todos(request):
     items = TodoItem.objects.all()
     return render(request, "todos.html", {"todos": items})

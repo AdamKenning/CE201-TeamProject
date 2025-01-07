@@ -12,7 +12,9 @@ urlpatterns = [
     path("growth/",     views.growth,       name = "growth"),
     path("sleep/",      views.sleep,        name = "sleep"),
     path("emotion/",    views.emotion,      name = "emotion"),
-    
+
+    path("login/",      views.login,        name = "login"),
+    path("settings/",   views.settings,     name = "settings"),
 
     path("todos/", views.todos, name = "todos"),
 ]
