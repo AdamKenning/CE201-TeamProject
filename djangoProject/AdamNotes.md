@@ -1,0 +1,5 @@
+- Django Admin Credentials
+    - username : calis
+    - password : szquatro
+- Todo
+  - [ ] add

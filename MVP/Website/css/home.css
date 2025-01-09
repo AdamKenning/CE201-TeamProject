@@ -55,7 +55,6 @@ body{
     padding:10px;
 
     overflow:hidden;
-    
     color: var(--color-shade-1);
     background-color: var(--color-shade-5);
 }
