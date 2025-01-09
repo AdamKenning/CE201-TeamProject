@@ -9,7 +9,7 @@
     --col-neutral-mid:      rgb(204, 204, 204);
     --col-neutral-dark:     rgb(51, 51, 51);
 
-    --col-highlight:        rgb(216, 17, 89);
+    /* --col-highlight:        rgb(216, 17, 89); */
 }
 
 body{
@@ -18,8 +18,6 @@ body{
 }
 
 .navbar{
-    /* justify-content: center; */
-    /* display: flex; */
     position: fixed;
 
     bottom: 0px;

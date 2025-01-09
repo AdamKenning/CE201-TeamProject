@@ -1,15 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}
-    <h1> Home page </h1>
-{% endblock %}
-
-{% block extra_links %}
+{% block headerExtra %}
     <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css">
-{% endblock %}
+{% endblock headerExtra %}
 
-{% block content %}
+{% block bodyExtra %}
     <header id="title">Welcome Back <b>name</b> <a id="login" href="login.html"></a></header>
     <p id="text">Lorem Ipsum text. Insert here some quick information for the user. e.g. most recent logs for a child. e.g. quick summeries of certain aspects of the childs health etc.<br> The profile pic to the right is for the child currently being viewed</p>
     <p id="backgroundImageColour"></p>
@@ -24,4 +20,4 @@
             <a id="bottomButton" href="logo.html"><i class="fa-regular fa-copyright"></i></a>
         </div>
     </div>
-{%endblock  %}
+{%endblock bodyExtra %}

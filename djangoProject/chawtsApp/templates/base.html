@@ -5,16 +5,14 @@
   <head>
     <link rel="stylesheet" href="{% static 'css/nav.css' %}" type= "text/css"/>
 
-    {% block extra_links %}
-    {% endblock %}
-
-    <title>
-      {% block title %}
-      {% endblock title %}
-    </title>
+    {% block headerExtra %}
+    {% endblock headerExtra %}
 
   </head>
   <body>
+    {% block bodyExtra %}
+    {% endblock bodyExtra %}
+
     <nav class="navbar">
       <a {% if request.path == '/food/' %}        id ="active" {% else %} id = inactive {% endif %} href="{% url 'food' %}">       food</a>
       <a {% if request.path == '/diaper/' %}      id ="active" {% else %} id = inactive {% endif %} href="{% url 'diaper' %}">     diaper</a>
@@ -28,9 +26,6 @@
       <a class="navbar-split" {% if request.path == '/settings/' %}     id ="active" {% else %} id = inactive {% endif %} href="{% url 'settings' %}">  settings</a>
       <a class="navbar-split" {% if request.path == '/login/' %}        id ="active" {% else %} id = inactive {% endif %} href="{% url 'login' %}">     login</a>
     </nav>
-
-    {% block content %}
-    {% endblock content %}
 
   </body>
 </html>
