@@ -1,3 +1,5 @@
+- Useful
+  - git log --graph --decorate $(git rev-list -g --all)
 - Django Admin Credentials
   - username : calis
   - password : szquatro
