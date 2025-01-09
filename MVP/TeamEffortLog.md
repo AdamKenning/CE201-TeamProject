@@ -166,7 +166,7 @@ We sent a hello world message to get used to branches and commits. Then we uploa
 ### Sprint 4 (University Week 6) : Researching Existing Software 
 
 Research : https://ce201-team02.atlassian.net/browse/SCRUM-37  
-We worked on the research by looking up other apps that do a similar purpose to some of our current pages – as for me I looked up sleep tracking apps to do my webpage. 
+We worked on the research by looking up other apps that do a similar purpose to some of our current pages - as for me I looked up sleep tracking apps to do my webpage. 
 
 ### Sprint 5 (University Week 7) : Creating Graphical Mock up 
 
