@@ -30,7 +30,7 @@ body {
     position: relative;
     top: -150px; 
     overflow: hidden; 
-    background-image: url('/ChawtsWebsiteRoot/media/graph-space.png');
+    background-image: url('../images/graph-space.png');
     background-size: cover;
     background-position: center;
 }
@@ -81,7 +81,7 @@ body {
     color: #555;
     border: 2px solid black; 
     top: 550px; 
-    background-image: url('/ChawtsWebsiteRoot/media/info-box-2.png');
+    background-image: url('../images/info-box-2.png');
     background-size: cover;
     background-position: center;
 }
@@ -99,7 +99,7 @@ body {
     color: #555;
     border: 2px solid black; 
     top: 150px; 
-    background-image: url('/ChawtsWebsiteRoot/media/info-box-1.png');
+    background-image: url('../images/info-box-1.png');
     background-size: cover;
     background-position: center;
 }
@@ -168,5 +168,5 @@ body {
 
 .info-box-3 {
     top: 550px; 
-    background-image: url('/ChawtsWebsiteRoot/media/info-box-3.png');
+    background-image: url('../images/info-box-3.png');
 }

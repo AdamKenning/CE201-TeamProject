@@ -1,6 +1,6 @@
 /* main css for the page*/
 body {
-    color: #000000; 
+    color: #000000;
     margin: 0;
     padding: 0;
     display: flex;
@@ -13,7 +13,7 @@ body {
     margin: 21px;
     width: 95%;
     max-width: 450px;
-    text-align: center; 
+    text-align: center;
 }
 
 /* for the inpuut boxes */

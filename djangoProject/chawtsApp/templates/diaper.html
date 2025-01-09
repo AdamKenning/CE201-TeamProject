@@ -1,1 +1,11 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block headerExtra %}
+    <link rel="stylesheet" href="{% static 'css/diaper.css' %}" type="text/css">
+    <title>Diaper</title>
+{% endblock headerExtra %}
+
+{% block bodyExtra %}
+    <header id="title">Page in construction <br> Come back soon !!</header>
+{%endblock bodyExtra %}
