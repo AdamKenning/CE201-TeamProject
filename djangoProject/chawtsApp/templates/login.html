@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block headerExtra %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" type="text/css">
+    <title>login</title>
+{% endblock headerExtra %}
+
+{% block bodyExtra %}
+    <div class="container">
+        <div id="login-section" class="form-container"> {% comment %} Login Section {% endcomment %}
+            <header>
+                <h1>CHAWTS</h1>
+                <p>Welcome back! Please log in to your account.</p>
+            </header>
+
+            <form action="/login" method="POST">
+                <label for="email">Email:</label>
+                <input type="email" id="login-email" name="email" placeholder="Enter your email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+
+                <div class="form-footer">
+                    <button type="submit">Login</button>
+                    <a href="#" onclick="showSection('forgot-password-section')">Forgot Password?</a>
+                </div>
+            </form>
+
+            <footer>
+                <p>Don't have an account? <a href="#" onclick="showSection('register-section')">Register here</a></p>
+            </footer>
+        </div>
+
+        <div id="register-section" class="form-container hidden"> {% comment %} Register Section {% endcomment %}
+            <header>
+                <h1>Register</h1>
+                <p>Create an account to get started.</p>
+            </header>
+
+            <form action="/register" method="POST">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Create a password" required>
+
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+
+                <button type="submit">Register</button>
+            </form>
+
+            <footer>
+                <p>Already have an account? <a href="#" onclick="showSection('login-section')">Log in here</a></p>
+            </footer>
+        </div>
+
+        <div id="forgot-password-section" class="form-container hidden"> {% comment %} Forgot Password Section {% endcomment %}
+            <header>
+                <h1>Forgot Password</h1>
+                <p>Enter your email to receive a password reset link.</p>
+            </header>
+
+            <form action="/forgot-password" method="POST">
+                <label for="email">Email:</label>
+                <input type="email" id="forgot-password-email" name="email" placeholder="Enter your email" required>
+                <button type="submit">Send Reset Link</button>
+            </form>
+
+            <footer>
+                <p><a href="#" onclick="showSection('login-section')">Back to Login</a></p>
+            </footer>
+
+        </div>
+
+        <div id="reset-password-section" class="form-container hidden"> {% comment %} Reset Password Section {% endcomment %}
+            <header>
+                <h1>Reset Password</h1>
+                <p>Enter your new password below.</p>
+            </header>
+
+            <form action="/reset-password" method="POST">
+                <label for="password">New Password:</label>
+                <input type="password" id="reset-password" name="password" placeholder="Enter your new password" required>
+
+                <label for="confirm-password">Confirm New Password:</label>
+                <input type="password" id="reset-confirm-password" name="confirm-password" placeholder="Confirm your new password" required>
+                <button type="submit">Reset Password</button>
+            </form>
+
+            <footer>
+                <p><a href="#" onclick="showSection('login-section')">Back to Login</a></p>
+            </footer>
+
+        </div>
+
+    </div>
+
+    <script> //JavaScript function to switch sections
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.form-container').forEach(section => {section.classList.add('hidden');});
+
+            // Show the selected section
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+    </script>
+{%endblock bodyExtra %}

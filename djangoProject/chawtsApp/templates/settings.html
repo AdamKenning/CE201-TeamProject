@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block headerExtra %}
+    <link rel="stylesheet" href="{% static 'css/settings.css' %}" type="text/css">
+    <title>Settings</title>
+{% endblock headerExtra %}
+
+{% block bodyExtra %}
+    <div class="settings-container">
+        <header class="header">
+            <div class="profile">
+                <div class="avatar">
+                </div>
+                <div class="user-info">
+                    <h2>John Doe</h2>
+                </div>
+            </div>
+            <div class="menu-icons">
+                <div class="icon">
+                </div>
+                <div class="icon">
+                </div>
+            </div>
+        </header>
+
+    <main class="settings-main">
+        <h1>Settings</h1>
+        <section class="settings-section">
+            <div class="setting-item">
+                <span>General</span>
+                <i class="fa-solid fa-gear"></i>
+            </div>
+            <div class="setting-item">
+                <span>Children</span>
+                <i class="fa-solid fa-face-smile"></i>
+            </div>
+            <div class="setting-item">
+                <span>Appearance</span>
+                <i class="fa-solid fa-moon"></i>
+            </div>
+            <div class="setting-item">
+                <span>Password & Security</span>
+                <i class="fa-solid fa-lock"></i>
+            </div>
+        </section>
+    </main>
+  </div>
+{%endblock bodyExtra %}

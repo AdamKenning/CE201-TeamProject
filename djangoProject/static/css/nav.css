@@ -1,0 +1,60 @@
+:root {
+    --col-primary:          rgb(0, 102, 255);
+    --col-primary-light:    rgb(188, 215, 255);
+
+    /* --col-secondary-one:    rgb(255, 160, 122);
+    --col-secondary-two:    rgb(255, 215, 0); */
+
+    --col-neutral-light:    rgb(249, 249, 249);
+    --col-neutral-mid:      rgb(204, 204, 204);
+    --col-neutral-dark:     rgb(51, 51, 51);
+
+    /* --col-highlight:        rgb(216, 17, 89); */
+}
+
+body{
+    background-color:var(--color-shade-5);
+    font-family: consolas;
+}
+
+.navbar{
+    position: fixed;
+
+    bottom: 0px;
+    left:0;
+    height:50px;
+    background-color:var(--col-primary);
+    width:100%;
+}
+
+.navbar #active {
+    color: var(--col-neutral-light);
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+.navbar #inactive{
+    color: var(--col-primary-light);
+    text-decoration: none;
+}
+
+.navbar a{
+    float: left;
+    align-content: center;
+    height: 100%;
+    padding: 0px 0px;
+    margin : 0px 20px;
+    transition-property: padding, margin, filter;
+    transition-duration: 0.2s;
+
+    background-color: var(--col-primary);
+}
+
+.navbar a:hover{
+    padding: 0px 20px;
+    margin : 0px 0px;
+    filter: brightness(90%);
+}
+
+.navbar .navbar-split{
+    float: right;
+}

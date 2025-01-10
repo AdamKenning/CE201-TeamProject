@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block headerExtra %}
+    <link rel="stylesheet" href="{% static 'css/food.css' %}" type="text/css">
+    <title>Food</title>
+{% endblock headerExtra %}
+
+{% block bodyExtra %}
+    <header>
+        <h1>Food Traker</h1>
+    </header>
+
+    <h2>
+        <div class="stat">
+            <p>Breakfast</p>
+            <input type="number" class="number-input" placeholder="Enter value">
+            <button class="input-button">Submit</button>
+        </div>
+        <div class="stat">
+            <p>Lunch</p>
+            <input type="number" class="number-input" placeholder="Enter value">
+            <button class="input-button">Submit</button>
+        </div>
+        <div class="stat">
+            <p>Dinner</p>
+            <input type="number" class="number-input" placeholder="Enter value">
+            <button class="input-button">Submit</button>
+        </div>
+     </h2>
+
+     <div class="stat">
+        <p>Total: <span id="total-calories">0</span> Calories (Recommend <span id="recommended-calories">2000</span> per day)</p>
+    </div>
+{%endblock bodyExtra %}

@@ -1,0 +1,15 @@
+- Useful
+  - git log --graph --decorate $(git rev-list -g --all)
+- Django Admin Credentials
+  - username : calis
+  - password : szquatro
+- Todo
+  - [X] move pages to backend
+  - [ ] add remaning pages
+    - [ ] diaper
+    - [ ] emotion
+    - [ ] medicaiton
+  - [ ] fix broken pages
+    - [ ] sleep
+    - [ ] home
+    - [ ] growth

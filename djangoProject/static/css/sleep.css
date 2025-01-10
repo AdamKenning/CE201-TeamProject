@@ -1,0 +1,172 @@
+/* Style for the main content area */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+}
+
+/* Style for the circle */
+.graph-space {
+    width: 500px;
+    height: 500px; 
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: orange;
+    font-size: 1.5rem;
+    text-align: center;
+    position: relative;
+    top: -150px; 
+    overflow: hidden; 
+    background-image: url('../images/graph-space.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Style for arrows */
+.arrow {
+    font-size: 7rem;
+    color: black;
+    cursor: pointer;
+    position: absolute;
+    top: calc(50% - 225px); 
+}
+
+.arrow-left {
+    left: calc(50% - 350px); 
+}
+
+.arrow-right {
+    right: calc(50% - 350px); 
+}
+
+/* Left Sidebar */
+.settings {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: orange;
+    color: white;
+    font-size: 1.5rem;
+    border: 2px solid black; 
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.info-box-1,
+.info-box-2 {
+    position: absolute;
+    left: 125px; 
+    width: 400px; 
+    height: 250px; 
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #555;
+    border: 2px solid black; 
+    top: 550px; 
+    background-image: url('../images/info-box-2.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.info-box-1 {
+    position: absolute;
+    left: 125px; 
+    width: 400px; 
+    height: 250px; 
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #555;
+    border: 2px solid black; 
+    top: 150px; 
+    background-image: url('../images/info-box-1.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.info-box-2 {
+    top: 550px; 
+}
+
+/* Right Sidebar */
+.upload,
+.info-box-3 {
+    position: absolute;
+    right: 125px; 
+    width: 400px; 
+    height: 250px;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #555;
+    border: 2px solid black; 
+    top: 550px; 
+    background-size: cover;
+    background-position: center;
+}
+
+.upload {
+    position: absolute;
+    right: 125px; 
+    width: 400px;
+    height: 250px;
+    background-color: #add8e6; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    font-size: 1rem;
+    color: black; 
+    padding: 20px;
+    box-sizing: border-box;
+    top: 150px; 
+    border: 2px solid black; 
+}
+
+.upload label {
+    font-size: 0.9rem; 
+    text-align: center;
+    margin-bottom: 10px; 
+}
+
+.upload input {
+    width: 90%;
+    height: 45px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    padding: 0 10px;
+    text-align: left;
+    font-size: 1rem;
+    outline: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    color: black;
+    font-family: Arial, sans-serif;
+    background-color: blue;
+}
+
+.info-box-3 {
+    top: 550px; 
+    background-image: url('../images/info-box-3.png');
+}
