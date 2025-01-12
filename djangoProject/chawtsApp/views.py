@@ -7,13 +7,14 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 
 # Create your views here.
-def food(request):          return render(request, "food.html")
-def diaper(request):        return render(request, "diaper.html")
-def medication(request):    return render(request, "medication.html")
 def home(request):          return render(request, "home.html")
-def growth(request):        return render(request, "growth.html")
-def sleep(request):         return render(request, "sleep.html")
-def emotion(request):       return render(request, "emotion.html")
+
+def food(request):          return render(request, "tracking/food.html")
+def diaper(request):        return render(request, "tracking/diaper.html")
+def medication(request):    return render(request, "tracking/medication.html")
+def growth(request):        return render(request, "tracking/growth.html")
+def sleep(request):         return render(request, "tracking/sleep.html")
+def emotion(request):       return render(request, "tracking/emotion.html")
 
 # def login(request):         return render(request, "login.html")
 def settings(request):      return render(request, "settings.html")

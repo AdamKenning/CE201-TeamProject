@@ -25,6 +25,7 @@ body{
     height:50px;
     background-color:var(--col-primary);
     width:100%;
+    
 }
 
 .navbar #active {
@@ -38,7 +39,7 @@ body{
 }
 
 .navbar a{
-    float: left;
+    float: right;
     align-content: center;
     height: 100%;
     padding: 0px 0px;
@@ -56,5 +57,5 @@ body{
 }
 
 .navbar .navbar-split{
-    float: right;
+    float: left;
 }
