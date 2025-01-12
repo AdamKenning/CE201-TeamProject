@@ -17,17 +17,30 @@
     {% endblock bodyExtra %}
 
     <nav class="navbar">
-      <a class="navbar-split" {% if request.path == '/settings/' %}     id ="active" {% else %} id = inactive {% endif %} href="{% url 'settings' %}">  settings</a>
-      <a class="navbar-split" {% if request.path == '/login/' %}        id ="active" {% else %} id = inactive {% endif %} href="{% url 'sign_up' %}">     login</a>
-      
-      <a {% if request.path == '/food/' %}        id ="active" {% else %} id = inactive {% endif %} href="{% url 'food' %}">       food</a>
-      <a {% if request.path == '/diaper/' %}      id ="active" {% else %} id = inactive {% endif %} href="{% url 'diaper' %}">     diaper</a>
-      <a {% if request.path == '/medication/' %}  id ="active" {% else %} id = inactive {% endif %} href="{% url 'medication' %}"> medication</a>
-      <a {% if request.path == '/growth/' %}      id ="active" {% else %} id = inactive {% endif %} href="{% url 'growth' %}">     growth</a>
-      <a {% if request.path == '/sleep/' %}       id ="active" {% else %} id = inactive {% endif %} href="{% url 'sleep' %}">      sleep</a>
-      <a {% if request.path == '/emotion/' %}     id ="active" {% else %} id = inactive {% endif %} href="{% url 'emotion' %}">    emotion</a>
+      <a class="navbar-split"
+        {% if request.path == '/settings/' %}   id ="active"
+        {% else %} id = inactive
+        {% endif %} href="{% url 'settings' %}">
+        Settings
+      </a>
+      <a class="navbar-split"
+        {% if   request.path == '/dashboard/' %}                id ="active"
+        {% elif request.path == '/sign_up/'%}                   id ="active"
+        {% elif request.path == '/accounts/login/'%}            id ="active"
+        {% elif request.path == '/accounts/password_change/'%}  id ="active"
+        {% else %}                                              id = inactive
+        {% endif %} href="{% url 'dashboard' %}">
+        {% if user.is_authenticated %} You {% else %} Login {% endif %}
+      </a>
 
-      <a {% if request.path == '/home/' %}        id ="active" {% else %} id = inactive {% endif %} href="{% url 'home' %}">       home</a>
+      <a {% if request.path == '/food/' %}        id ="active" {% else %} id = inactive {% endif %} href="{% url 'food' %}">       Food</a>
+      <a {% if request.path == '/diaper/' %}      id ="active" {% else %} id = inactive {% endif %} href="{% url 'diaper' %}">     Diaper</a>
+      <a {% if request.path == '/medication/' %}  id ="active" {% else %} id = inactive {% endif %} href="{% url 'medication' %}"> Medication</a>
+      <a {% if request.path == '/growth/' %}      id ="active" {% else %} id = inactive {% endif %} href="{% url 'growth' %}">     Growth</a>
+      <a {% if request.path == '/sleep/' %}       id ="active" {% else %} id = inactive {% endif %} href="{% url 'sleep' %}">      Sleep</a>
+      <a {% if request.path == '/emotion/' %}     id ="active" {% else %} id = inactive {% endif %} href="{% url 'emotion' %}">    Emotion</a>
+
+      <a {% if request.path == '/home/' %}        id ="active" {% else %} id = inactive {% endif %} href="{% url 'home' %}">       Home</a>
     </nav>
 
   </body>

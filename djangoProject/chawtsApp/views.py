@@ -21,7 +21,7 @@ def settings(request):      return render(request, "settings.html")
 
 
 def dashboard(request):
-    return render(request, "users/dashboard.html")
+    return render(request, "registration/dashboard.html")
 
 def sign_up(request):
     if request.method == "POST":
@@ -34,6 +34,8 @@ def sign_up(request):
         form = UserCreationForm()
     return render(request, "registration/sign_up.html", {"form": form})
 
+
+# ignore (testing list models etc)
 def todos(request):
     items = TodoItem.objects.all()
     return render(request, "todos.html", {"todos": items})
