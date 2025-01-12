@@ -5,11 +5,17 @@
   - password : szquatro
 - Todo
   - [X] move pages to backend
-  - [ ] add remaning pages
-    - [ ] diaper
-    - [ ] emotion
-    - [ ] medicaiton
-  - [ ] fix broken pages
-    - [ ] sleep
+  - [X] add remaning pages
+    - [X] diaper
+    - [X] emotion
+    - [X] medicaiton
+  - [X] fix broken pages
+    - [X] sleep
     - [ ] home
     - [ ] growth
+  - [X] Add user system
+    - [X] Add login
+    - [X] Add register
+    - [X] Add password change and rest of stuff
+  - [ ] Re-Introduce Zubair login html/css
+  - [ ]

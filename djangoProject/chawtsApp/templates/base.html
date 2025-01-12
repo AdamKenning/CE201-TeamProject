@@ -27,7 +27,7 @@
 
 
       <a class="navbar-split" {% if request.path == '/settings/' %}     id ="active" {% else %} id = inactive {% endif %} href="{% url 'settings' %}">  settings</a>
-      <a class="navbar-split" {% if request.path == '/login/' %}        id ="active" {% else %} id = inactive {% endif %} href="{% url 'signup' %}">     login</a>
+      <a class="navbar-split" {% if request.path == '/login/' %}        id ="active" {% else %} id = inactive {% endif %} href="{% url 'sign_up' %}">     login</a>
     </nav>
 
   </body>

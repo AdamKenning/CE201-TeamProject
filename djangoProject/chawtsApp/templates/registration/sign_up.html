@@ -1,18 +1,17 @@
 {% extends "base.html" %}
-{% load static %}
 
 {% block headerExtra %}
-    <title>signup</title>
 {% endblock headerExtra %}
 
+
 {% block bodyExtra %}
-    <h2>signup</h2>
+    <h2>Sign Up</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Sign Up" />
     </form>
     <p>
-        <a href="{% url 'home' %}">Back to Home</a>
+        <a href="{% url 'dashboard' %}">Back to dashboard</a>
     </p>
-{%endblock bodyExtra %}
+{% endblock bodyExtra %}

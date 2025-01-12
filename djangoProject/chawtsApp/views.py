@@ -18,17 +18,20 @@ def emotion(request):       return render(request, "emotion.html")
 # def login(request):         return render(request, "login.html")
 def settings(request):      return render(request, "settings.html")
 
-def signup(request):
+
+def dashboard(request):
+    return render(request, "users/dashboard.html")
+
+def sign_up(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect(reverse("home"))
+            return redirect(reverse("dashboard"))
     else:
         form = UserCreationForm()
-    return render(request, "signup.html", {"form": form})
-
+    return render(request, "registration/sign_up.html", {"form": form})
 
 def todos(request):
     items = TodoItem.objects.all()
