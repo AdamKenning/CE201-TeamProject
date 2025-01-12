@@ -11,7 +11,6 @@
         {{ form.as_p }}
         <input type="submit" value="Sign Up" />
     </form>
-    <p>
-        <a href="{% url 'dashboard' %}">Back to dashboard</a>
-    </p>
+    <a href="{% url 'dashboard' %}">Back to dashboard</a>
+    <a href="{% url 'home' %}">Home</a>
 {% endblock bodyExtra %}
