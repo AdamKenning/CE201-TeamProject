@@ -17,7 +17,7 @@ body{
     width: 100%;
     z-index: -2;
 }
-/* #backgroundImageColour{
+#backgroundImageColour{
     position: absolute;
     background-color: var(--color-shade-5);
     opacity: 60%;
@@ -27,7 +27,7 @@ body{
     height:205px;
     width: 100%;
     z-index: -1;
-} */
+}
 
 #title{
     position: absolute;
