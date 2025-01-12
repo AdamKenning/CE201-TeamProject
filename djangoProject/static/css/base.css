@@ -1,0 +1,18 @@
+:root {
+    --col-primary:          rgb(0, 102, 255);
+    --col-primary-light:    rgb(188, 215, 255);
+
+    /* --col-secondary-one:    rgb(255, 160, 122);
+    --col-secondary-two:    rgb(255, 215, 0); */
+
+    --col-neutral-light:    rgb(249, 249, 249);
+    --col-neutral-mid:      rgb(204, 204, 204);
+    --col-neutral-dark:     rgb(51, 51, 51);
+
+    /* --col-highlight:        rgb(216, 17, 89); */
+}
+
+body{
+    background-color:var(--color-shade-5);
+    font-family: consolas;
+}
