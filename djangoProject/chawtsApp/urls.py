@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from django.shortcuts import redirect
 from . import views
 
@@ -13,8 +13,10 @@ urlpatterns = [
     path("sleep/",      views.sleep,        name = "sleep"),
     path("emotion/",    views.emotion,      name = "emotion"),
 
-    path("login/",      views.login,        name = "login"),
     path("settings/",   views.settings,     name = "settings"),
+
+    path("signup/",     views.signup,       name = "signup"),
+    path("accounts/", include("django.contrib.auth.urls")),
 
     path("todos/", views.todos, name = "todos"),
 ]

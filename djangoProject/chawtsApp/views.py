@@ -1,6 +1,11 @@
 from django.shortcuts import render, HttpResponse
 from . models import TodoItem
 
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import redirect, render
+from django.urls import reverse
+
 # Create your views here.
 def food(request):          return render(request, "food.html")
 def diaper(request):        return render(request, "diaper.html")
@@ -10,8 +15,20 @@ def growth(request):        return render(request, "growth.html")
 def sleep(request):         return render(request, "sleep.html")
 def emotion(request):       return render(request, "emotion.html")
 
-def login(request):         return render(request, "login.html")
+# def login(request):         return render(request, "login.html")
 def settings(request):      return render(request, "settings.html")
+
+def signup(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect(reverse("home"))
+    else:
+        form = UserCreationForm()
+    return render(request, "signup.html", {"form": form})
+
 
 def todos(request):
     items = TodoItem.objects.all()

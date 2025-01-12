@@ -7,7 +7,8 @@
 {% endblock headerExtra %}
 
 {% block bodyExtra %}
-    <header id="title">Welcome Back <b>name</b> <a id="login" href="login.html"></a></header>
+    Hello, {{ user.username|default:"Guest" }}!
+    {% comment %} <header id="title">Welcome Back <b>name</b> <a id="login" href="login.html"></a></header> {% endcomment %}
 
     <p id="text">Lorem Ipsum text. Insert here some quick information for the user. e.g. most recent logs for a child. e.g. quick summeries of certain aspects of the childs health etc.<br> The profile pic to the right is for the child currently being viewed</p>
     <p id="backgroundImageColour"></p>
