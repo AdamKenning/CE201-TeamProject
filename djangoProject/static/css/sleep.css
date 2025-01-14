@@ -1,5 +1,9 @@
 /* Style for the main content area */
-body {
+.body-extra { /* adjust from body to body-extra to work with other pages lmk if it breaks stuff sorry */
+    width: calc(100vw - var(--sidebar-width));
+    height: 100vh;
+    margin-left: var(--sidebar-width);
+
     margin: 0;
     padding: 0;
     overflow: hidden; /* Prevent scrolling */

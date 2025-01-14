@@ -5,11 +5,14 @@
     --sidebar-width-open: 200px;
 }
 
-/* * {
+* {
     outline: 1px solid rgb(255, 142, 142);
-} */
+}
 
 .sidebar {
+    position: fixed;
+    z-index: 1000;
+
     background-color: var(--col-primary);
     color: var(--col-neutral-light);
     height: 100vh;

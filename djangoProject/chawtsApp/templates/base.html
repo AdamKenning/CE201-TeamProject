@@ -14,11 +14,15 @@
 
   </head>
   <body>
-    {% block bodyNavbar %}
-    {% endblock bodyNavbar %}
+    <section class="navbar">
+      {% block bodyNavbar %}
+      {% endblock bodyNavbar %}
+    </section>
 
-    {% block bodyExtra %}
-    {% endblock bodyExtra %}
+    <section class="body-extra">
+      {% block bodyExtra %}
+      {% endblock bodyExtra %}
+    </section>
 
   </body>
 </html>

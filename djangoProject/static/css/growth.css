@@ -1,7 +1,10 @@
 /* main css for the page*/
-body {
+.body-extra { /* adjust from body to body-extra to work with other pages lmk if it breaks stuff */
+    width: calc(100vw - var(--sidebar-width));
+    height: 100vh;
+    margin-left: var(--sidebar-width);
+
     color: #000000;
-    margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
