@@ -1,4 +1,5 @@
 :root {
+    --col-primary-dark:   rgb(0, 80, 199);
     --col-primary:          rgb(0, 102, 255);
     --col-primary-light:    rgb(188, 215, 255);
 
@@ -15,4 +16,6 @@
 body{
     background-color:var(--color-shade-5);
     font-family: consolas;
+    margin: 0;
+    display: flex;
 }

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block headNavbar %}
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/sidebar.css' %}" type= "text/css"/>
+  <script src="{% static 'js/sidebar.js' %}" defer></script>
+{% endblock headNavbar %}
+
+{% block headExtra %}
+{% endblock headExtra %}
+
+{% block bodyExtra %}
+{% endblock bodyExtra %}
+
+{% block bodyNavbar %}
+  <div class="sidebar" id="sidebar">
+    <ul class="menu">
+
+        <li class="menu-item">
+            <i class="fa fa-bars"></i>
+            <span class="menu-text">Website Name</span>
+        </li>
+
+        <hr class="menu-separator">
+
+        <li class="menu-item">
+          <i class="fa-solid fa-home"></i>
+          <span class="menu-text">Home</span>
+        </li>
+        <li class="menu-item">
+            <i class="fa-solid fa-cog"></i>
+            <span class="menu-text">Settings</span>
+        </li>
+        <li class="menu-item">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <span class="menu-text">About</span>
+        </li>
+
+        <hr class="menu-separator">
+
+        <li class="menu-item">
+            <i class="fa-solid fa-utensils" ></i>
+            <span class="menu-text">Food</span>
+        </li>
+        <li class="menu-item">
+            <i class="fa-solid fa-toilet-paper"></i>
+            <span class="menu-text">Diaper</span>
+        </li>
+        <li class="menu-item">
+            <i class="fa-solid fa-pills"></i>
+            <span class="menu-text">Medication</span>
+        </li>
+        <li class="menu-item">
+            <i class="fa-solid fa-chart-line"></i>
+            <span class="menu-text">Growth</span>
+        </li>
+        <li class="menu-item">
+            <i class="fa-solid fa-bed"></i>
+            <span class="menu-text">Sleep</span>
+        </li>
+        <li class="menu-item">
+            <i class="fa-solid fa-face-laugh-beam"></i>
+            <span class="menu-text">Emotion</span>
+        </li>
+
+        <hr class="menu-separator">
+
+        <div class="bottom-items"">
+            <hr class="menu-separator">
+
+            <li class="menu-item">
+                <i class="fa-solid fa-children"></i>
+                <span class="menu-text">Child : Alexis</span>
+            </li>
+
+            <li class="menu-item">
+                <i class="fa-solid fa-user"></i>
+                <span class="menu-text">Login</span>
+            </li>
+        </div>
+
+    </ul>
+  </div>
+{% endblock bodyNavbar %}

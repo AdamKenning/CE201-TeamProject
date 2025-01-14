@@ -9,16 +9,9 @@
     outline: 1px solid red;
 }
 
-body {
-    background-color: white;
-    margin: 0;
-    display: flex;
-    font-family: Arial, sans-serif;
-}
-
 .sidebar {
-    background-color: #333;
-    color: white;
+    background-color: var(--col-primary);
+    color: var(--col-neutral-light);
     height: 100vh;
     display: flex;
 
@@ -36,6 +29,8 @@ body {
     color: inherit;
 }
 
+
+
 .menu {
     padding: 0;
     margin: 0;
@@ -46,7 +41,7 @@ body {
 
 .menu-separator {
     border: none;
-    border-top: 3px solid #585858;
+    border-top: 3px solid var(--col-neutral-light);
     margin: 0px 5px;
     width:var(--sidebar-width) - 10px;
     transition: width var(--transition-duration-closing) ease;
@@ -62,13 +57,14 @@ body {
 
 
 .menu-item {
+    
     display: flex;
     padding: 10px 0px;
     cursor: pointer;
     white-space: nowrap;
 }
 .menu-item:hover {
-    background-color: #555;
+    background-color: var(--col-primary-dark);
 }
 
 .bottom-items {
