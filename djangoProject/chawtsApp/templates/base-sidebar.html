@@ -18,67 +18,78 @@
   <div class="sidebar" id="sidebar">
     <ul class="menu">
 
-        <li class="menu-item">
+        <a class="menu-item">
             <i class="fa fa-bars"></i>
-            <span class="menu-text">Website Name</span>
-        </li>
+            <span class="menu-text">Chawts</span>
+        </a>
 
         <hr class="menu-separator">
 
-        <li class="menu-item">
+        <a class="menu-item" href="{% url 'home' %}"
+        {% if request.path == '/home/' %} id ="active" {% else %} id = inactive {% endif %}>
           <i class="fa-solid fa-home"></i>
           <span class="menu-text">Home</span>
-        </li>
-        <li class="menu-item">
+        </a>
+        <a class="menu-item" href="{% url 'settings' %}"
+        {% if request.path == '/settings/' %} id ="active" {% else %} id = inactive {% endif %}>
             <i class="fa-solid fa-cog"></i>
             <span class="menu-text">Settings</span>
-        </li>
-        <li class="menu-item">
+        </a>
+        <a class="menu-item" href="{% url 'home' %}"
+        {% if request.path == '/about/' %} id ="active" {% else %} id = inactive {% endif %}>
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
             <span class="menu-text">About</span>
-        </li>
+        </a>
 
         <hr class="menu-separator">
 
-        <li class="menu-item">
+        <a class="menu-item" href="{% url 'food' %}"
+        {% if request.path == '/food/' %} id ="active" {% else %} id = inactive {% endif %}>
             <i class="fa-solid fa-utensils" ></i>
             <span class="menu-text">Food</span>
-        </li>
-        <li class="menu-item">
+        </a>
+        <a class="menu-item" href="{% url 'diaper' %}"
+        {% if request.path == '/diaper/' %} id ="active" {% else %} id = inactive {% endif %}>
             <i class="fa-solid fa-toilet-paper"></i>
             <span class="menu-text">Diaper</span>
-        </li>
-        <li class="menu-item">
+        </a>
+        <a class="menu-item" href="{% url 'medication' %}"
+        {% if request.path == '/medication/' %} id ="active" {% else %} id = inactive {% endif %}>
             <i class="fa-solid fa-pills"></i>
             <span class="menu-text">Medication</span>
-        </li>
-        <li class="menu-item">
+        </a>
+        <a class="menu-item" href="{% url 'growth' %}"
+        {% if request.path == '/growth/' %} id ="active" {% else %} id = inactive {% endif %}>
             <i class="fa-solid fa-chart-line"></i>
             <span class="menu-text">Growth</span>
-        </li>
-        <li class="menu-item">
+        </a>
+        <a class="menu-item" href="{% url 'sleep' %}"
+        {% if request.path == '/sleep/' %} id ="active" {% else %} id = inactive {% endif %}>
             <i class="fa-solid fa-bed"></i>
             <span class="menu-text">Sleep</span>
-        </li>
-        <li class="menu-item">
+        </a>
+        <a class="menu-item" href="{% url 'emotion' %}"
+        {% if request.path == '/emotion/' %} id ="active" {% else %} id = inactive {% endif %}>
             <i class="fa-solid fa-face-laugh-beam"></i>
             <span class="menu-text">Emotion</span>
-        </li>
+        </a>
 
         <hr class="menu-separator">
 
-        <div class="bottom-items"">
+        <div class="menu-bottom"">
             <hr class="menu-separator">
 
-            <li class="menu-item">
+            <a class="menu-item" href="{% url 'home' %}"
+            {% if request.path == '/children/' %} id ="active" {% else %} id = inactive {% endif %}>
                 <i class="fa-solid fa-children"></i>
-                <span class="menu-text">Child : Alexis</span>
-            </li>
+                <span class="menu-text">Child Name</span>
+            </a>
 
-            <li class="menu-item">
+            <a class="menu-item" href="{% url 'dashboard' %}"
+            {% if request.path == '/dashboard/' %} id ="active" {% else %} id = inactive {% endif %}>
                 <i class="fa-solid fa-user"></i>
-                <span class="menu-text">Login</span>
-            </li>
+                <span class="menu-text">{{ user.username|default:"Login" }}</span>
+            </a>
         </div>
 
     </ul>

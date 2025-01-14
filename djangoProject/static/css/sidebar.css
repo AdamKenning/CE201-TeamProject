@@ -1,12 +1,12 @@
 :root {
     --transition-duration-opening: 0.3s;
     --transition-duration-closing: 1s;
-    --sidebar-width: 40px;
+    --sidebar-width: 50px;
     --sidebar-width-open: 200px;
 }
 
 * {
-    outline: 1px solid red;
+    outline: 1px solid rgb(255, 142, 142);
 }
 
 .sidebar {
@@ -24,12 +24,16 @@
     transition: width var(--transition-duration-opening) ease;
 }
 
-.sidebar a {
+
+#active {
+    color: var(--col-secondary);
     text-decoration: none;
-    color: inherit;
 }
 
-
+#inactive {
+    color: var(--col-neutral-light);
+    text-decoration: none;
+}
 
 .menu {
     padding: 0;
@@ -42,14 +46,14 @@
 .menu-separator {
     border: none;
     border-top: 3px solid var(--col-neutral-light);
-    margin: 0px 5px;
+    margin: 0px 7px;
     width:var(--sidebar-width) - 10px;
     transition: width var(--transition-duration-closing) ease;
     transition: margin var(--transition-duration-closing) ease;
 }
 
 .sidebar.open .menu-separator {
-    margin: 0px 20px;
+    margin: 0px;
     width:var(--sidebar-width-open) - 40px;
     transition: width var(--transition-duration-opening) ease;
     transition: margin var(--transition-duration-opening) ease;
@@ -57,7 +61,6 @@
 
 
 .menu-item {
-    
     display: flex;
     padding: 10px 0px;
     cursor: pointer;
@@ -67,7 +70,8 @@
     background-color: var(--col-primary-dark);
 }
 
-.bottom-items {
+
+.menu-bottom{
     margin-top: auto;
 }
 
@@ -76,29 +80,31 @@
     justify-content: center;
     align-items: center;
     margin:0px 10px;
-    width: 20px;
+    width: calc(var(--sidebar-width) - 20px);
+    height: calc(var(--sidebar-width) - 25px);
+    font-size: 20px;
 }
 
 .sidebar.open .menu-item i {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20px;
 }
 
 .menu-text {
     overflow: hidden;
     justify-items: right;
-    font-size: 16px;
+    font-size: 20px;
 
     width:0px;
     transition: width var(--transition-duration-closing) ease;
-
 }
 
 .sidebar.open .menu-text {
     pointer-events: none;
-    width: 150px;
+    width: 110px;
     transition: width var(--transition-duration-opening) ease;
 }
+
+
 

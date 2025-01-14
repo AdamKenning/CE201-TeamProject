@@ -1,10 +1,9 @@
 :root {
-    --col-primary-dark:   rgb(0, 80, 199);
-    --col-primary:          rgb(0, 102, 255);
-    --col-primary-light:    rgb(188, 215, 255);
+    --col-primary-dark:   rgb(51, 58, 115);
+    --col-primary:          rgb(56, 122, 223);
+    --col-primary-light:    rgb(80, 196, 237);
 
-    /* --col-secondary-one:    rgb(255, 160, 122);
-    --col-secondary-two:    rgb(255, 215, 0); */
+    --col-secondary:    rgb(251, 168, 52);
 
     --col-neutral-light:    rgb(249, 249, 249);
     --col-neutral-mid:      rgb(204, 204, 204);
