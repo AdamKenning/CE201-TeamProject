@@ -7,19 +7,33 @@
 {% endblock headExtra %}
 
 {% block bodyExtra %}
-    <header id="title">Welcome Back <b>name</b> <a id="login" href="login.html"></a></header>
+    <section class="section-top">
+    </section>
 
-    <p id="text">Lorem Ipsum text. Insert here some quick information for the user. e.g. most recent logs for a child. e.g. quick summeries of certain aspects of the childs health etc.<br> The profile pic to the right is for the child currently being viewed</p>
-    <p id="backgroundImageColour"></p>
-    <p id="backgroundImageBlur"></p>
+    <section class="section-main">
+        <article class="recent-updates">
+        </article>
+    </section>
 
-    <div id="containerButtons">
-        <a id="profilePic" href="profile.html"><i class="fa-regular fa-user"></i></a>
-        <a id="childName">Child 1</a>
+    <section class="section-right">
+        <p class="user-name">{{ user.username|default:"Login" }}</p>
+        <img class="user-icon" src="https://randomuser.me/api/portraits/men/38.jpg"/>
+        <ul class="list-children">
+            <li class="list-child">
+            </li>
+            <li class="list-child">
+            </li>
+            <li class="list-child">
+            </li>
+            <li class="list-child">
+            </li>
+            <li class="list-child">
+            </li>
 
-        <div id="bottomButtons">
-            <a id="bottomButton" href="settings.html"><i class="fas fa-cog"></i></a>
-            <a id="bottomButton" href="logo.html"><i class="fa-regular fa-copyright"></i></a>
-        </div>
-    </div>
+        </ul>
+    </section>
+
+    <section class ="section-bottom">
+
+    </section>
 {%endblock bodyExtra %}
