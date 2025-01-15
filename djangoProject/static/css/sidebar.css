@@ -1,12 +1,8 @@
 :root {
-    --transition-duration-opening: 0.3s;
-    --transition-duration-closing: 1s;
-    --sidebar-width: 50px;
+    --sidebar-opening: 0.3s;
+    --sidebar-closing: 1s;
+    --sidebar-width-closed: 40px;
     --sidebar-width-open: 200px;
-}
-
-* {
-    outline: 1px solid rgb(255, 142, 142);
 }
 
 .sidebar {
@@ -18,13 +14,13 @@
     height: 100vh;
     display: flex;
 
-    width:var(--sidebar-width);
-    transition: width var(--transition-duration-closing) ease;
+    width:var(--sidebar-width-closed);
+    transition: width var(--sidebar-closing) ease;
 }
 
 .sidebar.open {
     width:var(--sidebar-width-open);
-    transition: width var(--transition-duration-opening) ease;
+    transition: width var(--sidebar-opening) ease;
 }
 
 
@@ -50,16 +46,16 @@
     border: none;
     border-top: 3px solid var(--col-neutral-light);
     margin: 0px 7px;
-    width:var(--sidebar-width) - 10px;
-    transition: width var(--transition-duration-closing) ease;
-    transition: margin var(--transition-duration-closing) ease;
+    width:var(--sidebar-width-closed) - 10px;
+    transition: width var(--sidebar-closing) ease;
+    transition: margin var(--sidebar-closing) ease;
 }
 
 .sidebar.open .menu-separator {
     margin: 0px;
     width:var(--sidebar-width-open) - 40px;
-    transition: width var(--transition-duration-opening) ease;
-    transition: margin var(--transition-duration-opening) ease;
+    transition: width var(--sidebar-opening) ease;
+    transition: margin var(--sidebar-opening) ease;
 }
 
 
@@ -83,7 +79,7 @@
     justify-content: center;
     align-items: center;
     margin:0px 10px;
-    width: 30px;
+    width: 20px;
     height: 20px;
     font-size: 20px;
 }
@@ -95,18 +91,20 @@
 }
 
 .menu-text {
+
     overflow: hidden;
     justify-items: right;
+    height: 20px;
     font-size: 20px;
 
     width:0px;
-    transition: width var(--transition-duration-closing) ease;
+    transition: width var(--sidebar-closing) ease;
 }
 
 .sidebar.open .menu-text {
     pointer-events: none;
-    width: 110px;
-    transition: width var(--transition-duration-opening) ease;
+    width: 150px;
+    transition: width var(--sidebar-opening) ease;
 }
 
 

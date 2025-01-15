@@ -9,8 +9,10 @@
     --col-neutral-mid:      rgb(204, 204, 204);
     --col-neutral-dark:     rgb(51, 51, 51);
 
-    /* --col-highlight:        rgb(216, 17, 89); */
+    --col-highlight:        rgb(216, 17, 89);
 }
+
+* {outline: 1px solid red;}
 
 body{
     background-color:var(--color-shade-5);
