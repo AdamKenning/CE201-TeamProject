@@ -1,0 +1,110 @@
+:root {
+    --transition-duration-opening: 0.3s;
+    --transition-duration-closing: 1s;
+    --sidebar-width: 40px;
+    --sidebar-width-open: 200px;
+}
+
+* {
+    outline: 1px solid red;
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    display: flex;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    background-color: #333;
+    color: white;
+    height: 100vh;
+    display: flex;
+
+    width:var(--sidebar-width);
+    transition: width var(--transition-duration-closing) ease;
+}
+
+.sidebar.open {
+    width:var(--sidebar-width-open);
+    transition: width var(--transition-duration-opening) ease;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+.menu {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.menu-separator {
+    border: none;
+    border-top: 3px solid #585858;
+    margin: 0px 5px;
+    width:var(--sidebar-width) - 10px;
+    transition: width var(--transition-duration-closing) ease;
+    transition: margin var(--transition-duration-closing) ease;
+}
+
+.sidebar.open .menu-separator {
+    margin: 0px 20px;
+    width:var(--sidebar-width-open) - 40px;
+    transition: width var(--transition-duration-opening) ease;
+    transition: margin var(--transition-duration-opening) ease;
+}
+
+
+.menu-item {
+    display: flex;
+    padding: 10px 0px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.menu-item:hover {
+    background-color: #555;
+}
+
+.bottom-items {
+    margin-top: auto;
+}
+
+.menu-item i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0px 10px;
+    width: 20px;
+}
+
+.sidebar.open .menu-item i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+}
+
+.menu-text {
+    overflow: hidden;
+    justify-items: right;
+    font-size: 16px;
+
+    width:0px;
+    transition: width var(--transition-duration-closing) ease;
+
+}
+
+.sidebar.open .menu-text {
+    pointer-events: none;
+    width: 150px;
+    transition: width var(--transition-duration-opening) ease;
+}
+

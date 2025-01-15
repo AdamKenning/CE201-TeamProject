@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="navTest.css">
+  <script src="navTest.js" defer></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
+
+  <title>Collapsible Sidebar</title>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <ul class="menu">
+
+            <li class="menu-item" id="close-button" onclick="toggleSidebar()">
+                <i class="fa fa-bars"></i>
+                <span class="menu-text">Website Name</span>
+            </li>
+
+            <hr class="menu-separator">
+
+            <a class="menu-item" href="{% url 'home' %}">
+                  <i class="fa-solid fa-home"></i>
+                  <span class="menu-text">Home</span>
+            </a>
+            <li class="menu-item">
+                <i class="fa-solid fa-cog"></i>
+                <span class="menu-text">Settings</span>
+            </li>
+            <li class="menu-item">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                <span class="menu-text">About</span>
+            </li>
+
+            <hr class="menu-separator">
+
+            <li class="menu-item">
+                <i class="fa-solid fa-utensils" ></i>
+                <span class="menu-text">Food</span>
+            </li>
+            <li class="menu-item">
+                <i class="fa-solid fa-toilet-paper"></i>
+                <span class="menu-text">Diaper</span>
+            </li>
+            <li class="menu-item">
+                <i class="fa-solid fa-pills"></i>
+                <span class="menu-text">Medication</span>
+            </li>
+            <li class="menu-item">
+                <i class="fa-solid fa-chart-line"></i>
+                <span class="menu-text">Growth</span>
+            </li>
+            <li class="menu-item">
+                <i class="fa-solid fa-bed"></i>
+                <span class="menu-text">Sleep</span>
+            </li>
+            <li class="menu-item">
+                <i class="fa-solid fa-face-laugh-beam"></i>
+                <span class="menu-text">Emotion</span>
+            </li>
+
+            <hr class="menu-separator">
+
+            <div class="bottom-items"">
+                <hr class="menu-separator">
+
+                <li class="menu-item">
+                    <i class="fa-solid fa-children"></i>
+                    <span class="menu-text">Child : Alexis</span>
+                </li>
+
+                <li class="menu-item">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="menu-text">Login</span>
+                </li>
+            </div>
+
+        </ul>
+    </div>
+
+  <div class="content">
+    <h1>Welcome!</h1>* {
+    outline: 1px solid red; /* Thin red outline around all elements */
+}
+
+    <p>Click the menu button to toggle the sidebar.</p>
+  </div>
+</body>
+</html>
+
+
+

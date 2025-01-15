@@ -1,0 +1,111 @@
+:root {
+    --sidebar-opening: 0.3s;
+    --sidebar-closing: 1s;
+    --sidebar-width-closed: 40px;
+    --sidebar-width-open: 200px;
+}
+
+.sidebar {
+    position: fixed;
+    z-index: 1000;
+
+    background-color: var(--col-primary);
+    color: var(--col-neutral-light);
+    height: 100vh;
+    display: flex;
+
+    width:var(--sidebar-width-closed);
+    transition: width var(--sidebar-closing) ease;
+}
+
+.sidebar.open {
+    width:var(--sidebar-width-open);
+    transition: width var(--sidebar-opening) ease;
+}
+
+
+#active {
+    color: var(--col-secondary);
+    text-decoration: none;
+}
+
+#inactive {
+    color: var(--col-neutral-light);
+    text-decoration: none;
+}
+
+.menu {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.menu-separator {
+    border: none;
+    border-top: 3px solid var(--col-neutral-light);
+    margin: 0px 7px;
+    width:var(--sidebar-width-closed) - 10px;
+    transition: width var(--sidebar-closing) ease;
+    transition: margin var(--sidebar-closing) ease;
+}
+
+.sidebar.open .menu-separator {
+    margin: 0px;
+    width:var(--sidebar-width-open) - 40px;
+    transition: width var(--sidebar-opening) ease;
+    transition: margin var(--sidebar-opening) ease;
+}
+
+
+.menu-item {
+    display: flex;
+    padding: 10px 0px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.menu-item:hover {
+    background-color: var(--col-primary-dark);
+}
+
+
+.menu-bottom{
+    margin-top: auto;
+}
+
+.menu-item i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0px 10px;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+}
+
+.sidebar.open .menu-item i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-text {
+
+    overflow: hidden;
+    justify-items: right;
+    height: 20px;
+    font-size: 20px;
+
+    width:0px;
+    transition: width var(--sidebar-closing) ease;
+}
+
+.sidebar.open .menu-text {
+    pointer-events: none;
+    width: 150px;
+    transition: width var(--sidebar-opening) ease;
+}
+
+
+

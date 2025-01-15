@@ -1,5 +1,8 @@
-body {
-    margin: 0;
+.body-extra { /* adjust from body to body-extra to work with other pages lmk if it breaks stuff sorry */
+    width: calc(100vw - var(--sidebar-width-closed));
+    height: 100vh;
+    margin-left: var(--sidebar-width-closed);
+
     padding: 0;
     background-color:white;
     color: #333;

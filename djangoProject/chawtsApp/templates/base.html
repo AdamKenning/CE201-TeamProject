@@ -6,20 +6,23 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type= "text/css"/>
 
+    {% block headSidebar %}
+    {% endblock headSidebar %}
+
     {% block headExtra %}
     {% endblock headExtra %}
 
-    {% block headNavbar %}
-    {% endblock headNavbar %}
-
   </head>
   <body>
+    <section class="navbar">
+      {% block bodySidebar %}
+      {% endblock bodySidebar %}
+    </section>
 
-    {% block bodyExtra %}
-    {% endblock bodyExtra %}
-
-    {% block bodyNavbar %}
-    {% endblock bodyNavbar %}
+    <section class="body-extra">
+      {% block bodyExtra %}
+      {% endblock bodyExtra %}
+    </section>
 
   </body>
 </html>
