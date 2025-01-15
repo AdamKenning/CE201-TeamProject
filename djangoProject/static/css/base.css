@@ -12,7 +12,8 @@
     --col-highlight:        rgb(216, 17, 89);
 }
 
-* {outline: 1px solid red;}
+/* For debugging */
+/* * {outline: 1px solid red;} */
 
 body{
     background-color:var(--color-shade-5);
