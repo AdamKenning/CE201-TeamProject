@@ -15,12 +15,23 @@
     display: flex;
 
     width:var(--sidebar-width-closed);
-    transition: width var(--sidebar-closing) ease;
+    transition: width var(--sidebar-closing) ease,
+                border-width var(--sidebar-closing) ease,
+                border-color var(--sidebar-closing) ease;
+
+
+    border-right: 0px solid var(--col-primary);
+    transition: border-width 0.3;
 }
 
 .sidebar.open {
     width:var(--sidebar-width-open);
-    transition: width var(--sidebar-opening) ease;
+    transition: width var(--sidebar-opening) ease,
+                border-width var(--sidebar-opening) ease,
+                border-color var(--sidebar-opening) ease;
+
+    border-width: 6px;
+    border-color: var(--col-neutral-light);
 }
 
 
@@ -91,11 +102,10 @@
 }
 
 .menu-text {
-
     overflow: hidden;
-    justify-items: right;
     height: 20px;
     font-size: 20px;
+
 
     width:0px;
     transition: width var(--sidebar-closing) ease;
@@ -104,7 +114,13 @@
 .sidebar.open .menu-text {
     pointer-events: none;
     width: 150px;
-    transition: width var(--sidebar-opening) ease;
+    margin-left:0px;
+    transition: width var(--sidebar-opening) ease,
+                margin var(--sidebar-opening) ease;
+}
+
+.menu-item:hover .menu-text{
+    margin-left: 10px;
 }
 
 

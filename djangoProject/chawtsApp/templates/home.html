@@ -8,18 +8,17 @@
 
 {% block bodyExtra %}
     <section class="section-top">
-        <p class="welcome">Welcome back username</p>
-        <img class="user-icon" src="https://randomuser.me/api/portraits/men/3.jpg"/>
-        {% comment %} <p class="user-name">{{ user.username|default:"Login" }}</p> {% endcomment %}
-    </section>
-
-    <section class="section-page-name">
-        <p class="page-name">Dashboard</p>
+        <article class="welcome">
+            <img class="welcome-logo" src="{% static 'images/logoTemp.png' %}" alt="logo"/>
+            <p class="welcome-message">Welcome back username</p>
+            <img class="welcome-icon" src="https://randomuser.me/api/portraits/men/3.jpg"/>
+        </article>
+        <p class="title">Dashboard</p>
     </section>
 
     <section class="section-main">
         <article class="recentUpdates">
-            <p class="recentUpdates-name">recent updates</p>
+            <p class="recentUpdates-name">Recent Updates</p>
             <ul class="recentUpdates-list">
                 <li class="recentUpdates-listItem" id="today">
                     <img class="recentUpdates-icon" src="https://randomuser.me/api/portraits/women/5.jpg"/>
@@ -42,7 +41,7 @@
                     <p class="recentUpdates-type">Food</p>
                     <p class="recentUpdates-time">10:25pm</p>
                     <p class="recentUpdates-date">Yesterday</p>
-                    <p class="recentUpdates-text">Duis et cursus purus. Duis egestas id nisi rutrum congue</p>
+                    <p class="recentUpdates-text">Duis et cursus purus.</p>
                 </li>
 
                 <li class="recentUpdates-listItem">
@@ -55,34 +54,38 @@
             </ul>
         </article>
 
-        {% comment %} <article class="graph">
-
+        {% comment %} <article class="something">
         </article> {% endcomment %}
-    </section>
 
-    <section class="section-right">
-        <ul class="list-children">
-            <li class="list-child">
-                <img class="child-icon" src="https://randomuser.me/api/portraits/men/1.jpg"/>
-                <p class="child-name"> Name </p>
-                <p class="child-info"> Info </p>
-            </li>
-            <li class="list-child">
-                <img class="child-icon" src="https://randomuser.me/api/portraits/women/2.jpg"/>
-            </li>
-            <li class="list-child">
-                <img class="child-icon" src="https://randomuser.me/api/portraits/men/3.jpg"/>
-            </li>
-            <li class="list-child">
-                <img class="child-icon" src="https://randomuser.me/api/portraits/women/4.jpg"/>
-            </li>
-            <li class="list-child">
-                <img class="child-icon" src="https://randomuser.me/api/portraits/men/5.jpg"/>
-            </li>
-            <li class="list-child">
-                <img class="child-icon" src="https://randomuser.me/api/portraits/women/6.jpg"/>
-            </li>
-        </ul>
+        <article class="graph">
+            <p class="graph-name">Graph</p>
+        </article>
+
+        <article class="children">
+            <ul class="children-list">
+                <li class="children-listitem">
+                    <img class="children-icon" src="https://randomuser.me/api/portraits/men/1.jpg"/>
+                    <p class="children-name"> Name </p>
+                    <p class="children-info"> Info </p>
+                </li>
+                <li class="children-listitem">
+                    <img class="children-icon" src="https://randomuser.me/api/portraits/women/2.jpg"/>
+                </li>
+                <li class="children-listitem">
+                    <img class="children-icon" src="https://randomuser.me/api/portraits/men/3.jpg"/>
+                </li>
+                <li class="children-listitem">
+                    <img class="children-icon" src="https://randomuser.me/api/portraits/women/4.jpg"/>
+                </li>
+                <li class="children-listitem">
+                    <img class="children-icon" src="https://randomuser.me/api/portraits/men/5.jpg"/>
+                </li>
+                <li class="children-listitem">
+                    <img class="children-icon" src="https://randomuser.me/api/portraits/women/6.jpg"/>
+                </li>
+            </ul>
+        </article>
+
     </section>
 
     <section class ="section-bottom">

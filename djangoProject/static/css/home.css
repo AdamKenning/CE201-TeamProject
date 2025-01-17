@@ -6,70 +6,84 @@
     background-color: var(--col-neutral-mid);
 
     display: grid;
-    grid-template-columns: 1fr 300px;
-    grid-template-rows: 80px 20px 1fr 150px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 1fr 150px;
 }
 
 .section-top {
     grid-column-start: 1;
-    grid-column-end: 2;
+    grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
 
-    background-color: var(--col-neutral-light);
     border-radius: 25px;
     margin:10px;
 
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 1fr 20px;
 }
 
     .welcome{
-        grid-column-start: 2;
-        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 2;
 
-        color: var(--col-primary);
-        margin: auto;
-        font-size: 30px;
+        background-color: var(--col-neutral-light);
+
+        border-radius: 25px;
+
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
     }
+        .welcome-logo {
+            grid-column-start: 1;
+            grid-column-end: 2;
 
-    .user-icon {
-        grid-column-start: 3;
-        grid-column-end: 4;
+            border-radius: 50%;
+            height:50px;
+            margin:5px;
+            justify-self: left;
+        }
 
-        border-radius: 50%;
-        height:50px;
-        margin:5px;
-        justify-self: right;
-    }
+        .welcome-message{
+            grid-column-start: 2;
+            grid-column-end: 3;
 
-.section-page-name{
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-}
-    .page-name{
-        grid-column-start: 2;
-        grid-column-end: 3;
+            color: var(--col-primary);
+            margin: auto;
+            font-size: 30px;
+        }
+
+        .welcome-icon {
+            grid-column-start: 3;
+            grid-column-end: 4;
+
+            border-radius: 50%;
+            height:50px;
+            margin:5px;
+            justify-self: right;
+        }
+
+    .title{
+        grid-row-start: 2;
+        grid-row-end: 3;
+
         color: var(--col-primary);
         font-weight: bold;
-        margin: auto;
+        margin:auto;
     }
+
 
 .section-main{
     grid-column-start: 1;
     grid-column-end: 2;
-    grid-row-start: 3;
-    grid-row-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
     /*
     background-color: var(--col-neutral-light);
     border-radius: 40px; */
 
     display: grid;
-    grid-template-columns: 300px repeat(2,1fr);
+    grid-template-columns: 300px repeat(3,1fr) 300px;
     grid-template-rows: repeat(3,1fr);
     gap:20px;
 }
@@ -198,94 +212,118 @@
                 background-color: var(--col-secondary);
             }
 
-.section-right {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 5;
-
-    background-color: var(--col-neutral-light);
-    padding:15px;
-    margin-left:10px;
-
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 170px;
-    gap:20px;
-}
-
-    .list-children {
-        background-color: var(--col-neutral-light);
-        list-style: none;
-        margin: 0;
-        padding: 3px;
-        overflow-y: scroll;
-
+    .graph{
         box-sizing: border-box;
-        border-radius: 30px;
-        border: 5px solid var(--col-primary-dark);
+        grid-column-start: 3;
+        grid-column-end: 5;
+        grid-row-start: 1;
+        grid-row-end: 3;
+
+        background-color: var(--col-primary);
+        border-radius: 20px;
+        margin:10px;
+        padding:10px;
 
         display: grid;
-        grid-template-rows: repeat(auto-fill, 60px);
-        gap: 5px;
+        grid-template-rows: 30px 1fr; 
     }
-    /* CSS to hide scrollbar on various browsers */
-    .list-children{-ms-overflow-style: none;  scrollbar-width: none;} /* Explorer 10+ */  /* Firefox */
-    .list-children::-webkit-scrollbar {display: none;} /* Safari & Chrome */
+        .graph-name{
+            margin: auto;
 
-        .list-child {
-            border-radius: 25px;
-            height:50px;
-            background-color: var(--col-primary);
-            padding: 5px;
-
-            display: grid;
-            grid-template-columns: 50px 1fr;
-            grid-template-rows: 25px 20px;
-            gap: 5px;
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--col-neutral-light)
         }
 
-            .child-icon{
-                grid-column-start: 1;
-                grid-column-end: 2;
-                grid-row-start: 1;
-                grid-row-end: 3;
+    .children {
+        grid-column-start: 5;
+        grid-column-end: 6;
+        grid-row-start: 1;
+        grid-row-end: 4;
 
-                border-radius: 50%;
+        background-color: var(--col-neutral-light);
+        padding:15px;
+        border-radius: 20px;
+        margin:10px;
+
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 170px;
+        gap:20px;
+    }
+
+        .children-list {
+            background-color: var(--col-neutral-light);
+            list-style: none;
+            margin: 0;
+            padding: 3px;
+            overflow-y: scroll;
+
+            box-sizing: border-box;
+            border-radius: 30px;
+            border: 5px solid var(--col-primary-dark);
+
+            display: grid;
+            grid-template-rows: repeat(auto-fill, 60px);
+            gap: 5px;
+        }
+        /* CSS to hide scrollbar on various browsers */
+        .children-list{-ms-overflow-style: none;  scrollbar-width: none;} /* Explorer 10+ */  /* Firefox */
+        .children-list::-webkit-scrollbar {display: none;} /* Safari & Chrome */
+
+            .children-listitem {
+                border-radius: 25px;
                 height:50px;
+                background-color: var(--col-primary);
+                padding: 5px;
+
+                display: grid;
+                grid-template-columns: 50px 1fr;
+                grid-template-rows: 25px 20px;
+                gap: 5px;
             }
 
-            .child-name{
-                grid-column-start: 2;
-                grid-column-end: 3;
-                grid-row-start: 1;
-                grid-row-end: 2;
+                .children-icon{
+                    grid-column-start: 1;
+                    grid-column-end: 2;
+                    grid-row-start: 1;
+                    grid-row-end: 3;
 
-                color:var(--col-neutral-light);
+                    border-radius: 50%;
+                    height:50px;
+                }
 
-                font-size:25px;
-                margin:0px;
-                padding:0px;
-            }
+                .children-name{
+                    grid-column-start: 2;
+                    grid-column-end: 3;
+                    grid-row-start: 1;
+                    grid-row-end: 2;
 
-            .child-info{
-                grid-column-start: 2;
-                grid-column-end: 3;
-                grid-row-start: 2;
-                grid-row-end: 3;
+                    color:var(--col-neutral-light);
 
-                color:var(--col-neutral-light);
+                    font-size:25px;
+                    margin:0px;
+                    padding:0px;
+                }
 
-                font-size: 20px;
-                margin:0px;
-                padding:0px;
-            }
+                .children-info{
+                    grid-column-start: 2;
+                    grid-column-end: 3;
+                    grid-row-start: 2;
+                    grid-row-end: 3;
+
+                    color:var(--col-neutral-light);
+
+                    font-size: 20px;
+                    margin:0px;
+                    padding:0px;
+                }
 
 .section-bottom{
     grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 4;
-    grid-row-end: 5;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
 
     background-color: var(--col-neutral-light);
     border-radius: 20px;
