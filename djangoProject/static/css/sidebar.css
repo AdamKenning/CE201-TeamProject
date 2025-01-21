@@ -20,7 +20,7 @@
                 border-color var(--sidebar-closing) ease;
 
 
-    border-right: 0px solid var(--col-primary);
+    border-right: 0px solid var(--col-neutral-dark);
     transition: border-width 0.3;
 }
 
@@ -31,7 +31,7 @@
                 border-color var(--sidebar-opening) ease;
 
     border-width: 6px;
-    border-color: var(--col-neutral-light);
+    border-color: var(--col-neutral-dark);
 }
 
 

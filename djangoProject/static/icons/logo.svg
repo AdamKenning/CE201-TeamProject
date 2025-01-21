@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com" version="1.1" content="&lt;mxfile host=&quot;app.diagrams.net&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36&quot; version=&quot;24.8.3&quot; scale=&quot;1&quot; border=&quot;0&quot;&gt;&#10;  &lt;diagram name=&quot;Page-1&quot; id=&quot;BJEjqpcehECClO7OvEGa&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;1711&quot; dy=&quot;1113&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;200&quot; pageHeight=&quot;200&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;j9tXTjXhDAQ9rGFPwu1J-26&quot; value=&quot;&quot; style=&quot;group;rotation=-360;strokeWidth=10;&quot; vertex=&quot;1&quot; connectable=&quot;0&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;-200&quot; y=&quot;-200&quot; width=&quot;666.6666666666667&quot; height=&quot;666.6692307692307&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;j9tXTjXhDAQ9rGFPwu1J-13&quot; value=&quot;&quot; style=&quot;verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.arc;startAngle=0.25;endAngle=0.9983247466822763;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;strokeWidth=10;rotation=-360;&quot; vertex=&quot;1&quot; parent=&quot;j9tXTjXhDAQ9rGFPwu1J-26&quot;&gt;&#10;          &lt;mxGeometry width=&quot;666.6666666666667&quot; height=&quot;666.6692307692307&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;j9tXTjXhDAQ9rGFPwu1J-11&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;strokeWidth=10;rotation=-360;&quot; vertex=&quot;1&quot; parent=&quot;j9tXTjXhDAQ9rGFPwu1J-26&quot;&gt;&#10;          &lt;mxGeometry x=&quot;466.66666666666674&quot; y=&quot;233.33423076923077&quot; width=&quot;199.9995384643787&quot; height=&quot;199.9995384643787&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;j9tXTjXhDAQ9rGFPwu1J-12&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;strokeWidth=10;rotation=-360;&quot; vertex=&quot;1&quot; parent=&quot;j9tXTjXhDAQ9rGFPwu1J-26&quot;&gt;&#10;          &lt;mxGeometry x=&quot;200.00000000000003&quot; width=&quot;266.66605128583825&quot; height=&quot;266.66605128583825&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;j9tXTjXhDAQ9rGFPwu1J-15&quot; value=&quot;&quot; style=&quot;verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.arc;startAngle=0.4968173254495136;endAngle=0.7482118174606239;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;strokeWidth=10;rotation=-360;&quot; vertex=&quot;1&quot; parent=&quot;j9tXTjXhDAQ9rGFPwu1J-26&quot;&gt;&#10;          &lt;mxGeometry x=&quot;166.66666666666669&quot; y=&quot;166.66730769230767&quot; width=&quot;333.33333333333337&quot; height=&quot;333.33461538461535&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;j9tXTjXhDAQ9rGFPwu1J-18&quot; value=&quot;&quot; style=&quot;verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.arc;startAngle=0.9968173254495136;endAngle=0.5145753858378235;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;strokeWidth=10;rotation=-360;&quot; vertex=&quot;1&quot; parent=&quot;j9tXTjXhDAQ9rGFPwu1J-26&quot;&gt;&#10;          &lt;mxGeometry x=&quot;250&quot; y=&quot;500.00192307692305&quot; width=&quot;166.66666666666669&quot; height=&quot;166.66730769230767&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;j9tXTjXhDAQ9rGFPwu1J-21&quot; value=&quot;&quot; style=&quot;verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.arc;startAngle=0.611582166782528;endAngle=0.6891424865883835;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;strokeWidth=10;direction=west;rotation=-360;&quot; vertex=&quot;1&quot; parent=&quot;j9tXTjXhDAQ9rGFPwu1J-26&quot;&gt;&#10;          &lt;mxGeometry x=&quot;166.66666666666669&quot; y=&quot;166.66730769230767&quot; width=&quot;333.33333333333337&quot; height=&quot;333.33461538461535&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;j9tXTjXhDAQ9rGFPwu1J-16&quot; value=&quot;&quot; style=&quot;verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.arc;startAngle=0.8152737935443114;endAngle=0.9590456587875813;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;strokeWidth=10;rotation=-360;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;66.66666666666669&quot; y=&quot;133.33461538461535&quot; width=&quot;533.3333333333334&quot; height=&quot;533.3353846153846&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;" style="background-color: rgb(255, 255, 255);" viewBox="34.39 6.72 676.67 676.68">
+  <defs>
+    <bx:export>
+      <bx:file format="svg" normalization="web-static" path="ChawtsCrop.svg" width="811" height="877" excluded="true"/>
+      <bx:file format="svg" href="#object-0" width="800" height="800" excluded="true"/>
+    </bx:export>
+  </defs>
+  <g>
+    <g transform="matrix(1, 0, 0, 1, 34.383702, 7.719936)" id="object-0">
+      <g data-cell-id="0">
+        <g data-cell-id="1">
+          <g data-cell-id="j9tXTjXhDAQ9rGFPwu1J-26">
+            <g/>
+            <g data-cell-id="j9tXTjXhDAQ9rGFPwu1J-13">
+              <g>
+                <path d="M 671.67 337.33 C 671.67 520.97 523.14 670.02 339.5 670.67 C 155.87 671.31 6.3 523.31 5.01 339.67 C 3.72 156.04 151.2 5.95 334.82 4.02" fill="none" stroke="rgb(0, 0, 0)" stroke-width="10" stroke-miterlimit="10" transform="rotate(-360,338.33,337.33)" pointer-events="all"/>
+              </g>
+            </g>
+            <g data-cell-id="j9tXTjXhDAQ9rGFPwu1J-11">
+              <g>
+                <ellipse cx="571.67" cy="337.33" rx="99.99976923218935" ry="99.99976923218935" fill="none" stroke="rgb(0, 0, 0)" stroke-width="10" transform="rotate(-360,571.67,337.33)" pointer-events="all"/>
+              </g>
+            </g>
+            <g data-cell-id="j9tXTjXhDAQ9rGFPwu1J-12">
+              <g>
+                <ellipse cx="338.33" cy="137.33" rx="133.33302564291913" ry="133.33302564291913" fill="none" stroke="rgb(0, 0, 0)" stroke-width="10" transform="rotate(-360,338.33,137.33)" pointer-events="all"/>
+              </g>
+            </g>
+            <g data-cell-id="j9tXTjXhDAQ9rGFPwu1J-15">
+              <g>
+                <path d="M 341.67 503.97 C 297.22 504.86 254.26 487.95 222.34 457.01 C 190.41 426.07 172.18 383.66 171.68 339.21" fill="none" stroke="rgb(0, 0, 0)" stroke-width="10" stroke-miterlimit="10" transform="rotate(-360,338.33,337.33)" pointer-events="all"/>
+              </g>
+            </g>
+            <g data-cell-id="j9tXTjXhDAQ9rGFPwu1J-18">
+              <g>
+                <path d="M 336.67 504.02 C 367.54 503.4 396.23 519.91 411.21 546.92 C 426.19 573.92 425 607 408.13 632.86 C 391.26 658.73 361.47 673.14 330.71 670.32" fill="none" stroke="rgb(0, 0, 0)" stroke-width="10" stroke-miterlimit="10" transform="rotate(-360,338.33,587.34)" pointer-events="all"/>
+              </g>
+            </g>
+            <g data-cell-id="j9tXTjXhDAQ9rGFPwu1J-21">
+              <g>
+                <path d="M 230.82 464.69 C 210.03 447.14 193.86 424.77 183.7 399.52" fill="none" stroke="rgb(0, 0, 0)" stroke-width="10" stroke-miterlimit="10" transform="rotate(-180,338.33,337.33)" pointer-events="all"/>
+              </g>
+            </g>
+          </g>
+          <g data-cell-id="j9tXTjXhDAQ9rGFPwu1J-16">
+            <g>
+              <path d="M 293.78 497.67 C 326.35 422.76 391.47 366.9 470.47 346.11" fill="none" stroke="rgb(0, 0, 0)" stroke-width="10" stroke-miterlimit="10" transform="rotate(-360,538.33,604)" pointer-events="all"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+    <ellipse style="stroke: rgb(0, 0, 0);" cx="206.057" cy="346.977" rx="4.513" ry="4.794"/>
+  </g>
+</svg>
