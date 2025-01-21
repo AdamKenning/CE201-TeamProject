@@ -20,7 +20,7 @@
                 border-color var(--sidebar-closing) ease;
 
 
-    border-right: 0px solid var(--col-neutral-dark);
+    border-right: 0px solid var(--col-primary);
     transition: border-width 0.3;
 }
 
@@ -76,7 +76,7 @@
     cursor: pointer;
     white-space: nowrap;
 }
-.menu-item:hover {
+.sidebar.open .menu-item:hover {
     background-color: var(--col-primary-dark);
 }
 
@@ -108,19 +108,21 @@
 
 
     width:0px;
-    transition: width var(--sidebar-closing) ease;
+    padding-left:0px;
+    transition: width var(--sidebar-closing) ease,
+                padding var(--sidebar-closing) ease;
 }
 
 .sidebar.open .menu-text {
     pointer-events: none;
     width: 150px;
-    margin-left:0px;
+    padding-left:0px;
     transition: width var(--sidebar-opening) ease,
-                margin var(--sidebar-opening) ease;
+                padding var(--sidebar-opening) ease;
 }
 
-.menu-item:hover .menu-text{
-    margin-left: 10px;
+.sidebar.open .menu-item:hover .menu-text{
+    padding-left: 10px;
 }
 
 

@@ -9,9 +9,9 @@
 {% block bodyExtra %}
     <section class="section-top">
         <article class="welcome">
-            <img class="welcome-logo" src="{% static 'images/logoTemp.png' %}" alt="logo"/>
+            <img class="welcome-logo" src="{% static 'icons/LogoHeavy.svg' %}" alt="logo"/>
             <p class="welcome-message">Welcome back username</p>
-            <img class="welcome-icon" src="https://randomuser.me/api/portraits/men/3.jpg"/>
+            <img class="welcome-userIcon" src="https://randomuser.me/api/portraits/men/3.jpg"/>
         </article>
         <p class="title">Dashboard</p>
     </section>
@@ -51,6 +51,38 @@
                     <p class="recentUpdates-date">23/22/22</p>
                     <p class="recentUpdates-text">Donec tristique orci vel erat molestie, a vulputate felis eleifend</p>
                 </li>
+
+                <li class="recentUpdates-listItem">
+                    <img class="recentUpdates-icon" src="https://randomuser.me/api/portraits/lego/8.jpg"/>
+                    <p class="recentUpdates-type">TEST OVERFLOW</p>
+                    <p class="recentUpdates-time">TEST</p>
+                    <p class="recentUpdates-date">TEST</p>
+                    <p class="recentUpdates-text">OVERFLOW</p>
+                </li>
+
+                <li class="recentUpdates-listItem">
+                    <img class="recentUpdates-icon" src="https://randomuser.me/api/portraits/lego/8.jpg"/>
+                    <p class="recentUpdates-type">TEST OVERFLOW</p>
+                    <p class="recentUpdates-time">TEST</p>
+                    <p class="recentUpdates-date">TEST</p>
+                    <p class="recentUpdates-text">OVERFLOW</p>
+                </li>
+
+                <li class="recentUpdates-listItem">
+                    <img class="recentUpdates-icon" src="https://randomuser.me/api/portraits/lego/8.jpg"/>
+                    <p class="recentUpdates-type">TEST OVERFLOW</p>
+                    <p class="recentUpdates-time">TEST</p>
+                    <p class="recentUpdates-date">TEST</p>
+                    <p class="recentUpdates-text">OVERFLOW</p>
+                </li>
+
+                <li class="recentUpdates-listItem">
+                    <img class="recentUpdates-icon" src="https://randomuser.me/api/portraits/lego/8.jpg"/>
+                    <p class="recentUpdates-type">TEST OVERFLOW</p>
+                    <p class="recentUpdates-time">TEST</p>
+                    <p class="recentUpdates-date">TEST</p>
+                    <p class="recentUpdates-text">OVERFLOW</p>
+                </li>
             </ul>
         </article>
 
@@ -59,6 +91,36 @@
 
         <article class="graph">
             <p class="graph-name">Graph</p>
+        </article>
+
+        <article class="export">
+            <div  class="export-select">
+                <div class="export-option">
+                    <input class="export-selectable" type="checkbox" value="food">
+                    <p class="export-option-text" for="food">Food</p>
+                </div>
+                <div class="export-option">
+                    <input class="export-selectable" type="checkbox" value="diaper">
+                    <p class="export-option-text" for="diaper">Diaper</p>
+                </div>
+                <div class="export-option">
+                    <input class="export-selectable" type="checkbox" value="medication">
+                    <p class="export-option-text" for="medication">Medication</p>
+                </div>
+                <div class="export-option">
+                    <input class="export-selectable" type="checkbox" value="growth">
+                    <p class="export-option-text" for="growth">Growth</p>
+                </div>
+                <div class="export-option">
+                    <input class="export-selectable" type="checkbox" value="sleep">
+                    <p class="export-option-text" for="sleep">Sleep</p>
+                </div>
+                <div class="export-option">
+                    <input class="export-selectable" type="checkbox" value="emotion">
+                    <p class="export-option-text" for="emotion">Emotion</p>
+                </div>
+            </div>
+
         </article>
 
         <article class="children">
@@ -89,7 +151,7 @@
     </section>
 
     <section class ="section-bottom">
-
+        
     </section>
 {%endblock bodyExtra %}
 
