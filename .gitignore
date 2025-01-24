@@ -42,3 +42,4 @@ fabric.properties
 
 # venv is device specific Ignore git
 venv/
+venv
