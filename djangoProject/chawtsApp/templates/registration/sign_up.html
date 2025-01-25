@@ -6,10 +6,16 @@
 
 {% block bodyExtra %}
     <h2>Sign Up</h2>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Sign Up" />
+
+        <h2>User Details</h2>
+        {{ user_form.as_p }}
+
+        <h2>Profile Details</h2>
+        {{ profile_form.as_p }}
+
+        <button type="submit">Sign Up</button>
     </form>
     <a href="{% url 'dashboard' %}">Back to dashboard</a>
     <a href="{% url 'home' %}">Home</a>

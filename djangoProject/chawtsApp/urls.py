@@ -2,6 +2,9 @@ from django.urls import path, include
 from django.shortcuts import redirect
 from . import views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path("", lambda request: redirect("home/", permanent=False)),
 
@@ -18,7 +21,4 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path("dashboard/", views.dashboard, name="dashboard"),
     path("sign_up/", views.sign_up, name="sign_up"),
-
-
-    path("todos/", views.todos, name = "todos"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # for profile pictures
