@@ -6,8 +6,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    # empty url redirects to home page
     path("", lambda request: redirect("home/", permanent=False)),
 
+    # debug testing page
+    path("testing/",    views.testing,      name = "testing"),
+
+    # tracking pages
     path("food/",       views.food,         name = "food"),
     path("diaper/",     views.diaper,       name = "diaper"),
     path("medication/", views.medication,   name = "medication"),
@@ -15,6 +20,7 @@ urlpatterns = [
     path("sleep/",      views.sleep,        name = "sleep"),
     path("emotion/",    views.emotion,      name = "emotion"),
 
+    # misc
     path("home/",       views.home,         name = "home"),
     path("settings/",   views.settings,     name = "settings"),
 

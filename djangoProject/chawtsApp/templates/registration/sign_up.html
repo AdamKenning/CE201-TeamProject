@@ -11,9 +11,8 @@
 
         <h2>User Details</h2>
         {{ user_form.as_p }}
-
-        <h2>Profile Details</h2>
-        {{ profile_form.as_p }}
+        {% comment %} <h2>Profile Details</h2>
+        {{ profile_form.as_p }} {% endcomment %}
 
         <button type="submit">Sign Up</button>
     </form>

@@ -7,13 +7,6 @@
 {% endblock headExtra %}
 
 {% block bodyExtra %}
-    {% if user.profile.profile_picture %}
-        <img src="{{ user.profile.profile_picture.url }}" alt="Profile Picture">
-    {% else %}
-        <img src="/static/images/default_profile.jpg" alt="Default Profile Picture">
-    {% endif %}
-
-
 
     <header id="title">Welcome Back <b>name</b> <a id="login" href="login.html"></a></header>
 
