@@ -57,6 +57,38 @@ header p {
     background-color: #45a049;
 }
 
+.centered-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%; 
+    max-width: 800px; 
+    margin: 20px 0;
+}
+
+#calories-table {
+    margin: 20px 0;
+    border-collapse: collapse;
+    width: 100%; 
+    max-width: 600px; 
+}
+
+#calories-table th, #calories-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+#calories-table th {
+    background-color: #f2f2f2;
+}
+
+canvas {
+    max-width: 600px; 
+    margin-top: 20px;
+}
+
   @media screen and (max-width: 500px) {
     .navbar a {
       float: none;
@@ -64,5 +96,19 @@ header p {
       width: 100%;
       text-align: left;
     }
-  }
+
+    .centered-container {
+        width: 90%;
+        margin: 10px 0;
+    }
+
+    #calories-table {
+        width: 100%;
+    }
+
+    canvas {
+        width: 100%; 
+    }
+}
+
 
