@@ -35,7 +35,8 @@
     </div>
 
     <h3>Calories Table</h3>
-    <table id="calories-table">
+    <div class="center-container">
+      <table id="calories-table">
         <thead>
             <tr>
                 <th>Meal</th>
@@ -56,10 +57,11 @@
                 <td id="dinner-value">0</td>
             </tr>
         </tbody>
-    </table>
+      </table>
 
-    <canvas id="calories-chart" width="400" height="200"></canvas>
-
+      <canvas id="calories-chart" width="400" height="200"></canvas>
+    </div>
+    
     <script>
         let totalCalories = 0;
         let mealData = {
