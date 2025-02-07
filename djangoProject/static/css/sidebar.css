@@ -15,12 +15,23 @@
     display: flex;
 
     width:var(--sidebar-width-closed);
-    transition: width var(--sidebar-closing) ease;
+    transition: width var(--sidebar-closing) ease,
+                border-width var(--sidebar-closing) ease,
+                border-color var(--sidebar-closing) ease;
+
+
+    border-right: 0px solid var(--col-primary);
+    transition: border-width 0.3;
 }
 
 .sidebar.open {
     width:var(--sidebar-width-open);
-    transition: width var(--sidebar-opening) ease;
+    transition: width var(--sidebar-opening) ease,
+                border-width var(--sidebar-opening) ease,
+                border-color var(--sidebar-opening) ease;
+
+    border-width: 6px;
+    border-color: var(--col-neutral-dark);
 }
 
 
@@ -65,7 +76,7 @@
     cursor: pointer;
     white-space: nowrap;
 }
-.menu-item:hover {
+.sidebar.open .menu-item:hover {
     background-color: var(--col-primary-dark);
 }
 
@@ -91,20 +102,27 @@
 }
 
 .menu-text {
-
     overflow: hidden;
-    justify-items: right;
     height: 20px;
     font-size: 20px;
 
+
     width:0px;
-    transition: width var(--sidebar-closing) ease;
+    padding-left:0px;
+    transition: width var(--sidebar-closing) ease,
+                padding var(--sidebar-closing) ease;
 }
 
 .sidebar.open .menu-text {
     pointer-events: none;
     width: 150px;
-    transition: width var(--sidebar-opening) ease;
+    padding-left:0px;
+    transition: width var(--sidebar-opening) ease,
+                padding var(--sidebar-opening) ease;
+}
+
+.sidebar.open .menu-item:hover .menu-text{
+    padding-left: 10px;
 }
 
 
