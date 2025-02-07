@@ -12,6 +12,10 @@ urlpatterns = [
     # debug testing page
     path("testing/",    views.testing,      name = "testing"),
 
+    # childManagement pages
+    path('createChild/', views.createChild, name='createChild'),
+    path('addChild/', views.addChild, name='addChild'),
+
     # tracking pages
     path("food/",       views.food,         name = "food"),
     path("diaper/",     views.diaper,       name = "diaper"),

@@ -1,0 +1,12 @@
+{% comment %} page is only accessible when logged in {% endcomment %}
+
+<!DOCTYPE html>
+
+<title>Create Child</title>
+
+<h1> {{ user.username }} : Create a New Child</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Child</button>
+</form>
