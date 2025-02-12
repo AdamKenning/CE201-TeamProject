@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from django.urls import reverse
-from .forms import UserRegistrationForm, ProfileForm, ChildForm, ShareCodeForm
-from .models import Profile, FamilyAssociation, Child
+from .forms import UserRegistrationForm, ProfileForm, ChildForm, ShareCodeForm, SleepLogForm, FoodLogForm, GrowthLogForm
+from .models import Profile, FamilyAssociation, Child, SleepLog, FoodLog, GrowthLog
+
 
 
 # tracking pages
@@ -15,7 +16,15 @@ def sleep(request):         return render(request, "tracking/sleep.html")
 def emotion(request):       return render(request, "tracking/emotion.html")
 
 # misc
-def home(request):          return render(request, 'home.html')
+def home(request):
+
+    if request.user.is_authenticated:
+        children = request.user.children.all()
+    else:
+        children = []
+        pass
+
+    return render(request, 'home.html', {'children': children})
 
 # def login(request):         return render(request, "login.html")
 def settings(request):      return render(request, "settings.html")

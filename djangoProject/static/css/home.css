@@ -94,8 +94,8 @@
         grid-row-start: 1;
         grid-row-end: 4;
 
-        box-shadow: 0px 0px 20px 0px grey;
         background-color: var(--col-neutral-light);
+        box-shadow: 0px 0px 20px 0px grey;
         border-radius: 20px;
         margin:10px;
         padding:10px;
@@ -122,10 +122,8 @@
 
             scroll-snap-type: y mandatory;
 
-            /* overflow: hidden; */
 
             display: grid;
-            /* grid-template-rows: repeat(4, 80px); */
             grid-template-rows: repeat(auto-fill, 70px);
         }
         .recentUpdates-list{
@@ -319,6 +317,7 @@
 
 
     .children {
+        box-sizing: border-box;
         grid-area: 1/5/4/6;
 
         background-color: var(--col-neutral-light);
@@ -328,27 +327,20 @@
         margin:10px;
 
         display: grid;
-        grid-template-columns: 1fr;
         grid-template-rows: 170px;
-        gap:20px;
     }
 
         .children-list {
-            background-color: var(--col-neutral-light);
             list-style: none;
             margin: 0;
             padding: 0px;
             overflow-y: scroll;
 
-            box-sizing: border-box;
-            border-radius: 30px;
-            border: 5px solid var(--col-primary-dark);
-
             scroll-snap-type: y mandatory;
 
             display: grid;
             grid-template-rows: repeat(auto-fill, 60px);
-            gap: 5px;
+            gap: 10px;
         }
         .children-list{/* CSS to hide scrollbar on various browsers */
             -ms-overflow-style: none;  scrollbar-width: none;/* Explorer 10+ */  /* Firefox */
@@ -363,12 +355,10 @@
                 height:50px;
                 background-color: var(--col-primary);
                 padding: 5px;
-                margin:5px;
 
                 display: grid;
-                grid-template-columns: 50px 1fr;
-                grid-template-rows: 25px 20px;
-                gap: 5px;
+                grid-template-columns: 50px 1fr 1fr;
+                grid-template-rows: 25px 25px;
             }
                 .children-icon{
                     grid-column-start: 1;
@@ -376,10 +366,10 @@
                     grid-row-start: 1;
                     grid-row-end: 3;
 
-                    border-radius: 50%;
+                    border-radius: 25px;
                     height:50px;
                 }
-                .children-name{
+                .children-firstName{
                     grid-column-start: 2;
                     grid-column-end: 3;
                     grid-row-start: 1;
@@ -390,8 +380,25 @@
                     font-size:25px;
                     margin:0px;
                     padding:0px;
+
+                    width: 30px;
                 }
-                .children-info{
+
+                .children-lastName{
+                    grid-column-start: 3;
+                    grid-column-end: 4;
+                    grid-row-start: 1;
+                    grid-row-end: 2;
+
+                    color:var(--col-neutral-light);
+
+                    font-size:25px;
+                    margin:0px;
+                    padding:0px;
+
+                    width: 30px;
+                }
+                .children-dateOfBirth{
                     grid-column-start: 2;
                     grid-column-end: 3;
                     grid-row-start: 2;

@@ -52,6 +52,7 @@ class Child(models.Model):
 class FamilyAssociation(models.Model):
     parent = models.ForeignKey(User, on_delete=models.CASCADE)
     child = models.ForeignKey(Child, on_delete=models.CASCADE)
+    ## relationship status : father nanny etc
 
     # incase of multiple "parents" e.g. nanny, nurse, father etc
     is_primary = models.BooleanField(default=False)
@@ -88,7 +89,7 @@ class Log(models.Model):
         abstract = True
 
 class SleepLog(Log):
-    child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='sleep_logs')
+    child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='sleepLogs')
     TYPES = [
         ('sleep', 'Sleep'),
         ('nap','Nap'),
@@ -102,7 +103,7 @@ class SleepLog(Log):
         db_table = "chawts_logSleep"
 
 class FoodLog(Log):
-    child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='food_logs')
+    child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='foodLogs')
 
     TYPES = [
         ('breakfast', 'Breakfast'),
@@ -118,7 +119,7 @@ class FoodLog(Log):
         db_table = "chawts_logFood"
 
 class GrowthLog(Log):
-    child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='growth_logs')
+    child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='growthLogs')
 
     height = models.FloatField()
     weight = models.FloatField()
@@ -126,3 +127,29 @@ class GrowthLog(Log):
 
     class Meta:
         db_table = "chawts_logGrowth"
+
+
+# class MedicationLog(Log):
+#     child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='medicationLogs')
+
+#     class Meta:
+#         db_table = "chawts_logMedication"
+
+# class DiaperLog(Log):
+#     child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='diaperLogs')
+
+#     TYPES = [
+#         ('pee', 'Pee'),
+#         ('poo', 'Poo'),
+#     ]
+
+#     type = models.CharField(max_length=50, choices=TYPES)
+
+#     class Meta:
+#         db_table = "chawts_logDiaper"
+
+# class EmotionLog(Log):
+#     child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='EmotionLogs')
+
+#     class Meta:
+#         db_table = "chawts_logEmotion"

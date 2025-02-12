@@ -10,8 +10,14 @@
     <section class="section-top">
         <article class="welcome">
             <img class="welcome-logo" src="{% static 'icons/LogoHeavy.svg' %}" alt="logo"/>
-            <p class="welcome-message">Welcome back username</p>
-            <img class="welcome-userIcon" src="https://randomuser.me/api/portraits/men/3.jpg"/>
+            <p class="welcome-message">Welcome back {{ user.username|default:"Guest" }}</p>
+
+            {% if user.profile.profile_picture %}
+                <img class="welcome-userIcon" src="{{ user.profile.profile_picture.url }}">
+            {% else %}
+                <img class="welcome-userIcon" src="/static/images/default.jpg">
+            {% endif %}
+
         </article>
         <p class="title">Dashboard</p>
     </section>
@@ -27,8 +33,8 @@
                     <p class="recentUpdates-date">Today</p>
                     <p class="recentUpdates-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed consequat felis, ac volutpat quam. Nunc molestie urna nulla, vestibulum tempor lacus viverra et</p>
                 </li>
-
-                <li class="recentUpdates-listItem" id="today">
+{% comment %}
+                 <li class="recentUpdates-listItem" id="today">
                     <img class="recentUpdates-icon" src="https://randomuser.me/api/portraits/women/6.jpg"/>
                     <p class="recentUpdates-type">Diaper</p>
                     <p class="recentUpdates-time">10:25pm</p>
@@ -83,6 +89,7 @@
                     <p class="recentUpdates-date">TEST</p>
                     <p class="recentUpdates-text">OVERFLOW</p>
                 </li>
+{% endcomment %}
             </ul>
         </article>
 
@@ -125,33 +132,28 @@
 
         <article class="children">
             <ul class="children-list">
-                <li class="children-listitem">
-                    <img class="children-icon" src="https://randomuser.me/api/portraits/men/1.jpg"/>
-                    <p class="children-name"> Name </p>
-                    <p class="children-info"> Info </p>
-                </li>
-                <li class="children-listitem">
-                    <img class="children-icon" src="https://randomuser.me/api/portraits/women/2.jpg"/>
-                </li>
-                <li class="children-listitem">
-                    <img class="children-icon" src="https://randomuser.me/api/portraits/men/3.jpg"/>
-                </li>
-                <li class="children-listitem">
-                    <img class="children-icon" src="https://randomuser.me/api/portraits/women/4.jpg"/>
-                </li>
-                <li class="children-listitem">
-                    <img class="children-icon" src="https://randomuser.me/api/portraits/men/5.jpg"/>
-                </li>
-                <li class="children-listitem">
-                    <img class="children-icon" src="https://randomuser.me/api/portraits/women/6.jpg"/>
-                </li>
+
+                {% for child in children %}
+                    <li class="children-listitem">
+                        <img class="children-icon" src="https://randomuser.me/api/portraits/lego/1.jpg"/>
+                        <p class="children-firstName"> {{ child.firstName }} </p>
+                        <p class="children-LastName"> {{ child.LastName }} </p>
+                        <p class="children-dateOfBirth"> {{ child.dateOfBirth }} </p>
+                    </li>
+                {% empty %}
+                    <li class="children-listitem">
+                        <img class="children-icon" src="/static/images/default.jpg"/>
+                        <p class="children-name"> No Child </p>
+                        <p class="children-info">  </p>
+                    </li>
+                {% endfor %}
             </ul>
         </article>
 
     </section>
 
     <section class ="section-bottom">
-        
+
     </section>
 {%endblock bodyExtra %}
 
