@@ -41,5 +41,8 @@ fabric.properties
 .vscode/settings.json
 
 # venv is device specific Ignore git
+.venv/
 venv/
-venv
+.env/
+*.pyc
+__pycache__/
