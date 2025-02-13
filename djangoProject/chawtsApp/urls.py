@@ -7,14 +7,20 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     # empty url redirects to home page
-    path("", lambda request: redirect("home/", permanent=False)),
+    path("", lambda request: redirect("dashboard/", permanent=False)),
 
-    # debug testing page
-    path("testing/",    views.testing,      name = "testing"),
+    # user login stuff / accounting
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("sign_up/", views.sign_up, name="sign_up"),
+    path("changeProfile/",    views.changeProfile,      name = "changeProfile"),
+
+    # home page
+    path("dashboard/", views.dashboard, name="dashboard"),
 
     # childManagement pages
     path('createChild/', views.createChild, name='createChild'),
     path('addChild/', views.addChild, name='addChild'),
+    path('select-child/<int:child_id>/', views.select_child, name='select_child'),  # Add this!
 
     # tracking pages
     path("food/",       views.food,         name = "food"),
@@ -25,10 +31,6 @@ urlpatterns = [
     path("emotion/",    views.emotion,      name = "emotion"),
 
     # misc
-    path("home/",       views.home,         name = "home"),
     path("settings/",   views.settings,     name = "settings"),
 
-    path("accounts/", include("django.contrib.auth.urls")),
-    path("dashboard/", views.dashboard, name="dashboard"),
-    path("sign_up/", views.sign_up, name="sign_up"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # for profile pictures

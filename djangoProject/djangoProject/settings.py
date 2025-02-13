@@ -135,3 +135,4 @@ import os
 
 MEDIA_URL = '/media/'  # URL path for media files accessible from the browser
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # actual file path where files are stored
+LOGOUT_REDIRECT_URL = '/'  # Redirect to home page or change to your desired page

@@ -25,17 +25,17 @@
 
         <hr class="menu-separator">
 
-        <a class="menu-item" href="{% url 'home' %}"
-        {% if request.path == '/home/' %} id ="active" {% else %} id = inactive {% endif %}>
+        <a class="menu-item" href="{% url 'dashboard' %}"
+        {% if request.path == '/dashboard/' %} id ="active" {% else %} id = inactive {% endif %}>
           <i class="fa-solid fa-home"></i>
-          <span class="menu-text">Home</span>
+          <span class="menu-text">dashboard</span>
         </a>
         <a class="menu-item" href="{% url 'settings' %}"
         {% if request.path == '/settings/' %} id ="active" {% else %} id = inactive {% endif %}>
             <i class="fa-solid fa-cog"></i>
             <span class="menu-text">Settings</span>
         </a>
-        <a class="menu-item" href="{% url 'home' %}"
+        <a class="menu-item" href="{% url 'dashboard' %}"
         {% if request.path == '/about/' %} id ="active" {% else %} id = inactive {% endif %}>
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
             <span class="menu-text">About</span>
@@ -79,7 +79,7 @@
         <div class="menu-bottom"">
             <hr class="menu-separator">
 
-            <a class="menu-item" href="{% url 'home' %}"
+            <a class="menu-item" href="{% url 'dashboard' %}"
             {% if request.path == '/children/' %} id ="active" {% else %} id = inactive {% endif %}>
                 <i class="fa-solid fa-children"></i>
                 <span class="menu-text">Child Name</span>

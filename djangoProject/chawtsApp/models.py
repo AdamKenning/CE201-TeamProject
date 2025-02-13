@@ -28,7 +28,7 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
     class Meta:
-        db_table = "chawts_entityParents"
+        db_table = "chawts_userExtended"
         db_table_comment = "An extension of the django User model for some extra info"
 
 class Child(models.Model):
@@ -46,7 +46,7 @@ class Child(models.Model):
         self.save()
 
     class Meta:
-        db_table = "chawts_entityChildren"
+        db_table = "chawts_child"
 
 
 class FamilyAssociation(models.Model):
@@ -58,7 +58,7 @@ class FamilyAssociation(models.Model):
     is_primary = models.BooleanField(default=False)
 
     class Meta:
-        db_table = "chawts_FamilyAssociation"
+        db_table = "chawts_families"
         unique_together = ('parent', 'child')
         db_table_comment = "Stores who the parents are of which children"
 
@@ -85,7 +85,7 @@ class Log(models.Model):
     comments = models.TextField(blank=True, null=True)
 
     class Meta:
-        db_table = "chawts_log"
+        db_table = "chawts_baisclog"
         abstract = True
 
 class SleepLog(Log):

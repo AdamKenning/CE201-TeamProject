@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from django.urls import reverse
@@ -15,23 +15,34 @@ def growth(request):        return render(request, "tracking/growth.html")
 def sleep(request):         return render(request, "tracking/sleep.html")
 def emotion(request):       return render(request, "tracking/emotion.html")
 
-# misc
-def home(request):
-
-    if request.user.is_authenticated:
-        children = request.user.children.all()
-    else:
-        children = []
-        pass
-
-    return render(request, 'home.html', {'children': children})
 
 # def login(request):         return render(request, "login.html")
 def settings(request):      return render(request, "settings.html")
 
+@login_required
+def select_child(request, child_id):
+    #store child in session
+    child = get_object_or_404(Child, id=child_id, parents=request.user)
+    request.session['selected_child_id'] = child.id
+    return redirect('dashboard')  # redirect back to start (refresh page)
 
 def dashboard(request):
-    return render(request, "registration/dashboard.html")
+    if request.user.is_authenticated:
+        selected_child = None
+        if 'selected_child_id' in request.session:
+            selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+        children = request.user.children.all()
+    else:
+        children = []
+        selected_child = None
+
+    return render(request, "dashboard.html", {
+        "selected_child": selected_child,
+        "children": children,
+    })
+
+
 
 def sign_up(request):
     if request.method == "POST":
@@ -49,7 +60,7 @@ def sign_up(request):
 
 # debug testing page
 @login_required
-def testing(request):
+def changeProfile(request):
     # Get or create the profile instance
     profile, created = Profile.objects.get_or_create(user=request.user)
 
@@ -58,12 +69,12 @@ def testing(request):
 
         if profile_form.is_valid():
             profile_form.save()
-            return redirect('testing')
+            return redirect('changeProfile')
 
     else:
         profile_form = ProfileForm(instance=profile)
 
-    return render(request, 'testing.html', {
+    return render(request, 'profileManagement/changeProfile.html', {
         'profile_form': profile_form,
     })
 
@@ -80,7 +91,7 @@ def createChild(request):
             # assign child to user
             FamilyAssociation.objects.create(parent=request.user, child=child, is_primary=True)
 
-            return redirect('home')
+            return redirect('dashboard')
     else:
         form = ChildForm()
 
@@ -99,7 +110,7 @@ def addChild(request):
                 child = Child.objects.get(shareCode=code)
             except Child.DoesNotExist:
                 # code is invalid for a child
-                return render(request, 'home.html')
+                return render(request, 'dashboard.html')
 
 
             # check sahre code is valid
@@ -108,14 +119,15 @@ def addChild(request):
                 FamilyAssociation.objects.create(parent=request.user, child=child, is_primary=False)
 
                 child.shareCodeGenerate()
-                return redirect('home')
+                return redirect('dashboard')
             else:
                 # reset sharecode to prevent guessing
                 child.shareCodeGenerate()
 
-                # go home if code invalid
-                return render(request, 'home.html')
+                # go dashboard if code invalid
+                return render(request, 'dashboard.html')
     else:
         form = ShareCodeForm()
 
     return render(request, 'childManagement/addChild.html', {'form': form})
+
