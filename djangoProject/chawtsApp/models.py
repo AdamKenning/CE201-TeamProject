@@ -1,8 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.utils import timezone
 
-import random
-import string
+from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
 
 import os
@@ -74,15 +73,12 @@ class Log(models.Model):
     type = models.CharField(max_length=50, choices=TYPES)
 
     timeEntry = models.DateTimeField(auto_now_add=True) # time of when the user logged the event
-    timeEvent = models.DateTimeField()                  # time the user claimed the event happend (e.g. logging a meal after the fact)
+    timeEvent = models.DateTimeField(default=timezone.now)                  # time the user claimed the event happend (e.g. logging a meal after the fact)
 
     child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='logs')
 
-    # quick user-defined tags for the user to search by
-    tag = models.CharField(max_length=50, blank=True, null=True)
-
-    # more indepth comments if the user wants to say something specific
-    comments = models.TextField(blank=True, null=True)
+    # quick comments to label the log
+    comment = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
         db_table = "chawts_baisclog"

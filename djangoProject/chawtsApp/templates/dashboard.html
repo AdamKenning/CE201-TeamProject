@@ -4,6 +4,7 @@
 {% block headExtra %}
     <link rel="stylesheet" href="{% static 'css/Dashboard.css' %}" type="text/css">
     <title>Dashboard</title>
+    <script src="{% static 'js/dashboard.js' %}" defer></script>
 {% endblock headExtra %}
 
 {% block bodyExtra %}
@@ -44,17 +45,27 @@
 
 
     <main>
-        <section class="graphLine">
+        <section class="graphAreaFirst">
+            <canvas class="pieChart" id="pieChart"></canvas>
+            <script src="{% static 'js/dashboard.js' %}"></script>
         </section>
-        <section class="graphPie">
+        <section class="graphAreaSecond">
+            <canvas class="barChart" id="barChart"></canvas>
         </section>
-        <section class="recentUpdates">
-        </section>
+
+        <script>
+            window.childNames = {{ child_names|safe }};
+            window.dataLogsPerChild = {{ data_logs_per_child|safe }};
+            window.logCategories = {{ log_categories|safe }};
+            window.logCategoryCounts = {{ log_category_counts|safe }};
+        </script>
+
         <section class="childInfo">
             <article class="selectedChild">
                 {% if selected_child  %}
                 <p class="nameChild"> {{ selected_child.firstName }} </p>
                 <p class="nameChild"> {{ selected_child.lastName }} </p>
+                <p class="nameChild"> {{ selected_child.shareCode }} </p>
                 {% else %}
                 {% endif %}
             </article>
@@ -77,13 +88,8 @@
                 {% endfor %}
                 <ul class="children-list">
             </article>
-            {% if user.is_authenticated %}
             <a class="actionChild" href="{% url 'addChild' %}">Import Child</a>
             <a class="actionChild" href="{% url 'createChild' %}">Create Child</a>
-            {% else %}
-            <a class="actionChild" href="{% url 'addChild' %}">Import Child</a>
-            <a class="actionChild" href="{% url 'createChild' %}">Create Child</a>
-            {% endif %}
         </section>
     </main>
 

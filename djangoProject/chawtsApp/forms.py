@@ -31,14 +31,14 @@ class ShareCodeForm(forms.Form):
 class SleepLogForm(forms.ModelForm):
     class Meta:
         model = SleepLog
-        fields = ['timeEvent', 'type', 'duration', 'tag', 'comments']
+        fields = ['timeEvent', 'type', 'duration', 'comment']
 
 class FoodLogForm(forms.ModelForm):
     class Meta:
         model = FoodLog
-        fields = ['timeEvent', 'type', 'calories', 'tag', 'comments']
+        fields = ['timeEvent', 'type', 'calories', 'comment']
 
 class GrowthLogForm(forms.ModelForm):
     class Meta:
         model = GrowthLog
-        fields = ['timeEvent', 'height', 'weight', 'headCircumfrance', 'tag', 'comments']
+        fields = ['timeEvent', 'height', 'weight', 'headCircumfrance', 'comment']

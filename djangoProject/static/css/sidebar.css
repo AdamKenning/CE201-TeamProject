@@ -3,6 +3,8 @@
     --sidebar-closing: 1s;
     --sidebar-width-closed: 40px;
     --sidebar-width-open: 200px;
+
+    --available-width: calc(100vw - var(--sidebar-width-closed))
 }
 
 .sidebar {

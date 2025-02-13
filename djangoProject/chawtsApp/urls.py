@@ -33,4 +33,7 @@ urlpatterns = [
     # misc
     path("settings/",   views.settings,     name = "settings"),
 
+    # testing page
+    path("testing/",    views.testing,      name = "testing"),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # for profile pictures

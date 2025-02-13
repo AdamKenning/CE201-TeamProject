@@ -43,6 +43,7 @@
 
         <hr class="menu-separator">
 
+        {% if selected_child  %}
         <a class="menu-item" href="{% url 'food' %}"
         {% if request.path == '/food/' %} id ="active" {% else %} id = inactive {% endif %}>
             <i class="fa-solid fa-utensils" ></i>
@@ -75,21 +76,33 @@
         </a>
 
         <hr class="menu-separator">
+        {% else %}
+        {% endif %}
 
         <div class="menu-bottom"">
             <hr class="menu-separator">
 
-            <a class="menu-item" href="{% url 'dashboard' %}"
-            {% if request.path == '/children/' %} id ="active" {% else %} id = inactive {% endif %}>
-                <i class="fa-solid fa-children"></i>
-                <span class="menu-text">Child Name</span>
-            </a>
+            {% if selected_child  %}
+                <a class="menu-item" href="{% url 'dashboard' %}"
+                {% if request.path == '/children/' %} id ="active" {% else %} id = inactive {% endif %}>
+                    <i class="fa-solid fa-children"></i>
+                    <span class="menu-text">{{ selected_child.firstName }}</span>
+                </a>
+            {% else %}
+            {% endif %}
 
-            <a class="menu-item" href="{% url 'dashboard' %}"
-            {% if request.path == '/dashboard/' %} id ="active" {% else %} id = inactive {% endif %}>
+
+            {% if user.is_authenticated %}
+            <a class="menu-item" href="{% url 'dashboard' %}" id = inactive>
                 <i class="fa-solid fa-user"></i>
-                <span class="menu-text">{{ user.username|default:"Login" }}</span>
+                <span class="menu-text">{{ user.username}}</span>
             </a>
+            {% else %}
+            <a class="menu-item" href="{% url 'login' %}" id = inactive>
+                <i class="fa-solid fa-user"></i>
+                <span class="menu-text">Login</span>
+            </a>
+            {% endif %}
         </div>
 
     </ul>
