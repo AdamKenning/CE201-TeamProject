@@ -15,7 +15,7 @@
     <form id="food-form">
         <h2>Meal Entry</h2>
         <label for="meal-time">Meal Time:</label>
-        <input type="datetime-local" id="meal-time">
+        <input type="datetime-local" id="meal-time" lang="en" required>
         
         <label for="feeding-type">Feeding Type:</label>
         <select id="feeding-type" onchange="toggleFoodInput()">
@@ -24,12 +24,45 @@
             <option value="breast-milk">Breast Milk</option>
             <option value="solids">Solids</option>
         </select>
+
+        <div id="liquid-input" style="display: none;">
+            <label for="liquid-amount">Amount (ml):</label>
+            <input type="number" id="liquid-amount" min="0" placeholder="Enter amount in ml">
+        </div>
+
+        <div id="solid-input" style="display: none;">
+            <label for="solid-food">Food Name:</label>
+            <input type="text" id="solid-food" placeholder="Enter food name">
+            
+            <label for="solid-portion">Portion Size:</label>
+            <select id="solid-portion">
+                <option value="0">None</option>
+                <option value="0.25">Some</option>
+                <option value="0.5">Half</option>
+                <option value="0.75">Most</option>
+                <option value="1">All</option>
+            </select>
+        </div>
     </form>
 
     <script>
+        document.getElementById("meal-time").addEventListener("focus", function() {
+            this.type = "datetime-local";
+            this.lang = "en";
+        });
+
         function toggleFoodInput() {
             let type = document.getElementById('feeding-type').value;
-            console.log("Selected Feeding Type: ", type);
+            let liquidInput = document.getElementById('liquid-input');
+            let solidInput = document.getElementById('solid-input');
+
+            if (type === "solids") {
+                liquidInput.style.display = "none";
+                solidInput.style.display = "block";
+            } else {
+                liquidInput.style.display = "block";
+                solidInput.style.display = "none";
+            }
         }
     </script>
 
