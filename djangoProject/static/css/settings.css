@@ -97,3 +97,20 @@
   width: 32px;
   height: 32px;
 }
+
+
+.colorblind-mode {
+  filter: grayscale(100%);
+}
+
+.deuteranopia-mode {
+  filter: url("#deuteranopia-filter");
+}
+
+.protanopia-mode {
+  filter: url("#protanopia-filter");
+}
+
+svg {
+  display: none;
+}
