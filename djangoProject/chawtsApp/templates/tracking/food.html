@@ -15,55 +15,190 @@
     <form id="food-form">
         <h2>Meal Entry</h2>
         <label for="meal-time">Meal Time:</label>
-        <input type="datetime-local" id="meal-time" lang="en" required>
-        
+        <input type="datetime-local" id="meal-time">
+
         <label for="feeding-type">Feeding Type:</label>
         <select id="feeding-type" onchange="toggleFoodInput()">
-            <option value="formula">Formula</option>
-            <option value="cow-milk">Cow Milk</option>
-            <option value="breast-milk">Breast Milk</option>
-            <option value="solids">Solids</option>
+            <option value="liquid">Liquid</option>
+            <option value="solid">Solid</option>
         </select>
 
-        <div id="liquid-input" style="display: none;">
+        <div id="liquid-input" style="display: block;">
+            <label for="liquid-type">Liquid Type:</label>
+            <select id="liquid-type" onchange="showOtherLiquidInput()">
+                <option value="formula">Formula</option>
+                <option value="cow-milk">Cow Milk</option>
+                <option value="breast-milk">Breast Milk</option>
+                <option value="other">Other</option>
+            </select>
+            <input type="text" id="other-liquid-name" placeholder="Enter name for 'Other'" style="display:none;">
+            
             <label for="liquid-amount">Amount (ml):</label>
-            <input type="number" id="liquid-amount" min="0" placeholder="Enter amount in ml">
+            <input type="number" id="liquid-amount" min="0" placeholder="Enter amount in ml" required>
         </div>
-
+    
         <div id="solid-input" style="display: none;">
             <label for="solid-food">Food Name:</label>
-            <input type="text" id="solid-food" placeholder="Enter food name">
+            <input type="text" id="solid-food" placeholder="Enter food name" required>
             
-            <label for="solid-portion">Portion Size:</label>
+            <label for="solid-portion">Amount Eaten (Percentage):</label>
             <select id="solid-portion">
                 <option value="0">None</option>
-                <option value="0.25">Some</option>
-                <option value="0.5">Half</option>
-                <option value="0.75">Most</option>
-                <option value="1">All</option>
+                <option value="0.25">Some (25%)</option>
+                <option value="0.5">Half (50%)</option>
+                <option value="0.75">Most (75%)</option>
+                <option value="1">All (100%)</option>
             </select>
         </div>
+    
+        <button type="button" id="generate-chart" onclick="submitMealData()">Submit Meal</button>
     </form>
+    
+    <h2>Submitted Meals</h2>
+    <table id="meal-table">
+        <thead>
+            <tr>
+                <th>Meal Time</th>
+                <th>Feeding Type</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    
+    <div class="chart-container" id="chart-container" style="display:none;">
+        <h3>Liquid Feeding Chart</h3>
+        <canvas id="liquid-chart"></canvas>
+    
+        <h3>Solid Feeding Chart</h3>
+        <canvas id="solid-chart"></canvas>
+    </div>
 
     <script>
-        document.getElementById("meal-time").addEventListener("focus", function() {
-            this.type = "datetime-local";
-            this.lang = "en";
-        });
+        let mealData = {
+        liquid: {
+            formula: 0,
+            cowMilk: 0,
+            breastMilk: 0,
+            other: 0,
+        },
+        solid: []
+    };
 
-        function toggleFoodInput() {
-            let type = document.getElementById('feeding-type').value;
-            let liquidInput = document.getElementById('liquid-input');
-            let solidInput = document.getElementById('solid-input');
+    function submitMealData() {
+        let mealTime = document.getElementById('meal-time').value;
+        let feedingType = document.getElementById('feeding-type').value;
+        let details = '';
 
-            if (type === "solids") {
-                liquidInput.style.display = "none";
-                solidInput.style.display = "block";
+        if (feedingType === 'liquid') {
+            let liquidType = document.getElementById('liquid-type').value;
+            let liquidAmount = parseInt(document.getElementById('liquid-amount').value, 10);
+            let otherLiquidName = document.getElementById('other-liquid-name').value;
+
+            if (liquidType === 'other' && otherLiquidName) {
+                mealData.liquid.other += liquidAmount;
+                details = `${otherLiquidName}: ${liquidAmount} ml`;
             } else {
-                liquidInput.style.display = "block";
-                solidInput.style.display = "none";
+                mealData.liquid[liquidType] += liquidAmount;
+                details = `${liquidType}: ${liquidAmount} ml`;
             }
+        } else if (feedingType === 'solid') {
+            let solidFood = document.getElementById('solid-food').value;
+            let solidPortion = parseFloat(document.getElementById('solid-portion').value);
+            mealData.solid.push({ food: solidFood, portion: solidPortion });
+            details = `${solidFood}: ${solidPortion * 100}%`;
         }
+
+        mealData.time = mealTime;
+        updateMealTable();
+        showCharts();
+    }
+
+    function updateMealTable() {
+        let tableBody = document.getElementById('meal-table').getElementsByTagName('tbody')[0];
+        let row = tableBody.insertRow();
+        row.insertCell(0).innerText = mealData.time || 'N/A';
+        row.insertCell(1).innerText = mealData.feedingType || 'N/A';
+        row.insertCell(2).innerText = mealData.details || 'N/A';
+    }
+
+
+    function showCharts() {
+        let chartContainer = document.getElementById('chart-container');
+        chartContainer.style.display = 'block';
+
+        generateLiquidChart();
+        generateSolidChart();
+    }
+
+    function generateLiquidChart() {
+        var ctx = document.getElementById('liquid-chart').getContext('2d');
+        var liquidChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Formula', 'Cow Milk', 'Breast Milk', 'Other'],
+                datasets: [{
+                    label: 'Amount (ml)',
+                    data: [
+                        mealData.liquid.formula,
+                        mealData.liquid.cowMilk,
+                        mealData.liquid.breastMilk,
+                        mealData.liquid.other
+                    ],
+                    backgroundColor: '#04AA6D',
+                    borderColor: '#038a59',
+                    borderWidth: 1
+                }]
+            }
+        });
+    }
+
+    function generateSolidChart() {
+        var ctx = document.getElementById('solid-chart').getContext('2d');
+        var solidChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: mealData.solid.map(solid => solid.food),
+                datasets: [{
+                    label: 'Amount (%)',
+                    data: mealData.solid.map(solid => solid.portion * 100), 
+                    backgroundColor: '#04AA6D',
+                    borderColor: '#038a59',
+                    borderWidth: 1
+                }]
+            }
+        });
+    }
+
+    function toggleFoodInput() {
+        let type = document.getElementById('feeding-type').value;
+        let liquidInput = document.getElementById('liquid-input');
+        let solidInput = document.getElementById('solid-input');
+        let otherLiquid = document.getElementById('other-liquid-name');
+
+        if (type === "solid") {
+            liquidInput.style.display = "none";
+            solidInput.style.display = "block";
+        } else {
+            liquidInput.style.display = "block";
+            solidInput.style.display = "none";
+        }
+
+        if (document.getElementById('liquid-type').value === "other") {
+            otherLiquid.style.display = "block";
+        } else {
+            otherLiquid.style.display = "none";
+        }
+    }
+
+
+    function showOtherLiquidInput() {
+        if (document.getElementById('liquid-type').value === "other") {
+            document.getElementById('other-liquid-name').style.display = "block";
+        } else {
+            document.getElementById('other-liquid-name').style.display = "none";
+        }
+    }
     </script>
 
     
