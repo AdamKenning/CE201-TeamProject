@@ -12,112 +12,26 @@
         <h1>Food Traker</h1>
     </header>
 
-    <h2>
-        <div class="stat">
-            <p>Breakfast</p>
-            <input type="number" class="number-input" id="breakfast-value" placeholder="Enter value">
-            <button class="input-button" onclick="updateCalories('breakfast')">Submit</button>
-        </div>
-        <div class="stat">
-            <p>Lunch</p>
-            <input type="number" class="number-input" id="lunch-value" placeholder="Enter value">
-            <button class="input-button" onclick="updateCalories('lunch')">Submit</button>
-        </div>
-        <div class="stat">
-            <p>Dinner</p>
-            <input type="number" class="number-input" id="dinner-value" placeholder="Enter value">
-            <button class="input-button" onclick="updateCalories('dinner')">Submit</button>
-        </div>
-     </h2>
+    <form id="food-form">
+        <h2>Meal Entry</h2>
+        <label for="meal-time">Meal Time:</label>
+        <input type="datetime-local" id="meal-time">
+        
+        <label for="feeding-type">Feeding Type:</label>
+        <select id="feeding-type" onchange="toggleFoodInput()">
+            <option value="formula">Formula</option>
+            <option value="cow-milk">Cow Milk</option>
+            <option value="breast-milk">Breast Milk</option>
+            <option value="solids">Solids</option>
+        </select>
+    </form>
 
-     <div class="stat">
-        <p>Total: <span id="total-calories">0</span> Calories (Recommend <span id="recommended-calories">2000</span> per day)</p>
-    </div>
-
-    <h3>Calories Table</h3>
-    <div class="center-container">
-      <table id="calories-table">
-        <thead>
-            <tr>
-                <th>Meal</th>
-                <th>Calories</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Breakfast</td>
-                <td id="breakfast-value">0</td>
-            </tr>
-            <tr>
-                <td>Lunch</td>
-                <td id="lunch-value">0</td>
-            </tr>
-            <tr>
-                <td>Dinner</td>
-                <td id="dinner-value">0</td>
-            </tr>
-        </tbody>
-      </table>
-
-      <canvas id="calories-chart" width="400" height="200"></canvas>
-    </div>
-    
     <script>
-        let totalCalories = 0;
-        let mealData = {
-            breakfast: 0,
-            lunch: 0,
-            dinner: 0
-        };
-
-        // Function to update calories input
-        function updateCalories(meal) {
-            let mealInput = document.getElementById(meal + '-calories');
-            let mealValue = mealInput.value;
-            mealData[meal] = parseInt(mealValue) || 0;
-            totalCalories = mealData.breakfast + mealData.lunch + mealData.dinner;
-            
-            // Update table
-            document.getElementById(meal + '-value').innerText = mealData[meal];
-
-            // Update total calories
-            document.getElementById('total-calories').innerText = totalCalories;
-
-            // Update the chart
-            updateChart();
-        }
-
-        // Initialize chart.js
-        let ctx = document.getElementById('calories-chart').getContext('2d');
-        let caloriesChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Breakfast', 'Lunch', 'Dinner'],
-                datasets: [{
-                    label: 'Calories',
-                    data: [0, 0, 0],
-                    backgroundColor: ['#ffcc00', '#66cc66', '#ff6666'],
-                    borderColor: ['#e6b800', '#33cc33', '#e60000'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        // Update the bar chart with the new data
-        function updateChart() {
-            caloriesChart.data.datasets[0].data = [
-                mealData.breakfast,
-                mealData.lunch,
-                mealData.dinner
-            ];
-            caloriesChart.update();
+        function toggleFoodInput() {
+            let type = document.getElementById('feeding-type').value;
+            console.log("Selected Feeding Type: ", type);
         }
     </script>
+
+    
 {%endblock bodyExtra %}
