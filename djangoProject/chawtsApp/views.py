@@ -1,9 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
+
 from django.urls import reverse
 from .forms import UserRegistrationForm, ProfileForm, ChildForm, ShareCodeForm, SleepLogForm, FoodLogForm, GrowthLogForm
 from .models import Profile, FamilyAssociation, Child
+
+# for pdf export
+from reportlab.pdfgen import canvas
+from django.http import FileResponse
 
 from django.utils.safestring import mark_safe
 import json
@@ -187,13 +192,10 @@ def changeProfile(request):
 def createChild(request):
     if request.method == 'POST':
         form = ChildForm(request.POST, request.FILES)
-        print(request.FILES) # debugging to find error of not getting file
         if form.is_valid():
             child = form.save(commit=False)
             child.save()
             child.shareCodeGenerate()
-
-            print(child.profile_picture) # debugging to find error of not getting file 
 
             # assign child to user
             FamilyAssociation.objects.create(parent=request.user, child=child, is_primary=True)
@@ -279,3 +281,70 @@ def testing(request):
         "growth_log_form": growth_log_form,
     })
 
+
+
+# PDF generation
+@login_required
+def pdf_children_all(request):
+    response = FileResponse(pdf_file_children_all(request),as_attachment=True,filename='childrenALl.pdf')
+    return response
+
+@login_required
+def pdf_file_children_all(request):
+    children = request.user.children.all()
+
+    from io import BytesIO
+    buffer = BytesIO()
+
+    p = canvas.Canvas(buffer)
+
+    page_height = 792
+    page_width = 612
+
+
+    lineHeight = 20;
+    leftMargin= 100
+    verticalPos = 800
+
+    p.setFont("Courier", lineHeight/1.5)
+
+    verticalPos -= lineHeight * 2
+
+    p.drawString(leftMargin, verticalPos, "Children Info")
+
+    verticalPos -= lineHeight * 2
+
+    def drawLog(logName, logData, leftMargin, verticalPos):
+        p.drawString(leftMargin, verticalPos, f"Logs : {logName}")
+        verticalPos -= lineHeight
+        leftMargin += 20
+        logs = logData
+        logCount = 0
+        for log in logs:
+            logCount += 1
+            p.drawString(leftMargin, verticalPos, f"Log : {logCount}")
+            verticalPos -= lineHeight
+        if logCount == 0:
+            p.drawString(leftMargin, verticalPos, f"No {logName} Logs")
+            verticalPos -= lineHeight
+        leftMargin -= 20
+        return leftMargin, verticalPos
+
+    for child in children:
+        verticalPos -= lineHeight
+        p.drawString(leftMargin, verticalPos, f"Name : {child.firstName}, {child.lastName}")
+        verticalPos -= lineHeight
+        p.drawString(leftMargin, verticalPos, f"DoB  : {child.dateOfBirth}")
+        verticalPos -= lineHeight
+        p.drawString(leftMargin, verticalPos, f"Code : {child.shareCode}")
+        verticalPos -= lineHeight
+
+        leftMargin, verticalPos = drawLog("Growth", child.growthLogs.all(), leftMargin, verticalPos)
+        leftMargin, verticalPos = drawLog("Food", child.foodLogs.all(), leftMargin, verticalPos)
+        leftMargin, verticalPos = drawLog("Sleep", child.sleepLogs.all(), leftMargin, verticalPos)
+
+    p.showPage()
+    p.save()
+
+    buffer.seek(0)
+    return buffer

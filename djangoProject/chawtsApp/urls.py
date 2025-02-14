@@ -9,10 +9,11 @@ urlpatterns = [
     # empty url redirects to home page
     path("", lambda request: redirect("dashboard/", permanent=False)),
 
-    # user login stuff / accounting
+    # misc management stuff
     path("accounts/", include("django.contrib.auth.urls")),
     path("sign_up/", views.sign_up, name="sign_up"),
     path("changeProfile/",    views.changeProfile,      name = "changeProfile"),
+    path("settings/",   views.settings,     name = "settings"),
 
     # home page
     path("dashboard/", views.dashboard, name="dashboard"),
@@ -30,10 +31,11 @@ urlpatterns = [
     path("sleep/",      views.sleep,        name = "sleep"),
     path("emotion/",    views.emotion,      name = "emotion"),
 
-    # misc
-    path("settings/",   views.settings,     name = "settings"),
+    # exprot pdf children
+    path('pdf_children_all/', views.pdf_children_all, name='pdf_children_all'),
 
     # testing page
     path("testing/",    views.testing,      name = "testing"),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # for profile pictures

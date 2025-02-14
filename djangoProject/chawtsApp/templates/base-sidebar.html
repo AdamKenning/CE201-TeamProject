@@ -35,11 +35,11 @@
             <i class="fa-solid fa-cog"></i>
             <span class="menu-text">Settings</span>
         </a>
-        <a class="menu-item" href="{% url 'dashboard' %}"
+        {% comment %} <a class="menu-item" href="{% url 'dashboard' %}"
         {% if request.path == '/about/' %} id ="active" {% else %} id = inactive {% endif %}>
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
             <span class="menu-text">About</span>
-        </a>
+        </a> {% endcomment %}
 
         <hr class="menu-separator">
 
@@ -49,16 +49,16 @@
             <i class="fa-solid fa-utensils" ></i>
             <span class="menu-text">Food</span>
         </a>
-        <a class="menu-item" href="{% url 'diaper' %}"
+        {% comment %} <a class="menu-item" href="{% url 'diaper' %}"
         {% if request.path == '/diaper/' %} id ="active" {% else %} id = inactive {% endif %}>
             <i class="fa-solid fa-toilet-paper"></i>
             <span class="menu-text">Diaper</span>
-        </a>
-        <a class="menu-item" href="{% url 'medication' %}"
+        </a> {% endcomment %}
+        {% comment %} <a class="menu-item" href="{% url 'medication' %}"
         {% if request.path == '/medication/' %} id ="active" {% else %} id = inactive {% endif %}>
             <i class="fa-solid fa-pills"></i>
             <span class="menu-text">Medication</span>
-        </a>
+        </a> {% endcomment %}
         <a class="menu-item" href="{% url 'growth' %}"
         {% if request.path == '/growth/' %} id ="active" {% else %} id = inactive {% endif %}>
             <i class="fa-solid fa-chart-line"></i>
@@ -69,11 +69,11 @@
             <i class="fa-solid fa-bed"></i>
             <span class="menu-text">Sleep</span>
         </a>
-        <a class="menu-item" href="{% url 'emotion' %}"
+        {% comment %} <a class="menu-item" href="{% url 'emotion' %}"
         {% if request.path == '/emotion/' %} id ="active" {% else %} id = inactive {% endif %}>
             <i class="fa-solid fa-face-laugh-beam"></i>
             <span class="menu-text">Emotion</span>
-        </a>
+        </a> {% endcomment %}
 
         <hr class="menu-separator">
         {% else %}

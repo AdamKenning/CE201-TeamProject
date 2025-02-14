@@ -170,6 +170,9 @@ main{
             .listChild::-webkit-scrollbar {/* CSS to hide scrollbar on various browsers */
                 display: none;/* Safari & Chrome */
             }
+                #listItemChildSelected {
+                    background-color: var(--col-secondary); 
+                }
                 .listItemChild{
                     scroll-snap-align: end;
 
@@ -182,7 +185,6 @@ main{
                     grid-template-rows: 25px 25px;
 
                     align-items: center;
-
                 }
                     .iconChild{
                         grid-area:1/1/3/2;

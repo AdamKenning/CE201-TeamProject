@@ -72,7 +72,11 @@
             <article class="selectChild">
                 <ul class="listChild">
                 {% for child in children%}
+                    {% if selected_child and child.id == selected_child.id%}
+                        <li class="listItemChild" id="listItemChildSelected">
+                    {% else %}
                     <li class="listItemChild">
+                    {% endif %}
                         {% if child.profile_picture %}
                         <img class="iconChild" src="{{ child.profile_picture.url }}"/>
                         {% else %}
@@ -101,6 +105,7 @@
         <section class="about">
         </section>
         <section class="export">
+            <a href="{% url 'pdf_children_all' %}" download>Export Child info (PDF)</a>
         </section>
     </footer>
 {%endblock bodyExtra %}
