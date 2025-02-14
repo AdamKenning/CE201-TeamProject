@@ -1,11 +1,259 @@
-{% extends "base-sidebar.html" %}
-{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growth Page</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 
-{% block headExtra %}
-    <link rel="stylesheet" href="{% static 'css/medication.css' %}" type="text/css">
-    <title>Medication</title>
-{% endblock headExtra %}
+    <style>
+        /* this is to get the chart in a small box so it doesnt take over the ful screen */
+        .chart-container {
+            width: 800px;
+            height: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
 
-{% block bodyExtra %}
-    <header id="title">Page in construction <br> Come back soon !!</header>
-{%endblock bodyExtra %}
+        #growthChart {
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- navigations -->
+    <nav class="navbar">
+        <div class="nav-logo">child grwth tracker</div>
+        <div class="nav-links">
+            <a href="#" class="active">Home</a>
+            <a href="#">Food</a>
+            <a href="#">Growth</a>
+            <a href="#">Sleep</a>
+            <a href="#">Login</a>
+            <a href="#">Settings</a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="input-container">
+            <h2>Child Information</h2>
+            <div class="input-grid">
+                <input type="text" id="ChildNameInput" placeholder="Enter child's name"><!--theirr name--> 
+                <input type="number" id="ChildAgeInput" placeholder="Age (months)"> <!--age--> 
+                <input type="number" id="ChildHeightInput" placeholder="Height (cm)"> <!--height--> 
+                <input type="number" id="ChildWeightInput" placeholder="Weight (kg)"> <!--weigght--> 
+                <input type="number" id="ChildHeadInput" placeholder="Head Circumference (cm)"> <!-- head size--> 
+                <select id="ChildGenderInput">
+                    <option value="">choose gender</option> <!-- dropdown to choose the child gender--> 
+
+                    <option value="male">mle</option> 
+                    <option value="female">female</option>
+                </select>
+            </div>
+            <button onclick="saveChildInfo()" class="save-btn">save the childs info</button> <!-- is the button to save the childs information--> 
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-header">
+                <select id="childSelector" onchange="updateChart()">
+                    <option value="">choose the child</option>
+                </select>
+                <div class="chart-tabs">
+                    <button class="chart-tab active" data-type="height" onclick="switchChart('height')">height</button>
+                    <button class="chart-tab" data-type="weight" onclick="switchChart('weight')">weigght</button>
+                    <button class="chart-tab" data-type="head" onclick="switchChart('head')">head circumference</button>
+                </div>
+            </div>
+            <canvas id="growthChart"></canvas>
+        </div>
+
+        <div class="table-container">
+            <h2>the measuremtns</h2>
+            <table id="childInfoTable">
+                <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>age (months)</th>
+                        <th>height (cm)</th>
+                        <th>weight (kg)</th>
+                        <th>head size (cm)</th>
+                        <th>date saved</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- where table will go -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let growthChart;
+        let childrenData = {};
+
+        function saveChildInfo() {
+            const name = document.getElementById("ChildNameInput").value.trim();
+            const age = document.getElementById("ChildAgeInput").value;
+            const height = document.getElementById("ChildHeightInput").value;
+            const weight = document.getElementById("ChildWeightInput").value;
+            const head = document.getElementById("ChildHeadInput").value;
+            const gender = document.getElementById("ChildGenderInput").value;
+
+            if (!name) {
+                alert("sorry you need to enter in a name"); // make sure that the user enters in a name
+                return;
+            }
+
+            const now = new Date();
+            const formattedDateTime = now.toLocaleString();
+
+            // add to child data
+            if (!childrenData[name]) {
+                childrenData[name] = [];
+                // add the childs name in the dropdwon box
+                const selector = document.getElementById('childSelector');
+                const option = document.createElement('option');
+                option.value = name;
+                option.textContent = name;
+                selector.appendChild(option);
+            }
+
+            childrenData[name].push({
+                age: parseInt(age),
+                height: parseFloat(height),
+                weight: parseFloat(weight),
+                head: parseFloat(head),
+                gender: gender,
+                dateTime: formattedDateTime
+            });
+
+            // add the information to the tbale
+            const tableBody = document.getElementById("childInfoTable").getElementsByTagName("tbody")[0];
+            const newRow = tableBody.insertRow();
+            
+            const cells = [name, age, height, weight, head, formattedDateTime];
+            cells.forEach(cell => {
+                const newCell = newRow.insertCell();
+                newCell.textContent = cell;
+            });
+
+            newRow.addEventListener("click", () => generatePDF({
+                name, age, height, weight, head, gender, dateTime: formattedDateTime
+            }));
+
+            clearInputs();
+            updateChart();
+        }
+
+        function updateChart() {
+            // when the user clicks on the childs name change the chart information
+            const selectedChild = document.getElementById("childSelector").value;
+            if (!selectedChild) return;
+
+            // to get the childs data that was used before
+            const childData = childrenData[selectedChild];
+            
+            // see which on the user clicks on weight ehight etc.
+            const activeTab = document.querySelector('.chart-tab.active');
+            const chartType = activeTab.getAttribute('data-type');
+
+            // clear everything
+            if (growthChart) {
+                growthChart.destroy();
+            }
+
+            // to draw the new chart
+            const canvas = document.getElementById('growthChart');
+            const ctx = canvas.getContext('2d');
+
+            // this is to get the data
+            const ages = childData.map(entry => entry.age);
+            const measurements = childData.map(entry => entry[chartType]);
+
+            // get the correct lables for everything
+            let measurementUnit = 'cm';
+            if (chartType === 'weight') {
+                measurementUnit = 'kg';
+            }
+
+            // go and make the new chart
+            growthChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ages,
+                    datasets: [{
+                        label: chartType + ' over time',
+                        data: measurements,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: chartType + ' (' + measurementUnit + ')'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Age (months)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function switchChart(type) {
+            // go to the new chart
+            const allTabs = document.querySelectorAll('.chart-tab');
+            for (let tab of allTabs) {
+                tab.classList.remove('active');
+            }
+            
+           
+            const clickedTab = event.target;
+            clickedTab.classList.add('active');
+            
+            // to update the chart
+            updateChart();
+        }
+
+        function clearInputs() {
+            document.getElementById('ChildNameInput').value = '';
+            document.getElementById('ChildAgeInput').value = '';
+            document.getElementById('ChildHeightInput').value = '';
+            document.getElementById('ChildWeightInput').value = '';
+            document.getElementById('ChildHeadInput').value = '';
+            document.getElementById('ChildGenderInput').value = '';
+        }
+
+        function generatePDF(childInformation) { // this is to make a pdf
+            const { jsPDF } = window.jspdf; // the user can click on the child information and get a pdf made
+            const doc = new jsPDF();
+
+            doc.text("Child Growth Report", 10, 10);
+            doc.text("Name: " + childInformation.name, 10, 30);
+            doc.text("Age: " + childInformation.age + " months", 10, 40);
+            doc.text("Height: " + childInformation.height + " cm", 10, 50);
+            doc.text("Weight: " + childInformation.weight + " kg", 10, 60);
+            doc.text("Head Circumference: " + childInformation.head + " cm", 10, 70);
+            doc.text("Date & Time: " + childInformation.dateTime, 10, 80);
+
+            doc.save(childInformation.name + "_Growth_Report.pdf");
+        }
+    </script>
+</body>
+</html>
