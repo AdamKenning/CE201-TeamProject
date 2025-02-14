@@ -88,7 +88,8 @@ def emotion(request):
     })
 
 # def login(request):         return render(request, "login.html")
-def settings(request):      return render(request, "settings.html")
+def settings(request):
+    return render(request, "management/settings.html")
 
 @login_required
 def select_child(request, child_id):
@@ -140,7 +141,7 @@ def dashboard(request):
     return render(request, "dashboard.html", {
             "selected_child": selected_child,
             "children": children,
-            
+
             "child_names": json.dumps(child_names),
             "data_logs_per_child": json.dumps(data_logs_per_child),
             "log_categories": json.dumps(log_categories),
@@ -177,7 +178,7 @@ def changeProfile(request):
     else:
         profile_form = ProfileForm(instance=profile)
 
-    return render(request, 'profileManagement/changeProfile.html', {
+    return render(request, 'management/changeProfile.html', {
         'profile_form': profile_form,
     })
 
@@ -198,7 +199,7 @@ def createChild(request):
     else:
         form = ChildForm()
 
-    return render(request, 'childManagement/createChild.html', {'form': form})
+    return render(request, 'management/createChild.html', {'form': form})
 
 
 @login_required
@@ -232,7 +233,7 @@ def addChild(request):
     else:
         form = ShareCodeForm()
 
-    return render(request, 'childManagement/addChild.html', {'form': form})
+    return render(request, 'management/addChild.html', {'form': form})
 
 @login_required
 def testing(request):
