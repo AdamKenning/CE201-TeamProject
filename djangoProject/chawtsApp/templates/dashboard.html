@@ -73,7 +73,11 @@
                 <ul class="listChild">
                 {% for child in children%}
                     <li class="listItemChild">
+                        {% if child.profile_picture %}
+                        <img class="iconChild" src="{{ child.profile_picture.url }}"/>
+                        {% else %}
                         <img class="iconChild" src="/static/images/default.jpg"/>
+                        {% endif %}
                         <p class="nameChild"> {{ child.firstName }} </p>
                         <p class="nameChild"> {{ child.lastName }} </p>
                         <a class="selectButtonChild" href="{% url 'select_child' child.id %}"><i class="fa-solid fa-check"></i></a>

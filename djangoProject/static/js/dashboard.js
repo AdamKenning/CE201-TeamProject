@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     label: 'Total Logs Per Category',
                     data: window.logCategoryCounts,
                     backgroundColor: ['#ff6384', '#36a2eb', '#ffce56'],
-                    hoverOffset: 4
+                    hoverOffset: 50,
                 }]
             },
             options: {
@@ -60,6 +60,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     y: {
                         beginAtZero: true,
                         ticks: {
+                            callback: (val, index) => {
+                                return index % 2 === 0 ? val : undefined;
+                              },
                             font: {
                                 size: 14
                             }

@@ -21,7 +21,7 @@ class ProfileForm(forms.ModelForm):
 class ChildForm(forms.ModelForm):
     class Meta:
         model = Child
-        fields = ['firstName','lastName','dateOfBirth']
+        fields = ['firstName','lastName','dateOfBirth','profile_picture']
 
 class ShareCodeForm(forms.Form):
     shareCode = forms.CharField(max_length=10)

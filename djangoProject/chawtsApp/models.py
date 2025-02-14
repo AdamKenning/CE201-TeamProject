@@ -7,22 +7,19 @@ from django.utils.crypto import get_random_string
 import os
 from uuid import uuid4
 
-# to disable duplicate profile picture file names
+# to disable duplicate profile picture file names (profile & child)
 def profilePicUniqueUpload(instance, fileName):
     # Generate a unique filename using UUID
     fileExtension = fileName.split('.')[-1]  # Get file extension
     fileNameUnique = f"{uuid4().hex}.{fileExtension}"
 
-    # Save to 'profiles/' directory
-    return os.path.join('profiles/', fileNameUnique)
+    # Save to 'pfp/' directory
+    return os.path.join('pfp/', fileNameUnique)
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_picture = models.ImageField(
-        upload_to=profilePicUniqueUpload,
-        blank=True, null=True
-    )
+    profile_picture = models.ImageField(upload_to=profilePicUniqueUpload,blank=True, null=True)
 
     def __str__(self):
         return self.user.username
@@ -34,6 +31,8 @@ class Child(models.Model):
     firstName = models.CharField(max_length=50)
     lastName = models.CharField(max_length=50)
     dateOfBirth = models.DateField(default=None)
+
+    profile_picture = models.ImageField(upload_to=profilePicUniqueUpload,blank=True, null=True)
 
     parents = models.ManyToManyField(User, through='FamilyAssociation', related_name='children')
 

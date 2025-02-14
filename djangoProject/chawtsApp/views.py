@@ -186,11 +186,14 @@ def changeProfile(request):
 @login_required
 def createChild(request):
     if request.method == 'POST':
-        form = ChildForm(request.POST)
+        form = ChildForm(request.POST, request.FILES)
+        print(request.FILES) # debugging to find error of not getting file
         if form.is_valid():
             child = form.save(commit=False)
             child.save()
             child.shareCodeGenerate()
+
+            print(child.profile_picture) # debugging to find error of not getting file 
 
             # assign child to user
             FamilyAssociation.objects.create(parent=request.user, child=child, is_primary=True)

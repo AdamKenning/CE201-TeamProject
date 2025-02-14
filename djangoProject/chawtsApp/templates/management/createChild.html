@@ -5,7 +5,7 @@
 <title>Create Child</title>
 
 <h1> {{ user.username }} : Create a New Child</h1>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Create Child</button>
