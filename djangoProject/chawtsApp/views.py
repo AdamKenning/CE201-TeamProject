@@ -1,41 +1,350 @@
-from django.shortcuts import render, HttpResponse
-from . models import TodoItem
-
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import redirect, render
+
 from django.urls import reverse
+from .forms import UserRegistrationForm, ProfileForm, ChildForm, ShareCodeForm, SleepLogForm, FoodLogForm, GrowthLogForm
+from .models import Profile, FamilyAssociation, Child
 
-# Create your views here.
-def home(request):          return render(request, "home.html")
+# for pdf export
+from reportlab.pdfgen import canvas
+from django.http import FileResponse
 
-def food(request):          return render(request, "tracking/food.html")
-def diaper(request):        return render(request, "tracking/diaper.html")
-def medication(request):    return render(request, "tracking/medication.html")
-def growth(request):        return render(request, "tracking/growth.html")
-def sleep(request):         return render(request, "tracking/sleep.html")
-def emotion(request):       return render(request, "tracking/emotion.html")
+from django.utils.safestring import mark_safe
+import json
+
+# tracking pages
+@login_required
+def food(request):
+    selected_child = None
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+    if not selected_child:
+        return redirect('dashboard')
+
+    return render(request, "tracking/food.html", {
+        "selected_child": selected_child,
+    })
+
+@login_required
+def diaper(request):
+    selected_child = None
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+    if not selected_child:
+        return redirect('dashboard')
+
+    return render(request, "tracking/diaper.html", {
+        "selected_child": selected_child,
+    })
+
+@login_required
+def medication(request):
+    selected_child = None
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+    if not selected_child:
+        return redirect('dashboard')
+
+    return render(request, "tracking/medication.html", {
+        "selected_child": selected_child,
+    })
+
+@login_required
+def growth(request):
+    selected_child = None
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+    if not selected_child:
+        return redirect('dashboard')
+
+    return render(request, "tracking/growth.html", {
+        "selected_child": selected_child,
+    })
+
+@login_required
+def sleep(request):
+    selected_child = None
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+    if not selected_child:
+        return redirect('dashboard')
+
+    return render(request, "tracking/sleep.html", {
+        "selected_child": selected_child,
+    })
+
+@login_required
+def emotion(request):
+    selected_child = None
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+    if not selected_child:
+        return redirect('dashboard')
+
+    return render(request, "tracking/emotion.html", {
+        "selected_child": selected_child,
+    })
 
 # def login(request):         return render(request, "login.html")
-def settings(request):      return render(request, "settings.html")
+def settings(request):
+    return render(request, "management/settings.html")
 
+@login_required
+def select_child(request, child_id):
+    #store child in session
+    child = get_object_or_404(Child, id=child_id, parents=request.user)
+    request.session['selected_child_id'] = child.id
+    return redirect('dashboard')  # redirect back to start (refresh page)
 
 def dashboard(request):
-    return render(request, "registration/dashboard.html")
+    if request.user.is_authenticated:
+        selected_child = None
+        if 'selected_child_id' in request.session:
+            selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+        children = request.user.children.all()
+
+        # total logs per child
+        log_counts = []
+        for child in children:
+            total_logs = (
+                child.sleepLogs.count() +
+                child.foodLogs.count() +
+                child.growthLogs.count()
+            )
+            log_counts.append({
+                "name": f"{child.firstName} {child.lastName}",
+                "log_count": total_logs
+            })
+
+        # data for pie chart
+        child_names = [child["name"] for child in log_counts]
+        data_logs_per_child = [child["log_count"] for child in log_counts]
+
+        # data for bar chart
+        log_categories = ['Sleep', 'Food', 'Growth']
+        log_category_counts = [
+            sum(child.sleepLogs.count() for child in children),
+            sum(child.foodLogs.count() for child in children),
+            sum(child.growthLogs.count() for child in children),
+        ]
+    else:
+        selected_child = None
+        children = []
+        child_names = []
+        data_logs_per_child = []
+        log_categories = []
+        log_category_counts = []
+
+    return render(request, "dashboard.html", {
+            "selected_child": selected_child,
+            "children": children,
+
+            "child_names": json.dumps(child_names),
+            "data_logs_per_child": json.dumps(data_logs_per_child),
+            "log_categories": json.dumps(log_categories),
+            "log_category_counts": json.dumps(log_category_counts),
+        })
 
 def sign_up(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            user = user_form.save()
             login(request, user)
             return redirect(reverse("dashboard"))
     else:
-        form = UserCreationForm()
-    return render(request, "registration/sign_up.html", {"form": form})
+        user_form = UserRegistrationForm()
+    return render(request, "registration/sign_up.html", {
+        "user_form": user_form
+        })
 
 
-# ignore (testing list models etc)
-def todos(request):
-    items = TodoItem.objects.all()
-    return render(request, "todos.html", {"todos": items})
+# debug testing page
+@login_required
+def changeProfile(request):
+    # Get or create the profile instance
+    profile, created = Profile.objects.get_or_create(user=request.user)
+
+    if request.method == "POST":
+        profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+
+        if profile_form.is_valid():
+            profile_form.save()
+            return redirect('changeProfile')
+
+    else:
+        profile_form = ProfileForm(instance=profile)
+
+    return render(request, 'management/changeProfile.html', {
+        'profile_form': profile_form,
+    })
+
+# child managing testing
+@login_required
+def createChild(request):
+    if request.method == 'POST':
+        form = ChildForm(request.POST, request.FILES)
+        if form.is_valid():
+            child = form.save(commit=False)
+            child.save()
+            child.shareCodeGenerate()
+
+            # assign child to user
+            FamilyAssociation.objects.create(parent=request.user, child=child, is_primary=True)
+
+            return redirect('dashboard')
+    else:
+        form = ChildForm()
+
+    return render(request, 'management/createChild.html', {'form': form})
+
+
+@login_required
+def addChild(request):
+    if request.method == 'POST':
+        form = ShareCodeForm(request.POST)
+
+        if form.is_valid():
+            code = form.cleaned_data['shareCode']
+
+            try:
+                child = Child.objects.get(shareCode=code)
+            except Child.DoesNotExist:
+                # code is invalid for a child
+                return render(request, 'dashboard.html')
+
+
+            # check sahre code is valid
+            if code == child.shareCode:
+
+                FamilyAssociation.objects.create(parent=request.user, child=child, is_primary=False)
+
+                child.shareCodeGenerate()
+                return redirect('dashboard')
+            else:
+                # reset sharecode to prevent guessing
+                child.shareCodeGenerate()
+
+                # go dashboard if code invalid
+                return render(request, 'dashboard.html')
+    else:
+        form = ShareCodeForm()
+
+    return render(request, 'management/addChild.html', {'form': form})
+
+@login_required
+def testing(request):
+    selected_child = None
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+    if not selected_child:
+        return redirect('dashboard')
+
+    # forms
+    sleep_log_form = SleepLogForm(request.POST or None)
+    food_log_form = FoodLogForm(request.POST or None)
+    growth_log_form = GrowthLogForm(request.POST or None)
+
+    # form submissions
+    if request.method == 'POST':
+        if 'sleep_log' in request.POST and sleep_log_form.is_valid():
+            sleep_log = sleep_log_form.save(commit=False)
+            sleep_log.child = selected_child
+            sleep_log.save()
+            return redirect('testing')
+
+        elif 'food_log' in request.POST and food_log_form.is_valid():
+            food_log = food_log_form.save(commit=False)
+            food_log.child = selected_child
+            food_log.save()
+            return redirect('testing')
+
+        elif 'growth_log' in request.POST and growth_log_form.is_valid():
+            growth_log = growth_log_form.save(commit=False)
+            growth_log.child = selected_child
+            growth_log.save()
+            return redirect('testing')
+
+    return render(request, "testing.html", {
+        "selected_child": selected_child,
+        "sleep_log_form": sleep_log_form,
+        "food_log_form": food_log_form,
+        "growth_log_form": growth_log_form,
+    })
+
+
+
+# PDF generation
+@login_required
+def pdf_children_all(request):
+    response = FileResponse(pdf_file_children_all(request),as_attachment=True,filename='childrenALl.pdf')
+    return response
+
+@login_required
+def pdf_file_children_all(request):
+    children = request.user.children.all()
+
+    from io import BytesIO
+    buffer = BytesIO()
+
+    p = canvas.Canvas(buffer)
+
+    page_height = 792
+    page_width = 612
+
+
+    lineHeight = 20;
+    leftMargin= 100
+    verticalPos = 800
+
+    p.setFont("Courier", lineHeight/1.5)
+
+    verticalPos -= lineHeight * 2
+
+    p.drawString(leftMargin, verticalPos, "Children Info")
+
+    verticalPos -= lineHeight * 2
+
+    def drawLog(logName, logData, leftMargin, verticalPos):
+        p.drawString(leftMargin, verticalPos, f"Logs : {logName}")
+        verticalPos -= lineHeight
+        leftMargin += 20
+        logs = logData
+        logCount = 0
+        for log in logs:
+            logCount += 1
+            p.drawString(leftMargin, verticalPos, f"Log : {logCount}")
+            verticalPos -= lineHeight
+        if logCount == 0:
+            p.drawString(leftMargin, verticalPos, f"No {logName} Logs")
+            verticalPos -= lineHeight
+        leftMargin -= 20
+        return leftMargin, verticalPos
+
+    for child in children:
+        verticalPos -= lineHeight
+        p.drawString(leftMargin, verticalPos, f"Name : {child.firstName}, {child.lastName}")
+        verticalPos -= lineHeight
+        p.drawString(leftMargin, verticalPos, f"DoB  : {child.dateOfBirth}")
+        verticalPos -= lineHeight
+        p.drawString(leftMargin, verticalPos, f"Code : {child.shareCode}")
+        verticalPos -= lineHeight
+
+        leftMargin, verticalPos = drawLog("Growth", child.growthLogs.all(), leftMargin, verticalPos)
+        leftMargin, verticalPos = drawLog("Food", child.foodLogs.all(), leftMargin, verticalPos)
+        leftMargin, verticalPos = drawLog("Sleep", child.sleepLogs.all(), leftMargin, verticalPos)
+
+    p.showPage()
+    p.save()
+
+    buffer.seek(0)
+    return buffer

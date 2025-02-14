@@ -1,0 +1,162 @@
+{% extends "base-sidebar.html" %}
+{% load static %}
+
+{% block headExtra %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css">
+    <title>Home</title>
+{% endblock headExtra %}
+
+{% block bodyExtra %}
+    <section class="section-top">
+        <article class="welcome">
+            <img class="welcome-logo" src="{% static 'icons/LogoHeavy.svg' %}" alt="logo"/>
+            <p class="welcome-message">Welcome back {{ user.username|default:"Guest" }}</p>
+
+            {% if user.profile.profile_picture %}
+                <img class="welcome-userIcon" src="{{ user.profile.profile_picture.url }}">
+            {% else %}
+                <img class="welcome-userIcon" src="/static/images/default.jpg">
+            {% endif %}
+
+        </article>
+        <p class="title">Dashboard</p>
+    </section>
+
+    <section class="section-main">
+        <article class="recentUpdates">
+            <p class="recentUpdates-name">Recent Updates</p>
+            <ul class="recentUpdates-list">
+                <li class="recentUpdates-listItem" id="today">
+                    <img class="recentUpdates-icon" src="https://randomuser.me/api/portraits/women/5.jpg"/>
+                    <p class="recentUpdates-type">Medication</p>
+                    <p class="recentUpdates-time">9:45am</p>
+                    <p class="recentUpdates-date">Today</p>
+                    <p class="recentUpdates-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed consequat felis, ac volutpat quam. Nunc molestie urna nulla, vestibulum tempor lacus viverra et</p>
+                </li>
+{% comment %}
+                 <li class="recentUpdates-listItem" id="today">
+                    <img class="recentUpdates-icon" src="https://randomuser.me/api/portraits/women/6.jpg"/>
+                    <p class="recentUpdates-type">Diaper</p>
+                    <p class="recentUpdates-time">10:25pm</p>
+                    <p class="recentUpdates-date">Today</p>
+                    <p class="recentUpdates-text">Praesent consectetur nunc a nunc mattis, sit amet mollis urna cursus. Phasellus ut laoreet lectus. In aliquet porttitor sapien eu ullamcorper</p>
+                </li>
+
+                <li class="recentUpdates-listItem">
+                    <img class="recentUpdates-icon" src="https://randomuser.me/api/portraits/women/7.jpg"/>
+                    <p class="recentUpdates-type">Food</p>
+                    <p class="recentUpdates-time">10:25pm</p>
+                    <p class="recentUpdates-date">Yesterday</p>
+                    <p class="recentUpdates-text">Duis et cursus purus.</p>
+                </li>
+
+                <li class="recentUpdates-listItem">
+                    <img class="recentUpdates-icon" src="https://randomuser.me/api/portraits/women/8.jpg"/>
+                    <p class="recentUpdates-type">Growth</p>
+                    <p class="recentUpdates-time">10:25am</p>
+                    <p class="recentUpdates-date">23/22/22</p>
+                    <p class="recentUpdates-text">Donec tristique orci vel erat molestie, a vulputate felis eleifend</p>
+                </li>
+
+                <li class="recentUpdates-listItem">
+                    <img class="recentUpdates-icon" src="https://randomuser.me/api/portraits/lego/8.jpg"/>
+                    <p class="recentUpdates-type">TEST OVERFLOW</p>
+                    <p class="recentUpdates-time">TEST</p>
+                    <p class="recentUpdates-date">TEST</p>
+                    <p class="recentUpdates-text">OVERFLOW</p>
+                </li>
+
+                <li class="recentUpdates-listItem">
+                    <img class="recentUpdates-icon" src="https://randomuser.me/api/portraits/lego/8.jpg"/>
+                    <p class="recentUpdates-type">TEST OVERFLOW</p>
+                    <p class="recentUpdates-time">TEST</p>
+                    <p class="recentUpdates-date">TEST</p>
+                    <p class="recentUpdates-text">OVERFLOW</p>
+                </li>
+
+                <li class="recentUpdates-listItem">
+                    <img class="recentUpdates-icon" src="https://randomuser.me/api/portraits/lego/8.jpg"/>
+                    <p class="recentUpdates-type">TEST OVERFLOW</p>
+                    <p class="recentUpdates-time">TEST</p>
+                    <p class="recentUpdates-date">TEST</p>
+                    <p class="recentUpdates-text">OVERFLOW</p>
+                </li>
+
+                <li class="recentUpdates-listItem">
+                    <img class="recentUpdates-icon" src="https://randomuser.me/api/portraits/lego/8.jpg"/>
+                    <p class="recentUpdates-type">TEST OVERFLOW</p>
+                    <p class="recentUpdates-time">TEST</p>
+                    <p class="recentUpdates-date">TEST</p>
+                    <p class="recentUpdates-text">OVERFLOW</p>
+                </li>
+{% endcomment %}
+            </ul>
+        </article>
+
+        {% comment %} <article class="something">
+        </article> {% endcomment %}
+
+        <article class="graph">
+            <p class="graph-name">Graph</p>
+        </article>
+
+        <article class="export">
+            <div  class="export-select">
+                <div class="export-option">
+                    <input class="export-selectable" type="checkbox" value="food">
+                    <p class="export-option-text" for="food">Food</p>
+                </div>
+                <div class="export-option">
+                    <input class="export-selectable" type="checkbox" value="diaper">
+                    <p class="export-option-text" for="diaper">Diaper</p>
+                </div>
+                <div class="export-option">
+                    <input class="export-selectable" type="checkbox" value="medication">
+                    <p class="export-option-text" for="medication">Medication</p>
+                </div>
+                <div class="export-option">
+                    <input class="export-selectable" type="checkbox" value="growth">
+                    <p class="export-option-text" for="growth">Growth</p>
+                </div>
+                <div class="export-option">
+                    <input class="export-selectable" type="checkbox" value="sleep">
+                    <p class="export-option-text" for="sleep">Sleep</p>
+                </div>
+                <div class="export-option">
+                    <input class="export-selectable" type="checkbox" value="emotion">
+                    <p class="export-option-text" for="emotion">Emotion</p>
+                </div>
+            </div>
+
+        </article>
+
+        <article class="children">
+            <ul class="children-list">
+
+                {% for child in children %}
+                    <li class="children-listitem">
+                        <img class="children-icon" src="https://randomuser.me/api/portraits/lego/1.jpg"/>
+                        <p class="children-firstName"> {{ child.firstName }} </p>
+                        <p class="children-LastName"> {{ child.LastName }} </p>
+                        <p class="children-dateOfBirth"> {{ child.dateOfBirth }} </p>
+                    </li>
+                    
+                {% empty %}
+                    <li class="children-listitem">
+                        <img class="children-icon" src="/static/images/default.jpg"/>
+                        <p class="children-name"> No Child </p>
+                        <p class="children-info">  </p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </article>
+
+    </section>
+
+    <section class ="section-bottom">
+
+    </section>
+{%endblock bodyExtra %}
+
+
+{% comment %} https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout {% endcomment %}

@@ -1,0 +1,111 @@
+{% extends "base-sidebar.html" %}
+{% load static %}
+
+{% block headExtra %}
+    <link rel="stylesheet" href="{% static 'css/Dashboard.css' %}" type="text/css">
+    <title>Dashboard</title>
+    <script src="{% static 'js/dashboard.js' %}" defer></script>
+{% endblock headExtra %}
+
+{% block bodyExtra %}
+    <header>
+        <img class="pageLogo" src="{% static 'icons/LogoHeavy.svg' %}" alt="logo"/>
+
+        {% comment %} <p class="welcome-message">Welcome back {{ user.username|default:"Guest" }}</p> {% endcomment %}
+        {% if user.is_authenticated %}
+        <p class="welcomeMessage">Welcome Back {{ user.username }}!</p>
+        {% else %}
+        <p class="welcomeMessage">Please login Anonymous</p>
+        {% endif %}
+
+        <section class="userInfo">
+            {% if user.is_authenticated %}
+            <form class="userAction" method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button class="userActionException" type="submit">logout</button>
+            </form>
+            <a class="userAction" href="{% url 'password_change' %}">Change PW</a>
+            {% else %}
+            <a class="userAction" href="{% url 'login' %}">Login</a>
+            <a class="userAction" href="{% url 'sign_up' %}">Sign up</a>
+            {% endif %}
+
+
+            {% if user.profile.profile_picture %}
+            <a class="userIcon" href="{% url 'changeProfile' %}">
+                <img src="{{ user.profile.profile_picture.url }}">
+            </a>
+            {% else %}
+            <a class="userIcon" href="{% url 'changeProfile' %}">
+                <img class="userIcon" src="/static/images/default.jpg">
+            </a>
+            {% endif %}
+        </section>
+    </header>
+
+
+    <main>
+        <section class="graphAreaFirst">
+            <canvas class="pieChart" id="pieChart"></canvas>
+            <script src="{% static 'js/dashboard.js' %}"></script>
+        </section>
+        <section class="graphAreaSecond">
+            <canvas class="barChart" id="barChart"></canvas>
+        </section>
+
+        <script>
+            window.childNames = {{ child_names|safe }};
+            window.dataLogsPerChild = {{ data_logs_per_child|safe }};
+            window.logCategories = {{ log_categories|safe }};
+            window.logCategoryCounts = {{ log_category_counts|safe }};
+        </script>
+
+        <section class="childInfo">
+            <article class="selectedChild">
+                {% if selected_child  %}
+                <p class="nameChild"> {{ selected_child.firstName }} </p>
+                <p class="nameChild"> {{ selected_child.lastName }} </p>
+                <p class="nameChild"> {{ selected_child.shareCode }} </p>
+                {% else %}
+                {% endif %}
+            </article>
+            <article class="selectChild">
+                <ul class="listChild">
+                {% for child in children%}
+                    {% if selected_child and child.id == selected_child.id%}
+                        <li class="listItemChild" id="listItemChildSelected">
+                    {% else %}
+                    <li class="listItemChild">
+                    {% endif %}
+                        {% if child.profile_picture %}
+                        <img class="iconChild" src="{{ child.profile_picture.url }}"/>
+                        {% else %}
+                        <img class="iconChild" src="/static/images/default.jpg"/>
+                        {% endif %}
+                        <p class="nameChild"> {{ child.firstName }} </p>
+                        <p class="nameChild"> {{ child.lastName }} </p>
+                        <a class="selectButtonChild" href="{% url 'select_child' child.id %}"><i class="fa-solid fa-check"></i></a>
+                    </li>
+                {% empty %}
+                    <li class="listItemChild">
+                        <img class="iconChild" src="/static/images/default.jpg"/>
+                        <p class="nameChild">No Children</p>
+                        <p class="nameChild">To Display</p>
+                        <a class="selectButtonChild"><i class="fa-regular fa-face-frown"></i></a>
+                    </li>
+                {% endfor %}
+                <ul class="children-list">
+            </article>
+            <a class="actionChild" href="{% url 'addChild' %}">Import Child</a>
+            <a class="actionChild" href="{% url 'createChild' %}">Create Child</a>
+        </section>
+    </main>
+
+    <footer>
+        <section class="about">
+        </section>
+        <section class="export">
+            <a href="{% url 'pdf_children_all' %}" download>Export Child info (PDF)</a>
+        </section>
+    </footer>
+{%endblock bodyExtra %}

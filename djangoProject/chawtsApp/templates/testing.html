@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block bodyExtra %}
+<h1>Log Information for {{ selected_child.firstName }} {{ selected_child.lastName }}</h1>
+
+<h2>Sleep Log</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ sleep_log_form.as_p }}
+    <button type="submit" name="sleep_log">Submit Sleep Log</button>
+</form>
+
+<h2>Food Log</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ food_log_form.as_p }}
+    <button type="submit" name="food_log">Submit Food Log</button>
+</form>
+
+<h2>Growth Log</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ growth_log_form.as_p }}
+    <button type="submit" name="growth_log">Submit Growth Log</button>
+</form>
+{% endblock bodyExtra%}

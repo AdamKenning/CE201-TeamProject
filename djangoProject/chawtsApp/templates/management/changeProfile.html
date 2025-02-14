@@ -1,0 +1,20 @@
+{% comment %} page is only accessible when logged in {% endcomment %}
+
+<h1> {{ user.username }} </h1>
+
+{% if user.profile.profile_picture %}
+    <img src="{{ user.profile.profile_picture.url }}" alt="Profile Picture">
+{% else %}
+    <img src="/static/images/default.jpg" alt="Default Profile Picture">
+{% endif %}
+
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <h2>Upload profile image</h2>
+    {{ profile_form.as_p }}
+
+    <button type="submit">Submit</button>
+    <a href="{% url 'dashboard' %}">Back to dashboard</a>
+</form>

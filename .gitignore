@@ -41,5 +41,14 @@ fabric.properties
 .vscode/settings.json
 
 # venv is device specific Ignore git
-venv/
+.venv
+.venv/
 venv
+venv/
+.env/
+*.pyc
+
+
+# cached stuff (created when running the server)
+__pycache__/
+djangoProject/chawtsApp/__pycache__/

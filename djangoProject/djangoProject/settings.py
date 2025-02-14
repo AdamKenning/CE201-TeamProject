@@ -30,7 +30,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Team project custom app
     'chawtsApp', # must be above contrib items for e.g. password_change form to inherit correct css
+
+    # Django stuff
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -128,3 +131,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 
+import os
+
+MEDIA_URL = '/media/'  # URL path for media files accessible from the browser
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # actual file path where files are stored
+LOGOUT_REDIRECT_URL = '/'  # Redirect to home page or change to your desired page
