@@ -16,8 +16,26 @@
         <input type="number" id="ChildHeightInput" placeholder="height in (cm)">  {% comment %} height {% endcomment %}
         <input type="number" id="ChildWeightInput" placeholder="weight in (kg)">  {% comment %} weigght {% endcomment %}
         <input type="number" id="ChildHeadInput" placeholder="head circumference in (cm)"> {% comment %} for the head size {% endcomment %}
-
+        <select id="ChildGenderInput">
+            <option value="">select gender</option>
+            <option value="male">male</option>
+            <option value="female">female</option>
+        </select>
         <button onclick="saveTheChildInformation()">Save Child Information</button> {% comment %}  is the button to save the child informations {% endcomment %}
+    </div>
+
+    <div class="chart-container">
+        <div class="chart-header">
+            <select id="childSelector" onchange="updateChart()">
+                <option value="">Select a Child</option>
+            </select>
+            <div class="chart-tabs">
+                <button class="chart-tab active" data-type="height" onclick="switchChart('height')">Height</button>
+                <button class="chart-tab" data-type="weight" onclick="switchChart('weight')">Weight</button>
+                <button class="chart-tab" data-type="head" onclick="switchChart('head')">Head Circumference</button>
+            </div>
+        </div>
+        <canvas id="growthChart"></canvas>
     </div>
 
     {% comment %} is where the table will go {% endcomment %}
