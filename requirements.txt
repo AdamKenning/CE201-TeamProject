@@ -1,0 +1,12 @@
+# main framework for the application
+Django==5.1.6
+
+# Requirements needed for Django
+sqlparse==0.5.3     # SQL parser                                (used for handling SQL queries).
+tzdata==2025.1      # timezone data library                     (used to handle timezone-related functionality)
+asgiref==3.8.1      # reference library                         (used for handling asynchronous tasks)
+chardet==5.2.0      # library for character encoding detection  (used for handling HTTP request/response data)
+
+# Requirements needed for features of Aapp
+pillow==11.1.0      # library for handling image files          (used for manageing profile pictures)
+reportlab==4.3.1    # library for generating PDF documents      (used for generating PDF reports)
