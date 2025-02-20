@@ -16,7 +16,7 @@ def profilePicUniqueUpload(instance, fileName):
     # Save to 'pfp/' directory
     return os.path.join('pfp/', fileNameUnique)
 
-
+# An extension of the django User model for some extra info
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_picture = models.ImageField(upload_to=profilePicUniqueUpload,blank=True, null=True)
@@ -25,7 +25,6 @@ class Profile(models.Model):
         return self.user.username
     class Meta:
         db_table = "chawts_userExtended"
-        db_table_comment = "An extension of the django User model for some extra info"
 
 class Child(models.Model):
     firstName = models.CharField(max_length=50)
@@ -46,7 +45,7 @@ class Child(models.Model):
     class Meta:
         db_table = "chawts_child"
 
-
+# Stores who the parents are of which children
 class FamilyAssociation(models.Model):
     parent = models.ForeignKey(User, on_delete=models.CASCADE)
     child = models.ForeignKey(Child, on_delete=models.CASCADE)
@@ -58,9 +57,6 @@ class FamilyAssociation(models.Model):
     class Meta:
         db_table = "chawts_families"
         unique_together = ('parent', 'child')
-        db_table_comment = "Stores who the parents are of which children"
-
-
 
 class Log(models.Model):
     TYPES = [

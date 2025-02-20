@@ -1,9 +1,11 @@
 # python check
-Write-Host "[1/9] Checking Python installation"
+Write-Host "[1/9] Checking Python installation..."
 $pythonCheck = Get-Command python3 -ErrorAction SilentlyContinue
 if (-not $pythonCheck) {
     Write-Host "[1/9] Python3 not installed. Please install it from: https://www.python.org/downloads/"
     Exit
+}else{
+    Write-Host "[1/9]" (python3 --version) "installed."
 }
 
 # virtual environment
@@ -43,9 +45,9 @@ if ($setupAdmin -eq 'y' -or $setupAdmin -eq 'Y') {
     python manage.py createsuperuser
 }
 
-# run the server
-Write-Host "[8/9] Starting the server..."
-Start-Process python -ArgumentList "manage.py runserver"
+# complete
+Write-Host "[8/9] Setup complete!"
 
-# 9 : complete
-Write-Host "[9/9] Setup complete!"
+# run the server
+Write-Host "[9/9] Starting the server..."
+python manage.py runserver
