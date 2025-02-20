@@ -22,7 +22,7 @@
             {% if user.is_authenticated %}
             <form class="userAction" method="post" action="{% url 'logout' %}">
                 {% csrf_token %}
-                <button class="userActionException" type="submit">logout</button>
+                <button type="submit">logout</button>
             </form>
             <a class="userAction" href="{% url 'password_change' %}">Change PW</a>
             {% else %}
@@ -46,11 +46,12 @@
     <main data_isAuthenticated="{% if user.is_authenticated %}true{% else %}false{% endif %}">
         <section class="graphAreaFirst">
             <canvas class="pieChart" id="pieChart"></canvas>
-            <script src="{% static 'js/dashboard.js' %}"></script>
         </section>
         <section class="graphAreaSecond">
             <canvas class="barChart" id="barChart"></canvas>
         </section>
+
+        <script src="{% static 'js/dashboard.js' %}"></script>
 
         {% if user.is_authenticated %}
         <script>
@@ -81,7 +82,7 @@
                 <ul class="listChild">
                 {% for child in children%}
                     {% if selected_child and child.id == selected_child.id%}
-                        <li class="listItemChild" id="listItemChildSelected">
+                    <li class="listItemChild" id="listItemChildSelected">
                     {% else %}
                     <li class="listItemChild">
                     {% endif %}
@@ -92,8 +93,11 @@
                         {% endif %}
                         <p class="nameChild"> {{ child.firstName }} </p>
                         <p class="nameChild"> {{ child.lastName }} </p>
-                        <a class="selectButtonChild" href="{% url 'select_child' child.id %}"><i class="fa-solid fa-check"></i></a>
-                    </li>
+                        {% if selected_child and child.id == selected_child.id%}
+                        <a class="selectButtonChild" href="{% url 'deselect_child' %}"><i class="fa-solid fa-x"></i></a>
+                        {% else %}
+                        <a class="selectButtonChild" href="{% url 'select_child' child.id%}"><i class="fa-solid fa-check"></i></a>
+                        {% endif %}
                 {% empty %}
                     <li class="listItemChild">
                         <img class="iconChild" src="/static/images/default.jpg"/>
@@ -104,8 +108,8 @@
                 {% endfor %}
                 <ul class="children-list">
             </article>
-            <a class="importChild" href="{% url 'addChild' %}">Import Child</a>
-            <a class="createChild" href="{% url 'createChild' %}">Create Child</a>
+            <a class="importChild" href="{% url 'addChild' %}">Import</a>
+            <a class="createChild" href="{% url 'createChild' %}">Create</a>
         </section>
         {% else %}
         <script>
@@ -124,12 +128,8 @@
         </section>
         {% if user.is_authenticated %}
         <section class="export">
-            {% if selected_child %}
-            <p class="exportText" href="{% url 'pdf_children_all' %}" download>Export Data</p>
-            {% comment %} <a class="selectButtonChild" #><i class="fa-solid fa-check"></i></a> {% endcomment %}
-            {% else %}
-            <p class="exportText">Select a child to Export</p>
-            {% endif %}
+            <p class="exportText">Export to PDF</p>
+            <a class="exportButton" href="{% url 'pdf_children_all' %}" download><i class="fa-solid fa-file-arrow-down"></i></a>
         </section>
         {% else %}
         {% endif %}

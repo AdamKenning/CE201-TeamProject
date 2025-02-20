@@ -21,7 +21,8 @@ urlpatterns = [
     # childManagement pages
     path('createChild/', views.createChild, name='createChild'),
     path('addChild/', views.addChild, name='addChild'),
-    path('select-child/<int:child_id>/', views.select_child, name='select_child'),  # Add this!
+    path('select-child/<int:child_id>/', views.select_child, name='select_child'),
+    path('deselect-child', views.deselect_child, name='deselect_child'),
 
     # tracking pages
     path("food/",       views.food,         name = "food"),

@@ -3,13 +3,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 
 from datetime import date
-from django.urls import reverse
 from .forms import UserRegistrationForm, ProfileForm, ChildForm, ShareCodeForm, SleepLogForm, FoodLogForm, GrowthLogForm
 from .models import Profile, FamilyAssociation, Child, FoodLog
 
 # for pdf export
 from reportlab.pdfgen import canvas
-from django.http import FileResponse
+from django.http import FileResponse, HttpResponseRedirect
+from django.urls import reverse
 
 from django.utils.safestring import mark_safe
 import json
@@ -103,7 +103,14 @@ def select_child(request, child_id):
     #store child in session
     child = get_object_or_404(Child, id=child_id, parents=request.user)
     request.session['selected_child_id'] = child.id
-    return redirect('dashboard')  # redirect back to start (refresh page)
+    return redirect('dashboard') # refresh page
+
+@login_required
+def deselect_child(request):
+    if 'selected_child_id' in request.session:
+        del request.session['selected_child_id']  # delete session
+    return redirect(request.META.get('HTTP_REFERER', 'dashboard'))  # Redirect back or to dashboard
+
 
 def dashboard(request):
     if request.user.is_authenticated:
@@ -300,22 +307,6 @@ def testing(request):
         "food_log_form": food_log_form,
         "growth_log_form": growth_log_form,
     })
-
-
-    # if request.method == 'POST':
-    #     form = FoodLogForm(request.POST)
-    #     form.fields['mealType'].choices = mealType
-
-    #     if form.is_valid():
-    #         food_log = form.save(commit=False)
-    #         food_log.child = selected_child
-    #         food_log.save()
-    # else:
-    #     form = FoodLogForm(initial={'child': selected_child})
-
-    #     return render(request, 'food_log_create.html', {
-    #         'form': form, 'selected_child': selected_child
-    #     })
 
 
 # PDF generation
