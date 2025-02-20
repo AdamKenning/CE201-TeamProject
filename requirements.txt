@@ -8,5 +8,5 @@ asgiref==3.8.1      # reference library                         (used for handli
 chardet==5.2.0      # library for character encoding detection  (used for handling HTTP request/response data)
 
 # Requirements needed for features of Aapp
-pillow==11.1.0      # library for handling image files          (used for manageing profile pictures)
+pillow==11.1.0      # library for handling image files          (used for manageing images e.g. profile pictures)
 reportlab==4.3.1    # library for generating PDF documents      (used for generating PDF reports)

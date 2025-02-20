@@ -48,6 +48,10 @@ venv/
 .env/
 *.pyc
 
+# Database stuff
+*.sqlite3
+*.db
+db.sqlite3
 
 # cached stuff (created when running the server)
 __pycache__/
