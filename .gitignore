@@ -56,3 +56,5 @@ db.sqlite3
 # cached stuff (created when running the server)
 __pycache__/
 djangoProject/chawtsApp/__pycache__/
+djangoProject/chawtsApp/migrations__pycache__/
+djangoProject/djangoProject/__pycache__/
