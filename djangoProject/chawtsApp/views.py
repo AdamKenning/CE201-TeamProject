@@ -108,8 +108,14 @@ def select_child(request, child_id):
 def dashboard(request):
     if request.user.is_authenticated:
         selected_child = None
+        age_years = None
+        age_months = None
         if 'selected_child_id' in request.session:
             selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+            age_days_total = (date.today() - selected_child.dateOfBirth).days
+            age_years = age_days_total // 365
+            age_months = (age_days_total - (age_years * 365)) // 30
+
 
         children = request.user.children.all()
 
@@ -139,14 +145,19 @@ def dashboard(request):
         ]
     else:
         selected_child = None
+        age_years = None
+        age_months = None
         children = []
         child_names = []
+
         data_logs_per_child = []
         log_categories = []
         log_category_counts = []
 
     return render(request, "dashboard.html", {
             "selected_child": selected_child,
+            "selected_child_years": age_years,
+            "selected_child_months": age_months,
             "children": children,
 
             "child_names": json.dumps(child_names),

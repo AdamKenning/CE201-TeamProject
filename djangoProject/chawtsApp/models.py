@@ -76,7 +76,7 @@ class Log(models.Model):
     comment = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
-        db_table = "chawts_baisclog"
+        db_table = "chawts_logBasic"
         abstract = True
 
 class SleepLog(Log):
@@ -97,12 +97,14 @@ class SleepLog(Log):
 class FoodLog(Log):
     child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='foodLogs')
 
+    # Meal options if child age < 6 months
     mealTypeBaby = [
         ('formula','Formula'),
         ('cowMilk','Cow Milk'),
         ('breastMilk','Breast Milk'),
     ]
 
+    # Meal options if child age > 6 months
     mealTypeChild = [
         ('pasta', 'Pasta'),
         ('jacketPotato','Jacket potato'),
@@ -119,29 +121,13 @@ class FoodLog(Log):
         (1.00,'Full'),
     ]
 
-
-    mealType = models.CharField(max_length=50, choices=mealTypeBaby)
+    mealType = models.CharField(max_length=50, choices=[])
     amount = models.DecimalField(max_digits=3,decimal_places=2, choices=amountEaten,default=1.00)
     calories = models.IntegerField()
 
     class Meta:
         db_table = "chawts_logFood"
 
-# class FoodLog(Log):
-#     child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='foodLogs')
-
-#     TYPES = [
-#         ('breakfast', 'Breakfast'),
-#         ('lunch','Lunch'),
-#         ('dinner','Dinner'),
-#         ('snack','Snack'),
-#     ]
-
-#     type = models.CharField(max_length=50, choices=TYPES)
-#     calories = models.IntegerField()
-
-#     class Meta:
-#         db_table = "chawts_logFood"
 class GrowthLog(Log):
     child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='growthLogs')
 
