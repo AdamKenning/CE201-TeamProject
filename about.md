@@ -14,13 +14,16 @@ This is a **Django** project that does...
    git --version
    ```
    If not installed, download from : https://git-scm.com/downloads
-## Installation (Auto)
+## Installation (Auto) (Windows Only)
 1. Clone the repository locally
    ```console
    git clone https://cseegit.essex.ac.uk/24-25-ce201-col/24-25_CE201-col_team02
    cd 24-25_CE201-col_team02
    ```
-2. Run setup.ps1 (Windows)
+2. Run setup.ps1
+   ```console
+   .\setup.ps1
+   ```
 ## Installation (Manual)
 1. Clone the repository locally
    ```console

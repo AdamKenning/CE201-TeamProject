@@ -1,52 +1,51 @@
-# 1 : python check
+# python check
+Write-Host "[1/9] Checking Python installation"
 $pythonCheck = Get-Command python3 -ErrorAction SilentlyContinue
 if (-not $pythonCheck) {
-    Write-Host "Python3 not installed. Please install it from: https://www.python.org/downloads/"
+    Write-Host "[1/9] Python3 not installed. Please install it from: https://www.python.org/downloads/"
     Exit
 }
 
-# 2 : virtual environment
-Write-Host "Setting up virtual environment..."
+# virtual environment
+Write-Host "[2/9] Setting up virtual environment..."
 python3 -m venv venv
 . .\venv\Scripts\Activate
 
-# 3 : install requirements
-Write-Host "Installing project requirements..."
+# install requirements
+Write-Host "[3/9] Installing project requirements..."
 pip install -r requirements.txt
 
-# 4 : set working directory
-Write-Host "Setting directory..."
+# set working directory
+Write-Host "[4/9] Setting directory..."
 Set-Location djangoProject
 
-# 5 : database migrations
-Write-Host "Running migrations..."
+# database migrations
+Write-Host "[5/9] Running database migrations..."
 python manage.py migrate
 
-# 6 : load example data
-$loadData = Read-Host "(Optional) Load the example data? (y/n)"
+# load example data
+$loadData = Read-Host "[6/9] (Optional) Load the example data? (y/n)"
 if ($loadData -eq 'y' -or $loadData -eq 'Y') {
 
-    # 6.1 : flush existing data (avoid duplication)
-    $flushData = Read-Host "Flush database (y/n) (if this is a clean install, you can skip this)"
+    # 6.1 : flush existing data (if needed)
+    $flushData = Read-Host "[6/9] Flush the database to avoid possible duplicate errors? (y/n)"
     if ($flushData -eq 'y' -or $flushData -eq 'Y') {
-        Write-Host "Flushing database..."
-        Start-Process python -ArgumentList "manage.py flush --no-input"
-    }else{
-        Write-Host "Warning, Load may fail due to existing database"
+        Write-Host "[6/9] Flushing database..."
+        python manage.py migrate
     }
-    Write-Host "Loading example Data..."
+    Write-Host "[6/9] Loading example Data..."
     python manage.py loaddata fixtures/example_data.json
 }
 
-# 7 : admin access
-$setupAdmin = Read-Host "(Optional) Set up admin access? (y/n)"
+# admin access
+$setupAdmin = Read-Host "[7/9] (Optional) Set up admin access? (y/n)"
 if ($setupAdmin -eq 'y' -or $setupAdmin -eq 'Y') {
     python manage.py createsuperuser
 }
 
-# 8 : run the server
-Write-Host "Running the server..."
+# run the server
+Write-Host "[8/9] Starting the server..."
 Start-Process python -ArgumentList "manage.py runserver"
 
 # 9 : complete
-Write-Host "Setup complete!"
+Write-Host "[9/9] Setup complete!"
