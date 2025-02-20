@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 
+from datetime import date
 from django.urls import reverse
 from .forms import UserRegistrationForm, ProfileForm, ChildForm, ShareCodeForm, SleepLogForm, FoodLogForm, GrowthLogForm
-from .models import Profile, FamilyAssociation, Child
+from .models import Profile, FamilyAssociation, Child, FoodLog
 
 # for pdf export
 from reportlab.pdfgen import canvas
@@ -16,6 +17,7 @@ import json
 # tracking pages
 @login_required
 def food(request):
+
     selected_child = None
     if 'selected_child_id' in request.session:
         selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
@@ -254,6 +256,13 @@ def testing(request):
     food_log_form = FoodLogForm(request.POST or None)
     growth_log_form = GrowthLogForm(request.POST or None)
 
+    # for the food log age thing
+    age = (date.today() - selected_child.dateOfBirth).days // 365
+    if age < 0.5:   mealType = FoodLog.mealTypeBaby
+    else:           mealType = FoodLog.mealTypeChild
+    food_log_form.fields['mealType'].choices = mealType
+
+
     # form submissions
     if request.method == 'POST':
         if 'sleep_log' in request.POST and sleep_log_form.is_valid():
@@ -281,6 +290,21 @@ def testing(request):
         "growth_log_form": growth_log_form,
     })
 
+
+    # if request.method == 'POST':
+    #     form = FoodLogForm(request.POST)
+    #     form.fields['mealType'].choices = mealType
+
+    #     if form.is_valid():
+    #         food_log = form.save(commit=False)
+    #         food_log.child = selected_child
+    #         food_log.save()
+    # else:
+    #     form = FoodLogForm(initial={'child': selected_child})
+
+    #     return render(request, 'food_log_create.html', {
+    #         'form': form, 'selected_child': selected_child
+    #     })
 
 
 # PDF generation

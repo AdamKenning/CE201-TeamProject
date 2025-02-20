@@ -11,7 +11,7 @@
 </form>
 
 <h2>Food Log</h2>
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ food_log_form.as_p }}
     <button type="submit" name="food_log">Submit Food Log</button>
