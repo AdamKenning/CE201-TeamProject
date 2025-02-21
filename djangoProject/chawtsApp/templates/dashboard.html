@@ -3,8 +3,8 @@
 
 {% block headExtra %}
     <link rel="stylesheet" href="{% static 'css/Dashboard.css' %}" type="text/css">
-    <title>Dashboard</title>
     <script src="{% static 'js/dashboard.js' %}" defer></script>
+    <title>Dashboard</title>
 {% endblock headExtra %}
 
 {% block bodyExtra %}
@@ -15,14 +15,14 @@
         {% if user.is_authenticated %}
         <p class="welcomeMessage">Welcome Back {{ user.username }}!</p>
         {% else %}
-        <p class="welcomeMessage">Please login Anonymous</p>
+        <p class="welcomeMessage">Hello Guest, Please Login</p>
         {% endif %}
 
         <section class="userInfo">
             {% if user.is_authenticated %}
             <form class="userAction" method="post" action="{% url 'logout' %}">
                 {% csrf_token %}
-                <button class="userActionException" type="submit">logout</button>
+                <button type="submit">logout</button>
             </form>
             <a class="userAction" href="{% url 'password_change' %}">Change PW</a>
             {% else %}
@@ -43,17 +43,19 @@
         </section>
     </header>
 
-
-    <main>
+    <main data_isAuthenticated="{% if user.is_authenticated %}true{% else %}false{% endif %}">
         <section class="graphAreaFirst">
             <canvas class="pieChart" id="pieChart"></canvas>
-            <script src="{% static 'js/dashboard.js' %}"></script>
         </section>
         <section class="graphAreaSecond">
             <canvas class="barChart" id="barChart"></canvas>
         </section>
 
+        <script src="{% static 'js/dashboard.js' %}"></script>
+
+        {% if user.is_authenticated %}
         <script>
+            window.isAuthenticated = true;
             window.childNames = {{ child_names|safe }};
             window.dataLogsPerChild = {{ data_logs_per_child|safe }};
             window.logCategories = {{ log_categories|safe }};
@@ -61,19 +63,31 @@
         </script>
 
         <section class="childInfo">
+            {% comment %} if the user has selected a child to view {% endcomment %}
+            {% if selected_child  %}
             <article class="selectedChild">
-                {% if selected_child  %}
-                <p class="nameChild"> {{ selected_child.firstName }} </p>
-                <p class="nameChild"> {{ selected_child.lastName }} </p>
-                <p class="nameChild"> {{ selected_child.shareCode }} </p>
+                {% if selected_child.profile_picture %}
+                <img class="selectedIcon" src="{{ selected_child.profile_picture.url }}"/>
+                {% else %}
+                <img class="selectedIcon" src="/static/images/default.jpg"/>
+                {% endif %}
+                <p class="selectedFirstName">{{selected_child.firstName}}</p>
+                <p class="selectedLastName">{{selected_child.lastName}}</p>
+                <p class="selectedAge">{{selected_child_years}} Years, {{selected_child_months}} Months</p>
+                {% comment %} if user is the primary, they can see the share code {% endcomment %}
+                {% if is_primary %}
+                <p class="selectedShareCodeText">Code :</p>
+                <p class="selectedShareCode">{{ selected_child.shareCode }}</p>
                 {% else %}
                 {% endif %}
             </article>
-            <article class="selectChild">
+            {% else %}
+            {% endif %}
+            <article class="selectChild" data_isChildSelected="{% if selected_child  %}true{% else %}false{% endif %}">
                 <ul class="listChild">
                 {% for child in children%}
                     {% if selected_child and child.id == selected_child.id%}
-                        <li class="listItemChild" id="listItemChildSelected">
+                    <li class="listItemChild" id="listItemChildSelected">
                     {% else %}
                     <li class="listItemChild">
                     {% endif %}
@@ -84,28 +98,41 @@
                         {% endif %}
                         <p class="nameChild"> {{ child.firstName }} </p>
                         <p class="nameChild"> {{ child.lastName }} </p>
-                        <a class="selectButtonChild" href="{% url 'select_child' child.id %}"><i class="fa-solid fa-check"></i></a>
-                    </li>
+                        {% comment %} if a child in the list is also the selected child {% endcomment %}
+                        {% if selected_child and child.id == selected_child.id%}
+                        <a class="selectButtonChild" href="{% url 'deselect_child' %}"><i class="fa-solid fa-x"></i></a>
+                        {% else %}
+                        <a class="selectButtonChild" href="{% url 'select_child' child.id%}"><i class="fa-solid fa-check"></i></a>
+                        {% endif %}
                 {% empty %}
-                    <li class="listItemChild">
-                        <img class="iconChild" src="/static/images/default.jpg"/>
-                        <p class="nameChild">No Children</p>
-                        <p class="nameChild">To Display</p>
-                        <a class="selectButtonChild"><i class="fa-regular fa-face-frown"></i></a>
-                    </li>
                 {% endfor %}
                 <ul class="children-list">
             </article>
-            <a class="actionChild" href="{% url 'addChild' %}">Import Child</a>
-            <a class="actionChild" href="{% url 'createChild' %}">Create Child</a>
+            <a class="importChild" href="{% url 'addChild' %}">Import</a>
+            <a class="createChild" href="{% url 'createChild' %}">Create</a>
         </section>
+        {% else %}
+        <script>
+            // boolean variable passed change stuff in the JS charts
+            window.isAuthenticated = false;
+        </script>
+        {% endif %}
     </main>
 
-    <footer>
+    <footer data_isAuthenticated="{% if user.is_authenticated %}true{% else %}false{% endif %}">
         <section class="about">
+            {% if user.is_authenticated %}
+            <p class="aboutText">Graphs are dynamically generated based on data !!</p>
+            {% else %}
+            <p class="aboutText">Viewing Example Data</p>
+            {% endif %}
         </section>
+        {% if user.is_authenticated %}
         <section class="export">
-            <a href="{% url 'pdf_children_all' %}" download>Export Child info (PDF)</a>
+            <p class="exportText">Export to PDF</p>
+            <a class="exportButton" href="{% url 'pdf_children_all' %}" download><i class="fa-solid fa-file-arrow-down"></i></a>
         </section>
+        {% else %}
+        {% endif %}
     </footer>
 {%endblock bodyExtra %}

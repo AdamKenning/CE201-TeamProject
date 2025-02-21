@@ -1,4 +1,5 @@
 from django import forms
+from datetime import date
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Profile, Child, SleepLog, FoodLog, GrowthLog
@@ -38,7 +39,7 @@ class FoodLogForm(forms.ModelForm):
     
     class Meta:
         model = FoodLog
-        fields = ['timeEvent', 'type', 'calories', 'comment']
+        fields = ['timeEvent', 'mealType', 'amount', 'calories', 'comment']
 
 class GrowthLogForm(forms.ModelForm):
     class Meta:
