@@ -1,20 +1,24 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block headerExtra %}
+    <link rel="stylesheet" href="{% static 'css/signUp.css' %}" type="text/css">
+    <title>Sign Up</title>
 {% endblock headerExtra %}
 
 
 {% block bodyExtra %}
-    <h2>Sign Up</h2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
+    <main>
+        <img class="pageLogo" src="{% static 'icons/LogoHeavy.svg' %}" alt="logo"/>
+        <h2>Sign Up</h2>
+        <form class="form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
 
-        <h2>User Details</h2>
-        {{ user_form.as_p }}
-        {% comment %} <h2>Profile Details</h2>
-        {{ profile_form.as_p }} {% endcomment %}
+            <h2>User Details</h2>
+            {{ user_form.as_p }}
 
-        <button type="submit">Sign Up</button>
-    </form>
-    <a href="{% url 'dashboard' %}">Back to dashboard</a>
+            <button class="button" type="submit">Sign Up</button>
+        </form>
+        <a class="button" href="{% url 'dashboard' %}">Dashboard</a>
+    </main>
 {% endblock bodyExtra %}

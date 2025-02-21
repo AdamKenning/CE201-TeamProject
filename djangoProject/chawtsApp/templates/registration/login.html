@@ -1,16 +1,21 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block headerExtra %}
-{% endblock headerExtra %}
+{% block headExtra %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" type="text/css">
+    <title>Login</title>
+{% endblock headExtra %}
 
 {% block bodyExtra %}
-    <h2>Login</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Login" />
-        <input type="hidden" name="next" value="{% url 'dashboard' %}" />
-    </form>
-    <a href="{% url 'dashboard' %}">Back to dashboard</a>
-
+    <main>
+        <img class="pageLogo" src="{% static 'icons/LogoHeavy.svg' %}" alt="logo"/>
+        <h2>Login</h2>
+        <form class="form" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="button" type="submit" value="Login" placeholder="Username"/>
+            <input type="hidden" name="next" value="{% url 'dashboard' %}" />
+        </form>
+        <a class="button" href="{% url 'dashboard' %}">Dashboard</a>
+    </main>
 {% endblock bodyExtra %}
