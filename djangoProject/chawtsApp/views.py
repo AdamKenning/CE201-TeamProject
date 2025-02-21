@@ -115,10 +115,17 @@ def deselect_child(request):
 def dashboard(request):
     if request.user.is_authenticated:
         selected_child = None
+        is_primary = False;
         age_years = None
         age_months = None
         if 'selected_child_id' in request.session:
             selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+            is_primary = FamilyAssociation.objects.filter(
+                    parent=request.user,
+                    child=selected_child,
+                    is_primary=True
+                ).exists()
+            
             age_days_total = (date.today() - selected_child.dateOfBirth).days
             age_years = age_days_total // 365
             age_months = (age_days_total - (age_years * 365)) // 30
@@ -152,10 +159,12 @@ def dashboard(request):
         ]
     else:
         selected_child = None
+        is_primary = False
         age_years = None
         age_months = None
         children = []
         child_names = []
+
 
         data_logs_per_child = []
         log_categories = []
@@ -163,6 +172,7 @@ def dashboard(request):
 
     return render(request, "dashboard.html", {
             "selected_child": selected_child,
+            "is_primary": is_primary,
             "selected_child_years": age_years,
             "selected_child_months": age_months,
             "children": children,

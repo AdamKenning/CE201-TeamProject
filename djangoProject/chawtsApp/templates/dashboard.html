@@ -3,8 +3,8 @@
 
 {% block headExtra %}
     <link rel="stylesheet" href="{% static 'css/Dashboard.css' %}" type="text/css">
-    <title>Dashboard</title>
     <script src="{% static 'js/dashboard.js' %}" defer></script>
+    <title>Dashboard</title>
 {% endblock headExtra %}
 
 {% block bodyExtra %}
@@ -63,6 +63,7 @@
         </script>
 
         <section class="childInfo">
+            {% comment %} if the user has selected a child to view {% endcomment %}
             {% if selected_child  %}
             <article class="selectedChild">
                 {% if selected_child.profile_picture %}
@@ -73,8 +74,12 @@
                 <p class="selectedFirstName">{{selected_child.firstName}}</p>
                 <p class="selectedLastName">{{selected_child.lastName}}</p>
                 <p class="selectedAge">{{selected_child_years}} Years, {{selected_child_months}} Months</p>
+                {% comment %} if user is the primary, they can see the share code {% endcomment %}
+                {% if is_primary %}
                 <p class="selectedShareCodeText">Code :</p>
                 <p class="selectedShareCode">{{ selected_child.shareCode }}</p>
+                {% else %}
+                {% endif %}
             </article>
             {% else %}
             {% endif %}
@@ -93,6 +98,7 @@
                         {% endif %}
                         <p class="nameChild"> {{ child.firstName }} </p>
                         <p class="nameChild"> {{ child.lastName }} </p>
+                        {% comment %} if a child in the list is also the selected child {% endcomment %}
                         {% if selected_child and child.id == selected_child.id%}
                         <a class="selectButtonChild" href="{% url 'deselect_child' %}"><i class="fa-solid fa-x"></i></a>
                         {% else %}
@@ -107,6 +113,7 @@
         </section>
         {% else %}
         <script>
+            // boolean variable passed change stuff in the JS charts
             window.isAuthenticated = false;
         </script>
         {% endif %}
@@ -115,7 +122,7 @@
     <footer data_isAuthenticated="{% if user.is_authenticated %}true{% else %}false{% endif %}">
         <section class="about">
             {% if user.is_authenticated %}
-            <p class="aboutText">Graphs are dynamically generated based on your child Data !!</p>
+            <p class="aboutText">Graphs are dynamically generated based on data !!</p>
             {% else %}
             <p class="aboutText">Viewing Example Data</p>
             {% endif %}
