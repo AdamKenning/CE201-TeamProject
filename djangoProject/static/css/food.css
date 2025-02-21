@@ -98,12 +98,8 @@ button:hover {
 }
 
 canvas {
-    width: 100%;
-    max-width: 900px;
-    margin: 20px auto;
-    height: 300px;  
-    display: block;
-    margin-bottom: 40px;
+    max-width: 100%;
+    margin-top: 20px ;   
 }
 
   @media screen and (max-width: 500px) {
