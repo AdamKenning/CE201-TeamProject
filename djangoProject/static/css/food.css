@@ -10,8 +10,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; 
-    overflow: hidden;
+    justify-content: flex-start;
 }
 
 header {
@@ -68,9 +67,7 @@ button:hover {
     background-color: #038a59;
 }
 
-#solid-input, #liquid-input {
-    display: none;
-}
+
 
 #meal-table {
     width: 100%;
@@ -94,16 +91,11 @@ button:hover {
     width: 100%;
     max-width: 900px;
     overflow: auto;
-    display: none;
 }
 
 canvas {
-    width: 100%;
-    max-width: 900px;
-    margin: 20px auto;
-    height: 300px;  
-    display: block;
-    margin-bottom: 40px;
+    max-width: 100%;
+    margin-top: 20px ;   
 }
 
   @media screen and (max-width: 500px) {
@@ -123,9 +115,6 @@ canvas {
         width: 100%;
     }
 
-    canvas {
-        width: 100%; 
-    }
 }
 
 

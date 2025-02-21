@@ -24,9 +24,26 @@ def food(request):
 
     if not selected_child:
         return redirect('dashboard')
+    
+    if request.method == "POST":
+        form = FoodLogForm(request.POST)
+        if form.is_valid():
+            meal = form.save(commit=False)
+            meal.child = selected_child
+            meal.save()
+            return redirect('food')
+
+    meals = FoodLog.objects.filter(child=selected_child).order_by('-timeEvent')
+
+    chart_data = {
+        "labels": [meal.timeEvent.strftime('%Y-%m-%d %H:%M') for meal in meals],
+        "calories": [meal.calories for meal in meals]
+    }
 
     return render(request, "tracking/food.html", {
         "selected_child": selected_child,
+        "meals": meals,
+        "chart_data": json.dumps(chart_data),
     })
 
 @login_required
