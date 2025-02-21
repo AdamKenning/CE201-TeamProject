@@ -16,7 +16,7 @@ def profilePicUniqueUpload(instance, fileName):
     # Save to 'pfp/' directory
     return os.path.join('pfp/', fileNameUnique)
 
-
+# An extension of the django User model for some extra info
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_picture = models.ImageField(upload_to=profilePicUniqueUpload,blank=True, null=True)
@@ -25,7 +25,6 @@ class Profile(models.Model):
         return self.user.username
     class Meta:
         db_table = "chawts_userExtended"
-        db_table_comment = "An extension of the django User model for some extra info"
 
 class Child(models.Model):
     firstName = models.CharField(max_length=50)
@@ -46,21 +45,18 @@ class Child(models.Model):
     class Meta:
         db_table = "chawts_child"
 
-
+# Stores who the parents are of which children
 class FamilyAssociation(models.Model):
     parent = models.ForeignKey(User, on_delete=models.CASCADE)
     child = models.ForeignKey(Child, on_delete=models.CASCADE)
     ## relationship status : father nanny etc
 
-    # incase of multiple "parents" e.g. nanny, nurse, father etc
+    # iscase of multiple "parents" e.g. nanny, nurse, father etc
     is_primary = models.BooleanField(default=False)
 
     class Meta:
         db_table = "chawts_families"
         unique_together = ('parent', 'child')
-        db_table_comment = "Stores who the parents are of which children"
-
-
 
 class Log(models.Model):
     TYPES = [
@@ -71,8 +67,8 @@ class Log(models.Model):
 
     type = models.CharField(max_length=50, choices=TYPES)
 
-    timeEntry = models.DateTimeField(auto_now_add=True) # time of when the user logged the event
-    timeEvent = models.DateTimeField(default=timezone.now)                  # time the user claimed the event happend (e.g. logging a meal after the fact)
+    timeEntry = models.DateTimeField(auto_now_add=True)     # time of when the user logged the event
+    timeEvent = models.DateTimeField(default=timezone.now)  # time the user claimed the event happened (e.g. logging a meal after the fact)
 
     child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='logs')
 
@@ -80,7 +76,7 @@ class Log(models.Model):
     comment = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
-        db_table = "chawts_baisclog"
+        db_table = "chawts_logBasic"
         abstract = True
 
 class SleepLog(Log):
@@ -97,17 +93,36 @@ class SleepLog(Log):
     class Meta:
         db_table = "chawts_logSleep"
 
+# adjusted to match project description
 class FoodLog(Log):
     child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='foodLogs')
 
-    TYPES = [
-        ('breakfast', 'Breakfast'),
-        ('lunch','Lunch'),
-        ('dinner','Dinner'),
-        ('snack','Snack'),
+    # Meal options if child age < 6 months
+    mealTypeBaby = [
+        ('formula','Formula'),
+        ('cowMilk','Cow Milk'),
+        ('breastMilk','Breast Milk'),
     ]
 
-    type = models.CharField(max_length=50, choices=TYPES)
+    # Meal options if child age > 6 months
+    mealTypeChild = [
+        ('pasta', 'Pasta'),
+        ('jacketPotato','Jacket potato'),
+        ('chickenCurryWithRice','Chicken curry with rice'),
+        ('risotto','Risotto'),
+        ('chilliConCarne','Chilli con carne'),
+    ]
+
+    amountEaten = [
+        (0.00,'None'),
+        (0.25,'Some'),
+        (0.50,'Half'),
+        (0.75,'Most'),
+        (1.00,'Full'),
+    ]
+
+    mealType = models.CharField(max_length=50, choices=[])
+    amount = models.DecimalField(max_digits=3,decimal_places=2, choices=amountEaten,default=1.00)
     calories = models.IntegerField()
 
     class Meta:

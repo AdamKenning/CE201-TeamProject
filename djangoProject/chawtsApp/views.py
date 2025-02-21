@@ -2,13 +2,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 
-from django.urls import reverse
+from datetime import date
 from .forms import UserRegistrationForm, ProfileForm, ChildForm, ShareCodeForm, SleepLogForm, FoodLogForm, GrowthLogForm
-from .models import Profile, FamilyAssociation, Child
+from .models import Profile, FamilyAssociation, Child, FoodLog
 
 # for pdf export
 from reportlab.pdfgen import canvas
-from django.http import FileResponse
+from django.http import FileResponse, HttpResponseRedirect
+from django.urls import reverse
 
 from django.utils.safestring import mark_safe
 import json
@@ -16,6 +17,7 @@ import json
 # tracking pages
 @login_required
 def food(request):
+
     selected_child = None
     if 'selected_child_id' in request.session:
         selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
@@ -101,13 +103,33 @@ def select_child(request, child_id):
     #store child in session
     child = get_object_or_404(Child, id=child_id, parents=request.user)
     request.session['selected_child_id'] = child.id
-    return redirect('dashboard')  # redirect back to start (refresh page)
+    return redirect('dashboard') # refresh page
+
+@login_required
+def deselect_child(request):
+    if 'selected_child_id' in request.session:
+        del request.session['selected_child_id']  # delete session
+    return redirect(request.META.get('HTTP_REFERER', 'dashboard'))  # Redirect back or to dashboard
+
 
 def dashboard(request):
     if request.user.is_authenticated:
         selected_child = None
+        is_primary = False;
+        age_years = None
+        age_months = None
         if 'selected_child_id' in request.session:
             selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+            is_primary = FamilyAssociation.objects.filter(
+                    parent=request.user,
+                    child=selected_child,
+                    is_primary=True
+                ).exists()
+            
+            age_days_total = (date.today() - selected_child.dateOfBirth).days
+            age_years = age_days_total // 365
+            age_months = (age_days_total - (age_years * 365)) // 30
+
 
         children = request.user.children.all()
 
@@ -137,14 +159,22 @@ def dashboard(request):
         ]
     else:
         selected_child = None
+        is_primary = False
+        age_years = None
+        age_months = None
         children = []
         child_names = []
+
+
         data_logs_per_child = []
         log_categories = []
         log_category_counts = []
 
     return render(request, "dashboard.html", {
             "selected_child": selected_child,
+            "is_primary": is_primary,
+            "selected_child_years": age_years,
+            "selected_child_months": age_months,
             "children": children,
 
             "child_names": json.dumps(child_names),
@@ -254,6 +284,13 @@ def testing(request):
     food_log_form = FoodLogForm(request.POST or None)
     growth_log_form = GrowthLogForm(request.POST or None)
 
+    # for the food log age thing
+    age = (date.today() - selected_child.dateOfBirth).days // 365
+    if age < 0.5:   mealType = FoodLog.mealTypeBaby
+    else:           mealType = FoodLog.mealTypeChild
+    food_log_form.fields['mealType'].choices = mealType
+
+
     # form submissions
     if request.method == 'POST':
         if 'sleep_log' in request.POST and sleep_log_form.is_valid():
@@ -280,7 +317,6 @@ def testing(request):
         "food_log_form": food_log_form,
         "growth_log_form": growth_log_form,
     })
-
 
 
 # PDF generation

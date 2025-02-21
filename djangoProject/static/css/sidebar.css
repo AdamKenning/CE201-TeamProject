@@ -22,7 +22,7 @@
                 border-color var(--sidebar-closing) ease;
 
 
-    border-right: 0px solid var(--col-primary);
+    border-right: 0px solid var(--col-primary-dark);
     transition: border-width 0.3;
 }
 
@@ -33,18 +33,12 @@
                 border-color var(--sidebar-opening) ease;
 
     border-width: 6px;
-    border-color: var(--col-neutral-dark);
+    border-color: var(--col-primary-dark);
 }
 
 
-#active {
-    color: var(--col-secondary);
-    text-decoration: none;
-}
-
-#inactive {
-    color: var(--col-neutral-light);
-    text-decoration: none;
+#active i{
+    color: var(--col-primary-dark);
 }
 
 .menu {
@@ -73,13 +67,16 @@
 
 
 .menu-item {
+    color: var(--col-neutral-light);
+    text-decoration: none;
+
     display: flex;
     padding: 10px 0px;
     cursor: pointer;
     white-space: nowrap;
 }
 .sidebar.open .menu-item:hover {
-    background-color: var(--col-primary-dark);
+    background-color: var(--col-secondary);
 }
 
 
@@ -108,6 +105,8 @@
     height: 20px;
     font-size: 20px;
 
+    color: var(--col-neutral-light);
+    text-decoration: none;
 
     width:0px;
     padding-left:0px;
