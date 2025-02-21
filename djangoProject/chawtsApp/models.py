@@ -51,7 +51,7 @@ class FamilyAssociation(models.Model):
     child = models.ForeignKey(Child, on_delete=models.CASCADE)
     ## relationship status : father nanny etc
 
-    # incase of multiple "parents" e.g. nanny, nurse, father etc
+    # iscase of multiple "parents" e.g. nanny, nurse, father etc
     is_primary = models.BooleanField(default=False)
 
     class Meta:
@@ -67,8 +67,8 @@ class Log(models.Model):
 
     type = models.CharField(max_length=50, choices=TYPES)
 
-    timeEntry = models.DateTimeField(auto_now_add=True) # time of when the user logged the event
-    timeEvent = models.DateTimeField(default=timezone.now)                  # time the user claimed the event happend (e.g. logging a meal after the fact)
+    timeEntry = models.DateTimeField(auto_now_add=True)     # time of when the user logged the event
+    timeEvent = models.DateTimeField(default=timezone.now)  # time the user claimed the event happened (e.g. logging a meal after the fact)
 
     child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='logs')
 

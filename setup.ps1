@@ -8,8 +8,14 @@ if (-not $pythonCheck) {
     Write-Host "[1/9]" (python3 --version) "installed."
 }
 
+# deactivate virtual environment if currently in one
+if ($env:VIRTUAL_ENV) {
+    deactivate
+}
+
 # virtual environment
 Write-Host "[2/9] Setting up virtual environment..."
+Set-Location (Split-Path $MyInvocation.MyCommand.Path) # set location to wherever this file is
 python3 -m venv venv
 . .\venv\Scripts\Activate
 
@@ -33,7 +39,7 @@ if ($loadData -eq 'y' -or $loadData -eq 'Y') {
     $flushData = Read-Host "[6/9] Flush the database to avoid possible duplicate errors? (y/n)"
     if ($flushData -eq 'y' -or $flushData -eq 'Y') {
         Write-Host "[6/9] Flushing database..."
-        python manage.py migrate
+        python manage.py flush --no-input
     }
     Write-Host "[6/9] Loading example Data..."
     python manage.py loaddata fixtures/example_data.json

@@ -99,12 +99,6 @@
                         <a class="selectButtonChild" href="{% url 'select_child' child.id%}"><i class="fa-solid fa-check"></i></a>
                         {% endif %}
                 {% empty %}
-                    <li class="listItemChild">
-                        <img class="iconChild" src="/static/images/default.jpg"/>
-                        <p class="nameChild">No Children</p>
-                        <p class="nameChild">To Display</p>
-                        <a class="selectButtonChild"><i class="fa-regular fa-face-frown"></i></a>
-                    </li>
                 {% endfor %}
                 <ul class="children-list">
             </article>
