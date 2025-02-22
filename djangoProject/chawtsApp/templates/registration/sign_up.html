@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block headerExtra %}
-    <link rel="stylesheet" href="{% static 'css/signUp.css' %}" type="text/css">
+{% block headExtra %}
+    <link rel="stylesheet" href="{% static 'css/sign_up.css' %}" type="text/css">
     <title>Sign Up</title>
-{% endblock headerExtra %}
-
+{% endblock headExtra %}
 
 {% block bodyExtra %}
     <main>
@@ -13,10 +12,7 @@
         <h2>Sign Up</h2>
         <form class="form" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-
-            <h2>User Details</h2>
             {{ user_form.as_p }}
-
             <button class="button" type="submit">Sign Up</button>
         </form>
         <a class="button" href="{% url 'dashboard' %}">Dashboard</a>

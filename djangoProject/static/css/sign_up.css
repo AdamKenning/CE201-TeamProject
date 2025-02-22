@@ -8,6 +8,7 @@
 }
 
 main{
+    margin:50px;
     width:300px;
     padding:20px;
     background-color: var(--col-primary);
@@ -59,7 +60,6 @@ h2{
         p{
             width:200px;
             margin: 5px;
-            margin-bottom: 10px;
             display: grid;
             grid-template-columns: 1fr;
             grid-template-rows: 1fr;
