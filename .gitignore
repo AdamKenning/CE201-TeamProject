@@ -22,7 +22,7 @@ __pycache__/
 djangoProject/chawtsApp/__pycache__/
 djangoProject/chawtsApp/migrations/__pycache__/
 djangoProject/djangoProject/__pycache__/
-
+djangoProject/media
 
 
 # OLD gitignore references from when we used Intellij

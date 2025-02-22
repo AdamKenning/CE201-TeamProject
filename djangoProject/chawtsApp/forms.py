@@ -36,7 +36,7 @@ class SleepLogForm(forms.ModelForm):
 
 class FoodLogForm(forms.ModelForm):
     meal_time = forms.DateTimeField(widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}))
-    
+
     class Meta:
         model = FoodLog
         fields = ['timeEvent', 'mealType', 'amount', 'calories', 'comment']
