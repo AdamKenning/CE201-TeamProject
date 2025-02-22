@@ -62,9 +62,10 @@ header{
             align-content: center;
             text-align: center;
             text-decoration: none;
+            font-family: consolas;
 
-            background-color: var(--col-neutral-mid);
-            color: var(--col-neutral-dark);
+            background-color: var(--col-primary-dark);
+            color: var(--col-neutral-light);
             font-size: 15px;
 
             border-radius:20px;
@@ -216,7 +217,7 @@ main{
             .listChild{
                 list-style: none;
                 margin: 0;
-                padding: 0px;
+                padding: 0;
                 padding-top: 5px;
                 overflow-y: scroll;
 

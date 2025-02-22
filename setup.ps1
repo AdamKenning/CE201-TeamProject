@@ -70,4 +70,4 @@ Write-Host "[8/9] Setup complete!"
 
 # run the server
 Write-Host "[9/9] Starting the server..."
-& $venvPython manage.py runserver
+Start-Process -NoNewWindow -FilePath $venvPython -ArgumentList "manage.py", "runserver"

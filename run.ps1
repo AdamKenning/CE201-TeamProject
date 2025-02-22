@@ -24,4 +24,4 @@ Set-Location djangoProject
 Write-Host "[2/3] Applying Migrations..."
 & $venvPython manage.py migrate
 Write-Host "[3/3] Starting the Server..."
-& $venvPython manage.py runserver
+Start-Process -NoNewWindow -FilePath $venvPython -ArgumentList "manage.py", "runserver"
