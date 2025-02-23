@@ -1,20 +1,28 @@
-{% comment %} page is only accessible when logged in {% endcomment %}
+{% extends "base.html" %}
+{% load static %}
 
-<h1> {{ user.username }} </h1>
+{% block headExtra %}
+    <link rel="stylesheet" href="{% static 'css/shared.css' %}" type="text/css">
+    <title>Profile</title>
+{% endblock headExtra %}
 
-{% if user.profile.profile_picture %}
-    <img src="{{ user.profile.profile_picture.url }}" alt="Profile Picture">
-{% else %}
-    <img src="/static/images/default.jpg" alt="Default Profile Picture">
-{% endif %}
+{% block bodyExtra %}
+    <main>
+        {% if user.profile.profile_picture %}
+            <img class="pfp" src="{{ user.profile.profile_picture.url }}" alt="Profile Picture">
+        {% else %}
+            <img class="pfp" src="/static/images/default.jpg" alt="Default Profile Picture">
+        {% endif %}
 
 
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
+        <form class="form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
 
-    <h2>Upload profile image</h2>
-    {{ profile_form.as_p }}
+            <h2>Upload profile image</h2>
+            {{ profile_form.as_p }}
 
-    <button type="submit">Submit</button>
-    <a href="{% url 'dashboard' %}">Back to dashboard</a>
-</form>
+            <input class="button" type="submit" value="Submit"/>
+            <a class="button" href="{% url 'dashboard' %}">Dashboard</a>
+        </form>
+    </main>
+{% endblock bodyExtra %}
