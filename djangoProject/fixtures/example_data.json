@@ -1,798 +1,1416 @@
 [
-    {
-        "model": "chawtsApp.profile",
-        "pk": 1,
-        "fields": {
-            "user": 1,
-            "profile_picture": "pfp/a422910263c2420cbb37af90f9799d2a.png"
-        }
-    },
-    {
-        "model": "chawtsApp.profile",
-        "pk": 2,
-        "fields": {
-            "user": 2,
-            "profile_picture": ""
-        }
-    },
-    {
-        "model": "chawtsApp.child",
-        "pk": 1,
-        "fields": {
-            "firstName": "Alvin",
-            "lastName": "Smith",
-            "dateOfBirth": "2008-04-05",
-            "profile_picture": "",
-            "shareCode": "d60PPd6C9b"
-        }
-    },
-    {
-        "model": "chawtsApp.child",
-        "pk": 2,
-        "fields": {
-            "firstName": "Dennis",
-            "lastName": "Desmond",
-            "dateOfBirth": "2010-07-01",
-            "profile_picture": "",
-            "shareCode": "pdfyeYLmEY"
-        }
-    },
-    {
-        "model": "chawtsApp.child",
-        "pk": 3,
-        "fields": {
-            "firstName": "Sarah",
-            "lastName": "Pin",
-            "dateOfBirth": "2014-09-02",
-            "profile_picture": "",
-            "shareCode": "F3vwxRekoF"
-        }
-    },
-    {
-        "model": "chawtsApp.child",
-        "pk": 4,
-        "fields": {
-            "firstName": "Samantha",
-            "lastName": "Donavil",
-            "dateOfBirth": "2023-05-08",
-            "profile_picture": "",
-            "shareCode": "pyPco1lFdZ"
-        }
-    },
-    {
-        "model": "chawtsApp.child",
-        "pk": 11,
-        "fields": {
-            "firstName": "testPFP",
-            "lastName": "testPFP",
-            "dateOfBirth": "2001-02-01",
-            "profile_picture": "pfp/f720fa69efee439ea27dbb1419fb3c9f.png",
-            "shareCode": "kSqvchi1NR"
-        }
-    },
-    {
-        "model": "chawtsApp.familyassociation",
-        "pk": 1,
-        "fields": {
-            "parent": 1,
-            "child": 1,
-            "is_primary": true
-        }
-    },
-    {
-        "model": "chawtsApp.familyassociation",
-        "pk": 2,
-        "fields": {
-            "parent": 1,
-            "child": 2,
-            "is_primary": true
-        }
-    },
-    {
-        "model": "chawtsApp.familyassociation",
-        "pk": 3,
-        "fields": {
-            "parent": 1,
-            "child": 3,
-            "is_primary": true
-        }
-    },
-    {
-        "model": "chawtsApp.familyassociation",
-        "pk": 4,
-        "fields": {
-            "parent": 1,
-            "child": 4,
-            "is_primary": true
-        }
-    },
-    {
-        "model": "chawtsApp.familyassociation",
-        "pk": 11,
-        "fields": {
-            "parent": 1,
-            "child": 11,
-            "is_primary": true
-        }
-    },
-    {
-        "model": "chawtsApp.sleeplog",
-        "pk": 1,
-        "fields": {
-            "timeEntry": "2025-02-13T18:08:16.315Z",
-            "timeEvent": "2025-02-13T18:07:49Z",
-            "comment": "slept well",
-            "child": 1,
-            "type": "sleep",
-            "duration": "00:00:05"
-        }
-    },
-    {
-        "model": "chawtsApp.sleeplog",
-        "pk": 2,
-        "fields": {
-            "timeEntry": "2025-02-13T18:08:46.087Z",
-            "timeEvent": "2025-02-13T18:08:28Z",
-            "comment": "Slept in the car",
-            "child": 1,
-            "type": "siesta",
-            "duration": "00:00:02"
-        }
-    },
-    {
-        "model": "chawtsApp.foodlog",
-        "pk": 1,
-        "fields": {
-            "timeEntry": "2025-02-13T18:08:28.261Z",
-            "timeEvent": "2025-02-13T18:08:16Z",
-            "comment": "Pasta",
-            "child": 1,
-            "type": "lunch",
-            "calories": 300
-        }
-    },
-    {
-        "model": "chawtsApp.foodlog",
-        "pk": 2,
-        "fields": {
-            "timeEntry": "2025-02-13T18:09:59.185Z",
-            "timeEvent": "2025-02-13T18:09:44Z",
-            "comment": "yummy cereal",
-            "child": 3,
-            "type": "breakfast",
-            "calories": 130
-        }
-    },
-    {
-        "model": "chawtsApp.foodlog",
-        "pk": 3,
-        "fields": {
-            "timeEntry": "2025-02-13T18:10:14.515Z",
-            "timeEvent": "2025-02-13T18:09:59Z",
-            "comment": "CARROTS",
-            "child": 3,
-            "type": "lunch",
-            "calories": 500
-        }
-    },
-    {
-        "model": "chawtsApp.foodlog",
-        "pk": 4,
-        "fields": {
-            "timeEntry": "2025-02-13T18:41:56.737Z",
-            "timeEvent": "2025-02-13T18:41:41Z",
-            "comment": "yum",
-            "child": 1,
-            "type": "breakfast",
-            "calories": 800
-        }
-    },
-    {
-        "model": "chawtsApp.growthlog",
-        "pk": 1,
-        "fields": {
-            "type": "",
-            "timeEntry": "2025-02-13T18:09:16.694Z",
-            "timeEvent": "2025-02-13T18:09:03Z",
-            "comment": null,
-            "child": 2,
-            "height": 182.0,
-            "weight": 140.0,
-            "headCircumfrance": 130.0
-        }
-    },
-    {
-        "model": "chawtsApp.growthlog",
-        "pk": 2,
-        "fields": {
-            "type": "",
-            "timeEntry": "2025-02-13T18:09:29.403Z",
-            "timeEvent": "2025-02-13T18:09:16Z",
-            "comment": "100",
-            "child": 2,
-            "height": 186.0,
-            "weight": 120.0,
-            "headCircumfrance": 201.0
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 1,
-        "fields": {
-            "name": "Can add profile",
-            "content_type": 1,
-            "codename": "add_profile"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 2,
-        "fields": {
-            "name": "Can change profile",
-            "content_type": 1,
-            "codename": "change_profile"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 3,
-        "fields": {
-            "name": "Can delete profile",
-            "content_type": 1,
-            "codename": "delete_profile"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 4,
-        "fields": {
-            "name": "Can view profile",
-            "content_type": 1,
-            "codename": "view_profile"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 5,
-        "fields": {
-            "name": "Can add child",
-            "content_type": 2,
-            "codename": "add_child"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 6,
-        "fields": {
-            "name": "Can change child",
-            "content_type": 2,
-            "codename": "change_child"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 7,
-        "fields": {
-            "name": "Can delete child",
-            "content_type": 2,
-            "codename": "delete_child"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 8,
-        "fields": {
-            "name": "Can view child",
-            "content_type": 2,
-            "codename": "view_child"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 9,
-        "fields": {
-            "name": "Can add family association",
-            "content_type": 3,
-            "codename": "add_familyassociation"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 10,
-        "fields": {
-            "name": "Can change family association",
-            "content_type": 3,
-            "codename": "change_familyassociation"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 11,
-        "fields": {
-            "name": "Can delete family association",
-            "content_type": 3,
-            "codename": "delete_familyassociation"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 12,
-        "fields": {
-            "name": "Can view family association",
-            "content_type": 3,
-            "codename": "view_familyassociation"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 13,
-        "fields": {
-            "name": "Can add sleep log",
-            "content_type": 4,
-            "codename": "add_sleeplog"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 14,
-        "fields": {
-            "name": "Can change sleep log",
-            "content_type": 4,
-            "codename": "change_sleeplog"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 15,
-        "fields": {
-            "name": "Can delete sleep log",
-            "content_type": 4,
-            "codename": "delete_sleeplog"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 16,
-        "fields": {
-            "name": "Can view sleep log",
-            "content_type": 4,
-            "codename": "view_sleeplog"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 17,
-        "fields": {
-            "name": "Can add food log",
-            "content_type": 5,
-            "codename": "add_foodlog"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 18,
-        "fields": {
-            "name": "Can change food log",
-            "content_type": 5,
-            "codename": "change_foodlog"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 19,
-        "fields": {
-            "name": "Can delete food log",
-            "content_type": 5,
-            "codename": "delete_foodlog"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 20,
-        "fields": {
-            "name": "Can view food log",
-            "content_type": 5,
-            "codename": "view_foodlog"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 21,
-        "fields": {
-            "name": "Can add growth log",
-            "content_type": 6,
-            "codename": "add_growthlog"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 22,
-        "fields": {
-            "name": "Can change growth log",
-            "content_type": 6,
-            "codename": "change_growthlog"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 23,
-        "fields": {
-            "name": "Can delete growth log",
-            "content_type": 6,
-            "codename": "delete_growthlog"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 24,
-        "fields": {
-            "name": "Can view growth log",
-            "content_type": 6,
-            "codename": "view_growthlog"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 25,
-        "fields": {
-            "name": "Can add log entry",
-            "content_type": 7,
-            "codename": "add_logentry"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 26,
-        "fields": {
-            "name": "Can change log entry",
-            "content_type": 7,
-            "codename": "change_logentry"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 27,
-        "fields": {
-            "name": "Can delete log entry",
-            "content_type": 7,
-            "codename": "delete_logentry"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 28,
-        "fields": {
-            "name": "Can view log entry",
-            "content_type": 7,
-            "codename": "view_logentry"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 29,
-        "fields": {
-            "name": "Can add permission",
-            "content_type": 8,
-            "codename": "add_permission"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 30,
-        "fields": {
-            "name": "Can change permission",
-            "content_type": 8,
-            "codename": "change_permission"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 31,
-        "fields": {
-            "name": "Can delete permission",
-            "content_type": 8,
-            "codename": "delete_permission"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 32,
-        "fields": {
-            "name": "Can view permission",
-            "content_type": 8,
-            "codename": "view_permission"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 33,
-        "fields": {
-            "name": "Can add group",
-            "content_type": 9,
-            "codename": "add_group"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 34,
-        "fields": {
-            "name": "Can change group",
-            "content_type": 9,
-            "codename": "change_group"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 35,
-        "fields": {
-            "name": "Can delete group",
-            "content_type": 9,
-            "codename": "delete_group"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 36,
-        "fields": {
-            "name": "Can view group",
-            "content_type": 9,
-            "codename": "view_group"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 37,
-        "fields": {
-            "name": "Can add user",
-            "content_type": 10,
-            "codename": "add_user"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 38,
-        "fields": {
-            "name": "Can change user",
-            "content_type": 10,
-            "codename": "change_user"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 39,
-        "fields": {
-            "name": "Can delete user",
-            "content_type": 10,
-            "codename": "delete_user"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 40,
-        "fields": {
-            "name": "Can view user",
-            "content_type": 10,
-            "codename": "view_user"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 41,
-        "fields": {
-            "name": "Can add content type",
-            "content_type": 11,
-            "codename": "add_contenttype"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 42,
-        "fields": {
-            "name": "Can change content type",
-            "content_type": 11,
-            "codename": "change_contenttype"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 43,
-        "fields": {
-            "name": "Can delete content type",
-            "content_type": 11,
-            "codename": "delete_contenttype"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 44,
-        "fields": {
-            "name": "Can view content type",
-            "content_type": 11,
-            "codename": "view_contenttype"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 45,
-        "fields": {
-            "name": "Can add session",
-            "content_type": 12,
-            "codename": "add_session"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 46,
-        "fields": {
-            "name": "Can change session",
-            "content_type": 12,
-            "codename": "change_session"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 47,
-        "fields": {
-            "name": "Can delete session",
-            "content_type": 12,
-            "codename": "delete_session"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 48,
-        "fields": {
-            "name": "Can view session",
-            "content_type": 12,
-            "codename": "view_session"
-        }
-    },
-    {
-        "model": "auth.user",
-        "pk": 1,
-        "fields": {
-            "password": "pbkdf2_sha256$870000$xDv5o0CVpdK0smOccOLy6C$3Uu58X4M6+9eJC6QCzWyVl01ukeX2hBENFyOnnMH/Zo=",
-            "last_login": "2025-02-14T14:46:27.219Z",
-            "is_superuser": false,
-            "username": "Adam",
-            "first_name": "",
-            "last_name": "",
-            "email": "adam@adam.adam",
-            "is_staff": false,
-            "is_active": true,
-            "date_joined": "2025-02-13T17:57:53.477Z",
-            "groups": [],
-            "user_permissions": []
-        }
-    },
-    {
-        "model": "auth.user",
-        "pk": 2,
-        "fields": {
-            "password": "pbkdf2_sha256$870000$7u8lDQACSelashGicObVKF$CrZp8AxisW2V/hE3QiDZFG7y++7D18fgG3A/ZGCwJB0=",
-            "last_login": "2025-02-14T14:45:02.032Z",
-            "is_superuser": false,
-            "username": "test",
-            "first_name": "",
-            "last_name": "",
-            "email": "test@test.test",
-            "is_staff": false,
-            "is_active": true,
-            "date_joined": "2025-02-14T14:45:01.569Z",
-            "groups": [],
-            "user_permissions": []
-        }
-    },
-    {
-        "model": "contenttypes.contenttype",
-        "pk": 1,
-        "fields": {
-            "app_label": "chawtsApp",
-            "model": "profile"
-        }
-    },
-    {
-        "model": "contenttypes.contenttype",
-        "pk": 2,
-        "fields": {
-            "app_label": "chawtsApp",
-            "model": "child"
-        }
-    },
-    {
-        "model": "contenttypes.contenttype",
-        "pk": 3,
-        "fields": {
-            "app_label": "chawtsApp",
-            "model": "familyassociation"
-        }
-    },
-    {
-        "model": "contenttypes.contenttype",
-        "pk": 4,
-        "fields": {
-            "app_label": "chawtsApp",
-            "model": "sleeplog"
-        }
-    },
-    {
-        "model": "contenttypes.contenttype",
-        "pk": 5,
-        "fields": {
-            "app_label": "chawtsApp",
-            "model": "foodlog"
-        }
-    },
-    {
-        "model": "contenttypes.contenttype",
-        "pk": 6,
-        "fields": {
-            "app_label": "chawtsApp",
-            "model": "growthlog"
-        }
-    },
-    {
-        "model": "contenttypes.contenttype",
-        "pk": 7,
-        "fields": {
-            "app_label": "admin",
-            "model": "logentry"
-        }
-    },
-    {
-        "model": "contenttypes.contenttype",
-        "pk": 8,
-        "fields": {
-            "app_label": "auth",
-            "model": "permission"
-        }
-    },
-    {
-        "model": "contenttypes.contenttype",
-        "pk": 9,
-        "fields": {
-            "app_label": "auth",
-            "model": "group"
-        }
-    },
-    {
-        "model": "contenttypes.contenttype",
-        "pk": 10,
-        "fields": {
-            "app_label": "auth",
-            "model": "user"
-        }
-    },
-    {
-        "model": "contenttypes.contenttype",
-        "pk": 11,
-        "fields": {
-            "app_label": "contenttypes",
-            "model": "contenttype"
-        }
-    },
-    {
-        "model": "contenttypes.contenttype",
-        "pk": 12,
-        "fields": {
-            "app_label": "sessions",
-            "model": "session"
-        }
-    },
-    {
-        "model": "sessions.session",
-        "pk": "8kbpy49jo35lirq0w967qsj1zt4pu5dz",
-        "fields": {
-            "session_data": ".eJxVjssOgjAURP-la9PQB21x6Z5vaHoftSiBhMLK-O-CYaHbOTMn8xIxbWuJW-UlDiSuQonLbwYJnzwdgB5pus8S52ldBpBHRZ60yn4mHm9n909QUi37OrN22lJWygcKwJ6DJZ-TAzRAjeHWYtNo5hA6Z7oEXmt2ps3KteDQ7tLKI-PKFLEMI33fqvcHIGM_wg:1tit54:xyMnOmXy29JHxFsGqvuKIFU2Qh4xYkdeuEXzsQIOrGk",
-            "expire_date": "2025-02-28T10:37:58.324Z"
-        }
-    },
-    {
-        "model": "sessions.session",
-        "pk": "b5nm2h3gl39jtuibgdfx0mnu5a5e7w4m",
-        "fields": {
-            "session_data": ".eJxVjjkOwjAURO_iGlnxbijpOYPlvxgHokSKkwpxdxKUAtp5M0_zEimvS01r4zn1JC5CidNvBhmfPO6AHnm8TxKncZl7kHtFHrTJ20Q8XI_un6DmVrd1Ye21paJUiBSBA0dLoWQPaIA6w85i12nmGM_enDMErdkbV5R34NFu0sYD48KUsPYDfd-69wcgaz_G:1tiy6W:AmHq15TbpExBq9S28Ec-EVl5rNo1KEpqI9mrNrNyKCc",
-            "expire_date": "2025-02-28T15:59:48.937Z"
-        }
-    }
+{
+  "model": "chawtsApp.child",
+  "pk": 1,
+  "fields": {
+    "firstName": "Olivia",
+    "lastName": "McKenzie",
+    "dateOfBirth": "2019-07-10",
+    "profile_picture": "pfp/0c448c6813f546e4a0c144b03aede35b.jpg",
+    "shareCode": "545ssiAVmI"
+  }
+},
+{
+  "model": "chawtsApp.child",
+  "pk": 2,
+  "fields": {
+    "firstName": "Noah",
+    "lastName": "McKenzie",
+    "dateOfBirth": "2024-11-14",
+    "profile_picture": "pfp/303b25a9ebc342538c89c6eebba89eb5.jpg",
+    "shareCode": "QFWBbtRAYe"
+  }
+},
+{
+  "model": "chawtsApp.child",
+  "pk": 3,
+  "fields": {
+    "firstName": "Sophia",
+    "lastName": "Stuart",
+    "dateOfBirth": "2015-05-03",
+    "profile_picture": "pfp/62b48ca2f961405f8ba84359a0b6ba85.jpg",
+    "shareCode": "3i9UUELaJx"
+  }
+},
+{
+  "model": "chawtsApp.child",
+  "pk": 4,
+  "fields": {
+    "firstName": "Aidan",
+    "lastName": "Stuart",
+    "dateOfBirth": "2022-08-21",
+    "profile_picture": "pfp/7c0856876ff14d77b67f54819135cc79.jpg",
+    "shareCode": "LsvkqGadLJ"
+  }
+},
+{
+  "model": "chawtsApp.child",
+  "pk": 5,
+  "fields": {
+    "firstName": "Ross",
+    "lastName": "Stuart",
+    "dateOfBirth": "2018-10-11",
+    "profile_picture": "pfp/e37901b166344de28bc1740dad34878d.jpg",
+    "shareCode": "Rjml0jZLCj"
+  }
+},
+{
+  "model": "chawtsApp.sleeplog",
+  "pk": 1,
+  "fields": {
+    "timeEntry": "2025-02-23T19:51:45.241Z",
+    "timeEvent": "2025-02-23T19:51:13Z",
+    "comment": "good deep sleep",
+    "child": 1,
+    "type": "sleep",
+    "duration": "00:00:08"
+  }
+},
+{
+  "model": "chawtsApp.sleeplog",
+  "pk": 2,
+  "fields": {
+    "timeEntry": "2025-02-23T19:52:02.569Z",
+    "timeEvent": "2025-02-23T19:51:45Z",
+    "comment": "short car nap.",
+    "child": 1,
+    "type": "nap",
+    "duration": "00:00:01"
+  }
+},
+{
+  "model": "chawtsApp.sleeplog",
+  "pk": 3,
+  "fields": {
+    "timeEntry": "2025-02-23T19:52:16.209Z",
+    "timeEvent": "2025-02-23T19:52:02Z",
+    "comment": "Mid day break after lunch",
+    "child": 1,
+    "type": "siesta",
+    "duration": "00:00:02"
+  }
+},
+{
+  "model": "chawtsApp.sleeplog",
+  "pk": 4,
+  "fields": {
+    "timeEntry": "2025-02-23T19:55:02.154Z",
+    "timeEvent": "2025-02-23T19:54:35Z",
+    "comment": "short nap",
+    "child": 2,
+    "type": "nap",
+    "duration": "00:00:00.300000"
+  }
+},
+{
+  "model": "chawtsApp.sleeplog",
+  "pk": 5,
+  "fields": {
+    "timeEntry": "2025-02-23T19:55:12.762Z",
+    "timeEvent": "2025-02-23T19:55:02Z",
+    "comment": "woke up halfway through",
+    "child": 2,
+    "type": "sleep",
+    "duration": "00:00:05"
+  }
+},
+{
+  "model": "chawtsApp.sleeplog",
+  "pk": 6,
+  "fields": {
+    "timeEntry": "2025-02-23T19:57:30.569Z",
+    "timeEvent": "2025-02-23T19:57:16Z",
+    "comment": "sunday night",
+    "child": 3,
+    "type": "sleep",
+    "duration": "00:00:09"
+  }
+},
+{
+  "model": "chawtsApp.sleeplog",
+  "pk": 7,
+  "fields": {
+    "timeEntry": "2025-02-23T19:57:44.926Z",
+    "timeEvent": "2025-02-23T19:57:30Z",
+    "comment": "long sleep after birthday party",
+    "child": 3,
+    "type": "sleep",
+    "duration": "00:00:13"
+  }
+},
+{
+  "model": "chawtsApp.sleeplog",
+  "pk": 8,
+  "fields": {
+    "timeEntry": "2025-02-23T19:57:58.931Z",
+    "timeEvent": "2025-02-23T19:57:44Z",
+    "comment": "after lunch",
+    "child": 3,
+    "type": "nap",
+    "duration": "00:00:01"
+  }
+},
+{
+  "model": "chawtsApp.sleeplog",
+  "pk": 9,
+  "fields": {
+    "timeEntry": "2025-02-23T20:01:43.783Z",
+    "timeEvent": "2025-02-23T20:01:26Z",
+    "comment": "late night big lay in",
+    "child": 4,
+    "type": "sleep",
+    "duration": "00:00:11"
+  }
+},
+{
+  "model": "chawtsApp.sleeplog",
+  "pk": 10,
+  "fields": {
+    "timeEntry": "2025-02-23T20:01:53.564Z",
+    "timeEvent": "2025-02-23T20:01:43Z",
+    "comment": "fell asleep at tv",
+    "child": 4,
+    "type": "nap",
+    "duration": "00:00:03"
+  }
+},
+{
+  "model": "chawtsApp.sleeplog",
+  "pk": 11,
+  "fields": {
+    "timeEntry": "2025-02-23T20:02:02.321Z",
+    "timeEvent": "2025-02-23T20:01:53Z",
+    "comment": "car ride home",
+    "child": 4,
+    "type": "nap",
+    "duration": "00:00:01"
+  }
+},
+{
+  "model": "chawtsApp.sleeplog",
+  "pk": 12,
+  "fields": {
+    "timeEntry": "2025-02-23T20:02:11.334Z",
+    "timeEvent": "2025-02-23T20:02:02Z",
+    "comment": "woke up bad dream",
+    "child": 4,
+    "type": "sleep",
+    "duration": "00:00:05"
+  }
+},
+{
+  "model": "chawtsApp.sleeplog",
+  "pk": 13,
+  "fields": {
+    "timeEntry": "2025-02-23T20:05:49.973Z",
+    "timeEvent": "2025-02-23T20:05:39Z",
+    "comment": "before dinner",
+    "child": 5,
+    "type": "nap",
+    "duration": "00:00:03"
+  }
+},
+{
+  "model": "chawtsApp.foodlog",
+  "pk": 1,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T19:52:36.264Z",
+    "timeEvent": "2025-02-23T19:52:16Z",
+    "comment": null,
+    "child": 1,
+    "mealType": "jacketPotato",
+    "amount": "0.50",
+    "calories": 200
+  }
+},
+{
+  "model": "chawtsApp.foodlog",
+  "pk": 2,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T19:52:53.145Z",
+    "timeEvent": "2025-02-23T19:52:36Z",
+    "comment": "She didnt like it :(",
+    "child": 1,
+    "mealType": "chilliConCarne",
+    "amount": "0.25",
+    "calories": 300
+  }
+},
+{
+  "model": "chawtsApp.foodlog",
+  "pk": 3,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T19:55:34.670Z",
+    "timeEvent": "2025-02-23T19:55:12Z",
+    "comment": "he doest much like formula it seems",
+    "child": 2,
+    "mealType": "formula",
+    "amount": "0.25",
+    "calories": 50
+  }
+},
+{
+  "model": "chawtsApp.foodlog",
+  "pk": 4,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T19:55:57.260Z",
+    "timeEvent": "2025-02-23T19:55:34Z",
+    "comment": "cows are his favourite and he likes their milk :)",
+    "child": 2,
+    "mealType": "cowMilk",
+    "amount": "0.75",
+    "calories": 100
+  }
+},
+{
+  "model": "chawtsApp.foodlog",
+  "pk": 5,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T19:56:15.361Z",
+    "timeEvent": "2025-02-23T19:55:57Z",
+    "comment": "very enthusiastic",
+    "child": 2,
+    "mealType": "breastMilk",
+    "amount": "0.50",
+    "calories": 90
+  }
+},
+{
+  "model": "chawtsApp.foodlog",
+  "pk": 6,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T19:58:22.642Z",
+    "timeEvent": "2025-02-23T19:57:58Z",
+    "comment": "cheesy and beans",
+    "child": 3,
+    "mealType": "jacketPotato",
+    "amount": "1.00",
+    "calories": 200
+  }
+},
+{
+  "model": "chawtsApp.foodlog",
+  "pk": 7,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T19:58:31.122Z",
+    "timeEvent": "2025-02-23T19:58:22Z",
+    "comment": "very yummy",
+    "child": 3,
+    "mealType": "pasta",
+    "amount": "1.00",
+    "calories": 300
+  }
+},
+{
+  "model": "chawtsApp.foodlog",
+  "pk": 8,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T19:58:48.095Z",
+    "timeEvent": "2025-02-23T19:58:31Z",
+    "comment": "takeout",
+    "child": 3,
+    "mealType": "chilliConCarne",
+    "amount": "0.50",
+    "calories": 200
+  }
+},
+{
+  "model": "chawtsApp.foodlog",
+  "pk": 9,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T19:59:02.465Z",
+    "timeEvent": "2025-02-23T19:58:48Z",
+    "comment": "didnt like some of it",
+    "child": 3,
+    "mealType": "risotto",
+    "amount": "0.50",
+    "calories": 30
+  }
+},
+{
+  "model": "chawtsApp.foodlog",
+  "pk": 10,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T19:59:37.744Z",
+    "timeEvent": "2025-02-23T19:59:27Z",
+    "comment": "homemade",
+    "child": 3,
+    "mealType": "chickenCurryWithRice",
+    "amount": "0.50",
+    "calories": 80
+  }
+},
+{
+  "model": "chawtsApp.foodlog",
+  "pk": 11,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T20:02:25.866Z",
+    "timeEvent": "2025-02-23T20:02:11Z",
+    "comment": "its his favourite food",
+    "child": 4,
+    "mealType": "pasta",
+    "amount": "1.00",
+    "calories": 200
+  }
+},
+{
+  "model": "chawtsApp.foodlog",
+  "pk": 12,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T20:02:41.608Z",
+    "timeEvent": "2025-02-23T20:02:25Z",
+    "comment": "didnt like the veg",
+    "child": 4,
+    "mealType": "chickenCurryWithRice",
+    "amount": "0.25",
+    "calories": 100
+  }
+},
+{
+  "model": "chawtsApp.foodlog",
+  "pk": 13,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T20:02:54.616Z",
+    "timeEvent": "2025-02-23T20:02:41Z",
+    "comment": "enjoyed it alot",
+    "child": 4,
+    "mealType": "risotto",
+    "amount": "0.75",
+    "calories": 200
+  }
+},
+{
+  "model": "chawtsApp.foodlog",
+  "pk": 14,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T20:06:03.344Z",
+    "timeEvent": "2025-02-23T20:05:49Z",
+    "comment": "very hungry",
+    "child": 5,
+    "mealType": "pasta",
+    "amount": "1.00",
+    "calories": 300
+  }
+},
+{
+  "model": "chawtsApp.foodlog",
+  "pk": 15,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T20:06:15.030Z",
+    "timeEvent": "2025-02-23T20:06:03Z",
+    "comment": "asked for seconds but didnt quite finish the seconds",
+    "child": 5,
+    "mealType": "pasta",
+    "amount": "1.00",
+    "calories": 150
+  }
+},
+{
+  "model": "chawtsApp.foodlog",
+  "pk": 16,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T20:06:35.354Z",
+    "timeEvent": "2025-02-23T20:06:15Z",
+    "comment": "ran out of time, late for friends birthday party",
+    "child": 5,
+    "mealType": "jacketPotato",
+    "amount": "0.50",
+    "calories": 40
+  }
+},
+{
+  "model": "chawtsApp.foodlog",
+  "pk": 17,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T20:06:49.818Z",
+    "timeEvent": "2025-02-23T20:06:35Z",
+    "comment": "didnt like the veg",
+    "child": 5,
+    "mealType": "chilliConCarne",
+    "amount": "0.50",
+    "calories": 150
+  }
+},
+{
+  "model": "chawtsApp.growthlog",
+  "pk": 1,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T19:53:28.764Z",
+    "timeEvent": "2025-02-23T19:52:53Z",
+    "comment": "morning recording",
+    "child": 1,
+    "height": 0.7,
+    "weight": 65.0,
+    "headCircumfrance": 30.0
+  }
+},
+{
+  "model": "chawtsApp.growthlog",
+  "pk": 2,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T19:53:43.608Z",
+    "timeEvent": "2025-02-23T19:53:28Z",
+    "comment": "still growing",
+    "child": 1,
+    "height": 0.8,
+    "weight": 80.0,
+    "headCircumfrance": 40.0
+  }
+},
+{
+  "model": "chawtsApp.growthlog",
+  "pk": 3,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T19:53:56.072Z",
+    "timeEvent": "2025-02-23T19:53:43Z",
+    "comment": "STILL GROWING",
+    "child": 1,
+    "height": 80.0,
+    "weight": 90.0,
+    "headCircumfrance": 50.0
+  }
+},
+{
+  "model": "chawtsApp.growthlog",
+  "pk": 4,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T19:54:15.301Z",
+    "timeEvent": "2025-02-23T19:53:56Z",
+    "comment": null,
+    "child": 1,
+    "height": 100.0,
+    "weight": 40.0,
+    "headCircumfrance": 50.0
+  }
+},
+{
+  "model": "chawtsApp.growthlog",
+  "pk": 5,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T19:56:39.483Z",
+    "timeEvent": "2025-02-23T19:56:15Z",
+    "comment": "baby boy",
+    "child": 2,
+    "height": 30.0,
+    "weight": 10.0,
+    "headCircumfrance": 20.0
+  }
+},
+{
+  "model": "chawtsApp.growthlog",
+  "pk": 6,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T19:56:56.141Z",
+    "timeEvent": "2025-02-23T19:56:39Z",
+    "comment": "morning measurment",
+    "child": 2,
+    "height": 40.0,
+    "weight": 40.0,
+    "headCircumfrance": 30.0
+  }
+},
+{
+  "model": "chawtsApp.growthlog",
+  "pk": 7,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T20:00:04.049Z",
+    "timeEvent": "2025-02-23T19:59:37Z",
+    "comment": null,
+    "child": 3,
+    "height": 80.0,
+    "weight": 80.0,
+    "headCircumfrance": 40.0
+  }
+},
+{
+  "model": "chawtsApp.growthlog",
+  "pk": 8,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T20:00:26.182Z",
+    "timeEvent": "2025-02-23T20:00:04Z",
+    "comment": "still growing",
+    "child": 3,
+    "height": 90.0,
+    "weight": 80.0,
+    "headCircumfrance": 30.0
+  }
+},
+{
+  "model": "chawtsApp.growthlog",
+  "pk": 9,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T20:00:40.526Z",
+    "timeEvent": "2025-02-23T20:00:26Z",
+    "comment": "still still growing",
+    "child": 3,
+    "height": 100.0,
+    "weight": 50.0,
+    "headCircumfrance": 50.0
+  }
+},
+{
+  "model": "chawtsApp.growthlog",
+  "pk": 10,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T20:04:26.904Z",
+    "timeEvent": "2025-02-23T20:02:54Z",
+    "comment": "growing tall and lanky",
+    "child": 4,
+    "height": 150.0,
+    "weight": 60.0,
+    "headCircumfrance": 30.0
+  }
+},
+{
+  "model": "chawtsApp.growthlog",
+  "pk": 11,
+  "fields": {
+    "type": "",
+    "timeEntry": "2025-02-23T20:07:06.709Z",
+    "timeEvent": "2025-02-23T20:06:49Z",
+    "comment": "very good growing",
+    "child": 5,
+    "height": 90.0,
+    "weight": 90.0,
+    "headCircumfrance": 30.0
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "chawtsApp",
+    "model": "profile"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "chawtsApp",
+    "model": "child"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "chawtsApp",
+    "model": "familyassociation"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "chawtsApp",
+    "model": "sleeplog"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "chawtsApp",
+    "model": "foodlog"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "chawtsApp",
+    "model": "growthlog"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "32wqqk4tr6mz8y626a21dm56sgvbg32p",
+  "fields": {
+    "session_data": ".eJxVjsEOgjAQRP-lZ9O0FHbBo3e-oWl3txYlkFA4Gf9dMBz0Om_mZV7Kh23Nfiuy-IHVVVXq8pvFQE-ZDsCPMN1nTfO0LkPUR0WftOh-ZhlvZ_dPkEPJ-9rWEAxY06TWorPgUhKESOhMsI1JVSeAJiasI0pFyG3tUIiRuwgWYJcWGYVWYU95GPn7tnl_ANdDPwM:1tmIFz:SGUnhXTcVVr_w_g4pD5QPlc2KpTxwN11yaUH3Lzu6Y8",
+    "expire_date": "2025-03-09T20:07:19.133Z"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add profile",
+    "content_type": [
+      "chawtsApp",
+      "profile"
+    ],
+    "codename": "add_profile"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change profile",
+    "content_type": [
+      "chawtsApp",
+      "profile"
+    ],
+    "codename": "change_profile"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete profile",
+    "content_type": [
+      "chawtsApp",
+      "profile"
+    ],
+    "codename": "delete_profile"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view profile",
+    "content_type": [
+      "chawtsApp",
+      "profile"
+    ],
+    "codename": "view_profile"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add child",
+    "content_type": [
+      "chawtsApp",
+      "child"
+    ],
+    "codename": "add_child"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change child",
+    "content_type": [
+      "chawtsApp",
+      "child"
+    ],
+    "codename": "change_child"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete child",
+    "content_type": [
+      "chawtsApp",
+      "child"
+    ],
+    "codename": "delete_child"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view child",
+    "content_type": [
+      "chawtsApp",
+      "child"
+    ],
+    "codename": "view_child"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add family association",
+    "content_type": [
+      "chawtsApp",
+      "familyassociation"
+    ],
+    "codename": "add_familyassociation"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change family association",
+    "content_type": [
+      "chawtsApp",
+      "familyassociation"
+    ],
+    "codename": "change_familyassociation"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete family association",
+    "content_type": [
+      "chawtsApp",
+      "familyassociation"
+    ],
+    "codename": "delete_familyassociation"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view family association",
+    "content_type": [
+      "chawtsApp",
+      "familyassociation"
+    ],
+    "codename": "view_familyassociation"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add sleep log",
+    "content_type": [
+      "chawtsApp",
+      "sleeplog"
+    ],
+    "codename": "add_sleeplog"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change sleep log",
+    "content_type": [
+      "chawtsApp",
+      "sleeplog"
+    ],
+    "codename": "change_sleeplog"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete sleep log",
+    "content_type": [
+      "chawtsApp",
+      "sleeplog"
+    ],
+    "codename": "delete_sleeplog"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view sleep log",
+    "content_type": [
+      "chawtsApp",
+      "sleeplog"
+    ],
+    "codename": "view_sleeplog"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add food log",
+    "content_type": [
+      "chawtsApp",
+      "foodlog"
+    ],
+    "codename": "add_foodlog"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change food log",
+    "content_type": [
+      "chawtsApp",
+      "foodlog"
+    ],
+    "codename": "change_foodlog"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete food log",
+    "content_type": [
+      "chawtsApp",
+      "foodlog"
+    ],
+    "codename": "delete_foodlog"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view food log",
+    "content_type": [
+      "chawtsApp",
+      "foodlog"
+    ],
+    "codename": "view_foodlog"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add growth log",
+    "content_type": [
+      "chawtsApp",
+      "growthlog"
+    ],
+    "codename": "add_growthlog"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change growth log",
+    "content_type": [
+      "chawtsApp",
+      "growthlog"
+    ],
+    "codename": "change_growthlog"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete growth log",
+    "content_type": [
+      "chawtsApp",
+      "growthlog"
+    ],
+    "codename": "delete_growthlog"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view growth log",
+    "content_type": [
+      "chawtsApp",
+      "growthlog"
+    ],
+    "codename": "view_growthlog"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$EFATaVOHSt3K4P1LkS0Eke$TiG8tPLFMguRhKNYKRULad8tHQPvnvkTd5kkzdI+ryo=",
+    "last_login": "2025-02-23T19:41:54.334Z",
+    "is_superuser": false,
+    "username": "SarahMckenzie",
+    "first_name": "",
+    "last_name": "",
+    "email": "sarah@sarah.sarah",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-02-23T19:40:22.936Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$15HlgLBseUmNgLuJPWNcty$HpuqAVilT5SWMb5oHgflbEbbqfEXWcG3gAYcfUYW6Sw=",
+    "last_login": "2025-02-23T19:50:16.206Z",
+    "is_superuser": false,
+    "username": "EmmaLittle",
+    "first_name": "",
+    "last_name": "",
+    "email": "emma@emma.emma",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-02-23T19:45:39.926Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$PpQ2YHQ7ws7SBMBha14BUo$ZwtVHj5Ip9ybvQOOvneRfQhoS+QYArX3AIJaUINYtxI=",
+    "last_login": "2025-02-23T19:47:11.318Z",
+    "is_superuser": false,
+    "username": "ArthurStuart",
+    "first_name": "",
+    "last_name": "",
+    "email": "arthur@arthur.arthur",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-02-23T19:47:10.907Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "chawtsApp.familyassociation",
+  "pk": 1,
+  "fields": {
+    "parent": [
+      "SarahMckenzie"
+    ],
+    "child": 1,
+    "is_primary": true
+  }
+},
+{
+  "model": "chawtsApp.familyassociation",
+  "pk": 2,
+  "fields": {
+    "parent": [
+      "SarahMckenzie"
+    ],
+    "child": 2,
+    "is_primary": true
+  }
+},
+{
+  "model": "chawtsApp.familyassociation",
+  "pk": 3,
+  "fields": {
+    "parent": [
+      "EmmaLittle"
+    ],
+    "child": 1,
+    "is_primary": false
+  }
+},
+{
+  "model": "chawtsApp.familyassociation",
+  "pk": 4,
+  "fields": {
+    "parent": [
+      "EmmaLittle"
+    ],
+    "child": 2,
+    "is_primary": false
+  }
+},
+{
+  "model": "chawtsApp.familyassociation",
+  "pk": 5,
+  "fields": {
+    "parent": [
+      "ArthurStuart"
+    ],
+    "child": 3,
+    "is_primary": true
+  }
+},
+{
+  "model": "chawtsApp.familyassociation",
+  "pk": 6,
+  "fields": {
+    "parent": [
+      "ArthurStuart"
+    ],
+    "child": 4,
+    "is_primary": true
+  }
+},
+{
+  "model": "chawtsApp.familyassociation",
+  "pk": 7,
+  "fields": {
+    "parent": [
+      "ArthurStuart"
+    ],
+    "child": 5,
+    "is_primary": true
+  }
+},
+{
+  "model": "chawtsApp.familyassociation",
+  "pk": 8,
+  "fields": {
+    "parent": [
+      "EmmaLittle"
+    ],
+    "child": 3,
+    "is_primary": false
+  }
+},
+{
+  "model": "chawtsApp.familyassociation",
+  "pk": 9,
+  "fields": {
+    "parent": [
+      "EmmaLittle"
+    ],
+    "child": 4,
+    "is_primary": false
+  }
+},
+{
+  "model": "chawtsApp.familyassociation",
+  "pk": 10,
+  "fields": {
+    "parent": [
+      "EmmaLittle"
+    ],
+    "child": 5,
+    "is_primary": false
+  }
+},
+{
+  "model": "chawtsApp.profile",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "SarahMckenzie"
+    ],
+    "profile_picture": "pfp/f969ec4fe73a4f51bf7092c056d93b5c.jpg"
+  }
+},
+{
+  "model": "chawtsApp.profile",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "EmmaLittle"
+    ],
+    "profile_picture": "pfp/ca6c80d91c8247fdbc0ff59112f07325.jpeg"
+  }
+},
+{
+  "model": "chawtsApp.profile",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "ArthurStuart"
+    ],
+    "profile_picture": "pfp/5b7cdbcff668434d91f41f0c8721318b.jpg"
+  }
+}
 ]

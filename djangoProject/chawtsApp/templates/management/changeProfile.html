@@ -8,12 +8,12 @@
 
 {% block bodyExtra %}
     <main>
+        <h2>Hello {{user.username }}</h2>
         {% if user.profile.profile_picture %}
             <img class="pfp" src="{{ user.profile.profile_picture.url }}" alt="Profile Picture">
         {% else %}
             <img class="pfp" src="/static/images/default.jpg" alt="Default Profile Picture">
         {% endif %}
-
 
         <form class="form" method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -21,7 +21,7 @@
             <h2>Upload profile image</h2>
             {{ profile_form.as_p }}
 
-            <input class="button" type="submit" value="Submit"/>
+            <input class="button" id="button" type="submit" value="Submit"/>
             <a class="button" href="{% url 'dashboard' %}">Dashboard</a>
         </form>
     </main>

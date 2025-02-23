@@ -1,27 +1,29 @@
 ## deactivate virtual environment if currently in one
 if ($env:VIRTUAL_ENV) {
     if (Get-Command deactivate -ErrorAction SilentlyContinue) {
-        Write-Host "[2/9] Deactivating current virtual environment..."
+        Write-Host "[0/4] Deactivating current virtual environment..."
         deactivate
     }
 }
-Write-Host "[1/9] Checking Python installation..."
+Write-Host "[1/4] Checking Python installation..."
 $pythonCommand = $null
 if     (Get-Command python3 -ErrorAction SilentlyContinue)  {$pythonCommand = "python3"}
 elseif (Get-Command python  -ErrorAction SilentlyContinue)  {$pythonCommand = "python"}
 elseif (Get-Command py      -ErrorAction SilentlyContinue)  {$pythonCommand = "py"}
 else {
-    Write-Host "[1/9] Python is not installed. Please install it from: https://www.python.org/downloads/"
+    Write-Host "[1/4] Python is not installed. Please install it from: https://www.python.org/downloads/"
     Exit
 }
 
-Write-Host "[1/3] Starting Virtual Environment..."
+Write-Host "[2/3] Activating virtual environment..."
 set-Location (Split-Path $MyInvocation.MyCommand.Path) # set location to wherever this file is
 & $pythonCommand -m venv venv
-
+& .\venv\Scripts\Activate
 $venvPython = "..\.\venv\Scripts\python.exe"
+
 Set-Location djangoProject
-Write-Host "[2/3] Applying Migrations..."
+Write-Host "[3/4] Applying Migrations..."
 & $venvPython manage.py migrate
-Write-Host "[3/3] Starting the Server..."
+
+Write-Host "[4/4] Starting the Server..."
 Start-Process -NoNewWindow -FilePath $venvPython -ArgumentList "manage.py", "runserver"

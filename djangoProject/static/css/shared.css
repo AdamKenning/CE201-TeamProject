@@ -58,8 +58,9 @@ h2{
         border-width: 0;
         background-color: var(--col-neutral-light);
         color: var(--col-neutral-dark);
+        transition: all 0.3s ease;
     }
-    input:hover, input:focus{
+    input:focus{
         filter: brightness(80%);
         outline: 0;
     }
@@ -76,7 +77,7 @@ h2{
             width:0;
             height:0;
         }
-        
+
 input[type="file"]{
     width:250px;
     height:40px;
@@ -118,4 +119,7 @@ p:has(input[type="file"]) input {
 
 .button:hover {
     background-color: var(--col-secondary);
+}
+#button:hover{
+    filter:brightness(100%);
 }

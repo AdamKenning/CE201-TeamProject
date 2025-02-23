@@ -55,8 +55,15 @@ if ($loadData -match "^[yY]$") {
         Write-Host "[6/9] Flushing database..."
         & $venvPython manage.py flush --no-input
     }
+
     Write-Host "[6/9] Loading example Data..."
     & $venvPython manage.py loaddata fixtures/example_data.json
+
+    # Restore media files
+    if (Test-Path "fixtures/media/pfp") {
+        Write-Host "[6/9] Restoring found media files..."
+        Copy-Item -Path "fixtures/media/pfp/*" -Destination "media/pfp" -Recurse -Force
+    }
 }
 
 # admin access

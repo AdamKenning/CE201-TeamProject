@@ -1,12 +1,21 @@
-{% comment %} page is only accessible when logged in {% endcomment %}
+{% extends "base.html" %}
+{% load static %}
 
-<!DOCTYPE html>
+{% block headExtra %}
+    <link rel="stylesheet" href="{% static 'css/shared.css' %}" type="text/css">
+    <title>Add Child</title>
+{% endblock headExtra %}
 
-<title>Add Child</title>
 
-<h1> {{ user.username }} : Add a New Child</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Add Child</button>
-</form>
+{% block bodyExtra %}
+    <main>
+        <img class="pageLogo" src="{% static 'icons/LogoHeavy.svg' %}" alt="logo"/>
+        <h2>Import Child</h2>
+        <form class="form" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="button" type="submit">Add Child</button>
+        </form>
+        <a class="button" href="{% url 'dashboard' %}">Dashboard</a>
+    </main>
+{% endblock bodyExtra %}
