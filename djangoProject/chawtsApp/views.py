@@ -296,8 +296,7 @@ def edit_child(request):
 
 @login_required
 def changeProfile(request):
-    # Get or create the profile instance
-    profile, created = Profile.objects.get_or_create(user=request.user)
+    profile = Profile.objects.get_or_create(user=request.user)
 
     if request.method == "POST":
         profile_form = ProfileForm(request.POST, request.FILES, instance=profile)

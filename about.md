@@ -1,6 +1,6 @@
 # About the Project
 
-This is a **Django** project that does...
+This is a django web based application that aims to centralize the health tracking of children for the sake of easy monitoring and sharing between users. 
 
 ## Features
 
@@ -26,7 +26,7 @@ This is a **Django** project that does...
 
 ## Post Installation
 
-If you have previously installed the app, then you can start the app more quickly.
+If you have previously installed the app, then you can start the app more easily using.
 If you have not, skip to the installatoin guide.
 
 1. Set your location
