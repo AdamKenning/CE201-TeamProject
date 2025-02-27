@@ -109,21 +109,67 @@ Most of the views serve similar purposes, however there are some that do not con
 1. **Dashboard** : (Author, Adam)
    By far the largest of the views, this handles all the technical side for the Dashboard, Landing for the website and thus serves to provide quick general information as well as general functionality.
 
-   For a person visiting our website, it was important for us to display exemplory information so as to allow a guest to view what the website may look like for them. To allow this, the first check is against if the user is logged in. If the user is a guest, various data that would have been served to the front end is served as blank (This empty data is dealt with and populated later with false example data)
+   For a person visiting our website, it was important for us to display exemplory information so as to allow a guest to view what the website may look like for them. To allow this, the first check is against if the user is "Authenticated"; logged in. If the user is not logged in (guest), various data that would have been served to the front end is served as blank (This empty data is dealt with and populated later with false example data)
+
+   If the user is logged in, firstly the method gets a specific child id from the session storage (session storage is used to hold temporary information accross pages). The child referenced in the session storage is the selected_child*. The specific age of this child is then calculated from the users current date against the selected_childs dataOfBirth field.
+
+   Dashboard is used to select a specific child for the other pages. This aside the dashboard itself is used to show the user general non-specific data about their children. For this, two distinct data sets are generated. These both describe the proportions of data that has been logged for all the children, using different comparators for better data analysis.
+
+   1. Data logs per child
+   2. Data logs per catagory
+
+   All of the various data generated in this view is then passed to the user alongisde the dashboard.html template.
+
+   *selected_child : One of the children, selected by the users, from the children associated with that user. This child is then able to be used later to declutter pages by only showing data relevent to that singular child at a time.
 2. **sign_Up** : (Author, Adam)
-3. **food** : (Author, Adam)
-4. **growth** : (Author, Adam)
-5. **sleep** : (Author, Adam)
-6. **settings** : (Author, Adam)
-7. **select_child** : (Author, Adam)
-8. **deselect_child** : (Author, Adam)
-9. **create_child** : (Author, Adam)
-10. **add_child** : (Author, Adam)
-11. **edit_child** : (Author, Adam)
-12. **changeProfile** : (Author, Adam)
-13. **testing** : (Author, Adam)****
-14. **pdf_children_all** : (Author, Adam)
-15. **pdf_file_children_all** : (Author, Adam)
+   This view checks the contents of its request, to see if it is a posted form. If is it, and the form is valid, it saves the signup information as a new user and immediatly attempts a login on the newly created user.
+3. **growth**, **sleep** : (Author, Adam)
+   Both of these these views function for their respective growth and sleep pages.
+
+   For these views to be valid, the user first must be logged in, since as a guest there is no specific data for any children to display. Additionally, a check is done to retrieve the selected_child from the session Id, if a child has not been selected, there once again is no data to show and the user is redirected to the dashboard.
+
+   If these checks are passed, the views pass this selected child alongside the respective pages html template to the frontend.
+4. **Food** : (Author, Adam/Charles)
+   The food view, is similar to the prior growth and sleep, working on similar logic. However, for the food View, additional information is needed:
+
+   1. chart_data :
+      Two sets of data relevant for the data visualizer on the Food page, consisting of the datas labels and calories per meal.
+   2. Meals :
+      A single set of data of each meal taken.
+
+   This data is passed alongisde the selected child and the food.html template.
+5. **settings** : (Author, Adam)
+   Servers the settings.html template to the user. This page has not had much work done on it, so the view is very simple.
+6. **select_child**, **deselect_child** : (Author, Adam)
+   These two views allow for the heavily selected_child functionailty used heavily accross the app. Both views require the user to be logged in.
+
+   Selection is done by using the child_id passed as a paramater of the function alonside the request and setting that id in the current session as 'selected_child_id'. Deselect works in reverse, Checking if the token exists in the session, and deletes it.
+
+   These views then redirect to the dashboard (refresh the page), to reflect the changes.
+7. **create_child** : (Author, Adam)
+   Used for initiating new child entities, this function takes the form fomr the requested data paramater. If the requested form is valid, it creates a new child object, without comiting the creation of the child. The code for the half-created child is generated, then the child is saved properly.
+
+   A new entry in the family associations table is then created to represent the link between the user who requested the creation of the child and the child itself.
+
+   On sucessfull completion of these steps, the view redirects the user to the dashboard to reflect the new child creation changes.
+8. **add_child** : (Author, Adam)
+   To enable the many-to-many relationship used in our CHAWTS app for multi-child-parent relationships, the addition of prexisting children is necessitated. This view implements this functionailty by taking the form from the requested data and processing the extracted share code inputed by the user in that form.
+
+   If the code is an invalid code; there exists no children with that specific share code, an exception is thrown and the user is redirected back to the dashboard.
+
+   However, if a child does exist with a matching code, the child can be linked to the user. A new entry in the familyAssociations table is created between the child and the user, wherin the user is not the primary parent of the user. The childs specific shareCode is then reset to a new random string (to prevent misuse), and finally the user is redirected back to the dashboard.
+
+   On the dashboard, if the sharecode was successfull, the user will see the new child amongst their pre-existing children allocated to them.
+9. **edit_child** : (Author, Adam)
+   To allow for the post-creation editing of a child details (e.g. mis-input of a name, or to update a profile picture), the edit_child view is needed. Alongside the selected_child, this view has a is_primary check present, refering to the childs association to the parent in the FamilyAssociation table.
+
+   If the parent is the primary parent of the child. If the user is not the primary parent of the child, the user is denied access to the view, and redirected to the dashboard. If the user is the primary parent, they are able to submit a new form through the request paramater of the function.
+
+   This form is checked for validity and submitted. The html template is then rendered to the user alongside the form as well as the currently selected child.
+10. **changeProfile** : (Author, Adam)
+11. **testing** : (Author, Adam)
+12. **pdf_children_all** : (Author, Adam)
+13. **pdf_file_children_all** : (Author, Adam)
 
 *This section should describe the software implementation in prose form.  Focus on how the code was designed and built.*
 *It should make a clear description that could be used by any future developers to maintain and extend your code, if necessary.*

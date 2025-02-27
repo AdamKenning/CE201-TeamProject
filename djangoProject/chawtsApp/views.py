@@ -129,33 +129,33 @@ def food(request):
         "meals": meals,
         "chart_data": json.dumps(chart_data),
     })
+'''
+@login_required
+def diaper(request):
+    selected_child = None
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
 
-# @login_required
-# def diaper(request):
-#     selected_child = None
-#     if 'selected_child_id' in request.session:
-#         selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+    if not selected_child:
+        return redirect('dashboard')
 
-#     if not selected_child:
-#         return redirect('dashboard')
+    return render(request, "tracking/diaper.html", {
+        "selected_child": selected_child,
+    })
 
-#     return render(request, "tracking/diaper.html", {
-#         "selected_child": selected_child,
-#     })
+@login_required
+def medication(request):
+    selected_child = None
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
 
-# @login_required
-# def medication(request):
-#     selected_child = None
-#     if 'selected_child_id' in request.session:
-#         selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+    if not selected_child:
+        return redirect('dashboard')
 
-#     if not selected_child:
-#         return redirect('dashboard')
-
-#     return render(request, "tracking/medication.html", {
-#         "selected_child": selected_child,
-#     })
-
+    return render(request, "tracking/medication.html", {
+        "selected_child": selected_child,
+    })
+'''
 @login_required
 def growth(request):
     selected_child = None
@@ -181,20 +181,20 @@ def sleep(request):
     return render(request, "tracking/sleep.html", {
         "selected_child": selected_child,
     })
+'''
+@login_required
+def emotion(request):
+    selected_child = None
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
 
-# @login_required
-# def emotion(request):
-#     selected_child = None
-#     if 'selected_child_id' in request.session:
-#         selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+    if not selected_child:
+        return redirect('dashboard')
 
-#     if not selected_child:
-#         return redirect('dashboard')
-
-#     return render(request, "tracking/emotion.html", {
-#         "selected_child": selected_child,
-#     })
-
+    return render(request, "tracking/emotion.html", {
+        "selected_child": selected_child,
+    })
+'''
 # misc management pages
 @login_required
 def settings(request):
@@ -248,7 +248,7 @@ def addChild(request):
                 return render(request, 'dashboard.html')
 
 
-            # check sahre code is valid
+            # check share code is valid
             if code == child.shareCode:
 
                 FamilyAssociation.objects.create(parent=request.user, child=child, is_primary=False)
@@ -256,7 +256,7 @@ def addChild(request):
                 child.shareCodeGenerate()
                 return redirect('dashboard')
             else:
-                # reset sharecode to prevent guessing
+                # reset share code to prevent guessing
                 child.shareCodeGenerate()
 
                 # go dashboard if code invalid
@@ -279,7 +279,7 @@ def edit_child(request):
                 ).exists()
     else:
         return redirect('dashboard')
-    
+
     if(is_primary == False):
        return redirect('dashboard')
 
