@@ -370,6 +370,13 @@ def pdf_children_all(request):
 
 @login_required
 def pdf_file_children_all(request):
+    '''
+    add commissioned by parent
+    add specific log details
+    add log count
+    add dates of logs
+    add child age etc
+    '''
     children = request.user.children.all()
 
     from io import BytesIO
