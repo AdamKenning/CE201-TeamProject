@@ -19,13 +19,35 @@
         <label for="meal-time">Meal Time:</label>
         <input type="datetime-local" name="meal_time" required>
     
-        <label for="type">Meal Type:</label>
-        <select name="type">
-            <option value="breakfast">Breakfast</option>
-            <option value="lunch">Lunch</option>
-            <option value="dinner">Dinner</option>
-            <option value="snack">Snack</option>
+        <label for="child-age">Child Age (in months):</label>
+        <input type="number" id="child-age" name="child_age" min="0" required>
+
+        <label for="feeding-type">Feeding Type:</label>
+        <select id="feeding-type" name="feeding_type" onchange="toggleMealFields()">
+            <option value="formula">Formula</option>
+            <option value="cowMilk">Cow Milk</option>
+            <option value="breastMilk">Breast Milk</option>
+            <option value="solids">Solid Food</option>
         </select>
+
+        <div id="milk-amount" style="display: block;">
+            <label for="milk-quantity">Amount (ml):</label>
+            <input type="number" name="milk_quantity" min="0">
+        </div>
+
+        <div id="solid-food-options" style="display: none;">
+            <label for="meal-description">Food Description:</label>
+            <input type="text" name="meal_description">
+    
+            <label for="amount-eaten">Amount Eaten:</label>
+            <select name="amount_eaten">
+                <option value="0.00">None</option>
+                <option value="0.25">Some</option>
+                <option value="0.50">Half</option>
+                <option value="0.75">Most</option>
+                <option value="1.00">Full</option>
+            </select>
+        </div>
     
         <label for="calories">Calories:</label>
         <input type="number" name="calories" min="0" required>
@@ -34,55 +56,82 @@
     </form>
     
     <h2>Submitted Meals</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Meal Time</th>
-                    <th>Type</th>
-                    <th>Calories</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for meal in meals %}
-                <tr>
-                    <td>{{ meal.timeEvent }}</td>
-                    <td>{{ meal.get_type_display }}</td>
-                    <td>{{ meal.calories }}</td>
-                </tr>
-                {% empty %}
-                <tr><td colspan="3">No meals logged yet.</td></tr>
+    <table>
+        <thead>
+            <tr>
+                <th>Meal Time</th>
+                <th>Type</th>
+                <th>Calories</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for meal in meals %}
+            <tr>
+                <td>{{ meal.timeEvent }}</td>
+                <td>{{ meal.get_feeding_type_display }}</td>
+                <td>
+                    {% if meal.feeding_type == 'solids' %}
+                        {{ meal.meal_description }}
+                    {% else %}
+                        {{ meal.feeding_type }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if meal.feeding_type == 'solids' %}
+                        {{ meal.get_amount_eaten_display }}
+                    {% else %}
+                        {{ meal.milk_quantity }} ml
+                    {% endif %}
+                </td>
+                <td>{{ meal.calories }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="5">No meals logged yet.</td></tr>
             {% endfor %}
-            </tbody>
-        </table>
+        </tbody>
+    </table>
     
-    <h3>Calories Chart</h3>
-    <canvas id="caloriesChart"></canvas>
-        
+    <h3>Feeding Trends</h3>
+    <canvas id="feedingChart"></canvas>
+   
     <script>
+        function toggleMealFields() {
+            var feedingType = document.getElementById("feeding-type").value;
+            document.getElementById("milk-amount").style.display = (feedingType === "solids") ? "none" : "block";
+            document.getElementById("solid-food-options").style.display = (feedingType === "solids") ? "block" : "none";
+        }
+    
         var chartData = JSON.parse('{{ chart_data|safe }}');
-
-        var ctx = document.getElementById('caloriesChart').getContext('2d');
+    
+        var ctx = document.getElementById('feedingChart').getContext('2d');
         new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: {
                 labels: chartData.labels,
-                datasets: [{
-                    label: 'Calories',
-                    data: chartData.calories,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },options: {
+                datasets: [
+                    {
+                        label: 'Milk Consumption (ml)',
+                        data: chartData.milk_intake,
+                        borderColor: 'blue',
+                        backgroundColor: 'rgba(0, 0, 255, 0.2)',
+                        fill: true
+                    },
+                    {
+                        label: 'Solid Food Intake',
+                        data: chartData.solid_intake,
+                        borderColor: 'green',
+                        backgroundColor: 'rgba(0, 255, 0, 0.2)',
+                        fill: true
+                    }
+                ]
+            },
+            options: {
                 responsive: true,
                 scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+                    y: { beginAtZero: true }
                 }
             }
         });
     </script>
-
     
 {%endblock bodyExtra %}
