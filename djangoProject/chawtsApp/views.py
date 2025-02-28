@@ -13,7 +13,6 @@ from django.http import FileResponse, HttpResponseRedirect
 from django.urls import reverse
 
 from django.utils.safestring import mark_safe
-from django.utils import timezone
 import json
 
 # tracking pages
@@ -25,12 +24,12 @@ def food(request):
         selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
 
     if not selected_child:
-        return redirect('dashboard')
-    
-    child_age = (timezone.now().date() - selected_child.birth_date).days // 30
-    
+        return redirect('dashboard')  
+
+    child_age = selected_child.age if hasattr(selected_child, 'age') else None  
+        
     if request.method == "POST":
-        form = FoodLogForm(request.POST)
+        form = FoodLogForm(request.POST, child_age=selected_child.age)
         if form.is_valid():
             meal = form.save(commit=False)
             meal.child = selected_child
@@ -38,12 +37,13 @@ def food(request):
             return redirect('food')
     else:
         form = FoodLogForm(child_age=child_age)
-
+    
     meals = FoodLog.objects.filter(child=selected_child).order_by('-timeEvent')
 
     chart_data = {
         "labels": [meal.timeEvent.strftime('%Y-%m-%d %H:%M') for meal in meals],
-        "calories": [meal.calories for meal in meals]
+        "milk_intake": [float(meal.amount) if meal.mealType in ["formula", "cowMilk", "breastMilk"] else 0 for meal in meals],
+        "solid_intake": [float(meal.amount) if meal.mealType not in ["formula", "cowMilk", "breastMilk"] else 0 for meal in meals],
     }
 
     return render(request, "tracking/food.html", {

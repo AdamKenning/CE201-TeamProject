@@ -37,7 +37,7 @@ class FoodLogForm(forms.ModelForm):
     class Meta:
         model = FoodLog
         fields = ['timeEvent', 'mealType', 'amount', 'calories', 'comment']
-    
+   
     def __init__(self, *args, **kwargs):
         child_age = kwargs.pop('child_age', None) 
         super().__init__(*args, **kwargs)

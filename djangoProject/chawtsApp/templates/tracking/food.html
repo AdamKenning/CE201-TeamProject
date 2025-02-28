@@ -14,9 +14,21 @@
 
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}    
+        
+        <label for="id_mealType">Meal Type:</label>
+        {{ form.mealType }}
+    
+        <label for="id_amount">Amount Eaten:</label>
+        {{ form.amount }}
+    
+        <label for="id_calories">Calories:</label>
+        {{ form.calories }}
+    
+        <label for="id_comment">Comment:</label>
+        {{ form.comment }}
+    
         <button type="submit">Submit Meal</button>
-    </form>
+    </form>    
     
     <h2>Submitted Meals</h2>
     <table>
@@ -24,7 +36,8 @@
             <tr>
                 <th>Meal Time</th>
                 <th>Type</th>
-                <th>Calories</th>
+                <th>Amount</th>
+                <th>Calories</th>               
             </tr>
         </thead>
         <tbody>
@@ -82,6 +95,20 @@
                 }
             }
         });
+        function updateChart() {
+        fetch(window.location.href)  
+        .then(response => response.text())
+        .then(text => {
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(text, "text/html");
+            var newChartData = JSON.parse(doc.getElementById("chart-data").textContent);
+
+            feedingChart.data.labels = newChartData.labels;
+            feedingChart.data.datasets[0].data = newChartData.milk_intake;
+            feedingChart.data.datasets[1].data = newChartData.solid_intake;
+            feedingChart.update();
+        });
+    }
     </script>
     
 {%endblock bodyExtra %}
