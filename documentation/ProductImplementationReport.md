@@ -6,6 +6,10 @@ general info
 word counts
 time written
 when writing about any particular area of the app, i will list the author who wrote that particular area.
+Security features
+Technical Diagrams
+
+change extrac / full to description of code e.g. extract, child function
 
 ## Technical Diagrams
 
@@ -549,9 +553,9 @@ def create_profile(sender, instance, created, **kwargs):
 ...
 ```
 
-Another important function habilitated by signals is the automatic deletion of User and Child profile pictures. Since typical databases (for obvious reasons) dont support the storing of files, each profile picture (e.g. Profile and Child tables), is stored as a plaintext reference to that files stored location within the Apps Media directory (and Accessed similarly in a template). See below for deletion of porfile picture signal.
+Another important function habilitated by signals is the automatic deletion of User and Child profile pictures. Since typical databases (for obvious reasons) dont support the storing of files, each profile picture (e.g. Profile and Child tables), is stored as a plaintext reference to that files stored location within the Apps Media directory (and Accessed similarly in a template). See below for deletion of profile picture signal.
 
-**sginals.py** (extract) : (Author, Adam)
+**signals.py** (extract) : (Author, Adam)
 
 ```python
 ...
@@ -559,7 +563,7 @@ Another important function habilitated by signals is the automatic deletion of U
 @receiver(pre_save, sender=Profile)
 def delete_old_file_on_update(sender, instance, **kwargs):
     if not instance.pk:
-        # If its a new object, theres nothing to delete, ignore
+        # If its a new object, there's nothing to delete, ignore
         return
 
     try:
@@ -569,7 +573,7 @@ def delete_old_file_on_update(sender, instance, **kwargs):
             if default_storage.exists(old_instance.profile_picture.path):
                 default_storage.delete(old_instance.profile_picture.path)
     except Profile.DoesNotExist:
-        # If the profile hasnt been created yet, ignore
+        # If the profile hasn't been created yet, ignore
         pass
 
 # Deletion of old profile pictures on profile deletion
@@ -582,22 +586,94 @@ def delete_file_on_profile_delete(sender, instance, **kwargs):
 ...
 ```
 
-The deletion of a row in the database table deletes the reference to the media file, not the media file itself, thus the neccessity for a signal. On some events (e.g. updating profile picture, deletion of profile), this singal is triggered to delete that file stored on the server. This prevents a bloated server storing media that isnt associated with anyone.
+The deletion of a row in the database table deletes the reference to the media file, not the media file itself, thus the necessity for a signal. On some events (e.g. updating profile picture, deletion of profile), this signal is triggered to delete that file stored on the server. This prevents a bloated server storing media that isn't associated with anyone.
 
 #### Static Files & Media
 
+Django handles static files (e.g. css, js, icons, website images) using the static/ system, to dynamically serve assets and such throughout the apps frontend. Each template initially loads static using the django tag "*{% load static %}*" The specific static folder directory is specified in the settings.py as "*STATIC_URL = 'static/'*". This allows for non strict directory layout.
+
+As for user-uploaded content, such as images in the User and Child profile picture, the media directory is instead used for organizational purposes. During development, static files are hosted locally, however should the app be later moved to production, these would likely be moved and configured for a cloud-based storage (e.g. AWS).
+
 #### Fixtures
 
-*This section should describe the software implementation in prose form.  Focus on how the code was designed and built.*
-*It should make a clear description that could be used by any future developers to maintain and extend your code, if necessary.*
-*Describe important functions / classes / class hierarchies.*
-*In this section, you should also wish to highlight any technical achievements your team is particularly proud of, including relevant code snippets.*
+For testing purposes and due to the lack of users, during development, an initial exemplary data set was created and stored in the fixture directory. This exemplary data is stored as a JSON for the database data, and a set of royalty free images used to populate the media directory. It is also beneficial for someone who wishes to explore our project as a contributor, to understand the workings of it quickly and effectively.When running setup.ps1, The option is available to preload this data, ready to simulate real world use cases, and test the application.
 
-## Algorithms and Data Structures
+---
+
+### Security features
+
+#### CHAWTS app specific
+
+#### Provided by Django
+
+## Data Structures and Algorithms
 
 *Describe data structures of at least one component of your implementation.*
 *Describe at least one algorithm used in your implementation.*
 *In both cases, describe the space / time complexity of each.*
+
+### Data Structures
+
+One of the main components of the application is the child management, which operates on the child model, which is effectively a django data structure. The data for each child is stored in a relational database (SQLite3), which Django then uses its ORM (Object-Relational Mapper) to abstract the interaction.The child.
+
+**models.py** (extract) : (Author, Adam)
+
+```python
+...
+class Child(models.Model):
+    # Foreign key reference
+    parents = models.ManyToManyField(User, through='FamilyAssociation', related_name='children')
+
+    # Data strcuture attributes
+    firstName       = models.CharField(max_length=50)
+    lastName        = models.CharField(max_length=50)
+    dateOfBirth     = models.DateField(default=None)
+    profile_picture = models.ImageField(upload_to=profilePicUniqueUpload,blank=True, null=True)
+    shareCode       = models.CharField(max_length=10, unique=True, blank=True, null=True)
+
+    # Method for shareCode generation
+    def shareCodeGenerate(self):
+        self.shareCode = get_random_string(length=10)
+        self.save()
+
+    # Descriptor for the Data structure
+    class Meta:
+        db_table = "chawts_child"
+...
+```
+
+Each instance of a child model corresponds to an entry in the table, and each attribute of the child model corresponds to a column. The use of a database and SQLite3 are what allow for linking of a child to parents, and specific logs in the context of a server hosted database
+
+When fetching data, Django ORM optimizes queries depending on the relationship, so space and time complexity will vary, however a simple query in in views.py against the Database (e.g. see below) would be O(n) time complexity. "n" being the amount of children associated with the User for whom the view is serving.
+
+```python
+...
+children = request.user.children.all() # O(n) time complexity
+...
+```
+
+Space complexity is harder to estimate. For a simple data structure such as Family associations, which has a small amount of fields, no null fields, and all fields are simple data type (boolean and int), this is simple. Space complexity is **O(1)**
+
+**models.py** (extract) : (Author, Adam)
+
+```Python
+...
+class FamilyAssociation(models.Model):
+    parent     = models.ForeignKey(User, on_delete=models.CASCADE)
+    child      = models.ForeignKey(Child, on_delete=models.CASCADE)
+    is_primary = models.BooleanField(default=False)
+
+    class Meta:
+        db_table = "chawts_families"
+        unique_together = ('parent', 'child')
+...
+```
+
+However it is more complex in e.g. the prior Child model which has a profile_picture attribute, referencing a media file. The profile picture image far exceeds the space requirement for the rest of data structure. Additionally the profile_picture itself is optional, meaning e.g. some child objects will be a few kilobytes in size with no image associated with them, and some may exceed a few megabytes with an an image. It is hard therefore to assign a direct value for space complexity.
+
+Albeit not strictly allowed, when ignoring the image referencing of the Child mode, the only thing that varies the Space complexity of the child model is the amount of Users associated with it in the FamilyAssociations foreign table reference. Since this is a many-to-many relationship between the User model and the Child model, the space complexity is proportional to the amount of users; **O(n)**, where "n" is the amount of users the child is shared with.
+
+### Algorithms
 
 ## Known Issues
 
@@ -698,3 +774,5 @@ This project makes use of various open-source libraries and frameworks, each of 
 
    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    ```
+
+Space Complexity: The space complexity is proportional to the amount of data returned in a query. For example, fetching 100 child records will consume O(100) space in memory.
