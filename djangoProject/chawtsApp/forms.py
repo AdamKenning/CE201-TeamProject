@@ -1,5 +1,4 @@
 from django import forms
-from datetime import date
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Profile, Child, SleepLog, FoodLog, GrowthLog
@@ -34,12 +33,19 @@ class SleepLogForm(forms.ModelForm):
         model = SleepLog
         fields = ['timeEvent', 'type', 'duration', 'comment']
 
-class FoodLogForm(forms.ModelForm):
-    meal_time = forms.DateTimeField(widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}))
-    
+class FoodLogForm(forms.ModelForm):   
     class Meta:
         model = FoodLog
         fields = ['timeEvent', 'mealType', 'amount', 'calories', 'comment']
+    
+    def __init__(self, *args, **kwargs):
+        child_age = kwargs.pop('child_age', None) 
+        super().__init__(*args, **kwargs)
+        
+        if child_age is not None and child_age < 6:
+            self.fields['mealType'].choices = FoodLog.mealTypeBaby  
+        else:
+            self.fields['mealType'].choices = FoodLog.mealTypeChild  
 
 class GrowthLogForm(forms.ModelForm):
     class Meta:

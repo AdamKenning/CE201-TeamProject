@@ -96,6 +96,7 @@ class SleepLog(Log):
 # adjusted to match project description
 class FoodLog(Log):
     child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='foodLogs')
+    time_event = models.DateTimeField(auto_now_add=True)
 
     # Meal options if child age < 6 months
     mealTypeBaby = [

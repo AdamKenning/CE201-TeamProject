@@ -25,6 +25,8 @@ def food(request):
     if not selected_child:
         return redirect('dashboard')
     
+    child_age = (timezone.now().date() - selected_child.birth_date).days // 30
+    
     if request.method == "POST":
         form = FoodLogForm(request.POST)
         if form.is_valid():
@@ -32,6 +34,8 @@ def food(request):
             meal.child = selected_child
             meal.save()
             return redirect('food')
+    else:
+        form = FoodLogForm(child_age=child_age)
 
     meals = FoodLog.objects.filter(child=selected_child).order_by('-timeEvent')
 
@@ -42,6 +46,7 @@ def food(request):
 
     return render(request, "tracking/food.html", {
         "selected_child": selected_child,
+        "form": form,
         "meals": meals,
         "chart_data": json.dumps(chart_data),
     })
