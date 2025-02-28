@@ -10,20 +10,20 @@ cmake-build-*/
 venv
 venv/
 .env/
-*.pyc
 
 # Database stuff
 *.sqlite3
 *.db
 db.sqlite3
+# Profile pictures associated with the users in the database
+djangoProject/media/pfp/
 
 # cached stuff (created when running the server)
+*.pyc
 __pycache__/
 djangoProject/chawtsApp/__pycache__/
-djangoProject/chawtsApp/migrations__pycache__/
+djangoProject/chawtsApp/migrations/__pycache__/
 djangoProject/djangoProject/__pycache__/
-
-
 
 # OLD gitignore references from when we used Intellij
 

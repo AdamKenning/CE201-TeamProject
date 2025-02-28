@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block headExtra %}
+    <link rel="stylesheet" href="{% static 'css/shared.css' %}" type="text/css">
+    <title>Edit Child</title>
+{% endblock headExtra %}
+
+{% block bodyExtra %}
+    <main>
+        <h2>Edit {{selected_child.firstName }}</h2>
+
+        {% if selected_child.profile_picture %}
+            <img class="pfp" src="{{ selected_child.profile_picture.url }}" alt="Profile Picture">
+        {% else %}
+            <img class="pfp" src="/static/images/default.jpg"/>
+        {% endif %}
+
+        <form class="form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <input class="button" id="button" type="submit" value="Save Changes">
+            <a class="button" href="{% url 'dashboard' %}">Cancel</a>
+        </form>
+    </main>
+{% endblock bodyExtra %}

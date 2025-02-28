@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block headExtra %}
-    <link rel="stylesheet" href="{% static 'css/login.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/shared.css' %}" type="text/css">
     <title>Login</title>
 {% endblock headExtra %}
 
@@ -13,7 +13,7 @@
         <form class="form" method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <input class="button" type="submit" value="Login" placeholder="Username"/>
+            <input class="button" id="button" type="submit" value="Login" placeholder="Username"/>
             <input type="hidden" name="next" value="{% url 'dashboard' %}" />
         </form>
         <a class="button" href="{% url 'dashboard' %}">Dashboard</a>

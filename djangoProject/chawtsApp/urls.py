@@ -21,16 +21,17 @@ urlpatterns = [
     # childManagement pages
     path('createChild/', views.createChild, name='createChild'),
     path('addChild/', views.addChild, name='addChild'),
+    path('edit_child/', views.edit_child, name='edit_child'),
     path('select-child/<int:child_id>/', views.select_child, name='select_child'),
     path('deselect-child', views.deselect_child, name='deselect_child'),
 
     # tracking pages
     path("food/",       views.food,         name = "food"),
-    path("diaper/",     views.diaper,       name = "diaper"),
-    path("medication/", views.medication,   name = "medication"),
+    # path("diaper/",     views.diaper,       name = "diaper"),
+    # path("medication/", views.medication,   name = "medication"),
     path("growth/",     views.growth,       name = "growth"),
     path("sleep/",      views.sleep,        name = "sleep"),
-    path("emotion/",    views.emotion,      name = "emotion"),
+    # path("emotion/",    views.emotion,      name = "emotion"),
 
     # exprot pdf children
     path('pdf_children_all/', views.pdf_children_all, name='pdf_children_all'),

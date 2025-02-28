@@ -66,11 +66,13 @@
             {% comment %} if the user has selected a child to view {% endcomment %}
             {% if selected_child  %}
             <article class="selectedChild">
+                <a class="childIconLink" href="{% url 'edit_child' %}">
                 {% if selected_child.profile_picture %}
-                <img class="selectedIcon" src="{{ selected_child.profile_picture.url }}"/>
+                    <img class="selectedIcon" src="{{ selected_child.profile_picture.url }}"/>
                 {% else %}
-                <img class="selectedIcon" src="/static/images/default.jpg"/>
+                    <img class="selectedIcon" src="/static/images/default.jpg"/>
                 {% endif %}
+                </a>
                 <p class="selectedFirstName">{{selected_child.firstName}}</p>
                 <p class="selectedLastName">{{selected_child.lastName}}</p>
                 <p class="selectedAge">{{selected_child_years}} Years, {{selected_child_months}} Months</p>

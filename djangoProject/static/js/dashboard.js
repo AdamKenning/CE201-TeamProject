@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const logCategories = isAuthenticated ? window.logCategories : ['Sleep', 'Food', 'Growth'];
     const logCategoryCounts = isAuthenticated ? window.logCategoryCounts : [9, 7, 12];
 
+    const logNamePie = isAuthenticated ? 'Logs Per Child' : 'Example Data : Logs Per Child'
+    const logNameBar = isAuthenticated ? 'Logs Per Category' : 'Example Data : Logs Per Category'
+
     // lots of extra colours to accommodate extra data
     const colours = [
         'rgb(255, 99, 132)',
@@ -44,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Logs Per Child',
+                    text: logNamePie,
                     font: {
                         size: 20
                     }
@@ -87,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Logs Per Category',
+                        text: logNameBar,
                         font: {
                             size: 20
                         }
