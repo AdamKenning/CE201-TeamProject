@@ -1,0 +1,125 @@
+.body-extra {
+    background-color: var(--col-neutral-light);
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    display: grid;
+    place-items: center;
+}
+
+main{
+    width:300px;
+    padding:20px;
+    background-color: var(--col-primary);
+    border-radius: 20px;
+    color:var(--col-neutral-light);
+    box-shadow: 0px 0px 20px 0px grey;
+    display: grid;
+    place-items: center;
+}
+    .pfp{
+        width: 150px;
+        height: 150px;
+        border-radius: 20px;
+        margin:10px;
+    }
+
+.pageLogo{
+    width: 70px;
+    filter:invert();
+}
+
+h2{
+    padding:0px;
+    margin:0px;
+}
+
+.form{
+    display: grid;
+    place-items: center;
+    height: min-content;
+}
+    ul{
+        text-align: center;
+        background-color: var(--col-highlight);
+        width: 250px;
+        margin: 10px;
+        padding: 10px;
+        list-style: none;
+        border-radius: 20px;
+    }
+
+    input{
+        width:250px;
+        padding-left: 5px;
+        height:20px;
+        font-family: consolas;
+        border-radius: 5px;
+        border-width: 0;
+        background-color: var(--col-neutral-light);
+        color: var(--col-neutral-dark);
+        transition: all 0.3s ease;
+    }
+    input:focus{
+        filter: brightness(80%);
+        outline: 0;
+    }
+        p{
+            width:250px;
+            margin: 5px;
+            margin-bottom: 10px;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+        }
+        span{
+            visibility: hidden;
+            width:0;
+            height:0;
+        }
+
+input[type="file"]{
+    width:250px;
+    height:40px;
+    justify-content: center;
+    align-content: center;
+}
+
+input[name="profile_picture-clear"],
+label[for="profile_picture-clear_id"],
+br {
+    display: none;
+}
+
+p:has(input[type="file"]) {
+    font-size: 0;
+}
+
+p:has(input[type="file"]) input {
+    font-size: 16px;
+}
+
+.button {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 10px 10px;
+    margin: 5px;
+    width:150px;
+    height:40px;
+    font-size: 15px;
+    text-align: center;
+    background-color: var(--col-primary-dark);
+    color: var(--col-neutral-light);
+    border: none;
+    border-radius: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--col-secondary);
+}
+#button:hover{
+    filter:brightness(100%);
+}

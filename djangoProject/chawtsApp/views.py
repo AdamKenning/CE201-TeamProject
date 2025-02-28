@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 
 from datetime import date
-from .forms import UserRegistrationForm, ProfileForm, ChildForm, ShareCodeForm, SleepLogForm, FoodLogForm, GrowthLogForm
-from .models import Profile, FamilyAssociation, Child, FoodLog
+from .forms import *
+from .models import *
 
 # for pdf export
 from reportlab.pdfgen import canvas
@@ -149,7 +149,6 @@ def dashboard(request):
                     child=selected_child,
                     is_primary=True
                 ).exists()
-            
             age_days_total = (date.today() - selected_child.dateOfBirth).days
             age_years = age_days_total // 365
             age_months = (age_days_total - (age_years * 365)) // 30
@@ -207,6 +206,7 @@ def dashboard(request):
             "log_category_counts": json.dumps(log_category_counts),
         })
 
+# registration page
 def sign_up(request):
     if request.method == "POST":
         user_form = UserRegistrationForm(request.POST)
@@ -220,26 +220,119 @@ def sign_up(request):
         "user_form": user_form
         })
 
-
-# debug testing page
+# tracking pages
 @login_required
-def changeProfile(request):
-    # Get or create the profile instance
-    profile, created = Profile.objects.get_or_create(user=request.user)
+def food(request):
 
+    selected_child = None
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+    if not selected_child:
+        return redirect('dashboard')
     if request.method == "POST":
-        profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+        form = FoodLogForm(request.POST)
+        if form.is_valid():
+            meal = form.save(commit=False)
+            meal.child = selected_child
+            meal.save()
+            return redirect('food')
 
-        if profile_form.is_valid():
-            profile_form.save()
-            return redirect('changeProfile')
+    meals = FoodLog.objects.filter(child=selected_child).order_by('-timeEvent')
 
-    else:
-        profile_form = ProfileForm(instance=profile)
+    chart_data = {
+        "labels": [meal.timeEvent.strftime('%Y-%m-%d %H:%M') for meal in meals],
+        "calories": [meal.calories for meal in meals]
+    }
 
-    return render(request, 'management/changeProfile.html', {
-        'profile_form': profile_form,
+    return render(request, "tracking/food.html", {
+        "selected_child": selected_child,
+        "meals": meals,
+        "chart_data": json.dumps(chart_data),
     })
+
+# @login_required
+# def diaper(request):
+#     selected_child = None
+#     if 'selected_child_id' in request.session:
+#         selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+#     if not selected_child:
+#         return redirect('dashboard')
+
+#     return render(request, "tracking/diaper.html", {
+#         "selected_child": selected_child,
+#     })
+
+# @login_required
+# def medication(request):
+#     selected_child = None
+#     if 'selected_child_id' in request.session:
+#         selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+#     if not selected_child:
+#         return redirect('dashboard')
+
+#     return render(request, "tracking/medication.html", {
+#         "selected_child": selected_child,
+#     })
+
+@login_required
+def growth(request):
+    selected_child = None
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+    if not selected_child:
+        return redirect('dashboard')
+
+    return render(request, "tracking/growth.html", {
+        "selected_child": selected_child,
+    })
+
+@login_required
+def sleep(request):
+    selected_child = None
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+    if not selected_child:
+        return redirect('dashboard')
+
+    return render(request, "tracking/sleep.html", {
+        "selected_child": selected_child,
+    })
+
+# @login_required
+# def emotion(request):
+#     selected_child = None
+#     if 'selected_child_id' in request.session:
+#         selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+#     if not selected_child:
+#         return redirect('dashboard')
+
+#     return render(request, "tracking/emotion.html", {
+#         "selected_child": selected_child,
+#     })
+
+# misc management pages
+@login_required
+def settings(request):
+    return render(request, "management/settings.html")
+
+@login_required
+def select_child(request, child_id):
+    #store child in session
+    child = get_object_or_404(Child, id=child_id, parents=request.user)
+    request.session['selected_child_id'] = child.id
+    return redirect('dashboard') # refresh page
+
+@login_required
+def deselect_child(request):
+    if 'selected_child_id' in request.session:
+        del request.session['selected_child_id']  # delete session
+    return redirect(request.META.get('HTTP_REFERER', 'dashboard'))  # Redirect back or to dashboard
 
 # child managing testing
 @login_required
@@ -294,6 +387,54 @@ def addChild(request):
 
     return render(request, 'management/addChild.html', {'form': form})
 
+@login_required
+def edit_child(request):
+    selected_child = None
+    is_primary = False
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+        is_primary = FamilyAssociation.objects.filter(
+                    parent=request.user,
+                    child=selected_child,
+                    is_primary=True
+                ).exists()
+    else:
+        return redirect('dashboard')
+    
+    if(is_primary == False):
+       return redirect('dashboard')
+
+    if request.method == "POST":
+        form = ChildEditForm(request.POST, request.FILES, instance=selected_child)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    else:
+        form = ChildEditForm(instance=selected_child)
+
+    return render(request, 'management/edit_child.html', {'form': form, 'selected_child': selected_child})
+
+
+@login_required
+def changeProfile(request):
+    # Get or create the profile instance
+    profile, created = Profile.objects.get_or_create(user=request.user)
+
+    if request.method == "POST":
+        profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+
+        if profile_form.is_valid():
+            profile_form.save()
+            return redirect('changeProfile')
+
+    else:
+        profile_form = ProfileForm(instance=profile)
+
+    return render(request, 'management/changeProfile.html', {
+        'profile_form': profile_form,
+    })
+
+# Debug Testing page
 @login_required
 def testing(request):
     selected_child = None
