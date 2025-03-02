@@ -9,7 +9,7 @@ when writing about any particular area of the app, i will list the author who wr
 Security features
 Technical Diagrams
 
-change extrac / full to description of code e.g. extract, child function
+change extract / full to description of code e.g. extract, child function
 
 ## Technical Diagrams
 
@@ -28,6 +28,7 @@ The CHAWTS App was developed using the Django framework, a predominantly Python 
 This represents the database structure; How the database is stored and structured, each class in **models.py** represents a distinct database table e.g. "Child" Database Entity implemented using Python Class
 
 1. **models.py** (extract): (Author, Adam)
+
    ```python
    ...
    Class Child(models.Model):
@@ -100,6 +101,7 @@ Each view takes a request from the user (The request taking different forms depe
 For example, the view changeProfile, used for updating the users profile picture
 
 1. **views.py** (extract): (Author, Adam)
+
    ```python
    ...
    # Declare this view only accessible if logged in
@@ -249,6 +251,7 @@ Another key function habilitated by the Django templating is the ability to exte
 Templates receive data from the views (if needed) and format it accordingly ready for display. For example a relatively simple template, changeProfile.html
 
 1. **changeProfile.html** (full): (Author, Adam)
+
    ```html
    <!-- Extending of the base.html template -->
    {% extends "base.html" %}
@@ -323,11 +326,11 @@ Although most of are fairly self explanatory, two key extracts i will exemplify 
    <html lang="en">
      <head>
        <!-- Define character encoding -->
-       <meta charset="UTF-8"> 
+       <meta charset="UTF-8">
 
        <!-- Content Security Policy (CSP) -->
        <meta http-equiv="Content-Security-Policy" content="
-         default-src 'self'; 
+         default-src 'self';
          script-src 'self' https://cdn.jsdelivr.net;
          style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;">
 
@@ -336,7 +339,7 @@ Although most of are fairly self explanatory, two key extracts i will exemplify 
        <meta name="keywords" content="chawts, child, health, tracking, growth, food, sleep">>
        <meta name="author" content="Adam, Munashe, Charles, Evan, Zaki, Zubair">
 
-       <!-- Import FontAwesome for icons, and Charts.js for graphs  -->
+       <!-- FontAwesome for icons, and Charts.js for graphs  -->
        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -390,7 +393,7 @@ Although most of are fairly self explanatory, two key extracts i will exemplify 
 
    **In principle, the backend View fetches data conditionally from the model.py (database), the View then passes this data directly to the frontend alongside the HTML template. Within the HTML template, the Data is passed again to the relevant Javascript file for the template (in this case dashboard.js) which is loaded in the template header. Within this Javascript file, the data is used to generate a graph using Charts.js which is targeted at the two sections above "graphAreaFirst" and "graphAreaSecond" which both hold canvas classes.**
 
-   Below are relevant extracts from the remaining aformentioned files to illistrate the concepts
+   Below are relevant extracts from the remaining aforementioned files to illustrate the concepts
 
    **views.py** (extract) : (Author, Adam)
 
@@ -532,20 +535,22 @@ urlpatterns = [
    # testing page
    path("testing/",           views.testing,          name = "testing"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+...
 ```
 
-**The last part, "static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)", the only non self-explanatory part, hold the purpose of allowing for serving of static files (e.g. PDFs) during development. Django doesnt serve media files for an in-production app (a typical web server hoster such as Nginx or Apache would handle this). So during development, until this app is finalized and fully functional, this line is neccessary to allow uploaded files to be accessible to users.**
+**The last part, "static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)", the only non self-explanatory part, hold the purpose of allowing for serving of static files (e.g. PDFs) during development. Django doesn't serve media files for an in-production app (a typical web server host such as Nginx or Apache would handle this). So during development, until this app is finalized and fully functional, this line is necessary to allow uploaded files to be accessible to users.**
 
 #### Signals
 
 Signals are used in Django to automate some actions as a response to specific event triggers. Each signal takes the form of a single python function in the signals.py file, and is linked to a specific action using an @receiver decorator.
 
-Examples of this include the automatic creation of profile entities for each user; Each Profile model needs a one-to-one relationship with the default django User model which it extends off of. The User models are created on signup, this process is handled by django automatically, and the creation and linking of profiles is handled is the signal. See below.
+Examples of this include the automatic creation of profile entities for each user; Each Profile model needs a one-to-one relationship with the default django User model which it extends off of. The User models are created on sign up, this process is handled by django automatically, and the creation and linking of profiles is handled is the signal. See below.
 
-**sginals.py** (extract) : (Author, Adam)
+**signals.py** (extract) : (Author, Adam)
 
 ```python
 ...
+# Auto creation of profile entity
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
     if created and not Profile.objects.filter(user=instance).exists():
@@ -624,7 +629,7 @@ class Child(models.Model):
     # Foreign key reference
     parents = models.ManyToManyField(User, through='FamilyAssociation', related_name='children')
 
-    # Data strcuture attributes
+    # Data structure attributes
     firstName       = models.CharField(max_length=50)
     lastName        = models.CharField(max_length=50)
     dateOfBirth     = models.DateField(default=None)
@@ -648,7 +653,10 @@ When fetching data, Django ORM optimizes queries depending on the relationship, 
 
 ```python
 ...
-children = request.user.children.all() # O(n) time complexity
+# O(n) time complexity
+children = request.user.children.all()
+children = Child.objects.filter(familyassociation__parent=request.user)
+children = Child.objects.filter(familyassociation__parent_id=user_id)
 ...
 ```
 
@@ -673,7 +681,20 @@ However it is more complex in e.g. the prior Child model which has a profile_pic
 
 Albeit not strictly allowed, when ignoring the image referencing of the Child mode, the only thing that varies the Space complexity of the child model is the amount of Users associated with it in the FamilyAssociations foreign table reference. Since this is a many-to-many relationship between the User model and the Child model, the space complexity is proportional to the amount of users; **O(n)**, where "n" is the amount of users the child is shared with.
 
+```Python
+...
+# O(n) time complexity
+users = child.parents.all()
+users = User.objects.filter(familyassociation__child=child)
+users = User.objects.filter(familyassociation__child_id=child_id)
+...
+```
+
 ### Algorithms
+
+Our CHAWTS app, that runs of Django doesnt strictly have any algorithms in the same way, say, a sorting function might. This is due to the nature of the web based software needing minimal calculation, rather presenting data as it is stored iteratively.
+
+The most viable candidate would likely be generation of the PDFs within the views.py, albeit an implicit one. The PDF generation involves iterating through each of the children associated with the User, and their respective logs, formatting it conditionally to maintain a structured document.
 
 ## Known Issues
 
@@ -688,6 +709,7 @@ Albeit not strictly allowed, when ignoring the image referencing of the Child mo
 This project makes use of various open-source libraries and frameworks, each of which comes with its own license terms. Below, you will find the licenses of each, including key conditions and links to the full text for reference. We have ensured that any usage in this project remains in compliance with these licenses.
 
 1. **Django** (full): [https://github.com/django/django/blob/main/LICENSE](https://github.com/django/django/blob/main/LICENSE)
+
    ```txt
    Copyright (c) Django Software Foundation and individual contributors.
    All rights reserved.
@@ -703,6 +725,7 @@ This project makes use of various open-source libraries and frameworks, each of 
    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    ```
 2. **Charts.js** (full): [https://github.com/chartjs/Chart.js/blob/master/LICENSE.md](https://github.com/chartjs/Chart.js/blob/master/LICENSE.md)
+
    ```txt
    The MIT License (MIT)
 
@@ -715,6 +738,7 @@ This project makes use of various open-source libraries and frameworks, each of 
    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    ```
 3. **Pillow** (full): [https://github.com/python-pillow/Pillow/blob/main/LICENSE](https://github.com/python-pillow/Pillow/blob/main/LICENSE)
+
    ```txt
    The Python Imaging Library (PIL) is
 
@@ -734,6 +758,7 @@ This project makes use of various open-source libraries and frameworks, each of 
    SECRET LABS AB AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL SECRET LABS AB OR THE AUTHOR BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
    ```
 4. **ReportLab** (Full) : [https://github.com/Distrotech/reportlab/blob/master/LICENSE.txt](https://github.com/Distrotech/reportlab/blob/master/LICENSE.txt)
+
    ```txt#
    Copyright (c) 2000-2014, ReportLab Inc.
    All rights reserved.
@@ -749,6 +774,7 @@ This project makes use of various open-source libraries and frameworks, each of 
    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE OFFICERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    ```
 5. **FontAwesome** (extract) : [https://github.com/FortAwesome/Font-Awesome/blob/6.x/LICENSE.txt](https://github.com/FortAwesome/Font-Awesome/blob/6.x/LICENSE.txt)
+
    ```txt
    Icons: CC BY 4.0 License (https://creativecommons.org/licenses/by/4.0/)
    Fonts: SIL OFL 1.1 License

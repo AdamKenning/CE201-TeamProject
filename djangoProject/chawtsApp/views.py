@@ -370,13 +370,15 @@ def pdf_children_all(request):
 
 @login_required
 def pdf_file_children_all(request):
-    '''
-    add commissioned by parent
-    add specific log details
-    add log count
-    add dates of logs
-    add child age etc
-    '''
+    is_primary = False
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+        is_primary = FamilyAssociation.objects.filter(
+                    parent=request.user,
+                    child=selected_child,
+                    is_primary=True
+                ).exists()
+
     children = request.user.children.all()
 
     from io import BytesIO
@@ -384,50 +386,108 @@ def pdf_file_children_all(request):
 
     p = canvas.Canvas(buffer)
 
-    page_height = 792
+    # default pdf values
+    page_height = 832
     page_width = 612
 
-
     lineHeight = 20;
-    leftMargin= 100
-    verticalPos = 800
+    leftMargin= 40
+    topMargin = 40
+    margin_bottom = topMargin
+    verticalPos = page_height - topMargin
 
     p.setFont("Courier", lineHeight/1.5)
 
-    verticalPos -= lineHeight * 2
-
-    p.drawString(leftMargin, verticalPos, "Children Info")
-
-    verticalPos -= lineHeight * 2
+    p.drawString(leftMargin, verticalPos, f"Log Report")
+    leftMargin += 10
+    verticalPos -= lineHeight
+    p.drawString(leftMargin, verticalPos, f"User : {request.user.username}")
+    verticalPos -= lineHeight
+    p.drawString(leftMargin, verticalPos, f"Date : {date.today()}")
+    verticalPos -= lineHeight
 
     def drawLog(logName, logData, leftMargin, verticalPos):
-        p.drawString(leftMargin, verticalPos, f"Logs : {logName}")
+        p.drawString(leftMargin, verticalPos, f"{logName} Logs : ({len(logData)})")
         verticalPos -= lineHeight
-        leftMargin += 20
+        leftMargin += 10
         logs = logData
         logCount = 0
         for log in logs:
             logCount += 1
-            p.drawString(leftMargin, verticalPos, f"Log : {logCount}")
+            log_time = log.timeEvent.strftime("%d %b %H:%M")
+            if(logName == "Growth"):
+                p.drawString(leftMargin, verticalPos, f"{logCount}) {log_time}) Height:{(int)(log.height)}cm Weight:{(int)(log.weight)}kg Circumference:{(int)(log.headCircumfrance)}cm")
+            elif(logName == "Food"):
+                match log.amount:
+                    case 0.00: amount = "None"
+                    case 0.25: amount = "Some"
+                    case 0.50: amount = "Half"
+                    case 0.75: amount = "Most"
+                    case 1.00: amount = "Full"
+                match log.mealType:
+                    case "pasta": meal = "Pasta"
+                    case "jacketPotato": meal = "Jacket potato"
+                    case "chickenCurryWithRice": meal = "Chicken curry with rice"
+                    case "risotto": meal = "Risotto"
+                    case "chilliConCarne": meal = "Chilli con carne"
+                    case "formula": meal = "Formula"
+                    case "cowMilk": meal = "Cow milk"
+                    case "breastMilk": meal = "Breast milk"
+                    case _ : meal = log.mealType
+                p.drawString(leftMargin, verticalPos, f"{logCount}) {log_time}) Amount:{amount} Cal:{(int) (log.calories)} Meal:{meal}")
+            else:
+                total_seconds = log.duration.total_seconds()
+                total_hours = (int) (total_seconds // 3600)
+
+                total_minutes = (int) ((total_seconds % 3600) // 60)
+                total_seconds = (int) (total_seconds % 60)
+
+                p.drawString(leftMargin, verticalPos, f"{logCount}) {log_time}) Type:{log.type} Time:{total_hours}hrs {total_minutes}mins {total_seconds}sec")
             verticalPos -= lineHeight
         if logCount == 0:
-            p.drawString(leftMargin, verticalPos, f"No {logName} Logs")
+            p.drawString(leftMargin, verticalPos, f"X : No Logs")
             verticalPos -= lineHeight
-        leftMargin -= 20
+        leftMargin -= 10
         return leftMargin, verticalPos
 
+    verticalPos -= lineHeight
+
+    childCount = 0
     for child in children:
+        sectionHeight = 5;
+        sectionHeight += len(child.growthLogs.all())
+        sectionHeight += len(child.foodLogs.all())
+        sectionHeight += len(child.sleepLogs.all())
+        sectionHeight *= lineHeight
+
+        if verticalPos - sectionHeight < margin_bottom:
+            p.showPage()
+            p.setFont("Courier", lineHeight/1.5)
+            verticalPos = page_height - topMargin
+
+
+        childCount += 1
+        leftMargin -= 10
+        p.drawString(leftMargin, verticalPos, f"Child {childCount}) {child.firstName}, {child.lastName}")
+        leftMargin += 10
+
         verticalPos -= lineHeight
-        p.drawString(leftMargin, verticalPos, f"Name : {child.firstName}, {child.lastName}")
+
+        age_days_days = (date.today() - child.dateOfBirth).days
+        age_years = age_days_days // 365
+        age_months = (age_days_days - (age_years * 365)) // 30
+
+        p.drawString(leftMargin, verticalPos, f"Born : {child.dateOfBirth} ({age_years} Years, {age_months} Months)")
         verticalPos -= lineHeight
-        p.drawString(leftMargin, verticalPos, f"DoB  : {child.dateOfBirth}")
-        verticalPos -= lineHeight
-        p.drawString(leftMargin, verticalPos, f"Code : {child.shareCode}")
-        verticalPos -= lineHeight
+        if(is_primary):
+            p.drawString(leftMargin, verticalPos, f"Code : {child.shareCode}")
+            verticalPos -= lineHeight
 
         leftMargin, verticalPos = drawLog("Growth", child.growthLogs.all(), leftMargin, verticalPos)
         leftMargin, verticalPos = drawLog("Food", child.foodLogs.all(), leftMargin, verticalPos)
         leftMargin, verticalPos = drawLog("Sleep", child.sleepLogs.all(), leftMargin, verticalPos)
+
+        verticalPos -= lineHeight
 
     p.showPage()
     p.save()
