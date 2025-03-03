@@ -252,7 +252,7 @@ Templates receive data from the views (if needed) and format it accordingly read
 
 1. **changeProfile.html** (full): (Author, Adam)
 
-   ```html
+   ```django
    <!-- Extending of the base.html template -->
    {% extends "base.html" %}
    <!-- Generate dynamic filepath to static (css and other files) -->
@@ -317,7 +317,7 @@ Although most of are fairly self explanatory, two key extracts i will exemplify 
 
 1. **base.html** (extract) : (Author, Adam)
 
-   ```html
+   ```django
    <!-- Dynamically load static files (e.g. css, js, media) -->
    {% load static %}
 
@@ -367,7 +367,7 @@ Although most of are fairly self explanatory, two key extracts i will exemplify 
    The rest of the code is fairly self explanatory, but briefly, The next section involves various meta names which aid in searching for the website in browsers through search engines, and some crediting to all the members involved in our team. Then there is some linking to FontAwesome which provides icons, and Charts.js for the data visualization across our website. Both of these services are open access and have been used in according with their licenses. See the licenses section at the end of this document.
 2. **dashboard.html** (extract) : (Author, Adam)
 
-   ```html
+   ```django
    ...
    <section class="graphAreaFirst">
        <canvas class="pieChart" id="pieChart"></canvas>
@@ -525,6 +525,7 @@ urlpatterns = [
 
    # tracking pages
    path("food/",              views.food,             name = "food"),
+   path("medication/", views.medication,   name = "medication"),
    path("growth/",            views.growth,           name = "growth"),
    path("sleep/",             views.sleep,            name = "sleep"),
 
@@ -602,14 +603,6 @@ As for user-uploaded content, such as images in the User and Child profile pictu
 #### Fixtures
 
 For testing purposes and due to the lack of users, during development, an initial exemplary data set was created and stored in the fixture directory. This exemplary data is stored as a JSON for the database data, and a set of royalty free images used to populate the media directory. It is also beneficial for someone who wishes to explore our project as a contributor, to understand the workings of it quickly and effectively.When running setup.ps1, The option is available to preload this data, ready to simulate real world use cases, and test the application.
-
----
-
-### Security features
-
-#### CHAWTS app specific
-
-#### Provided by Django
 
 ## Data Structures and Algorithms
 
@@ -692,7 +685,7 @@ users = User.objects.filter(familyassociation__child_id=child_id)
 
 ### Algorithms
 
-Our CHAWTS app, that runs of Django doesnt strictly have any algorithms in the same way, say, a sorting function might. This is due to the nature of the web based software needing minimal calculation, rather presenting data as it is stored iteratively.
+Our CHAWTS app, that runs of Django doest strictly have any algorithms in the same way, say, a sorting function might. This is due to the nature of the web based software needing minimal calculation, rather presenting data as it is stored iteratively.
 
 The most viable candidate would likely be generation of the PDFs within the views.py, albeit an implicit one. The PDF generation involves iterating through each of the children associated with the User, and their respective logs, formatting it conditionally to maintain a structured document.
 

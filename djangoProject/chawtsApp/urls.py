@@ -31,7 +31,7 @@ urlpatterns = [
     path("growth/",     views.growth,       name = "growth"),
     path("sleep/",      views.sleep,        name = "sleep"),
 
-    # exprot pdf children
+    # export pdf children
     path('pdf_children_all/', views.pdf_children_all, name='pdf_children_all'),
 
     # testing page
