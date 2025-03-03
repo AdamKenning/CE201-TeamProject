@@ -1,11 +1,11 @@
 # About
 
-![Python Version](https://img.shields.io/badge/python-3.12.9-blue)
-![Django Version](https://img.shields.io/badge/django-5.1.6-blue)
-![FontAwesome Version](https://img.shields.io/badge/fontawesome-6.3-blue)
-![Charts.js Version](https://img.shields.io/badge/charts.js-4.4.8-blue)
-![pillow Version](https://img.shields.io/badge/pillow-11.1.0-blue)
-![reportlab Version](https://img.shields.io/badge/reportlab-4.3.1-blue)
+[![Python Version](https://img.shields.io/badge/python-3.12.9-blue)](https://www.python.org/)
+[![Django Version](https://img.shields.io/badge/django-5.1.6-blue)](https://www.djangoproject.com/)
+[![FontAwesome Version](https://img.shields.io/badge/fontawesome-6.3-blue)](https://fontawesome.com/)
+[![Charts.js Version](https://img.shields.io/badge/charts.js-4.4.8-blue)](https://www.chartjs.org/)
+[![Pillow Version](https://img.shields.io/badge/pillow-11.1.0-blue)](https://pillow.readthedocs.io/)
+[![ReportLab Version](https://img.shields.io/badge/reportlab-4.3.1-blue)](https://www.reportlab.com/)
 
 ## Table of Contents
 
@@ -160,3 +160,5 @@ If you have installed the app before, you can start it quickly:
    ```sh
    python manage.py loaddata fixtures\example_data.json
    ```
+
+![Logo](./djangoProject/static/icons/LogoHeavy.svg)
