@@ -1,8 +1,25 @@
-# About the Project
+# About
 
-This is a **Django-based web application** designed to **centralize health tracking for children**, making it easier for users to monitor and share health data.
+![Python Version](https://img.shields.io/badge/python-3.12.9-blue)
+![Django Version](https://img.shields.io/badge/django-5.1.6-blue)
+![FontAwesome Version](https://img.shields.io/badge/fontawesome-6.3-blue)
+![Charts.js Version](https://img.shields.io/badge/charts.js-4.4.8-blue)
+![pillow Version](https://img.shields.io/badge/pillow-11.1.0-blue)
+![reportlab Version](https://img.shields.io/badge/reportlab-4.3.1-blue)
 
-## Key Features
+## Table of Contents
+
+- [**Description**](#description)
+- [**Features**](#features)
+- [**Prerequisites**](#prerequisites)
+- [**Installation**](#installation)
+- [**Usage**](#usage)
+
+## Description
+
+Our App, Chawts,  is a **Django-based web application** designed to **centralize health tracking for children**, making it easier for users to monitor and share health data.
+
+## Features
 
 **User Registration & Child Profiles** :
 
@@ -57,7 +74,7 @@ This is a **Django-based web application** designed to **centralize health track
 
    If not installed, download from : <https://git-scm.com/downloads>
 
-## Post Installation (Starting the App)
+## Usage
 
 If you have installed the app before, you can start it quickly:
 
@@ -75,7 +92,7 @@ If you have installed the app before, you can start it quickly:
    .\startup.ps1
    ```
 
-## Installation Guide
+## Installation
 
 ### Automatic Installation (Windows Only)
 
