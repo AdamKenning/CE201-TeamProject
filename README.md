@@ -1,4 +1,4 @@
-# About
+# README
 
 [![Python Version](https://img.shields.io/badge/python-3.12.9-blue)](https://www.python.org/)
 [![Django Version](https://img.shields.io/badge/django-5.1.6-blue)](https://www.djangoproject.com/)
