@@ -27,11 +27,9 @@ urlpatterns = [
 
     # tracking pages
     path("food/",       views.food,         name = "food"),
-    # path("diaper/",     views.diaper,       name = "diaper"),
-    # path("medication/", views.medication,   name = "medication"),
+    path("medication/", views.medication,   name = "medication"),
     path("growth/",     views.growth,       name = "growth"),
     path("sleep/",      views.sleep,        name = "sleep"),
-    # path("emotion/",    views.emotion,      name = "emotion"),
 
     # exprot pdf children
     path('pdf_children_all/', views.pdf_children_all, name='pdf_children_all'),

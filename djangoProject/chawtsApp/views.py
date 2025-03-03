@@ -181,9 +181,9 @@ def sleep(request):
     return render(request, "tracking/sleep.html", {
         "selected_child": selected_child,
     })
-'''
+
 @login_required
-def emotion(request):
+def medication(request):
     selected_child = None
     if 'selected_child_id' in request.session:
         selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
@@ -191,10 +191,10 @@ def emotion(request):
     if not selected_child:
         return redirect('dashboard')
 
-    return render(request, "tracking/emotion.html", {
+    return render(request, "tracking/medication.html", {
         "selected_child": selected_child,
     })
-'''
+
 # misc management pages
 @login_required
 def settings(request):
