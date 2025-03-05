@@ -1,26 +1,44 @@
-# Team Implementation Report
+# Product Implementation Report
 
-*This section should describe the technical details of your implementation.  The subheadings and italicised text below may be used to guide you.*
+| Quick Info |               |
+| ---------- |---------------|
+| Author     | Adam Kenning  |
+| Finished   | March 5, 2025 |
+| Word Count | 8,478         |
 
-general info
-word counts
-time written
-when writing about any particular area of the app, i will list the author who wrote that particular area.
-Security features
-Technical Diagrams
+## Table of Contents
 
-change extract / full to description of code e.g. extract, child function
+1. [**Technical Diagram**](#1-technical-diagram)  
+2. [**Technical Description**](#2-technical-description)  
+   2.1. [Model View Template](#21-model-view-template-mvt)  
+   2.2. [Other Areas](#22-other-areas)  
+3. [**Data Structures and Algorithms**](#3-data-structures-and-algorithms)  
+   3.1. [Data Structures](#31-data-structures)  
+   3.2. [Algorithms](#32-algorithms)
+4. [**Known Issues**](#4-known-issues)  
+   4.1. [Frontend](#41-frontend)  
+   4.2. [backend](#42-backend)
+5. [**Imported Libraries**](#5-imported-libraries)  
+   5.1. [Environment Dependency](#51-environment-dependency)  
+   5.2. [Direct Dependencies](#52-direct-dependencies)  
+   5.3. [Transitive Dependencies](#53-transitive-dependencies)  
+6. [**Licenses**](#6-licenses)  
+   6.1. [Django](#61-django-extract)  
+   6.2. [Charts.js](#62-chartsjs-full)  
+   6.3. [Pillow](#63-pillow-full)  
+   6.4. [ReportLab](#64-reportlab-full)  
+   6.5. [FontAwesome](#65-fontawesome-extract)  
 
-## Technical Diagrams
+## 1. Technical Diagram
 
 ![Django Graph](assets/Adam-Graph-Model.svg)
 Visual representation of our Django models, including both default Django models (E.g. User from django.contrib.auth) and Chawts custom models (E.g. Child). "models", explained in more detail later, are how tables for a database and table entries are described in the django framework. This graph shows the relationships between all the various tables in our database.
 
-## Technical Description
+## 2. Technical Description
 
 The CHAWTS App was developed using the Django framework, a predominantly Python based framework, using the *MVT* architecture to allow for simple expansion and cohesion. MVT (Model-View-Template), similar to the *MVC* (Model-View-Controller), splits the app into three distinct main layers that all communicate with each other (with additional areas i will touch on later). These three layers each run from their respective single python file.
 
-### Model-View-Template (MVT)
+### 2.1. Model-View-Template (MVT)
 
 ---
 
@@ -463,7 +481,7 @@ Although most of are fairly self explanatory, two key extracts i will exemplify 
 
 ---
 
-### Other Miscellaneous Areas
+### 2.2. Other Areas
 
 As well as the MVT architecture which makes up the bulk of the app, there are some other components that also play an important role in its functionality. Below are the key aspects of each. These topics below include the management from user interaction, data routing to external resources and some other bits.
 
@@ -605,13 +623,13 @@ As for user-uploaded content, such as images in the User and Child profile pictu
 
 For testing purposes and due to the lack of users, during development, an initial exemplary data set was created and stored in the fixture directory. This exemplary data is stored as a JSON for the database data, and a set of royalty free images used to populate the media directory. It is also beneficial for someone who wishes to explore our project as a contributor, to understand the workings of it quickly and effectively.When running setup.ps1, The option is available to preload this data, ready to simulate real world use cases, and test the application.
 
-## Data Structures and Algorithms
+## 3. Data Structures and Algorithms
 
 *Describe data structures of at least one component of your implementation.*
 *Describe at least one algorithm used in your implementation.*
 *In both cases, describe the space / time complexity of each.*
 
-### Data Structures
+### 3.1. Data Structures
 
 One of the main components of the application is the child management, which operates on the child model, which is effectively a django data structure. The data for each child is stored in a relational database (SQLite3), which Django then uses its ORM (Object-Relational Mapper) to abstract the interaction.The child.
 
@@ -686,7 +704,7 @@ users = User.objects.filter(familyassociation__child_id=child_id)
 ...
 ```
 
-### Algorithms
+### 3.2. Algorithms
 
 Our CHAWTS app, that runs of Django doest strictly have any algorithms in the same way, say, a sorting function might. This is due to the nature of the web based software needing minimal calculation, rather presenting data as it is stored iteratively.
 
@@ -711,11 +729,11 @@ At each step where the PDF is written to, a pointer location is kept track of, m
 
 **Space Complexity** is dependent on the space used bt the PDF buffer and the logs/children that are being processed. The PDF buffer grows in accordance with the content added to it, but is ultimately written and saved to a file. Additionally, since Logs and children are processed sequentially without needing to store copies, the resulting space complexity is O(1)
 
-## Known Issues
+## 4. Known Issues
 
 Our Project has suffered quite substantially due to both poor management, and poor work, provided by various team members. Because of this, there are Large gaps in the functioning of our project. In no particular order.
 
-### FrontEnd
+### 4.1. Frontend
 
 1. Settings page (Author, Zaki)
    1. No backend linkage
@@ -740,7 +758,7 @@ Our Project has suffered quite substantially due to both poor management, and po
    1. Diaper page
    2. View all children page
 
-### Backend
+### 4.2. Backend
 
 1. Related to the user
    1. changeProfile (Author, Adam)
@@ -762,13 +780,13 @@ Our Project has suffered quite substantially due to both poor management, and po
    2. signals.py : No auto delete for Child Profile picture
    3. models.py : Not needed Types parameter in base Log
 
-## Imported Libraries
+## 5. Imported Libraries
 
-### Environment Dependency
+### 5.1. Environment Dependency
 
 1. Python (3.12.9) - Programming language used to build the project
 
-### Direct Dependencies
+### 5.2. Direct Dependencies
 
 1. Django (5.1.6) - The web framework used for building the backend of the application
 2. Charts.js (4.4.8) - Used for dynamic, interactive data visualization.
@@ -776,110 +794,122 @@ Our Project has suffered quite substantially due to both poor management, and po
 4. ReportLab (4.3.1) - Used for generating PDF reports.
 5. FontAwesome (6.3) - Provides vector icons for UI elements.
 
-### Transitive Dependencies (Libraries that came with Django)
+### 5.3. Transitive Dependencies
+
+(Libraries that came with Django)
 
 1. SQLParse (0.5.3) - Used for parsing and formatting SQL queries.
 2. TZData (2025.1) - Provides time zone data for time-handling functions.
 3. ASGriref (3.8.1) - Used for handling asynchronous requests.
 4. Chardet (5.2.0) - Used in detection of text encoding (for handling multiple file formats)
 
-## Licenses
+## 6. Licenses
 
 This project makes use of various open-source libraries and frameworks, each of which comes with its own license terms. Below, you will find the licenses of each, including key conditions and links to the full text for reference. We have ensured that any usage in this project remains in compliance with these licenses.
 
-1. **Django** (full): [https://github.com/django/django/blob/main/LICENSE](https://github.com/django/django/blob/main/LICENSE)
+### 6.1. **Django** (Extract)
 
-   ```txt
-   Copyright (c) Django Software Foundation and individual contributors.
-   All rights reserved.
+```txt
+Copyright (c) Django Software Foundation and individual contributors.
+All rights reserved.
 
-   Redistribution and use in source and binary forms, with or without modification,are permitted provided that the following conditions are met:
+Redistribution and use in source and binary forms, with or without modification,are permitted provided that the following conditions are met:
 
-   1  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+1  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 
-   2  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+2  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 
-   3  Neither the name of Django nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+3  Neither the name of Django nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 
-   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-   ```
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+```
 
-2. **Charts.js** (full): [https://github.com/chartjs/Chart.js/blob/master/LICENSE.md](https://github.com/chartjs/Chart.js/blob/master/LICENSE.md)
+Full License : [https://github.com/django/django/blob/main/LICENSE](https://github.com/django/django/blob/main/LICENSE)
 
-   ```txt
-   The MIT License (MIT)
+### 6.2. **Charts.js** (full)
 
-   Copyright (c) 2014-2024 Chart.js Contributors
+```txt
+The MIT License (MIT)
 
-   Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Copyright (c) 2014-2024 Chart.js Contributors
 
-   The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-   ```
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-3. **Pillow** (full): [https://github.com/python-pillow/Pillow/blob/main/LICENSE](https://github.com/python-pillow/Pillow/blob/main/LICENSE)
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
 
-   ```txt
-   The Python Imaging Library (PIL) is
+Full License : [https://github.com/chartjs/Chart.js/blob/master/LICENSE.md](https://github.com/chartjs/Chart.js/blob/master/LICENSE.md)
 
-   Copyright © 1997-2011 by Secret Labs AB
-   Copyright © 1995-2011 by Fredrik Lundh and contributors
+### 6.3. **Pillow** (full)
 
-   Pillow is the friendly PIL fork. It is
+```txt
+The Python Imaging Library (PIL) is
 
-   Copyright © 2010 by Jeffrey A. Clark and contributors
+Copyright © 1997-2011 by Secret Labs AB
+Copyright © 1995-2011 by Fredrik Lundh and contributors
 
-   Like PIL, Pillow is licensed under the open source MIT-CMU License:
+Pillow is the friendly PIL fork. It is
 
-   By obtaining, using, and/or copying this software and/or its associated documentation, you agree that you have read, understood, and will comply with the following terms and conditions:
+Copyright © 2010 by Jeffrey A. Clark and contributors
 
-   Permission to use, copy, modify and distribute this software and its documentation for any purpose and without fee is hereby granted, provided that the above copyright notice appears in all copies, and that both that copyright notice and this permission notice appear in supporting documentation, and that the name of Secret Labs AB or the author not be used in advertising or publicity pertaining to distribution of the software without specific, written prior permission.
+Like PIL, Pillow is licensed under the open source MIT-CMU License:
 
-   SECRET LABS AB AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL SECRET LABS AB OR THE AUTHOR BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-   ```
+By obtaining, using, and/or copying this software and/or its associated documentation, you agree that you have read, understood, and will comply with the following terms and conditions:
 
-4. **ReportLab** (Full) : [https://github.com/Distrotech/reportlab/blob/master/LICENSE.txt](https://github.com/Distrotech/reportlab/blob/master/LICENSE.txt)
+Permission to use, copy, modify and distribute this software and its documentation for any purpose and without fee is hereby granted, provided that the above copyright notice appears in all copies, and that both that copyright notice and this permission notice appear in supporting documentation, and that the name of Secret Labs AB or the author not be used in advertising or publicity pertaining to distribution of the software without specific, written prior permission.
 
-   ```txt#
-   Copyright (c) 2000-2014, ReportLab Inc.
-   All rights reserved.
+SECRET LABS AB AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL SECRET LABS AB OR THE AUTHOR BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+```
 
-   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+Full License : [https://github.com/python-pillow/Pillow/blob/main/LICENSE](https://github.com/python-pillow/Pillow/blob/main/LICENSE)
 
-   1  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+### 6.4. **ReportLab** (Full)
 
-   2  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+```txt#
+Copyright (c) 2000-2014, ReportLab Inc.
+All rights reserved.
 
-   3  Neither the name of the company nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
-   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE OFFICERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-   ```
+1  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 
-5. **FontAwesome** (extract) : [https://github.com/FortAwesome/Font-Awesome/blob/6.x/LICENSE.txt](https://github.com/FortAwesome/Font-Awesome/blob/6.x/LICENSE.txt)
+2  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 
-   ```txt
-   Icons: CC BY 4.0 License (https://creativecommons.org/licenses/by/4.0/)
-   Fonts: SIL OFL 1.1 License
-   Copyright (c) 2024 Fonticons, Inc. (https://fontawesome.com) with Reserved Font Name: "Font Awesome".
+3  Neither the name of the company nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 
-   This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is copied below, and is also available with a FAQ at: http://scripts.sil.org/OFL
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE OFFICERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+```
 
-   SIL OPEN FONT LICENSE
-   Version 1.1 - 26 February 2007
+Full License : [https://github.com/Distrotech/reportlab/blob/master/LICENSE.txt](https://github.com/Distrotech/reportlab/blob/master/LICENSE.txt)
 
-   PERMISSION & CONDITIONS
-   1  Neither the Font Software nor any of its individual components, in Original or Modified Versions, may be sold by itself.
+### 6.5. **FontAwesome** (extract)
 
-   2  Original or Modified Versions of the Font Software may be bundled, redistributed and/or sold with any software, provided that each copy contains the above copyright notice and this license. These can be included either as stand-alone text files, human-readable headers or in the appropriate machine-readable metadata fields within text or binary files as long as those fields can be easily viewed by the user.
+```txt
+Icons: CC BY 4.0 License (https://creativecommons.org/licenses/by/4.0/)
+Fonts: SIL OFL 1.1 License
+Copyright (c) 2024 Fonticons, Inc. (https://fontawesome.com) with Reserved Font Name: "Font Awesome".
 
-   3  No Modified Version of the Font Software may use the Reserved Font Name(s) unless explicit written permission is granted by the corresponding Copyright Holder. This restriction only applies to the primary font name as presented to the users.
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is copied below, and is also available with a FAQ at: http://scripts.sil.org/OFL
 
-   4  The name(s) of the Copyright Holder(s) or the Author(s) of the Font Software shall not be used to promote, endorse or advertise any Modified Version, except to acknowledge the contribution(s) of the Copyright Holder(s) and the Author(s) or with their explicit written permission.
+SIL OPEN FONT LICENSE
+Version 1.1 - 26 February 2007
 
-   5  The Font Software, modified or unmodified, in part or in whole, must be distributed entirely under this license, and must not be distributed under any other license. The requirement for fonts to remain under this license does not apply to any document created using the Font Software.
+PERMISSION & CONDITIONS
+1  Neither the Font Software nor any of its individual components, in Original or Modified Versions, may be sold by itself.
 
-   Copyright 2024 Fonticons, Inc.
+2  Original or Modified Versions of the Font Software may be bundled, redistributed and/or sold with any software, provided that each copy contains the above copyright notice and this license. These can be included either as stand-alone text files, human-readable headers or in the appropriate machine-readable metadata fields within text or binary files as long as those fields can be easily viewed by the user.
 
-   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-   ```
+3  No Modified Version of the Font Software may use the Reserved Font Name(s) unless explicit written permission is granted by the corresponding Copyright Holder. This restriction only applies to the primary font name as presented to the users.
+
+4  The name(s) of the Copyright Holder(s) or the Author(s) of the Font Software shall not be used to promote, endorse or advertise any Modified Version, except to acknowledge the contribution(s) of the Copyright Holder(s) and the Author(s) or with their explicit written permission.
+
+5  The Font Software, modified or unmodified, in part or in whole, must be distributed entirely under this license, and must not be distributed under any other license. The requirement for fonts to remain under this license does not apply to any document created using the Font Software.
+
+Copyright 2024 Fonticons, Inc.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
+
+Full License : [https://github.com/FortAwesome/Font-Awesome/blob/6.x/LICENSE.txt](https://github.com/FortAwesome/Font-Awesome/blob/6.x/LICENSE.txt)
