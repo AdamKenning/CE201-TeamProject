@@ -642,7 +642,7 @@ class Child(models.Model):
 
 Each instance of a child model corresponds to an entry in the table, and each attribute of the child model corresponds to a column. The use of a database and SQLite3 are what allow for linking of a child to parents, and specific logs in the context of a server hosted database
 
-When fetching data, Django ORM optimizes queries depending on the relationship, so space and time complexity will vary, however a simple query in in views.py against the Database (e.g. see below) would be O(n) time complexity. "n" being the amount of children associated with the User for whom the view is serving.
+When fetching data, Django ORM optimizes queries depending on the relationship, so space and time complexity will vary, however a simple query in in views.py against the Database (e.g. see below) would be O(n) **time complexity**. "n" being the amount of children associated with the User for whom the view is serving.
 
 ```python
 ...
@@ -653,7 +653,9 @@ children = Child.objects.filter(familyassociation__parent_id=user_id)
 ...
 ```
 
-Space complexity is harder to estimate. For a simple data structure such as Family associations, which has a small amount of fields, no null fields, and all fields are simple data type (boolean and int), this is simple. Space complexity is **O(1)**
+**Space complexity** is harder to estimate. For a simple data structure such as Family associations, which has a small amount of fields, no null fields, and all fields are simple data type (boolean and int), this is simple. Space complexity is **O(1)
+
+**
 
 **models.py** (extract) : (Author, Adam)
 
@@ -689,13 +691,96 @@ Our CHAWTS app, that runs of Django doest strictly have any algorithms in the sa
 
 The most viable candidate would likely be generation of the PDFs within the views.py, albeit an implicit one. The PDF generation involves iterating through each of the children associated with the User, and their respective logs, formatting it conditionally to maintain a structured document.
 
+Within the PDF view, the section specifically which is algorithmic is the filling in the PDF. This consists of two parts
+
+1. A *drawLog* internal function :
+
+   - This takes a set of logs and formats them correctly, iteratively appending them onto the PDF document
+   - Depending on the logName (Growth, Food etc.), different formats are applied to fit the data each log tracks.
+2. Main loop for each child :
+
+   - For each child associated with the user requesting the PDF, The algorithm determines how much page space is needed to contain all the logs for that child. If there is not enough remaining space on the current page, it seeks forward to the next.
+   - The child's Info is Added, including calculation for their Current age
+   - For every child to whom the User is the primary parent of, the PDF adds the share code below that child, otherwise this step is skipped
+   - the *drawLog* Function is called for each of the child's log categories
+
+At each step where the PDF is written to, a pointer location is kept track of, moving up/down/left/right to avoid over writing text and incorrectly indented/formatted outputs, whilst allowing for dynamic reports.
+
+**Time complexity** for this function is proportional to both the amount of children associated with the user, and the amount of logs associated with each child from this set of children. Since the algorithm iteratively loops over each child O(C), and iteratively loops over logs for each child O(L), the time complexity would be O(C*L) assuming each child has at least some Logs. This would be linear in terms of the total amount of logs.
+
+**Space Complexity** is dependent on the space used bt the PDF buffer and the logs/children that are being processed. The PDF buffer grows in accordance with the content added to it, but is ultimately written and saved to a file. Additionally, since Logs and children are processed sequentially without needing to store copies, the resulting space complexity is O(1)
+
 ## Known Issues
 
-*List any known issues (bugs) in your software, and describe workarounds if they exist.*
+Our Project has suffered quite substantially due to both poor management, and poor work, provided by various team members. Because of this, there are Large gaps in the functioning of our project. In no particular order.
+
+### FrontEnd
+
+1. Settings page (Author, Zaki)
+   1. No backend linkage
+   2. Buttons dont do anything
+2. Food page (Author, Charles)
+   1. CSS incorrectly implemented
+3. Medication page (Author, Munashe)
+   1. No backend linkage
+   2. CSS missing
+4. Growth page (Author, Munashe)
+   1. No backend linkage
+   2. CSS missing
+5. Sleep page (Author, Evan)
+   1. No backend linkage
+   2. Buttons dont do anything
+   3. Little to no CSS styling
+6. Dashboard (Author, Adam)
+   1. Footer not useful
+7. Sign up Page (Author, Adam)
+   1. CSS occasionally goes off screen
+8. Missing Pages
+   1. Diaper page
+   2. View all children page
+
+### Backend
+
+1. Related to the user
+   1. changeProfile (Author, Adam)
+      1. Can't change profile name
+   2. login (Author, Adam)
+      1. No 2FA
+   3. Sign Up (Author, Adam)
+      1. Cant setup profile simultaneously
+2. Related to the children
+   1. Import Child (Author, Adam)
+      1. No further authentication past share code
+      2. Cant revoke access after child is shared
+   2. No ability to delete / remove children
+3. Export PDF (Author, Adam)
+   1. Limited implementation
+   2. No support for visual data
+4. Misc
+   1. urls.py : No redirect for mismatch urls
+   2. signals.py : No auto delete for Child Profile picture
+   3. models.py : Not needed Types parameter in base Log
 
 ## Imported Libraries
 
-*List any 3rd party libraries that were used and describe what functionality they provided.*
+### Environment Dependency
+
+1. Python (3.12.9) - Programming language used to build the project
+
+### Direct Dependencies
+
+1. Django (5.1.6) - The web framework used for building the backend of the application
+2. Charts.js (4.4.8) - Used for dynamic, interactive data visualization.
+3. Pillow (11.1.0) - Used for managing images (e.g. profile pictures).
+4. ReportLab (4.3.1) - Used for generating PDF reports.
+5. FontAwesome (6.3) - Provides vector icons for UI elements.
+
+### Transitive Dependencies (Libraries that came with Django)
+
+1. SQLParse (0.5.3) - Used for parsing and formatting SQL queries.
+2. TZData (2025.1) - Provides time zone data for time-handling functions.
+3. ASGriref (3.8.1) - Used for handling asynchronous requests.
+4. Chardet (5.2.0) - Used in detection of text encoding (for handling multiple file formats)
 
 ## Licenses
 

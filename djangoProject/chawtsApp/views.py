@@ -142,7 +142,7 @@ def diaper(request):
     return render(request, "tracking/diaper.html", {
         "selected_child": selected_child,
     })
-
+'''
 @login_required
 def medication(request):
     selected_child = None
@@ -155,7 +155,7 @@ def medication(request):
     return render(request, "tracking/medication.html", {
         "selected_child": selected_child,
     })
-'''
+
 @login_required
 def growth(request):
     selected_child = None
@@ -179,19 +179,6 @@ def sleep(request):
         return redirect('dashboard')
 
     return render(request, "tracking/sleep.html", {
-        "selected_child": selected_child,
-    })
-
-@login_required
-def medication(request):
-    selected_child = None
-    if 'selected_child_id' in request.session:
-        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
-
-    if not selected_child:
-        return redirect('dashboard')
-
-    return render(request, "tracking/medication.html", {
         "selected_child": selected_child,
     })
 

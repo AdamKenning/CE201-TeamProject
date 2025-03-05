@@ -7,17 +7,17 @@
 [![Pillow Version](https://img.shields.io/badge/pillow-11.1.0-blue)](https://pillow.readthedocs.io/)
 [![ReportLab Version](https://img.shields.io/badge/reportlab-4.3.1-blue)](https://www.reportlab.com/)
 
-## Table of Contents
+## Contents
 
-- [**Description**](#description)
+- [**About**](#about)
 - [**Features**](#features)
 - [**Prerequisites**](#prerequisites)
-- [**Installation**](#installation)
 - [**Usage**](#usage)
+- [**Installation**](#installation)
 
-## Description
+## About
 
-Our App, Chawts,  is a **Django-based web application** designed to **centralize health tracking for children**, making it easier for users to monitor and share health data.
+Our Chawts App is a **Django-based web application** designed to **centralize health tracking for children**, making it easier for users to monitor and share health data.
 
 ## Features
 
@@ -59,6 +59,8 @@ Our App, Chawts,  is a **Django-based web application** designed to **centralize
 
 ## Prerequisites
 
+Before doing anything, you'll need to make sure you have both Python and Git available.
+
 1. Check Python
 
    ```console
@@ -76,9 +78,7 @@ Our App, Chawts,  is a **Django-based web application** designed to **centralize
 
 ## Usage
 
-If you have installed the app before, you can start it quickly:
-
-(If you haven't installed it yet, skip to the Installation Guide below.)
+If you have installed the app before, you can start it quickly, If you haven't installed it yet, skip to the Installation Guide below.
 
 1. Navigate to the project directory
 
@@ -94,7 +94,7 @@ If you have installed the app before, you can start it quickly:
 
 ## Installation
 
-### Automatic Installation (Windows Only)
+### Automatic Installation (Windows with Powershell)
 
 1. Clone the repository
 
@@ -103,7 +103,7 @@ If you have installed the app before, you can start it quickly:
    cd 24-25_CE201-col_team02
    ```
 
-2. Run the setup script:
+2. Run the powershell setup script:
 
    ```sh
    .\setup.ps1
@@ -160,5 +160,3 @@ If you have installed the app before, you can start it quickly:
    ```sh
    python manage.py loaddata fixtures\example_data.json
    ```
-
-![Logo](./djangoProject/static/icons/LogoHeavy.svg)
