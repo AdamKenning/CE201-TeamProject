@@ -1,4 +1,4 @@
-/* General Styles */
+/* General Page Styling */
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(to bottom, #f0f0f0, #d9caca, #f0f0f0);
@@ -18,59 +18,47 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     overflow: hidden;
-    padding: 25px;
+    padding: 30px;
     text-align: center;
 }
 
-/* Logo Styling */
-.pageLogo {
+/* Logo */
+.logo {
     width: 100px;
-    filter: invert(0);
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 /* Header */
-header {
-    text-align: center;
+h1 {
+    font-size: 24px;
+    color: #222;
     margin-bottom: 15px;
 }
 
-header h1 {
-    font-size: 22px;
-    color: #1565c0;
-    margin: 0;
-    font-weight: bold;
-}
-
-header p {
-    font-size: 14px;
-    color: #607d8b;
-    margin-top: 5px;
-}
-
-/* Form Styles */
-.form-container {
-    padding: 20px;
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 label {
-    display: block;
-    margin-top: 10px;
+    width: 100%;
+    text-align: left;
     font-size: 14px;
     font-weight: bold;
-    color: #37474f;
-    text-align: left;
+    margin: 10px 0 5px;
+    color: #333;
 }
 
-/* Input Styling */
 input {
     width: 100%;
     padding: 12px;
-    margin-top: 5px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
     transition: all 0.3s ease;
 }
 
@@ -80,24 +68,8 @@ input:focus {
     box-shadow: 0 0 5px rgba(21, 101, 192, 0.5);
 }
 
-/* Profile Picture Upload */
-.pfp {
-    width: 120px;
-    height: 120px;
-    border-radius: 20px;
-    margin: 10px auto;
-}
-
-/* File Input */
-input[type="file"] {
-    width: 100%;
-    height: 40px;
-    justify-content: center;
-    align-content: center;
-}
-
 /* Button Styling */
-button, .button {
+button {
     width: 100%;
     padding: 12px;
     background-color: #1565c0;
@@ -105,87 +77,38 @@ button, .button {
     font-size: 16px;
     border: none;
     border-radius: 5px;
-    margin-top: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 10px;
 }
 
-button:hover, .button:hover {
+button:hover {
     background-color: #0d47a1;
 }
 
-/* Dashboard Button Fix */
+/* Dashboard Button */
 .dashboard-button {
-    width: fit-content;
-    padding: 8px 15px;
+    display: inline-block;
+    padding: 10px 15px;
     background-color: #1565c0;
     color: #fff;
     font-size: 14px;
     text-decoration: none;
     border-radius: 5px;
-    display: inline-block;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .dashboard-button:hover {
     background-color: #0d47a1;
 }
 
-/* Error Messages */
-ul {
-    background-color: #ff5252;
-    color: #ffffff;
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    list-style: none;
-    border-radius: 8px;
-    font-size: 14px;
-    text-align: left;
-}
-
-/* Forgot Password Link */
-.forgot-password {
-    display: block;
-    margin-top: 15px;
-    font-size: 13px;
-    text-align: center;
-    color: #1565c0;
-    text-decoration: none;
-}
-
-.forgot-password:hover {
-    text-decoration: underline;
-}
-
-/* Footer */
-footer p {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 12px;
-}
-
-footer a {
-    color: #1565c0;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-/* Hidden Class for Inactive Sections */
-.hidden {
-    display: none;
-}
-
 /* Responsive Design */
 @media (max-width: 480px) {
-    .form-container {
-        padding: 15px;
+    .container {
+        padding: 20px;
     }
 
-    header h1 {
+    h1 {
         font-size: 20px;
     }
 }
