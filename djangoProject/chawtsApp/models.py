@@ -132,7 +132,7 @@ class FoodLog(Log):
         (1.00,'Full'),
     ]
 
-    mealType = models.CharField(max_length=50)
+    mealType = models.CharField(max_length=50, choices = mealTypeBaby + mealTypeChild )
     amount = models.DecimalField(max_digits=3,decimal_places=2, choices=amountEaten,default=1.00)
     calories = models.IntegerField()
 
