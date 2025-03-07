@@ -1,18 +1,54 @@
 {% extends "base.html" %}
 {% load static %}
 {% block headExtra %}
-    <link rel="stylesheet" href="{% static 'css/newLogin.css' %}" type="text/css">
-    <title>Sign Up</title>
+  <link rel="stylesheet" href="{% static 'css/newlogin.css' %}" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <title>Sign Up</title>
 {% endblock headExtra %}
 {% block bodyExtra %}
-    <main>
-        <img class="pageLogo" src="{% static 'icons/LogoHeavy.svg' %}" alt="logo"/>
-        <h2>Sign Up</h2>
-        <form class="form" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ user_form.as_p }}
-            <button class="button" type="submit">Sign Up</button>
-        </form>
-        <a class="button" href="{% url 'dashboard' %}">Dashboard</a>
-    </main>
+  <main>
+    <img class="pageLogo" src="{% static 'icons/LogoHeavy.svg' %}" alt="logo"/>
+    <h2>Sign Up</h2>
+    <form class="form" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ user_form.as_p }}
+      
+      <div class="input-group">
+        <label for="id_username">Username:</label>
+        <input type="text" name="username" id="id_username" required placeholder="Choose a username">
+      </div>
+      
+      <div class="input-group">
+        <label for="id_email">Email:</label>
+        <input type="email" name="email" id="id_email" required placeholder="Enter your email">
+      </div>
+      
+      <div class="input-group">
+        <label for="id_password1">Password:</label>
+        <input type="password" name="password1" id="id_password1" class="password-field" required placeholder="Create a password">
+        
+        <div class="password-requirements">
+          <ul>
+            <li>Your password can't be too similar to your other personal information.</li>
+            <li>Your password must contain at least 8 characters.</li>
+            <li>Your password can't be a commonly used password.</li>
+            <li>Your password can't be entirely numeric.</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="input-group">
+        <label for="id_password2">Password confirmation:</label>
+        <input type="password" name="password2" id="id_password2" required placeholder="Confirm your password">
+      </div>
+    
+      <button class="button" type="submit">Sign Up</button>
+    </form>
+    
+    <div class="account-toggle">
+      Already have an account? <a href="{% url 'login' %}">Login</a>
+    </div>
+    
+    <a class="button dashboard-link" href="{% url 'dashboard' %}">Dashboard</a>
+  </main>
 {% endblock bodyExtra %}
