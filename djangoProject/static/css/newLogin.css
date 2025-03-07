@@ -1,7 +1,7 @@
 :root {
     --primary-color: #4285f4;
     --primary-dark: #3367d6;
-    --secondary-color: #5c9aff;
+    --secondary-color: #ffa85c;
     --accent-color: #ff5252;
     --accent-color-light: #ff7b7b;
     --neutral-light: #ffffff;
@@ -68,7 +68,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    width: 50%;
+    width: 100%;
   }
   
   label {
