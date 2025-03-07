@@ -69,7 +69,7 @@
   
   .form {
     display: grid;
-    place-items: center;
+    place-items: relative;
   }
   
   p {
