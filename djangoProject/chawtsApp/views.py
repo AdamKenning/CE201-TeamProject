@@ -2,6 +2,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
+import json
 
 from datetime import date
 from .forms import *
@@ -15,6 +16,41 @@ from django.urls import reverse
 import json
 from django.http import JsonResponse
 
+
+from django.utils.safestring import mark_safe
+import json
+
+# tracking pages
+@login_required
+def food(request):
+
+    selected_child = None
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+    if not selected_child:
+        return redirect('dashboard')
+    
+    if request.method == "POST":
+        form = FoodLogForm(request.POST)
+        if form.is_valid():
+            meal = form.save(commit=False)
+            meal.child = selected_child
+            meal.save()
+            return redirect('food')
+
+    meals = FoodLog.objects.filter(child=selected_child).order_by('-timeEvent')
+
+    chart_data = {
+        "labels": [meal.timeEvent.strftime('%Y-%m-%d %H:%M') for meal in meals],
+        "calories": [meal.calories for meal in meals]
+    }
+
+    return render(request, "tracking/food.html", {
+        "selected_child": selected_child,
+        "meals": meals,
+        "chart_data": json.dumps(chart_data),
+    })
 
 @login_required
 def diaper(request):
@@ -50,9 +86,33 @@ def growth(request):
 
     if not selected_child:
         return redirect('dashboard')
+    
+    # Create a form instance
+    form = GrowthLogForm()
+    
+    if request.method == "POST":
+        form = GrowthLogForm(request.POST)
+        if form.is_valid():
+            growth_log = form.save(commit=False)
+            growth_log.child = selected_child
+            growth_log.save()
+            return redirect('growth')
+
+    growth_logs = GrowthLog.objects.filter(child=selected_child).order_by('-timeEvent')
+
+    # Prepare data for chart
+    chart_data = {
+        "labels": [log.timeEvent.strftime('%Y-%m-%d %H:%M') for log in growth_logs],
+        "height": [float(log.height) for log in growth_logs],
+        "weight": [float(log.weight) for log in growth_logs],
+        "head": [float(log.headCircumfrance) for log in growth_logs]
+    }
 
     return render(request, "tracking/growth.html", {
         "selected_child": selected_child,
+        "growth_logs": growth_logs,
+        "chart_data": json.dumps(chart_data),
+        "form": form
     })
 
 @login_required

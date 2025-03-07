@@ -1,255 +1,241 @@
-<!DOCTYPE html>
-<head>
-    <title>Growth Page</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        /* this is to get the chart in a small box so it doesnt take over the ful screen */
-        .chart-container {
-            width: 800px;
-            height: 400px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
+{% extends 'base.html' %}
+{% load static %}
 
-        #growthChart {
-            width: 100%;
-            height: 100%;
-        }
+{% block content %}
+<div class="medication-box"> 
+    <h2>Medicine Tracker</h2>
 
-    </style>
-</head>
-<body>
-    <!-- navigations -->
-    <nav class="navbar">
-        <div class="nav-logo">child grwth tracker</div>
-        <div class="nav-links">
-            <a href="#" class="active">Home</a>
-            <a href="#">Food</a>
-            <a href="#">Growth</a>
-            <a href="#">Sleep</a>
-            <a href="#">Login</a>
-            <a href="#">Settings</a>
+    {% if selected_child %}
+    <form method="POST">
+        {% csrf_token %}
+        <input type="datetime-local" name="timeEvent" required>
+        <input type="text" name="med_name" placeholder="medicinename" required>
+        <input type="text" name="amount" placeholder="how much(3ml, 2 tablets)" required>
+        <input type="time" name="time" required>
+        
+        <select name="how_often" required>  <!-- how often they are taking the medicne -->
+            <option value="">how often</option> <!-- list of options below -->
+            <option value="once">once daily</option>
+            <option value="twice">twice daily</option>
+            <option value="thrice">three daily</option>
+        </select>
+        
+        <select name="status" required> <!-- if they are currently taking medicine now -->
+            <option value="">status</option> <!-- options belw -->
+            <option value="active">active</option>
+            <option value="completed">done</option>
+            <option value="stopped">stopped</option>
+            <option value="paused">paused</option>
+        </select>
+
+        <input type="text" name="comment" placeholder="notes">
+        <button type="submit">save the medicine</button> <!--  the user needs to save -->
+    </form>
+
+    <div class="calendar-box">
+        <h2>calendar for medicine</h2> <!--   this is for the calendar-->
+        <div class="calendar-header">
+            <button onclick="previousMonth()">prev</button>
+            <span id="currentMonth">month year</span>
+            <button onclick="nextMonth()">next</button>
         </div>
-    </nav>
+        <div id="calendarGrid" class="calendar-grid"></div>
+    </div>
 
-    <div class="main-container">
-        <div class="input-container">
-            <h2>children Information</h2>
-            <div class="input-grid">
-                <input type="text" id="ChildNameInput" placeholder="Enter child's name"><!--theirr name--> 
-                <input type="number" id="ChildAgeInput" placeholder="Age (months)"> <!--age--> 
-                <input type="number" id="ChildHeightInput" placeholder="Height (cm)"> <!--height--> 
-                <input type="number" id="ChildWeightInput" placeholder="Weight (kg)"> <!--weigght--> 
-                <input type="number" id="ChildHeadInput" placeholder="Head Circumference (cm)"> <!-- head size--> 
-                <select id="ChildGenderInput">
-                    <option value="">choose gender</option> <!-- dropdown to choose the child gender--> 
-
-                    <option value="male">mle</option> 
-                    <option value="female">female</option>
-                </select>
-            </div>
-            <button onclick="saveChildInfo()" class="save-btn">save the childs info</button> <!-- is the button to save the childs information--> 
-        </div>
-
-        <div class="chart-container">
-            <div class="chart-header">
-                <select id="childSelector" onchange="updateChart()">
-                    <option value="">choose the child</option>
-                </select>
-                <div class="chart-tabs">
-                    <button class="chart-tab active" data-type="height" onclick="switchChart('height')">height</button>
-                    <button class="chart-tab" data-type="weight" onclick="switchChart('weight')">weigght</button>
-                    <button class="chart-tab" data-type="head" onclick="switchChart('head')">head circumference</button>
-                </div>
-            </div>
-            <canvas id="growthChart"></canvas>
-        </div>
-
-        <div class="table-container">
-            <h2>the measuremtns</h2>
-            <table id="childInfoTable">
-                <thead>
-                    <tr>
-                        <th>name</th>
-                        <th>age (months)</th>
-                        <th>height (cm)</th>
-                        <th>weight (kg)</th>
-                        <th>head size (cm)</th>
-                        <th>date saved</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- where table will go -->
-                </tbody>
-            </table>
-        </div>
+    <div class="table-box">
+        <h2>medication list</h2>
+        <table id="medicationTable">
+            <thead>
+                <tr>
+                    <th>date</th> <!-- the date -->
+                    <th>medicine</th> <!--  medince name -->
+                    <th>amount</th> <!-- how much -->
+                    <th>time taken</th> <!-- when it was taken  -->
+                    <th>how often</th> <!--  how many times a day -->
+                    <th>status</th> <!-- if its still in use -->
+                    <th>notes</th> <!-- anything else -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for med in meds %}
+                <tr>
+                    <td>{{ med.timeEvent|date:"Y-m-d H:i" }}</td> <!-- the date saved-->
+                    <td>{{ med.med_name }}</td> <!-- medication name-->
+                    <td>{{ med.amount }}</td> <!-- medication amount-->
+                    <td>{{ med.time|time:"H:i" }}</td> <!-- time taken-->
+                    <td>{{ med.get_how_often_display }}</td> <!-- how often-->
+                    <td>{{ med.get_status_display }}</td> <!-- status of medicine-->
+                    <td>{{ med.comment|default:'' }}</td> <!-- any other information-->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 
     <script>
-        let growthChart;
-        let childrenData = {};
+        let today = new Date();
 
-        function saveChildInfo() {
-            const name = document.getElementById("ChildNameInput").value.trim();
-            const age = document.getElementById("ChildAgeInput").value;
-            const height = document.getElementById("ChildHeightInput").value;
-            const weight = document.getElementById("ChildWeightInput").value;
-            const head = document.getElementById("ChildHeadInput").value;
-            const gender = document.getElementById("ChildGenderInput").value;
+        // the months
+        const months = ["jan", "feb", "mar", "apr", "may", "jun", 
+                       "jul", "aug", "sep", "oct", "nov", "dec"]; // the months
+        
+        // Simple day names
+        const days = ["sun", "mun", "tue", "wed", "thu", "fri", "sat"]; // the days
+ 
+        // shw the calendar
+        function showCalendar() {
+            // get mnth and year
+            let monthText = months[today.getMonth()];
+            let yearText = today.getFullYear();
+            
+            // change it to the current motnh year
+            document.getElementById('currentMonth').textContent = monthText + " " + yearText;
 
-            if (!name) {
-                alert("sorry you need to enter in a name"); // make sure that the user enters in a name
-                return;
-            }
+            // clear the calendar
+            let calArea = document.getElementById('thecalendarGrid');
+            calArea.innerHTML = '';
 
-            const now = new Date();
-            const formattedDateTime = now.toLocaleString();
-
-            // add to child data
-            if (!childrenData[name]) {
-                childrenData[name] = [];
-                // add the childs name in the dropdwon box
-                const selector = document.getElementById('childSelector');
-                const option = document.createElement('option');
-                option.value = name;
-                option.textContent = name;
-                selector.appendChild(option);
-            }
-
-            childrenData[name].push({
-                age: parseInt(age),
-                height: parseFloat(height),
-                weight: parseFloat(weight),
-                head: parseFloat(head),
-                gender: gender,
-                dateTime: formattedDateTime
+            // adding the headers
+            days.forEach(day => {
+                let box = document.createElement('div');
+                box.className = 'calendar-day-header';
+                box.textContent = day;
+                calArea.appendChild(box);
             });
 
-            // add the information to the tbale
-            const tableBody = document.getElementById("childInfoTable").getElementsByTagName("tbody")[0];
-            const newRow = tableBody.insertRow();
-            
-            const cells = [name, age, height, weight, head, formattedDateTime];
-            cells.forEach(cell => {
-                const newCell = newRow.insertCell();
-                newCell.textContent = cell;
-            });
+            // getting the days
+            let firstDay = new Date(yearText, today.getMonth(), 1);
+            let lastDay = new Date(yearText, today.getMonth() + 1, 0);
 
-            newRow.addEventListener("click", () => generatePDF({
-                name, age, height, weight, head, gender, dateTime: formattedDateTime
-            }));
-
-            clearInputs();
-            updateChart();
-        }
-
-        function updateChart() {
-            // when the user clicks on the childs name change the chart information
-            const selectedChild = document.getElementById("childSelector").value;
-            if (!selectedChild) return;
-
-            // to get the childs data that was used before
-            const childData = childrenData[selectedChild];
-            
-            // see which on the user clicks on weight ehight etc.
-            const activeTab = document.querySelector('.chart-tab.active');
-            const chartType = activeTab.getAttribute('data-type');
-
-            // clear everything
-            if (growthChart) {
-                growthChart.destroy();
+            // 
+            for (let i = 0; i < firstDay.getDay(); i++) {
+                let box = document.createElement('div');
+                box.className = 'calendar-day empty';
+                calArea.appendChild(box);
             }
 
-            // to draw the new chart
-            const canvas = document.getElementById('growthChart');
-            const ctx = canvas.getContext('2d');
-
-            // this is to get the data
-            const ages = childData.map(entry => entry.age);
-            const measurements = childData.map(entry => entry[chartType]);
-
-            // get the correct lables for everything
-            let measurementUnit = 'cm';
-            if (chartType === 'weight') {
-                measurementUnit = 'kg';
+            // add the days boxes
+            for (let day = 1; day <= lastDay.getDate(); day++) {
+                let box = document.createElement('div');
+                box.className = 'calendar-day';
+                box.textContent = day;
+                calArea.appendChild(box);
             }
-
-            // go and make the new chart
-            growthChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ages,
-                    datasets: [{
-                        label: chartType + ' over time',
-                        data: measurements,
-                        borderColor: 'rgb(75, 192, 192)',
-                        tension: 0.1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            title: {
-                                display: true,
-                                text: chartType + ' (' + measurementUnit + ')'
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Age (months)'
-                            }
-                        }
-                    }
-                }
-            });
         }
 
-        function switchChart(type) {
-            // go to the new chart
-            const allTabs = document.querySelectorAll('.chart-tab');
-            for (let tab of allTabs) {
-                tab.classList.remove('active');
-            }
-            
-           
-            const clickedTab = event.target;
-            clickedTab.classList.add('active');
-            
-            // to update the chart
-            updateChart();
+        //  move to the next months
+        function previousMonth() {
+            today.setMonth(today.getMonth() - 1); // this will allow the user to go back to the previus month
+            showCalendar(); // then show on calendar
         }
 
-        function clearInputs() {
-            document.getElementById('ChildNameInput').value = '';
-            document.getElementById('ChildAgeInput').value = '';
-            document.getElementById('ChildHeightInput').value = '';
-            document.getElementById('ChildWeightInput').value = '';
-            document.getElementById('ChildHeadInput').value = '';
-            document.getElementById('ChildGenderInput').value = '';
+        function nextMonth() {
+            today.setMonth(today.getMonth() + 1); // will allow the user to go onto the next month
+            showCalendar(); // then show on calendar
         }
 
-        function generatePDF(childInformation) { // this is to make a pdf
-            const { jsPDF } = window.jspdf; // the user can click on the child information and get a pdf made
-            const doc = new jsPDF();
-
-            doc.text("Child Growth Report", 10, 10);
-            doc.text("Name: " + childInformation.name, 10, 30);
-            doc.text("Age: " + childInformation.age + " months", 10, 40);
-            doc.text("Height: " + childInformation.height + " cm", 10, 50);
-            doc.text("Weight: " + childInformation.weight + " kg", 10, 60);
-            doc.text("Head Circumference: " + childInformation.head + " cm", 10, 70);
-            doc.text("Date & Time: " + childInformation.dateTime, 10, 80);
-
-            doc.save(childInformation.name + "_Growth_Report.pdf");
-        }
+        // this is ti show the calendar
+        showCalendar();
     </script>
-</body>
-</html>
+   <!--calaendar stylecalaendar stylecalaendar stylecalaendar stylecalaendar stylecalaendar stylecalaendar stylecalaendar stylecalaendar stylecalaendar stylecalaendar stylecalaendar stylecalaendar style-->
+    <style>
+        .medication-box {
+            margin: 21px; /* the spce around box*/
+            padding: 21px;
+            background: white; /* to have a white background */
+            border: 1px solid #ddd;
+        }
+
+        form {
+            display: flex; /* stck those boxes to make calendar*/
+            flex-direction: column;
+            gap: 9px;
+            max-width: 400px; /*make sure form not too big */
+            margin: 20px auto; /*to centre the form */
+        }
+
+        input, select { /*where the user types */
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px; /* to have round corners*/
+        }
+
+        button { /* for the button*/
+            padding: 10px;
+            background-color: #bb480f; /* orange*/
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer; /* to have mouse over button*/
+        }
+
+        .calendar-box {
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            border: 1px solid #ddd;
+        }
+
+        .calendar-grid {
+            display: grid; /* grid layout for calendar*/
+            grid-template-columns: repeat(7, 1fr); /* 7 colums*/
+            gap: 3px;
+            margin-top: 10px;
+        }
+
+        .calendar-day-header {
+            text-align: center; /* centr day names*/
+            font-weight: bold; /* in blod*/
+            padding: 3px;
+        }
+
+        .calendar-day {
+            border: 1px solid #ddd;
+            padding: 5px;
+            min-height: 40px;
+            text-align: center;
+        }
+
+        .calendar-day.empty { /*the empty space*/
+            background: #f5f5f5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background: #f5f5f5;
+        }
+    </style> 
+    <!-- calaendar style calaendar stylecalaendar stylecalaendar stylecalaendar stylecalaendar stylecalaendar stylecalaendar stylecalaendar stylecalaendar stylecalaendar style-->
+    {% else %}
+    <p>Please select a child first</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+<!-- references:
+To help with the graph - W3Schools.com https://www.w3schools.com/js/tryit.asp?filename=trychartjs_lines (2020)
+was used to add a table for the child.
+from there i used the script page to get the styling/image of the graph just to use as a front end
+can be found in line 8 and line 160-161
+the webpage where the graph code comes from so that it will show on my page is :  Jsdelivr.net. (2023). Available at:https://cdn.jsdelivr.net/npm/chart.js 
+and it is used in line 8.
+ for the table layout i got confsued because my table did not look like how it was supposed to do, the layout or the table that i had was wrong so i looked at 
+ w3schools for layout: www.w3schools.com. (2022). W3Schools online HTML editor. [online] Available at: https://www.w3schools.com/html/tryit.asp?filename=tryhtml_table4.
+"tbody" used in line 72 and 75. 
+‌for the chart i looked up chart.js for help on how to do line graphs: https://www.chartjs.org/ i also used this for some of the
+styling https://www.chartjs.org/docs/latest/samples/line/styling.html
+
+calendar for this is was looking it how to make the css work well, for this i used : https://www.w3schools.com/howto/howto_css_calendar.asp
+this was used from lines 142 - 217
+-->
