@@ -15,9 +15,13 @@
 
 ### Whole Team Commit Graph
 
-- ![1741275910638](image/TeamEffortLog/1741275910638.png)
+Source (VScode)
+![1741342281189](image/TeamEffortLog/1741342281189.png)
 
-### Individual Commit Graphs
+Source (GitLab)
+![1741342367249](image/TeamEffortLog/1741342367249.png)
+
+### Individual Commit Graphs (Since MVP)
 
 ![1741276012658](image/TeamEffortLog/1741276012658.png)
 ![1741276132840](image/TeamEffortLog/1741276132840.png)
