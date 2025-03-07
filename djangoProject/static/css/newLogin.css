@@ -1,7 +1,7 @@
-/* General Page Styling */
+/* General Styles */
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to bottom, #f0f0f0, #d9caca, #f0f0f0);
+    background: linear-gradient(to bottom, rgba(200, 200, 200, 0.646), rgba(220, 200, 200), rgb(200, 200, 200));
     margin: 0;
     padding: 0;
     display: flex;
@@ -9,7 +9,6 @@ body {
     align-items: center;
     min-height: 100vh;
 }
-
 /* Main Container */
 .container {
     width: 100%;
@@ -18,97 +17,128 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     overflow: hidden;
-    padding: 30px;
+    padding: 20px;
     text-align: center;
 }
-
-/* Logo */
-.logo {
-    width: 100px;
-    margin-bottom: 10px;
-}
-
 /* Header */
-h1 {
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+header h1 {
     font-size: 24px;
-    color: #222;
-    margin-bottom: 15px;
+    color: #1565c0;
+    margin: 0;
 }
-
-/* Form Styling */
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-label {
-    width: 100%;
-    text-align: left;
+header p {
     font-size: 14px;
-    font-weight: bold;
-    margin: 10px 0 5px;
-    color: #333;
+    color: #607d8b;
+    margin-top: 5px;
 }
-
+/* Form Styles */
+.form-container {
+    padding: 20px;
+}
+label {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #37474f;
+}
+/* Input Styling */
 input {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 10px;
+    padding: 10px;
+    margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+    font-family: consolas;
     transition: all 0.3s ease;
 }
-
 input:focus {
     border-color: #1565c0;
     outline: none;
-    box-shadow: 0 0 5px rgba(21, 101, 192, 0.5);
+    filter: brightness(80%);
 }
-
-/* Button Styling */
-button {
+/* Profile Picture Upload */
+.pfp {
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+    margin: 10px;
+}
+input[type="file"] {
     width: 100%;
-    padding: 12px;
+    height: 40px;
+    justify-content: center;
+    align-content: center;
+}
+input[name="profile_picture-clear"],
+label[for="profile_picture-clear_id"],
+br {
+    display: none;
+}
+/* Button Styles */
+button, .button {
+    width: 100%;
+    padding: 10px;
     background-color: #1565c0;
     color: #ffffff;
     font-size: 16px;
     border: none;
     border-radius: 5px;
+    margin-top: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 10px;
 }
-
-button:hover {
+button:hover, .button:hover {
     background-color: #0d47a1;
 }
-
-/* Dashboard Button */
-.dashboard-button {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #1565c0;
-    color: #fff;
-    font-size: 14px;
+/* Error & Message Display */
+ul {
+    text-align: center;
+    background-color: var(--col-highlight);
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    list-style: none;
+    border-radius: 20px;
+}
+/* Forgot Password Link */
+.forgot-password {
+    display: block;
+    margin-top: 40px;
+    font-size: 12px;
+    text-align: center;
+    color: #1565c0;
     text-decoration: none;
-    border-radius: 5px;
-    margin-top: 15px;
 }
-
-.dashboard-button:hover {
-    background-color: #0d47a1;
+.forgot-password:hover {
+    text-decoration: underline;
 }
-
+/* Footer */
+footer p {
+    text-align: center;
+    margin-top: 20px;
+}
+footer a {
+    color: #1565c0;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+/* Hidden Class for Inactive Sections */
+.hidden {
+    display: none;
+}
 /* Responsive Design */
 @media (max-width: 480px) {
-    .container {
-        padding: 20px;
+    .form-container {
+        padding: 15px;
     }
-
-    h1 {
+    header h1 {
         font-size: 20px;
     }
 }
