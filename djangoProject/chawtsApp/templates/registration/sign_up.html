@@ -11,9 +11,9 @@
     <h2>Sign Up</h2>
     <form class="form" method="post" enctype="multipart/form-data">
       {% csrf_token %}
-      {{ user_form.as_p }}
+      <!--{{ user_form.as_p }}-->
       
-      <!--<div class="input-group">
+      <div class="input-group">
         <label for="id_username">Username:</label>
         <input type="text" name="username" id="id_username" required placeholder="Choose a username">
       </div>
@@ -26,7 +26,7 @@
       <div class="input-group">
         <label for="id_password1">Password:</label>
         <input type="password" name="password1" id="id_password1" class="password-field" required placeholder="Create a password">
-    -->
+    
         <div class="password-requirements">
           <ul>
             <li>Your password can't be too similar to your other personal information.</li>
@@ -37,11 +37,11 @@
         </div>
       </div>
       
-      <!--<div class="input-group">
+      <div class="input-group">
         <label for="id_password2">Password confirmation:</label>
         <input type="password" name="password2" id="id_password2" required placeholder="Confirm your password">
       </div>
-    -->
+    
     
       <button class="button" type="submit">Sign Up</button>
     </form>
