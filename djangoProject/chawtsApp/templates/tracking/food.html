@@ -16,7 +16,8 @@
         <h1>Food Traker</h1>
     </header>
 
-    <h3>Tracking for: {{ selected_child.name }} ({{ selected_child.age }} months)</h3>
+    <h3>Tracking for: {{ selected_child.firstName }} {{ selected_child.lastName }} ({{ selected_child.age }} months)</h3>
+
 
     <form id="food-form" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
