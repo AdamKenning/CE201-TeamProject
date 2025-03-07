@@ -230,7 +230,7 @@
   }
   
   .dashboard-link {
-    display: flex;  /* Ensures it takes the full width */
+    display: block;  /* Ensures it takes the full width */
     padding: 12px;
     background-color: #ff6b6b; /* Matches the Login button */
     color: white;
