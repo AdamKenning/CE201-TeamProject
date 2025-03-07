@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
+import json
 
 from datetime import date
 from .forms import UserRegistrationForm, ProfileForm, ChildForm, ShareCodeForm, SleepLogForm, FoodLogForm, GrowthLogForm
-from .models import Profile, FamilyAssociation, Child, FoodLog
+from .models import Profile, FamilyAssociation, Child, FoodLog, GrowthLog
 
 # for pdf export
 from reportlab.pdfgen import canvas
@@ -12,7 +13,6 @@ from django.http import FileResponse, HttpResponseRedirect
 from django.urls import reverse
 
 from django.utils.safestring import mark_safe
-import json
 
 # tracking pages
 @login_required
@@ -80,9 +80,33 @@ def growth(request):
 
     if not selected_child:
         return redirect('dashboard')
+    
+    # Create a form instance
+    form = GrowthLogForm()
+    
+    if request.method == "POST":
+        form = GrowthLogForm(request.POST)
+        if form.is_valid():
+            growth_log = form.save(commit=False)
+            growth_log.child = selected_child
+            growth_log.save()
+            return redirect('growth')
+
+    growth_logs = GrowthLog.objects.filter(child=selected_child).order_by('-timeEvent')
+
+    # Prepare data for chart
+    chart_data = {
+        "labels": [log.timeEvent.strftime('%Y-%m-%d %H:%M') for log in growth_logs],
+        "height": [float(log.height) for log in growth_logs],
+        "weight": [float(log.weight) for log in growth_logs],
+        "head": [float(log.headCircumfrance) for log in growth_logs]
+    }
 
     return render(request, "tracking/growth.html", {
         "selected_child": selected_child,
+        "growth_logs": growth_logs,
+        "chart_data": json.dumps(chart_data),
+        "form": form
     })
 
 @login_required

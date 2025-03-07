@@ -1,263 +1,270 @@
-!DOCTYPE html>
+{% extends "base-sidebar.html" %}
+{% load static %}
 
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!--font style that was chosen by other team members -->
+{# This template uses Chart.js for graphs and Bootstrap for styling #}
+
+{% block headExtra %}
+    <link rel="stylesheet" href="{% static 'css/growth.css' %}" type="text/css">
     <title>growth page</title>
-    <link href="../css/nav.css" rel="stylesheet" type="text/css" />
-    <link href="../css/growth.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!--this is the format of the graph that i got in order to make the graph show.-->
-</head>
-
-<body>
-    <nav id="navbar">  <!--this is the navbar that everyone in my team is using--> 
-        <a id="navbar-food"        class="navbar-others" href="food.html">       <i class="fas fa-utensils"></i></a>
-        <a id="navbar-diaper"      class="navbar-others" href="diaper.html">     <i class="fas fa-baby"></i></a>
-        <a id="navbar-medication"  class="navbar-others" href="medication.html"> <i class="fas fa-pills"></i></a>
-        <a id="navbar-home"        class="navbar-others" href="home.html">       <i class="fas fa-home"></i></a>
-        <a id="navbar-growth"      class="navbar-active" href="growth.html">     <i class="fas fa-chart-line"></i></a>
-        <a id="navbar-sleep"       class="navbar-others" href="sleep.html">      <i class="fas fa-bed"></i></a>
-        <a id="navbar-emotion"     class="navbar-others" href="emotion.html">    <i class="fas fa-face-smile"></i></a>
-    </nav>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* to put the data  i have here */
-        .chart-container {
-            width: 800px;
-            height: 400px;
-            margin: 20px auto;
+        /* Styling Styling Styling Styling Styling Styling Styling Styling Styling Styling Styling Styling Styling Styling  */
+        .childgrowth-box {
             padding: 20px;
+        }
+        .childgrowth-card {
             background: white;
-            border: 1px solid #ddd;
             border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* a shadwo*/
         }
-
-        #MygrowthLineGraph {
-            width: 75%;
-            height: 75%;
+        /*   for   inputs */
+        .childmeasurement-form {
+            display: grid; /* grid layout*/
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; /* spce between */
         }
+        /* form groups and inputs */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block; /* put it on its own line*/
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        /* save button*/
+        .submit-button {
+            background-color: #007bff;  /* to match the colour pallete of the page */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background-color: #0056b3; /* when you hover over it thats the colour*/
+        }
+        /*  for growth tble */
+        .growth-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .growth-table th,
+        .growth-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .growth-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        /* line chart */
+        .chart-buttons { /* chart options*/
+            margin-bottom: 20px;
+            display: flex; /* horziontal */
+            gap: 10px;
+        }
+        .chart-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background: #f0f0f0;
+            color: #333;
+        }
+        .chart-button.active { /* to show which chart the user clicked on */
+            background: #007bff;
+            color: white;
+        }
+        /* line chart*/
+        .chart-container { /* this is for chart box so it doesnt take up full page*/
+            width: 100%;
+            height: 400px;
+            margin: 20px 0;
+        }
+        /* Styling Styling Styling Styling Styling Styling Styling Styling Styling Styling Styling Styling Styling Styling Styling Styling */
+    </style>
+{% endblock headExtra %}
 
-          </style>
-</head>
-<body>
+{% block bodyExtra %}
+    <div class="childgrowth-box">
+        <h2>growth tracker for {{ selected_child.firstName }}</h2>
 
-    <!--Int hese are the places where the user can enter information about the child--> 
-    <div class="childmeasurement-box">
-        <div class="input-container">
-            <h2>children infor</h2> <!--header ttitle -->
-            <div class="input-grid">
-                <input type="text" id="childrenNameinputs" placeholder="enter child name"> <!--name -->
-                <input type="number" id="childageInputs" placeholder="age ( in months)"> <!-- age -->
-                <input type="number" id="theChildsHeight" placeholder="height (cm)"> <!-- height-->
-                <input type="number" id="theChildsWeight" placeholder="weight (kg)"> <!-- height -->
-                <input type="number" id="theChildsHeadSize" placeholder="head size (cm)"> <!-- their head size -->
-                <select id="SelectChildGender"> <!-- choose the geneer -->
-                    <option value="">select the childs gender</option>
-                    <option value="male">male</option>
-                    <option value="female">female</option>
-                </select>
-            </div>
-            <button onclick="saveChildInfo()" class="save-btn">save the child information</button> <!--save the information-->
-        </div>
-
-        <div class="chart-container">
-            <div class="chart-header">
-                <select id="childSelector" onchange="updateChart()">
-                    <option value="">select the child</option>
-                </select>
-                <div class="chart-tabs">
-                    <button class="chart-tab active" data-type="height" onclick="switchChart('height')">hheight</button>
-                    <button class="chart-tab" data-type="weight" onclick="switchChart('weight')">weigght</button>
-                    <button class="chart-tab" data-type="head" onclick="switchChart('head')">head circumference</button>
+        <!-- this is where the user will type in the information -->
+        <div class="childgrowth-card">
+            <h4>child growth tracker</h4>
+            <form method="POST" class="childmeasurement-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>date a time:</label>
+                    {{ form.timeEvent }} <!-- this is to get the data and time -->
                 </div>
-            </div>
-            <canvas id="MygrowthLineGraph"></canvas>
+                <div class="form-group">
+                    <label>height ( in cm):</label>
+                    {{ form.height }} <!-- to get the height in cm -->
+                </div>
+                <div class="form-group">
+                    <label>weight ( in kg):</label>
+                    {{ form.weight }} <!-- to get the weight in kg -->
+                </div>
+                <div class="form-group">
+                    <label>head circumference ( in cm):</label>
+                    {{ form.headCircumfrance }} <!-- to get the head size in cm -->
+                </div>
+                <div class="form-group" style="grid-column: 1 / -1;">
+                    <label>Comments:</label>
+                    {{ form.comment }} <!-- this is where the user can say anything else. -->
+                </div>
+                <div style="grid-column: 1 / -1;">
+                    <button type="submit" class="submit-button">Save Growth Log</button> <!-- the user clicks here -->
+                </div>
+            </form>
         </div>
 
-        <div class="table-container"> <!-- where all the information you put about the child will go -->
-            <h2>all of the measurements</h2>
-            <table id="childInfoTable">   <!-- the table of the information -->
-                <thead>
-                    <tr>
-                        <th>name</th>
-                        <th>age ( in months)</th>
-                        <th>height (cm)</th>
-                        <th>weight (kg)</th>
-                        <th>head (cm)</th>
-                        <th>date saved</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- data will be put here -->
-                </tbody>
-            </table>
+        <!-- this is the space for the growth chart. -->
+        <div class="childgrowth-card ">
+            <h4>growth charts</h4>
+            <div class="chart-buttons">
+                <button onclick="changeChartType('height')" class="chart-button active">heigght</button> <!-- height chart-->
+                <button onclick="changeChartType('weight')" class="chart-button">weight</button> <!-- weight chart -->
+                <button onclick="changeChartType('head')" class="chart-button">headsize</button> <!-- headsize chart -->
+            </div>
+            <div class="chart-container">
+                <canvas id="growthChart"></canvas>
+            </div>
+        </div>
+
+        <!-- growth history table -->
+        <div class="childgrowth-card">
+            <h4>growth history</h4>
+            <div style="overflow-x: auto;"> <!-- so that it does not overflow-->
+                <table class="growth-table">
+                    <thead>
+                        <tr>
+                            <th>date saved</th> <!-- when  the measurement was done -->
+                            <th>height (in cm)</th> <!-- height-->
+                            <th>weight (inkg)</th> <!-- weight -->
+                            <th>head circumference (incm)</th> <!--  head size-->
+                            <th>comments</th> <!-- anythings else / worries -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for log in growth_logs %}
+                        <tr>
+                            <td>{{ log.timeEvent|date:"M d, Y H:i" }}</td> <!-- to log the time is was saved. -->
+                            <td>{{ log.height }}</td> <!-- log the height -->
+                            <td>{{ log.weight }}</td> <!-- log the weight -->
+                            <td>{{ log.headCircumfrance }}</td> <!--  log the heaf dsize-->
+                            <td>{{ log.comment|default:"-" }}</td> <!-- log the comments -->
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table> <!-- this is where the table is going to go.-->
+            </div>
         </div>
     </div>
+<!--  chart chart chart chart chart chart chart chart chart chart chart chart chart chart chart chartchart chart chart chart chart chart-->
+    <script type="text/javascript">
+        let currentMeasurement = 'height'; // this will be the first meansruemnt that the usr sees
+        let growthChart = null;
+        const chartData = JSON.parse('{{ chart_data|escapejs }}'); // to get things to work with django.
 
-    <script>
-        let MygrowthLineGraph;
-        let theChildsData = {};
-
-        function saveChildInfo() {
-            const name = document.getElementById('childrenNameinputs').value.trim();
-            const age = document.getElementById('childageInputs').value;
-            const height = document.getElementById('theChildsHeight').value;
-            const weight = document.getElementById('theChildsWeight').value;
-            const head = document.getElementById('theChildsHeadSize').value;
-            const gender = document.getElementById('SelectChildGender').value;
-
-            if (!name) {
-                alert('enter an actualy name please'); // if the user doesnt enter a name
-                return;
-            }
-
-            const now = new Date();
-            const formattedDateTime = now.toLocaleString();
-
-            // to add the childs name it will save it
-            if (!theChildsData[name]) {
-                theChildsData[name] = [];
-                // make a list thing
-                const selector = document.getElementById('childSelector'); // then adds it to the child selector
-                const option = document.createElement('option');
-                option.value = name;
-                option.textContent = name;
-                selector.appendChild(option);
-            }
-
-            theChildsData[name].push({
-                age: parseInt(age),
-                height: parseFloat(height),
-                weight: parseFloat(weight),
-                head: parseFloat(head),
-                gender: gender,
-                dateTime: formattedDateTime
+        //  change between different  chart
+        function changeChartType(measurementType) {
+            // this is to update the chart
+            document.querySelectorAll('.chart-button').forEach(button => {
+                button.classList.remove('active');
             });
-
-            // add the information to the table
-            const tableBody = document.getElementById('childInfoTable').getElementsByTagName('tbody')[0];
-            const newRow = tableBody.insertRow();
+            event.target.classList.add('active');
             
-            const cells = [name, age, height, weight, head, formattedDateTime];
-            cells.forEach(cell => {
-                const newCell = newRow.insertCell();
-                newCell.textContent = cell;
-            });
-
-            newRow.addEventListener("click", () => generatePDF({
-                name, age, height, weight, head, gender, dateTime: formattedDateTime
-            }));
-
-            clearInputs();
-            updateChart();
+            currentMeasurement = measurementType;
+            updateChart(); // updatin based on the new data theat the user has put in
         }
 
+        //update the chart with  data
         function updateChart() {
-            // get the childs name that was chosen
-            const selectedChild = document.getElementById('childSelector').value;
-            if (!selectedChild) return;
+            let data;
+            let label;
+            let color;
 
-            // retrive their data
-            const childData = theChildsData[selectedChild];
-            
-            // Gsee whether it is weight height etc
-            const activeTab = document.querySelector('.chart-tab.active');
-            const chartType = activeTab.getAttribute('data-type');
-
-            // clear the chart so it does not become messy
-            if (MygrowthLineGraph) {
-                MygrowthLineGraph.destroy();
+            // based on measurement type to make it work with django
+            switch(currentMeasurement) {
+                case 'height':
+                    data = chartData.height;
+                    label = 'heigght ( incm)'; // set height in cm
+                    color = 'rgb(112, 0, 0)';
+                    break;
+                case 'weight':
+                    data = chartData.weight;
+                    label = 'Weight (inkg)'; // set weigght in kg
+                    color = 'rgb(255, 99, 132)';
+                    break;
+                case 'head':
+                    data = chartData.head;
+                    label = 'head circumference (incm)'; //set heaad size in cm
+                    color = 'rgb(186, 50, 0)';
+                    break;
             }
 
-            // char.js stuff to draw the chart
-            const canvas = document.getElementById('MygrowthLineGraph');
-            const ctx = canvas.getContext('2d');
-
-            // getting the data
-            const ages = childData.map(entry => entry.age);
-            const measurements = childData.map(entry => entry[chartType]);
-
             
-            let measurementUnit = 'cm';
-            if (chartType === 'weight') {
-                measurementUnit = 'kg';
+            if (growthChart) { // this will get rid of the chart if theres one already open
+                growthChart.destroy(); // get rid of it
             }
 
-            // this is to make the new chart
-            MygrowthLineGraph = new Chart(ctx, {
+            // make new chart
+            growthChart = new Chart(document.getElementById('growthChart'), {
                 type: 'line',
                 data: {
-                    labels: ages,
+                    labels: chartData.labels,
                     datasets: [{
-                        label: chartType + ' over time',
-                        data: measurements,
-                        borderColor: 'rgb(75, 192, 192)',
-                        tension: 0.1
+                        label: label,
+                        data: data, //use the data
+                        borderColor: color, // colour of the line
+                        tension: 0.1 //curve
                     }]
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
+                    responsive: true, // resize the chart with the container
                     scales: {
                         y: {
-                            title: {
-                                display: true,
-                                text: chartType + ' (' + measurementUnit + ')'
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Age (months)'
-                            }
+                            beginAtZero: false // to make sure it does not start a t 0
                         }
                     }
                 }
             });
         }
 
-        function switchChart(type) {
-            // remove the prevous tabs
-            const allTabs = document.querySelectorAll('.chart-tab');
-            for (let tab of allTabs) {
-                tab.classList.remove('active');
-            }
-            
-            
-            const clickedTab = event.target;
-            clickedTab.classList.add('active');
-            
-            // updating the chart
+        
+        document.addEventListener('DOMContentLoaded', function() { // this is to make the chart.
             updateChart();
-        }
-
-        function clearInputs() { // this will remove the inputs in the graph
-            document.getElementById('childrenNameinputs').value = ''; // remove the selected child
-            document.getElementById('childageInputs').value = ''; // remobe age
-            document.getElementById('theChildsHeight').value = ''; // remove height
-            document.getElementById('theChildsWeight').value = ''; // remove weight
-            document.getElementById('theChildsHeadSize').value = ''; // remove head size
-            document.getElementById('SelectChildGender').value = ''; // remove child gender
-
-            // to get the line chart, this is just a front end basic to show how it would look like
-        // to get a place to put the line graph
-        }
-
+        });
     </script>
-</body>
-</html>
+    <!--  chart chart chart chart chart chart chart chart chart chart chart chart chart chart chart chartchart chart chart chart chart chart-->
+{% endblock bodyExtra %}
 
-
-<!-- references:
+{% comment %}
+References:
 To help with the graph - W3Schools.com https://www.w3schools.com/js/tryit.asp?filename=trychartjs_lines (2020)
 was used to add a table for the child.
 from there i used the script page to get the styling/image of the graph just to use as a front end
-can be found in line 8 and line 160-161
-the webpage where the graph code comes from so that it will show on my page is :  Jsdelivr.net. (2023). Available at:https://cdn.jsdelivr.net/npm/chart.js 
-and it is used in line 8.
- for the table layout i got confsued because my table did not look like how it was supposed to do, the layout or the table that i had was wrong so i looked at 
- w3schools for layout: www.w3schools.com. (2022). W3Schools online HTML editor. [online] Available at: https://www.w3schools.com/html/tryit.asp?filename=tryhtml_table4.
-"tbody" used in line 72 and 75. 
-‌for the chart i looked up chart.js for help on how to do line graphs: https://www.chartjs.org/ i also used this for some of the
-styling https://www.chartjs.org/docs/latest/samples/line/styling.html
 
---> 
+The webpage where the graph code comes from so that it will show on my page is: Jsdelivr.net. (2023). 
+Available at: https://cdn.jsdelivr.net/npm/chart.js
+
+For the table layout i got confused because my table did not look like how it was supposed to do, 
+the layout or the table that i had was wrong so i looked at w3schools for layout: 
+www.w3schools.com. (2022). W3Schools online HTML editor. [online] 
+Available at: https://www.w3schools.com/html/tryit.asp?filename=tryhtml_table4.
+
+For the chart i looked up chart.js for help on how to do line graphs: https://www.chartjs.org/ 
+i also used this for some of the styling https://www.chartjs.org/docs/latest/samples/line/styling.html
+{% endcomment %} 
