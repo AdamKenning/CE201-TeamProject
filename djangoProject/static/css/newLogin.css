@@ -238,7 +238,7 @@
     text-decoration: none;
     border-radius: 8px;
     text-align: center;
-    width: 110%; /* Adjust width to make it match the Login button */
+    width: 80%; /* Adjust width to make it match the Login button */
     max-width: 300px;
     transition: background 0.3s ease-in-out;
     margin: 10px auto; /* Centers the button */
