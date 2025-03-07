@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
@@ -11,10 +12,93 @@ from reportlab.pdfgen import canvas
 from django.http import FileResponse, HttpResponseRedirect
 from django.urls import reverse
 
-from django.utils.safestring import mark_safe
 import json
+from django.http import JsonResponse
 
-# dashboard
+
+@login_required
+def diaper(request):
+    selected_child = None
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+    if not selected_child:
+        return redirect('dashboard')
+
+    return render(request, "tracking/diaper.html", {
+        "selected_child": selected_child,
+    })
+
+@login_required
+def medication(request):
+    selected_child = None
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+    if not selected_child:
+        return redirect('dashboard')
+
+    return render(request, "tracking/medication.html", {
+        "selected_child": selected_child,
+    })
+
+@login_required
+def growth(request):
+    selected_child = None
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+    if not selected_child:
+        return redirect('dashboard')
+
+    return render(request, "tracking/growth.html", {
+        "selected_child": selected_child,
+    })
+
+@login_required
+def sleep(request):
+    selected_child = None
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+    if not selected_child:
+        return redirect('dashboard')
+
+    return render(request, "tracking/sleep.html", {
+        "selected_child": selected_child,
+    })
+
+@login_required
+def emotion(request):
+    selected_child = None
+    if 'selected_child_id' in request.session:
+        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
+
+    if not selected_child:
+        return redirect('dashboard')
+
+    return render(request, "tracking/emotion.html", {
+        "selected_child": selected_child,
+    })
+
+# def login(request):         return render(request, "login.html")
+def settings(request):
+    return render(request, "management/settings.html")
+
+@login_required
+def select_child(request, child_id):
+    #store child in session
+    child = get_object_or_404(Child, id=child_id, parents=request.user)
+    request.session['selected_child_id'] = child.id
+    return redirect('dashboard') # refresh page
+
+@login_required
+def deselect_child(request):
+    if 'selected_child_id' in request.session:
+        del request.session['selected_child_id']  # delete session
+    return redirect(request.META.get('HTTP_REFERER', 'dashboard'))  # Redirect back or to dashboard
+
+
 def dashboard(request):
     if request.user.is_authenticated:
         selected_child = None
@@ -102,32 +186,44 @@ def sign_up(request):
 # tracking pages
 @login_required
 def food(request):
-
     selected_child = None
     if 'selected_child_id' in request.session:
         selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
 
     if not selected_child:
-        return redirect('dashboard')
+        return redirect('dashboard')  
+
+    child_age = selected_child.age if hasattr(selected_child, 'age') else None
+         
     if request.method == "POST":
-        form = FoodLogForm(request.POST)
+        form = FoodLogForm(request.POST, child_age=selected_child.age)  # Pass child's age here
         if form.is_valid():
             meal = form.save(commit=False)
             meal.child = selected_child
             meal.save()
-            return redirect('food')
-
+            return JsonResponse({"success": True})
+        else:
+            return JsonResponse({"success": False, "errors": form.errors})
+    else:
+        form = FoodLogForm(child_age=child_age)  # Pass child's age here
+    
     meals = FoodLog.objects.filter(child=selected_child).order_by('-timeEvent')
 
     chart_data = {
         "labels": [meal.timeEvent.strftime('%Y-%m-%d %H:%M') for meal in meals],
-        "calories": [meal.calories for meal in meals]
+        "milk_intake": [float(meal.amount) if meal.mealType in ["formula", "cowMilk", "breastMilk"] else 0 for meal in meals],
+        "solid_intake": [float(meal.amount) if meal.mealType not in ["formula", "cowMilk", "breastMilk"] else 0 for meal in meals],
     }
+
+    meal_options = FoodLog.mealTypeBaby if child_age < 6 else FoodLog.mealTypeChild
+    meal_options_json = json.dumps(meal_options)
 
     return render(request, "tracking/food.html", {
         "selected_child": selected_child,
+        "form": form,
         "meals": meals,
         "chart_data": json.dumps(chart_data),
+        "meal_options": meal_options_json,
     })
 
 # @login_required

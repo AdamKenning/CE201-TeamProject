@@ -1,5 +1,4 @@
 from django import forms
-from datetime import date
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import *
@@ -58,16 +57,35 @@ class SleepLogForm(forms.ModelForm):
             'comment': forms.Textarea(attrs={'placeholder': 'Add any additional notes ...', 'rows': 3}),
         }
 
-class FoodLogForm(forms.ModelForm):
-    # meal_time = forms.DateTimeField(widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}))
-
+class FoodLogForm(forms.ModelForm):   
     class Meta:
         model = FoodLog
         fields = ['timeEvent', 'mealType', 'amount', 'calories', 'comment']
-        widgets = {
-            'timeEvent': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
-            'comment': forms.Textarea(attrs={'placeholder': 'Add any additional notes ...', 'rows': 3}),
-        }
+   
+        mealTypeBaby = [
+            ('formula', 'Formula'),
+            ('cowMilk', 'Cow Milk'),
+            ('breastMilk', 'Breast Milk'),
+        ]
+        
+        mealTypeChild = [
+            ('pasta', 'Pasta'),
+            ('jacketPotato', 'Jacket potato'),
+            ('chickenCurryWithRice', 'Chicken curry with rice'),
+            ('risotto', 'Risotto'),
+            ('chilliConCarne', 'Chilli con carne'),
+        ]
+
+    def __init__(self, *args, **kwargs):
+        child_age = kwargs.pop('child_age', None) 
+        super().__init__(*args, **kwargs)
+        
+        if child_age is not None and child_age < 6:
+            self.fields['mealType'].choices = FoodLog.mealTypeBaby  
+        else:
+            self.fields['mealType'].choices = FoodLog.mealTypeChild  
+
+        self.fields['mealType'].widget = forms.Select()
 
 class GrowthLogForm(forms.ModelForm):
     class Meta:

@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="{% static 'css/food.css' %}" type="text/css">
     <title>Food</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        console.log("meal_options raw:", `{{ meal_options|escapejs }}`);
+    </script>
+    
 {% endblock headExtra %}
 
 {% block bodyExtra %}
@@ -12,77 +16,119 @@
         <h1>Food Traker</h1>
     </header>
 
-    <form method="post">
+    <h3>Tracking for: {{ selected_child.firstName }} {{ selected_child.lastName }} ({{ selected_child.age }} months)</h3>
+
+
+    <form id="food-form" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <h2>Meal Entry</h2>
-        
-        <label for="meal-time">Meal Time:</label>
-        <input type="datetime-local" name="meal_time" required>
-    
-        <label for="type">Meal Type:</label>
-        <select name="type">
-            <option value="breakfast">Breakfast</option>
-            <option value="lunch">Lunch</option>
-            <option value="dinner">Dinner</option>
-            <option value="snack">Snack</option>
-        </select>
-    
-        <label for="calories">Calories:</label>
-        <input type="number" name="calories" min="0" required>
-    
-        <button type="submit">Submit Meal</button>
+        {{ form.as_p }}
+        <button type="submit">Save</button>
     </form>
     
-    <h2>Submitted Meals</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Meal Time</th>
-                    <th>Type</th>
-                    <th>Calories</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for meal in meals %}
-                <tr>
-                    <td>{{ meal.timeEvent }}</td>
-                    <td>{{ meal.get_type_display }}</td>
-                    <td>{{ meal.calories }}</td>
-                </tr>
-                {% empty %}
-                <tr><td colspan="3">No meals logged yet.</td></tr>
-            {% endfor %}
-            </tbody>
-        </table>
     
-    <h3>Calories Chart</h3>
-    <canvas id="caloriesChart"></canvas>
-        
+    <h2>Submitted Meals</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Meal Time</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Calories</th>               
+            </tr>
+        </thead>
+        <tbody>
+            {% for meal in meals %}
+            <tr>
+                <td>{{ meal.timeEvent }}</td>
+                <td>{{ meal.get_mealType_display }}</td>
+                <td>{{ meal.get_amount_display }}</td>
+                <td>{{ meal.calories }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="4">No meals logged yet.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <h3>Feeding Trends</h3>
+    <canvas id="feedingChart"></canvas>
+   
     <script>
-        var chartData = JSON.parse('{{ chart_data|safe }}');
-
-        var ctx = document.getElementById('caloriesChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: chartData.labels,
-                datasets: [{
-                    label: 'Calories',
-                    data: chartData.calories,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
+        document.addEventListener("DOMContentLoaded", function () {
+            var childAge = {{ selected_child.age|escapejs }};
+            
+            var mealOptions = {{ meal_options|safe }};
+    
+            var mealTypeField = document.querySelector("[name='mealType']");
+    
+            function updateMealOptions() {
+                mealTypeField.innerHTML = "";  
+                mealOptions.forEach(function (option) {
+                    var opt = document.createElement("option");
+                    opt.value = option[0];
+                    opt.textContent = option[1];
+                    mealTypeField.appendChild(opt);
+                });
+            }
+            updateMealOptions(); 
+    
+            document.getElementById("food-form").addEventListener("submit", function (e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+    
+                fetch(window.location.href, {
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Meal logged successfully!");
+                        location.reload();  
+                    } else {
+                        alert("Error: " + JSON.stringify(data.errors));
+                    }
+                })
+                .catch(error => {
+                    alert("Unexpected error: " + error);
+                    console.error("Error:", error);
+                });
+            });
+    
+            var chartData = {{ chart_data|safe }};
+    
+            var ctx = document.getElementById('feedingChart').getContext('2d');
+    
+            var feedingChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: chartData.labels,
+                    datasets: [
+                        {
+                            label: 'Milk Consumption (ml)',
+                            data: chartData.milk_intake,
+                            borderColor: 'blue',
+                            backgroundColor: 'rgba(0, 0, 255, 0.2)',
+                            fill: true
+                        },
+                        {
+                            label: 'Solid Food Intake',
+                            data: chartData.solid_intake,
+                            borderColor: 'green',
+                            backgroundColor: 'rgba(0, 255, 0, 0.2)',
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { beginAtZero: true }
                     }
                 }
-            }
+            });
         });
     </script>
-
+    
     
 {%endblock bodyExtra %}
