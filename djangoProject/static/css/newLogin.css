@@ -1,65 +1,66 @@
-/* General Styling */
+/* Color Variables for Easier Customization */
+:root {
+    --background-gradient: linear-gradient(to bottom, rgba(200, 200, 200, 0.646), rgba(220, 200, 200), rgb(200, 200, 200));
+    --container-bg: #ffffff;
+    --primary-color: #1565c0;
+    --primary-hover: #0d47a1;
+    --border-color: #ccc;
+    --text-dark: #37474f;
+    --text-muted: #607d8b;
+    --error-bg: #ff5252;
+    --error-text: #ffffff;
+}
+
+/* General Page Styling */
 .full-page-container {
-    background-color: var(--color-light-background);
-    min-height: 100vh;
-    width: 100vw;
+    font-family: 'Arial', sans-serif;
+    background: var(--background-gradient);
     margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
 }
 
-/* Main Card Styling */
+/* Main Form Container */
 .card-box {
-    max-width: 320px;
+    max-width: 400px;
+    width: 100%;
+    background-color: var(--container-bg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
     padding: 25px;
-    background-color: var(--color-primary);
-    border-radius: 18px;
-    color: var(--color-light-text);
-    box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
 }
 
-/* Profile Picture */
-.avatar {
-    width: 140px;
-    height: 140px;
-    border-radius: 15px;
+/* Logo */
+.brand-logo {
+    width: 80px;
     margin-bottom: 12px;
 }
 
-/* Logo Styling */
-.brand-logo {
-    width: 75px;
-    filter: brightness(0) invert(1);
-    margin-bottom: 10px;
-}
-
-/* Headings */
+/* Header Styling */
 h2 {
-    margin: 5px 0 15px;
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 24px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
 }
 
-/* Form Section */
+/* Form Layout */
 .input-container {
     display: flex;
     flex-direction: column;
+    gap: 10px;
     width: 100%;
-    gap: 8px;
+    text-align: left;
 }
 
-.error-box {
-    text-align: center;
-    background-color: var(--color-error);
-    padding: 12px;
-    border-radius: 10px;
+/* Labels */
+label {
     font-size: 14px;
-    color: white;
+    font-weight: bold;
+    color: var(--text-dark);
 }
 
 /* Input Fields */
@@ -67,42 +68,37 @@ input {
     width: 100%;
     padding: 10px;
     font-size: 14px;
-    border-radius: 6px;
-    border: 1px solid var(--color-light-border);
-    background-color: var(--color-light-background);
-    color: var(--color-dark-text);
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
     transition: all 0.3s ease-in-out;
 }
 
 input:focus {
-    border-color: var(--color-highlight);
+    border-color: var(--primary-color);
     outline: none;
-    background-color: var(--color-light-hover);
+    box-shadow: 0 0 5px rgba(21, 101, 192, 0.5);
 }
 
-/* Upload Input */
-input[type="file"] {
-    padding: 8px;
-    text-align: center;
-    cursor: pointer;
+/* Error Message Box */
+.error-box {
+    background-color: var(--error-bg);
+    color: var(--error-text);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: left;
 }
 
-input[name="profile_picture-clear"],
-label[for="profile_picture-clear_id"],
-br {
-    display: none;
-}
-
-/* Button Styles */
+/* Buttons */
 .action-btn {
     width: 100%;
     padding: 12px;
     font-size: 16px;
-    text-align: center;
-    background-color: var(--color-button);
-    color: var(--color-light-text);
+    background-color: var(--primary-color);
+    color: #ffffff;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     font-weight: bold;
@@ -110,27 +106,44 @@ br {
 }
 
 .action-btn:hover {
-    background-color: var(--color-button-hover);
+    background-color: var(--primary-hover);
 }
 
-/* Alternative Button */
+/* Alternative Button (Dashboard/Back Links) */
 .alt-btn {
+    display: inline-block;
+    padding: 8px 12px;
     background-color: transparent;
-    color: var(--color-light-text);
-    text-decoration: underline;
+    color: var(--primary-color);
+    text-decoration: none;
     font-size: 14px;
-    margin-top: 8px;
-    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
 }
 
 .alt-btn:hover {
+    text-decoration: underline;
+}
+
+/* Forgot Password Link */
+.forgot-password {
+    display: block;
+    margin-top: 15px;
+    font-size: 12px;
+    text-align: center;
+    color: var(--primary-color);
     text-decoration: none;
 }
 
-/* Responsive Fixes */
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
 @media (max-width: 480px) {
     .card-box {
-        max-width: 280px;
+        max-width: 340px;
         padding: 20px;
     }
 
