@@ -31,7 +31,7 @@
 
 ## 1. Technical Diagram
 
-![Django Graph](assets/Adam-Graph-Model.svg)
+![Django Graph](image/TeamEffortLog/Adam-Graph-Model.svg)
 Visual representation of our Django models, including both default Django models (E.g. User from django.contrib.auth) and Chawts custom models (E.g. Child). "models", explained in more detail later, are how tables for a database and table entries are described in the django framework. This graph shows the relationships between all the various tables in our database.
 
 ## 2. Technical Description
