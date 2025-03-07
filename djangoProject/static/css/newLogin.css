@@ -230,9 +230,9 @@
   }
   
   .dashboard-link {
-    margin-top: 10px;
-    width: 100%;
-    margin: 15px 15;
+    display:inline-flex
+    
+    
   }
   
   /* Responsive Design */
