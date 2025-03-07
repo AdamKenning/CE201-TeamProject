@@ -1,7 +1,7 @@
 # Product Implementation Report
 
-| Quick Info |               |
-| ---------- |---------------|
+| Info       |               |
+| :--------- |--------------:|
 | Author     | Adam Kenning  |
 | Finished   | March 5, 2025 |
 | Word Count | 8,478         |

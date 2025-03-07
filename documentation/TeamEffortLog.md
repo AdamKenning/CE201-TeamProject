@@ -1,5 +1,7 @@
 # Team Effort
 
+Team Effort log for MVP : [24-25_CE201-col_team02\MVP\TeamEffortLog.md](C:\Users\calis\Desktop\24-25_CE201-col_team02\MVP\TeamEffortLog.md)
+
 ## Contribution Metrics
 
 | Name | ID | Contribution Percent | Commits Total | Commits since MVP |  Commits during MVP |
@@ -15,13 +17,13 @@
 
 ### Whole Team Commit Graph
 
-Source (VScode)
-![1741342281189](image/TeamEffortLog/1741342281189.png)
-
-Source (GitLab)
+**As a collective** : Source (GitLab)
 ![1741342367249](image/TeamEffortLog/1741342367249.png)
 
-### Individual Commit Graphs (Since MVP)
+**As Individuals** : Source (VScode)
+![1741342281189](image/TeamEffortLog/1741342281189.png)
+
+### Individual Commit Graphs (MVP Submission - Present)
 
 ![1741276012658](image/TeamEffortLog/1741276012658.png)
 ![1741276132840](image/TeamEffortLog/1741276132840.png)
