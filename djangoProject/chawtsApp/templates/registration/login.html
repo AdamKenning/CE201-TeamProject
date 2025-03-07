@@ -1,20 +1,37 @@
 {% extends "base.html" %}
 {% load static %}
 {% block headExtra %}
-    <link rel="stylesheet" href="{% static 'css/newLogin.css' %}" type="text/css">
-    <title>Login</title> 
+  <link rel="stylesheet" href="{% static 'css/improved-login.css' %}" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <title>Login</title>
 {% endblock headExtra %}
 {% block bodyExtra %}
-    <main>
-        <img class="pageLogo" src="{% static 'icons/LogoHeavy.svg' %}" alt="logo"/>
-        <h2>Login</h2>
-        <form class="form" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input class="button" id="button" type="submit" value="Login" placeholder="Username"/>
-            <input type="hidden" name="next" value="{% url 'dashboard' %}" />
-        </form>
-        <a href="{% url 'password_reset' %}" class="forgot-password">Forgot Password?</a>
-        <a class="button" href="{% url 'dashboard' %}">Dashboard</a>
-    </main>
+  <main>
+    <img class="pageLogo" src="{% static 'icons/LogoHeavy.svg' %}" alt="logo"/>
+    <h2>Login</h2>
+    <form class="form" method="post">
+      {% csrf_token %}
+      
+      <div class="input-group">
+        <label for="id_username">Username:</label>
+        <input type="text" name="username" id="id_username" required placeholder="Enter your username">
+      </div>
+      
+      <div class="input-group">
+        <label for="id_password">Password:</label>
+        <input type="password" name="password" id="id_password" required placeholder="Enter your password">
+      </div>
+      
+      <button class="button" type="submit">Login</button>
+      <input type="hidden" name="next" value="{% url 'dashboard' %}" />
+    </form>
+    
+    <a href="{% url 'password_reset' %}" class="forgot-password">Forgot Password?</a>
+    
+    <div class="account-toggle">
+      Don't have an account? <a href="{% url 'signup' %}">Sign Up</a>
+    </div>
+    
+    <a class="button dashboard-link" href="{% url 'dashboard' %}">Dashboard</a>
+  </main>
 {% endblock bodyExtra %}
