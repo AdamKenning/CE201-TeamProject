@@ -15,6 +15,7 @@
       <button class="button" type="submit">Login</button>
       <input type="hidden" name="next" value="{% url 'dashboard' %}" />
     </form>
+    <a class="button" href="{% url 'dashboard' %}">Dashboard</a>
     <a href="#" class="forgot-password">Forgot password?</a>
     <footer>
       <p>Don't have an account? <a href="{% url 'sign_up' %}">Sign up</a></p>
