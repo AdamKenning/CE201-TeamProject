@@ -172,4 +172,16 @@ https://ce201-team02.atlassian.net/browse/SCRUM-156
 
 For this scrum i had to write a report on the product and i chose to do the marketing side of it. For this i had to write a marketing plan, i inlcuded things like the customers, what demographic is most likely to  purschase / donwload  our application. I then had to touch on the economics side of it.  like what is the total size of the market. How much of the market can we have when we release our application. And what is the current demand in the space that we are in. And the trend like what are other apps doing that make the popular. I also took a look at other apps like i did before where i looked for ideas on wha makes  a growth tracker good, this time i was looking at what our app does better than those ones on the market. For the last part i had to make a sales forecast for how well our app will do. however last minute changes were made in the database py area, so im not sure if my medication page works well.s
 
- 
+## Zaki Hamdan
+
+### Sprint 8 (University Week 18):
+
+In week 18, I managed to get my virtual environment and Django working on my personal computer. Figuring out how to get Django working on macOS turned out to be hassle to deal with and took much longer than expected to get running. it took around 45 mins to get it done
+https://ce201-team02.atlassian.net/browse/SCRUM-85
+
+https://ce201-team02.atlassian.net/browse/SCRUM-97
+
+### Sprint 10 (University Week 20):
+
+In week 20, I added a feature where a user can change the colour of their screen in case the user is colourblind and unable to differentiate between certain colours. It took a few hours to complete this task.
+https://ce201-team02.atlassian.net/browse/SCRUM-129
