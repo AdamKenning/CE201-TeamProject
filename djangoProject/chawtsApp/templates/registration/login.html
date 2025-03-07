@@ -14,6 +14,7 @@
             <input class="button" id="button" type="submit" value="Login" placeholder="Username"/>
             <input type="hidden" name="next" value="{% url 'dashboard' %}" />
         </form>
+        <a href="{% url 'password_reset' %}" class="forgot-password">Forgot Password?</a>
         <a class="button" href="{% url 'dashboard' %}">Dashboard</a>
     </main>
 {% endblock bodyExtra %}
