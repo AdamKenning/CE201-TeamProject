@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="{% static 'css/food.css' %}" type="text/css">
     <title>Food</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        console.log("meal_options raw:", `{{ meal_options|escapejs }}`);
+    </script>
+    
 {% endblock headExtra %}
 
 {% block bodyExtra %}
@@ -12,23 +16,14 @@
         <h1>Food Traker</h1>
     </header>
 
-    <form method="post">
+    <h3>Tracking for: {{ selected_child.name }} ({{ selected_child.age }} months)</h3>
+
+    <form id="food-form" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        
-        <label for="id_mealType">Meal Type:</label>
-        {{ form.mealType }}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
     
-        <label for="id_amount">Amount Eaten:</label>
-        {{ form.amount }}
-    
-        <label for="id_calories">Calories:</label>
-        {{ form.calories }}
-    
-        <label for="id_comment">Comment:</label>
-        {{ form.comment }}
-    
-        <button type="submit">Submit Meal</button>
-    </form>    
     
     <h2>Submitted Meals</h2>
     <table>
@@ -58,57 +53,81 @@
     <canvas id="feedingChart"></canvas>
    
     <script>
-        function toggleMealFields() {
-            var feedingType = document.getElementById("feeding-type").value;
-            document.getElementById("milk-amount").style.display = (feedingType === "solids") ? "none" : "block";
-            document.getElementById("solid-food-options").style.display = (feedingType === "solids") ? "block" : "none";
-        }
+        document.addEventListener("DOMContentLoaded", function () {
+            var childAge = {{ selected_child.age|escapejs }};
+            
+            var mealOptions = {{ meal_options|safe }};
     
-        var chartData = JSON.parse('{{ chart_data|safe }}');
+            var mealTypeField = document.querySelector("[name='mealType']");
     
-        var ctx = document.getElementById('feedingChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: chartData.labels,
-                datasets: [
-                    {
-                        label: 'Milk Consumption (ml)',
-                        data: chartData.milk_intake,
-                        borderColor: 'blue',
-                        backgroundColor: 'rgba(0, 0, 255, 0.2)',
-                        fill: true
-                    },
-                    {
-                        label: 'Solid Food Intake',
-                        data: chartData.solid_intake,
-                        borderColor: 'green',
-                        backgroundColor: 'rgba(0, 255, 0, 0.2)',
-                        fill: true
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: { beginAtZero: true }
-                }
+            function updateMealOptions() {
+                mealTypeField.innerHTML = "";  
+                mealOptions.forEach(function (option) {
+                    var opt = document.createElement("option");
+                    opt.value = option[0];
+                    opt.textContent = option[1];
+                    mealTypeField.appendChild(opt);
+                });
             }
+            updateMealOptions(); 
+    
+            document.getElementById("food-form").addEventListener("submit", function (e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+    
+                fetch(window.location.href, {
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Meal logged successfully!");
+                        location.reload();  
+                    } else {
+                        alert("Error: " + JSON.stringify(data.errors));
+                    }
+                })
+                .catch(error => {
+                    alert("Unexpected error: " + error);
+                    console.error("Error:", error);
+                });
+            });
+    
+            var chartData = {{ chart_data|safe }};
+    
+            var ctx = document.getElementById('feedingChart').getContext('2d');
+    
+            var feedingChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: chartData.labels,
+                    datasets: [
+                        {
+                            label: 'Milk Consumption (ml)',
+                            data: chartData.milk_intake,
+                            borderColor: 'blue',
+                            backgroundColor: 'rgba(0, 0, 255, 0.2)',
+                            fill: true
+                        },
+                        {
+                            label: 'Solid Food Intake',
+                            data: chartData.solid_intake,
+                            borderColor: 'green',
+                            backgroundColor: 'rgba(0, 255, 0, 0.2)',
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
         });
-        function updateChart() {
-        fetch(window.location.href)  
-        .then(response => response.text())
-        .then(text => {
-            var parser = new DOMParser();
-            var doc = parser.parseFromString(text, "text/html");
-            var newChartData = JSON.parse(doc.getElementById("chart-data").textContent);
-
-            feedingChart.data.labels = newChartData.labels;
-            feedingChart.data.datasets[0].data = newChartData.milk_intake;
-            feedingChart.data.datasets[1].data = newChartData.solid_intake;
-            feedingChart.update();
-        });
-    }
     </script>
+    
     
 {%endblock bodyExtra %}

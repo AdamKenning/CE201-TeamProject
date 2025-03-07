@@ -16,3 +16,4 @@ class Migration(migrations.Migration):
             field=models.CharField(choices=[('pasta', 'Pasta'), ('jacketPotato', 'Jacket potato'), ('chickenCurryWithRice', 'Chicken curry with rice'), ('risotto', 'Risotto'), ('chilliConCarne', 'Chilli con carne')], max_length=50),
         ),
     ]
+    

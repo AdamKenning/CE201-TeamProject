@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from datetime import date
 
 from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
@@ -41,6 +42,16 @@ class Child(models.Model):
     def shareCodeGenerate(self):
         self.shareCode = get_random_string(length=10)
         self.save()
+
+    @property
+    def age(self):
+        """Calculates the child's age in months."""
+        if not self.dateOfBirth:
+            return None 
+        today = date.today()
+        age_in_months = (today.year - self.dateOfBirth.year) * 12 + today.month - self.dateOfBirth.month
+        return age_in_months  
+
 
     class Meta:
         db_table = "chawts_child"
@@ -93,7 +104,7 @@ class SleepLog(Log):
     class Meta:
         db_table = "chawts_logSleep"
 
-# adjusted to match project description
+
 class FoodLog(Log):
     child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='foodLogs')
 
@@ -121,7 +132,7 @@ class FoodLog(Log):
         (1.00,'Full'),
     ]
 
-    mealType = models.CharField(max_length=50, choices=mealTypeChild)
+    mealType = models.CharField(max_length=50)
     amount = models.DecimalField(max_digits=3,decimal_places=2, choices=amountEaten,default=1.00)
     calories = models.IntegerField()
 

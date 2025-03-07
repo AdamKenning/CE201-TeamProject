@@ -62,6 +62,20 @@ class FoodLogForm(forms.ModelForm):
         model = FoodLog
         fields = ['timeEvent', 'mealType', 'amount', 'calories', 'comment']
    
+        mealTypeBaby = [
+            ('formula', 'Formula'),
+            ('cowMilk', 'Cow Milk'),
+            ('breastMilk', 'Breast Milk'),
+        ]
+        
+        mealTypeChild = [
+            ('pasta', 'Pasta'),
+            ('jacketPotato', 'Jacket potato'),
+            ('chickenCurryWithRice', 'Chicken curry with rice'),
+            ('risotto', 'Risotto'),
+            ('chilliConCarne', 'Chilli con carne'),
+        ]
+
     def __init__(self, *args, **kwargs):
         child_age = kwargs.pop('child_age', None) 
         super().__init__(*args, **kwargs)
@@ -70,6 +84,8 @@ class FoodLogForm(forms.ModelForm):
             self.fields['mealType'].choices = FoodLog.mealTypeBaby  
         else:
             self.fields['mealType'].choices = FoodLog.mealTypeChild  
+
+        self.fields['mealType'].widget = forms.Select()
 
 class GrowthLogForm(forms.ModelForm):
     class Meta:

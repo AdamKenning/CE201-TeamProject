@@ -12,46 +12,9 @@ from reportlab.pdfgen import canvas
 from django.http import FileResponse, HttpResponseRedirect
 from django.urls import reverse
 
-from django.utils.safestring import mark_safe
 import json
+from django.http import JsonResponse
 
-# tracking pages
-@login_required
-def food(request):
-
-    selected_child = None
-    if 'selected_child_id' in request.session:
-        selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
-
-    if not selected_child:
-        return redirect('dashboard')  
-
-    child_age = selected_child.age if hasattr(selected_child, 'age') else None  
-        
-    if request.method == "POST":
-        form = FoodLogForm(request.POST, child_age=selected_child.age)
-        if form.is_valid():
-            meal = form.save(commit=False)
-            meal.child = selected_child
-            meal.save()
-            return redirect('food')
-    else:
-        form = FoodLogForm(child_age=child_age)
-    
-    meals = FoodLog.objects.filter(child=selected_child).order_by('-timeEvent')
-
-    chart_data = {
-        "labels": [meal.timeEvent.strftime('%Y-%m-%d %H:%M') for meal in meals],
-        "milk_intake": [float(meal.amount) if meal.mealType in ["formula", "cowMilk", "breastMilk"] else 0 for meal in meals],
-        "solid_intake": [float(meal.amount) if meal.mealType not in ["formula", "cowMilk", "breastMilk"] else 0 for meal in meals],
-    }
-
-    return render(request, "tracking/food.html", {
-        "selected_child": selected_child,
-        "form": form,
-        "meals": meals,
-        "chart_data": json.dumps(chart_data),
-    })
 
 @login_required
 def diaper(request):
@@ -223,32 +186,44 @@ def sign_up(request):
 # tracking pages
 @login_required
 def food(request):
-
     selected_child = None
     if 'selected_child_id' in request.session:
         selected_child = Child.objects.filter(id=request.session['selected_child_id'], parents=request.user).first()
 
     if not selected_child:
-        return redirect('dashboard')
+        return redirect('dashboard')  
+
+    child_age = selected_child.age if hasattr(selected_child, 'age') else None
+         
     if request.method == "POST":
-        form = FoodLogForm(request.POST)
+        form = FoodLogForm(request.POST, child_age=selected_child.age)  # Pass child's age here
         if form.is_valid():
             meal = form.save(commit=False)
             meal.child = selected_child
             meal.save()
-            return redirect('food')
-
+            return JsonResponse({"success": True})
+        else:
+            return JsonResponse({"success": False, "errors": form.errors})
+    else:
+        form = FoodLogForm(child_age=child_age)  # Pass child's age here
+    
     meals = FoodLog.objects.filter(child=selected_child).order_by('-timeEvent')
 
     chart_data = {
         "labels": [meal.timeEvent.strftime('%Y-%m-%d %H:%M') for meal in meals],
-        "calories": [meal.calories for meal in meals]
+        "milk_intake": [float(meal.amount) if meal.mealType in ["formula", "cowMilk", "breastMilk"] else 0 for meal in meals],
+        "solid_intake": [float(meal.amount) if meal.mealType not in ["formula", "cowMilk", "breastMilk"] else 0 for meal in meals],
     }
+
+    meal_options = FoodLog.mealTypeBaby if child_age < 6 else FoodLog.mealTypeChild
+    meal_options_json = json.dumps(meal_options)
 
     return render(request, "tracking/food.html", {
         "selected_child": selected_child,
+        "form": form,
         "meals": meals,
         "chart_data": json.dumps(chart_data),
+        "meal_options": meal_options_json,
     })
 
 # @login_required
