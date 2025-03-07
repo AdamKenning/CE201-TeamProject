@@ -9,17 +9,10 @@ class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
-
-# testing out extended user stuff like profile picutre
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['profile_picture']
-
-# class editChildForm(forms.ModelForm):
-#     class Meta:
-#         model = Child
-#         fields = ['firstName','lastName','dateOfBirth','profile_picture']
 
 class ChildEditForm(forms.ModelForm):
     class Meta:

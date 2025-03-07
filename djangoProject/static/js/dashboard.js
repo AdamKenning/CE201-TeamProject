@@ -39,8 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 data: dataLogsPerChild,
                 backgroundColor: colours,
                 hoverOffset: 15,
-            }]
-        },
+        }]},
         options: {
             maintainAspectRatio: false,
             responsive: true,
@@ -49,11 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     display: true,
                     text: logNamePie,
                     font: {
-                        size: 20
-                    }
-                }
-            }
-        }
+                        size: 20}
+        }}}
     });
 
     // bar chart
@@ -68,8 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     data: logCategoryCounts,
                     backgroundColor: colours,
                     hoverOffset: 50,
-                }]
-            },
+            }]},
             options: {
                 maintainAspectRatio: false,
                 responsive: true,
@@ -83,24 +78,17 @@ document.addEventListener('DOMContentLoaded', function() {
                               },
                             font: {
                                 size: 14
-                            }
-                        }
-                    }
-                },
+                }}}},
                 plugins: {
                     title: {
                         display: true,
                         text: logNameBar,
                         font: {
                             size: 20
-                        }
-                    },
+                    }},
                     legend: {
                         display: false
-                    }
-                }
-            }
-        });
-    }
-});
+            }}}
+    });
+}});
 

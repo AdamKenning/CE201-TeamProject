@@ -4,11 +4,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    {% comment %} <meta http-equiv="Cache-Control" content="max-age=31536000, public, immutable"> {% endcomment %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A health tracking application for children.">
+    <meta name="keywords" content="chawts, child, health, tracking, growth, food, sleep">
+    <meta name="author" content="Adam, Munashe, Charles, Evan, Zaki, Zubair">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
+
+    {% comment %} <meta http-equiv="Content-Security-Policy" content="default-src 'self';
+      script-src 'self' https://cdn.jsdelivr.net;
+      style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;"> {% endcomment %}
+
+
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type= "text/css"/>
     <link rel="icon" type="image/svg+xml" href="{% static 'icons/LogoHeavy.svg' %}">
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     {% block headSidebar %}
     {% endblock headSidebar %}
 
