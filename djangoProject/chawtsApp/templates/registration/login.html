@@ -1,38 +1,19 @@
 {% extends "base.html" %}
 {% load static %}
 {% block headExtra %}
-  <link rel="stylesheet" href="{% static 'css/newLogin.css' %}" type="text/css">
-  <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/newLogin.css' %}" type="text/css">
+    <title>Login</title> 
 {% endblock headExtra %}
 {% block bodyExtra %}
-  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌓</button>
-  <main>
-    <img class="pageLogo" src="{% static 'icons/LogoHeavy.svg' %}" alt="logo"/>
-    <h2>Login</h2>
-    <form class="form" method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button class="button" type="submit">Login</button>
-      <input type="hidden" name="next" value="{% url 'dashboard' %}" />
-    </form>
-    <a class="button" href="{% url 'dashboard' %}">Dashboard</a>
-    <a href="#" class="forgot-password">Forgot password?</a>
-    <footer>
-      <p>Don't have an account? <a href="{% url 'sign_up' %}">Sign up</a></p>
-    </footer>
-  </main>
-
-  <script>
-    function toggleTheme() {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-    }
-    
-    // Check for saved theme preference
-    document.addEventListener('DOMContentLoaded', function() {
-      if (localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add('dark-mode');
-      }
-    });
-  </script>
+    <main>
+        <img class="pageLogo" src="{% static 'icons/LogoHeavy.svg' %}" alt="logo"/>
+        <h2>Login</h2>
+        <form class="form" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="button" id="button" type="submit" value="Login" placeholder="Username"/>
+            <input type="hidden" name="next" value="{% url 'dashboard' %}" />
+        </form>
+        <a class="button" href="{% url 'dashboard' %}">Dashboard</a>
+    </main>
 {% endblock bodyExtra %}
