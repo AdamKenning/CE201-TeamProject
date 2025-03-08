@@ -191,7 +191,7 @@ After saving the data, the table is automatically updated, and a line chart is g
 <https://ce201-team02.atlassian.net/browse/SCRUM-155>
 
 As we only have two weeks left before the deadline, we need to start working on the report.
-I chose to write the Product Context Report section, but I haven’t finished it this week.
+I chose to write the Product Context Report section, but I haven't finished it this week.
 Additionally, some errors still exist, so we need to fix them and try to make it looks better.
 
 ### Sprint 13 (University Week 23)
@@ -248,7 +248,7 @@ Starting development server at <http://127.0.0.1:8000/>
 
 I can then click on the link and it will then take me to the website.
 
-### Sprint 8 – 9 (university week 17)
+### Sprint 8 - 9 (university week 17)
 
 <https://ce201-team02.atlassian.net/browse/SCRUM-110>
 
@@ -277,14 +277,38 @@ For this scrum i had to write a report on the product and i chose to do the mark
 
 ## Zaki Hamdan
 
-### Sprint 8 (University Week 18)
+### sprint 8 (University Week 18)
 
 In week 18, I managed to get my virtual environment and Django working on my personal computer. Figuring out how to get Django working on macOS turned out to be hassle to deal with and took much longer than expected to get running. it took around 45 mins to get it done
 <https://ce201-team02.atlassian.net/browse/SCRUM-85>
 
 <https://ce201-team02.atlassian.net/browse/SCRUM-97>
 
-### Sprint 10 (University Week 20)
+### sprint 10 (University Week 20)
 
 In week 20, I added a feature where a user can change the colour of their screen in case the user is colourblind and unable to differentiate between certain colours. It took a few hours to complete this task.
 <https://ce201-team02.atlassian.net/browse/SCRUM-129>
+
+## Evan Dawson
+
+### Sprint 8
+
+Include a URL to the most significant Jira tasks assigned to you in sprint 1, and state when (or whether) it was completed, and the hours spent.
+The main tasks completed were to get django working on our computers and then being able to rn a server locally *This took a few hours to complete due to some technical issues, but it was resolved within the week.*The use of the terminal within Visual Studio code was required.
+
+### Sprint 9
+
+The main task to be completed was to familiarise ourselves with charts.js, as this was what we were going to use for our project.
+This was more of an ongoing thing for me that lasted throughout the weeks, as I wanted to add different types of chats. *I was also tasked and able to fix most, if not all, front-end issues with my webpage.
+
+### Sprint 10-11
+
+During these two weeks, I had to link my charts to the backend of the backend logs. This, I found, is greatly difficult for me personally. *As of the time of writing this, this has taken me a significant amount of time, to the point of feeling drained, and I still need to troubleshoot and fix anything frequently if more charts are added.
+
+### Sprint 12
+
+Continue coding to link my charts and the backend while starting the project management documentation and writing. *The project management took a few hours, and the coding was continual.
+
+### Sprint 13
+
+Continue coding, finish up the work with bug fixing as well, and finish work on my part of the team effort log.
