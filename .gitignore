@@ -13,7 +13,6 @@ venv/
 
 # Database stuff
 *.sqlite3
-*.db
 db.sqlite3
 djangoProject/db.sqlite3
 
