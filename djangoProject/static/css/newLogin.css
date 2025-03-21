@@ -125,18 +125,12 @@
     font-size: 13px;
     text-align: left;
     box-shadow: var(--shadow-sm);
-    max-height: 0;
+    max-height: 200px;
     overflow: hidden;
-    opacity: 0;
+    opacity: 1;
     transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease, padding 0.3s ease;
   }
-  
-  .password-field:focus ~ .password-requirements {
-    max-height: 200px;
-    opacity: 1;
-    margin: 10px 0;
-    padding: 12px 15px;
-  }
+
   
   .password-requirements ul {
     list-style: none;
